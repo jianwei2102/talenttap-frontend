@@ -10,7 +10,7 @@ function UserProfilePage() {
           <div className="w-full h-20 relative">
             <img
               className="h-full w-full absolute object-cover z-0"
-              src={require("../assets/login-wave-background.png")}
+              src={require("../assets/wave-background.png")}
               alt="Background"></img>
             <div className="h-full w-full absolute flex justify-between z-10">
               <div className="z-10 flex flex-col ml-10 justify-center">
@@ -59,7 +59,7 @@ function UserProfilePage() {
           <div className="w-full h-20 relative">
             <img
               className="h-full w-full absolute object-cover z-0"
-              src={require("../assets/login-wave-background.png")}
+              src={require("../assets/wave-background.png")}
               alt="Background"></img>
             <div className="h-full w-full absolute flex justify-between z-10">
               <div className="z-10 flex flex-col ml-10 justify-center">
