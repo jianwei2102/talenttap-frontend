@@ -77,8 +77,8 @@ function HomeCampaignCard({
       </div>
       <img
         className="w-2/6 object-contain"
-        alt="../assets/hilti-logo.png"
-        src={require("../assets/hilti-logo.png")}></img>
+        alt="campaign picture"
+        src={imageSrc}></img>
     </div>
   );
 }

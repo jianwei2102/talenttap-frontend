@@ -4,6 +4,14 @@ import { useState } from "react";
 import Card from "../components/HomeCampaignCard.tsx";
 import MorePageNavigation from "../components/MorePageNavigation.tsx";
 
+interface Campaign {
+  name: string;
+  location: string;
+  type: string;
+  exprienceRequirement: string;
+  imageSource: string;
+}
+
 function UserHomePage() {
   const [activeCampaignIndex, setActiveCampaignIndex] = useState(0);
 
@@ -15,7 +23,17 @@ function UserHomePage() {
     setActiveCampaignIndex(1);
   };
 
-  const currentPageIndex = 0;
+  // TODO: Get data and populate the array
+  let campaignData: Campaign[] = [{
+    name: "Linux Administrator",
+    location: "Petaling Jaya, Selangor, Malaysia",
+    type: "IT, Software & Digital",
+    exprienceRequirement: "Experienced Professionals",
+    imageSource: "../src/assets/hilti-logo.png"
+  }];
+
+  const [currentPageIndex, setCurrentPageIndex] = useState(0);
+  // TODO: Get data and calculate total number of pages needed (6 campaigns per page)
   const totalPages = 3;
 
   return (
@@ -100,24 +118,7 @@ function UserHomePage() {
         </div>
         <div className="home-main-container overflow-auto mt-10">
           <div className="grid grid-cols-2 grid-rows-3 gap-16">
-            <Card
-              name="Linux Admin"
-              location="Petaling Jaya, Selangor, Malaysia"
-              type="IT, Software & Digital"
-              experienceRequirement="Experienced Professionals"
-              imageSrc="../assets/hilti-logo.png"></Card>
-            <Card
-              name="Linux Admin"
-              location="Petaling Jaya, Selangor, Malaysia"
-              type="IT, Software & Digital"
-              experienceRequirement="Experienced Professionals"
-              imageSrc="../assets/hilti-logo.png"></Card>
-            <Card
-              name="Linux Admin"
-              location="Petaling Jaya, Selangor, Malaysia"
-              type="IT, Software & Digital"
-              experienceRequirement="Experienced Professionals"
-              imageSrc="../assets/hilti-logo.png"></Card>
+            {campaignData.map((campaign, i) => <Card name={campaign.name} location={campaign.location} type={campaign.type} experienceRequirement={campaign.exprienceRequirement} imageSrc={campaign.imageSource}/>)}
           </div>
         </div>
         <div className="fixed absolute bottom-10">
