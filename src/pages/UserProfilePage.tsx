@@ -1,11 +1,11 @@
 import React from "react";
-import UserNavBar from "./UserNavBar.tsx";
+import UserNavBar from "../components/UserNavBar.tsx";
 
 function UserProfilePage() {
   return (
-    <div className="h-full w-full absolute flex flex-col">
+    <div className="h-screen w-screen absolute flex flex-col">
       <UserNavBar activeIndex={1} />
-      <div className="w-full h-full relative flex flex-col items-center p-10 overscroll-auto">
+      <div className="w-full relative flex flex-col items-center p-10 overscroll-auto">
         <div className="w-3/4 h-auto shadow-lg overflow-visible">
           <div className="w-full h-20 relative">
             <img

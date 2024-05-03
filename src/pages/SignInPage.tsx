@@ -59,7 +59,7 @@ function SignIn() {
             alt="login background"
           ></img>
           <span className="text-5xl text-center font-bold text-white z-10">
-            Create <br /> Account
+            Welcome <br /> Back
           </span>
         </div>
       </div>
