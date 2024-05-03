@@ -5,7 +5,7 @@ function UserProfilePage() {
   return (
     <div className="h-screen w-screen absolute flex flex-col">
       <UserNavBar activeIndex={1} />
-      <div className="w-full relative flex flex-col items-center p-10 overscroll-auto">
+      <div className="main-container relative flex flex-col items-center p-10 overflow-auto">
         <div className="w-3/4 h-auto shadow-lg overflow-visible">
           <div className="w-full h-20 relative">
             <img
@@ -20,7 +20,7 @@ function UserProfilePage() {
                 </span>
               </div>
               <div className="z-10 flex items-center mr-10">
-                <button className="bg-white border rounded-sm p-2">
+                <button id="save-button" className="bg-white border rounded-sm p-2">
                   <span className="text-red-800">Save Changes</span>
                 </button>
               </div>
@@ -30,12 +30,14 @@ function UserProfilePage() {
             <div className="pl-10 pr-10 pt-5 pb-5">
               <span className="text-lg text-black">Full Name</span>
               <input
+                id="full-name-input"
                 className="w-full h-10 p-2 border border-black rounded mt-1.5"
                 type="text"></input>
             </div>
             <div className="pl-10 pr-10 pt-5 pb-5">
               <span className="text-lg text-black">Email Address</span>
               <input
+                id="email-input"
                 className="w-full h-10 p-2 border border-black rounded mt-1.5"
                 type="text"></input>
             </div>
@@ -43,12 +45,14 @@ function UserProfilePage() {
               <div className="w-full block flex flex-col pl-10 pr-10 pt-5 pb-5">
                 <span className="text-lg text-black">Contact Number</span>
                 <input
+                  id="contact-number-input"
                   className="w-full h-10 p-2 border border-black rounded mt-1.5"
                   type="text"></input>
               </div>
               <div className="w-full block flex flex-col pl-10 pr-10 pt-5 pb-5">
                 <span className="text-lg text-black">Location</span>
                 <input
+                  id="location-input"
                   className="w-full h-10 p-2 border border-black rounded mt-1.5"
                   type="text"></input>
               </div>
@@ -74,7 +78,9 @@ function UserProfilePage() {
             <span className="text-left">
               By deleting your account you will lose all your data
             </span>
-            <button className="w-1/4 bg-red-700 border rounded-sm p-2 mt-2">
+            <button
+              id="deleteAccountButton"
+              className="w-1/4 bg-red-700 border rounded-sm p-2 mt-2">
               <span className="text-white">Request account deletion</span>
             </button>
           </div>
