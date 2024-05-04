@@ -1,10 +1,15 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { login } from "../store/UserReducer.tsx";
 
 function SignIn() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
-  const goToProfilePage = () => {
+  const loginHandle = () => {
+    const user = "";
+    dispatch(login(user));
     navigate('/profile');
   }
 
@@ -44,7 +49,7 @@ function SignIn() {
               </div>
             </div>
             <div className="w-full h-10 mt-10 bg-red-700 flex justify-content items-center cursor-pointer">
-              <span className="w-full text-center text-white" onClick={goToProfilePage}>Sign In</span>
+              <span className="w-full text-center text-white" onClick={loginHandle}>Sign In</span>
             </div>
             <div className="mt-10 flex justify-center">
               <span>New here?</span>
