@@ -21,8 +21,19 @@ code {
 }
 
 .main-container {
-  position: absolute;
-  height: 100%;
+  height: calc(100vh - 5rem);
   width: 100%;
-  display: block;
+}
+
+.home-main-container {
+  height: calc(100% - 2.5rem);
+  width: 100%;
+}
+
+#job-search-input:focus {
+  outline: none;
+}
+
+#location-search-input:focus {
+  outline: none;
 }
