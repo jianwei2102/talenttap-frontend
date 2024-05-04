@@ -17,6 +17,14 @@ function MorePageNavigation({
   const [activePageIndex, setActivePageIndex] = useState(
     currentActivePageIndex
   );
+
+  const previousPageHandle = () => {
+    setActivePageIndex(activePageIndex - 1);
+  }
+
+  const nextPageHandle = () => {
+    setActivePageIndex(activePageIndex + 1);
+  }
   
   const ActivePageItem = () => {
       return <div className="h-4 w-4 rounded-full border border-red-700 border-4 ml-1 mr-1"></div>
@@ -32,9 +40,9 @@ function MorePageNavigation({
 
   return (
     <div className="w-full h-10 flex justify-center items-center">
-      <div className="w-24 h-full border border-red-700 rounded-sm flex items-center p-2">
+      <div className={activePageIndex <= 0 ? "w-24 h-full" : "w-24 h-full border border-red-700 rounded-sm flex items-center p-2 cursor-pointer"} onClick={previousPageHandle}>
         <svg
-          className="h-5 w-5 text-red-500"
+          className={activePageIndex <= 0 ? "h-5 w-5 hidden" : "h-5 w-5 text-red-500"}
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor">
@@ -45,7 +53,7 @@ function MorePageNavigation({
             d="M10 19l-7-7m0 0l7-7m-7 7h18"
           />
         </svg>
-        <span className="text-red-700 text-md text-center ml-2">Previous</span>
+        <span className={activePageIndex <= 0 ? "hidden" :"text-red-700 text-sm text-center ml-2"}>Previous</span>
       </div>
       <div className="flex items-center ml-5 mr-5">
         {
@@ -54,10 +62,10 @@ function MorePageNavigation({
           ))
         }
       </div>
-      <div className="w-24 h-full border border-red-700 rounded-sm flex items-center p-2">
-        <span className="text-red-700 text-md text-center mr-2">Next</span>
+      <div className={activePageIndex >= totalPages - 1 ? "w-24 h-full" : "w-24 h-full border border-red-700 rounded-sm flex justify-center items-center p-2 cursor-pointer"} onClick={nextPageHandle}>
+        <span className={activePageIndex >= totalPages - 1 ? "hidden" : "text-red-700 text-sm text-center mr-2"}>Next</span>
         <svg
-          className="h-5 w-5 text-red-500"
+          className={activePageIndex >= totalPages - 1 ? "h-5 w-5 hidden" : "h-5 w-5 text-red-500"}
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor">
