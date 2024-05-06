@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { UserNavBar, InterviewStepBar, CVScreening } from "../components";
-
+import { useNavigate } from "react-router-dom";
+import { UserNavBar, InterviewStepBar, PopUpModal } from "../components";
 
 const Interview = () => {
+  const navigate = useNavigate();
+
   const [name, setName] = useState("");
   const [jobFunction, setJobFunction] = useState("");
   const [requirements, setRequirements] = useState("");
@@ -30,15 +32,15 @@ const Interview = () => {
     );
     setEndDate("06.01.2024");
 
-    setInterviewSteps(1);
+    setInterviewSteps(2); // Modify interview stage
   }, []);
 
   return (
     <>
       <UserNavBar activeIndex={0} />
 
-      <div className="h-full mx-36 my-24">
-        <div className="grid grid-cols-2">
+      <div className="h-full lg:mx-36 lg:my-24 mx-12 my-8">
+        <div className="flex justify-between">
           <div>
             <span className="text-[#D2051E] text-4xl font-bold">{name}</span>
           </div>
@@ -73,9 +75,22 @@ const Interview = () => {
             </span>
           ))}
         </div>
-
+        
+        {/* Check for interview stage instead of steps */}
         {interviewSteps === 1 && (
-          <CVScreening/>
+          <PopUpModal title="Start Application"/>
+        )}
+
+        {interviewSteps === 2 && (
+          <div className="flex flex-col justify-center gap-y-2 items-center">
+            <button
+              className="w-48 h-12 mx-auto mt-10 bg-red-500 text-white rounded-lg text-lg"
+              onClick={() => navigate("/general-interview")}
+            >
+              Start Interview
+            </button>
+            <p>The Interview can be done within 3 days</p>
+          </div>
         )}
       </div>
     </>

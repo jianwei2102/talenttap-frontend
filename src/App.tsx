@@ -11,6 +11,7 @@ import UserProfilePage from "./pages/UserProfilePage.tsx";
 import UserHomePage from "./pages/UserHomePage.tsx";
 
 import Interview from "./pages/Interview.tsx";
+import GeneralInterview from "./pages/GeneralInterview.tsx";
 
 function App() {
     return (
@@ -22,6 +23,7 @@ function App() {
                 <Route path="/home" element={<UserHomePage/>}/>
                 <Route path="/" element={<SignIn/>}/>
                 <Route path="/interview" element={<Interview/>}/>
+                <Route path="/general-interview" element={<GeneralInterview/>}/>
             </Routes>
         </Router>
     );
