@@ -4,6 +4,7 @@ import './index.css';
 // import Main from './Main';
 // import SignUp from './src/components/SignUp.tsx';
 import App from './App.tsx';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
