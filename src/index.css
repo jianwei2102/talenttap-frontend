@@ -44,3 +44,7 @@ code {
 #location-search-input:focus {
   outline: none;
 }
+
+#technical-assessment-answer-input:focus {
+  outline: none;
+}
