@@ -208,10 +208,10 @@ function HiringManagerInterviewPage() {
 			<div
 				className={
 					showInterviewSchedulingModal
-						? "w-screen h-screen absolute bg-gray-500 bg-opacity-30 flex justify-center items-center"
+						? "modal-backdrop flex justify-center items-center"
 						: "hidden"
 				}>
-				<div className="h-4/6 w-2/6 bg-white rounded-3xl absolute z-10 p-3">
+				<div className="h-4/6 w-2/6 bg-white rounded-3xl absolute z-100 p-3">
 					<div className="w-full flex flex-row-reverse">
 						<svg
 							className="h-8 w-8 text-black cursor-pointer"

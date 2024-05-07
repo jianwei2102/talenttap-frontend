@@ -1,7 +1,12 @@
 import React from "react";
+import { useSelector } from "react-redux";
+import { RootState } from "../store/Store.tsx";
 import UserNavBar from "../components/UserNavBar.tsx";
 
 function UserProfilePage() {
+  const user = useSelector((state: RootState) => state.users.user);
+  const email = useSelector((state: RootState) => state.users.email);
+
   return (
     <div className="h-screen w-screen absolute flex flex-col">
       <UserNavBar activeIndex={1} />
@@ -32,14 +37,15 @@ function UserProfilePage() {
               <input
                 id="full-name-input"
                 className="w-full h-10 p-2 border border-black rounded mt-1.5"
-                type="text"></input>
+                type="text"
+                placeholder={user !== null ? user : ""}></input>
             </div>
             <div className="pl-10 pr-10 pt-5 pb-5">
               <span className="text-lg text-black">Email Address</span>
               <input
                 id="email-input"
                 className="w-full h-10 p-2 border border-black rounded mt-1.5"
-                type="text"></input>
+                type="text" placeholder={email !== null ? email : ""}></input>
             </div>
             <div className="flex justify-between">
               <div className="w-full block flex flex-col pl-10 pr-10 pt-5 pb-5">
