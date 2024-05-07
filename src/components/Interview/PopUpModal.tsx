@@ -93,8 +93,8 @@ const PopUpModal = ({ title }) => {
 
                 <button
                   className="w-48 h-12 mx-auto mt-10 bg-red-500 text-white rounded-lg text-lg"
-                  onClick={() => handleClose()} // Navigate to interview quesetions
-                  >I Undestand</button>
+                  onClick={() => handleClose()} // Navigate to interview questions
+                  >I Understand</button>
               </div>
                   </div>
             </div>

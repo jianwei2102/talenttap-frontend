@@ -12,6 +12,7 @@ import UserHomePage from "./pages/UserHomePage.tsx";
 
 import Interview from "./pages/Interview.tsx";
 import GeneralInterview from "./pages/GeneralInterview.tsx";
+import GeneralQuestion from "./pages/GeneralQuestion.tsx";
 
 function App() {
     return (
@@ -24,6 +25,7 @@ function App() {
                 <Route path="/" element={<SignIn/>}/>
                 <Route path="/interview" element={<Interview/>}/>
                 <Route path="/general-interview" element={<GeneralInterview/>}/>
+                <Route path="/general-question" element={<GeneralQuestion/>}/>
             </Routes>
         </Router>
     );
