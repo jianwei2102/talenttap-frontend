@@ -12,6 +12,10 @@ function SignIn() {
     navigate('/signup');
   };
 
+  const goToAdminDashboard = () => {
+    navigate('/admin');
+  }
+
   return (
     <div className="bg-slate-200 h-full w-full absolute flex justify-center items-center">
       <div className="w-4/6 h-4/6 flex justify-center items-center">
@@ -44,7 +48,9 @@ function SignIn() {
               </div>
             </div>
             <div className="w-full h-10 mt-10 bg-red-700 flex justify-content items-center cursor-pointer">
-              <span className="w-full text-center text-white" onClick={goToProfilePage}>Sign In</span>
+              {/* <span className="w-full text-center text-white" onClick={goToProfilePage}>Sign In</span> */}
+              <span className="w-full text-center text-white" onClick={goToAdminDashboard}>Sign In</span>
+
             </div>
             <div className="mt-10 flex justify-center">
               <span>New here?</span>
