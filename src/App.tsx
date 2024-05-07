@@ -11,6 +11,7 @@ import UserProfilePage from "./pages/UserProfilePage.tsx";
 import UserHomePage from "./pages/UserHomePage.tsx";
 import UserFeedbackPage from "./pages/UserFeedbackPage.tsx";
 import UserTechnicalAssessmentQuestionPage from "./pages/UserTechnicalAssessmentQuestionPage.tsx";
+import UserHiringManagerInterviewPage from "./pages/UserHiringManagerInterviewPage.tsx";
 import UserAssessmentSubmissionCompletedPage from "./pages/UserAssessmentSubmissionCompletedPage.tsx";
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
                 <Route path="/home" element={<UserHomePage/>}/>
                 <Route path="/feedback" element={<UserFeedbackPage/>}/>
                 <Route path="/technical" element={<UserTechnicalAssessmentQuestionPage/>}/>
+                <Route path="/hiring-manager-interview-schedule" element={<UserHiringManagerInterviewPage/>}/>
                 <Route path="/submission-completed" element={<UserAssessmentSubmissionCompletedPage/>}/>
                 <Route path="/" element={<SignIn/>}/>
             </Routes>
