@@ -44,10 +44,10 @@ const UserNavBar = ({ activeIndex }: UserNavBarProps) => {
   };
 
   return (
-    <div className="w-full h-10 relative fixed flex items-center">
+    <div className="w-full h-20 relative fixed flex items-center">
       <div className="h-full w-1/6 flex justify-center items-center">
         <img
-          className="h-5/6 w-5/6 object-cover"
+          className="h-5/6 w-5/6 object-contain"
           src={require("../assets/hilti-logo.png")}
           alt="HILTI Logo"></img>
       </div>

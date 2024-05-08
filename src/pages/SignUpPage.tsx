@@ -68,7 +68,7 @@ function SignUp() {
           </form>
         </div>
         <div className='inherit h-full w-1/2 border rounded-r-md flex justify-center items-center relative'>
-          <img className='inherit h-full w-full object-fill border rounded-r-md z-0 absolute' src={require('../assets/login-wave-background.png')} alt='login background'></img>
+          <img className='inherit h-full w-full object-fill border rounded-r-md z-0 absolute' src={require('../assets/wave-background.png')} alt='login background'></img>
           <span className='text-5xl text-center font-bold text-white z-10'>Create <br/> Account</span>
         </div>
       </div>

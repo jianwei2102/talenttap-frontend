@@ -5,9 +5,10 @@ import {
     Route,
 } from "react-router-dom";
 
-import SignUp from "./components/SignUp.tsx";
-import SignIn from "./components/SignIn.tsx";
-import UserProfilePage from "./components/UserProfilePage.tsx";
+import SignUp from "./pages/SignUpPage.tsx";
+import SignIn from "./pages/SignInPage.tsx";
+import UserProfilePage from "./pages/UserProfilePage.tsx";
+import UserHomePage from "./pages/UserHomePage.tsx";
 
 function App() {
     return (
@@ -16,6 +17,7 @@ function App() {
                 <Route path="/signup" element={<SignUp/>}/>
                 <Route path="/login" element={<SignIn/>}/>
                 <Route path="/profile" element={<UserProfilePage/>}/>
+                <Route path="/home" element={<UserHomePage/>}/>
                 <Route path="/" element={<SignIn/>}/>
             </Routes>
         </Router>
