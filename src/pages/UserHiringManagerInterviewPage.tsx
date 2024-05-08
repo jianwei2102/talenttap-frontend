@@ -82,7 +82,7 @@ function HiringManagerInterviewPage() {
 
 	const openInterviewSchedulingModalHandle = () => {
 		setShowInterviewSchedulingModal(true);
-	}
+	};
 
 	const closeInterviewSchedulingModalHandle = () => {
 		setShowInterviewSchedulingModal(false);
@@ -90,7 +90,7 @@ function HiringManagerInterviewPage() {
 
 	const closeScheduledInterviewModalHandle = () => {
 		setShowScheduledInterviewModal(false);
-	}
+	};
 
 	const InterviewTimeSlotCard = ({ timeSlot, index }: InterviewTimeSlotCardProps) => {
 		const clickTimeSlotHandle = () => {
