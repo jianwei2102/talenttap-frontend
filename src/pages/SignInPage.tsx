@@ -18,6 +18,10 @@ function SignIn() {
 		setFormData((prevFormData) => ({ ...prevFormData, [name]: value }));
 	};
 
+  const goToAdminDashboard = () => {
+    navigate('/admin');
+  }
+
 	const handleSubmit = async (event: React.FormEvent) => {
 		event.preventDefault();
 

@@ -8,6 +8,7 @@ import {
 import SignUp from "./pages/SignUpPage.tsx";
 import SignIn from "./pages/SignInPage.tsx";
 import UserProfilePage from "./pages/UserProfilePage.tsx";
+import AdminDashboardPage from "./pages/admin/AdminDashboardPage.tsx";
 import UserHomePage from "./pages/UserHomePage.tsx";
 
 import Interview from "./pages/Interview.tsx";
@@ -22,6 +23,7 @@ function App() {
                 <Route path="/login" element={<SignIn/>}/>
                 <Route path="/profile" element={<UserProfilePage/>}/>
                 <Route path="/home" element={<UserHomePage/>}/>
+                <Route path="/admin" element={<AdminDashboardPage/>}/>
                 <Route path="/" element={<SignIn/>}/>
                 <Route path="/interview" element={<Interview/>}/>
                 <Route path="/general-interview" element={<GeneralInterview/>}/>
