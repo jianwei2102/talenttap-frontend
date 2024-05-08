@@ -5,10 +5,13 @@ import './index.css';
 // import SignUp from './src/components/SignUp.tsx';
 import App from './App.tsx';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { AlertsProvider } from './components/Alert/AlertContext.tsx';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App/>
+    <AlertsProvider>
+      <App/>
+    </AlertsProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
