@@ -9,6 +9,7 @@ interface UserNavBarProps {
 
 const UserNavBar = ({ activeIndex }: UserNavBarProps) => {
 	const navigate = useNavigate();
+  
 	const { addAlert } = useContext(AlertsContext);
 
 	const goToHomePage = () => {
@@ -44,7 +45,7 @@ const UserNavBar = ({ activeIndex }: UserNavBarProps) => {
 	};
 
 	return (
-		<div className="w-full h-20 relative fixed flex items-center">
+		<div className="w-full h-20 relative fixed flex items-center z-1">
 			<div className="h-full w-1/6 flex justify-center items-center">
 				<img
 					className="h-5/6 w-5/6 object-contain"

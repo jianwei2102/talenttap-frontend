@@ -1,13 +1,33 @@
 import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { useState } from "react";
+import { login } from "../store/UserReducer.tsx";
 import { AlertsContext } from "../components/Alert/AlertContext.tsx";
 import { AuthAPI } from "../api/authAPI.ts";
 import User from "../models/User.ts";
 
 function SignIn() {
 	const navigate = useNavigate();
-	const [formData, setFormData] = useState({ email: "", password: "" });
+  const dispatch = useDispatch();
+  const [formData, setFormData] = useState({ email: "", password: "" });
 	const { addAlert } = useContext(AlertsContext);
+  
+  const [email, setEmail] = useState("");
+	const [password, setPassword] = useState("");
+
+	const emailValueChangeHandle = (event) => {
+		setEmail(event.target.value);
+	};
+
+	const passwordValueChangeHandle = (event) => {
+		setPassword(event.target.value);
+	};
+
+	const loginHandle = () => {
+		dispatch(login(email));
+		navigate("/profile");
+	};
 
 	const goToSignUp = () => {
 		navigate("/signup");
@@ -46,7 +66,7 @@ function SignIn() {
 			addAlert({ type: "error", message: error.response.data.message, timeout: 5 });
 		}
 	};
-
+  
 	return (
 		<div className="bg-slate-200 h-full w-full absolute flex justify-center items-center">
 			<div className="w-4/6 h-4/6 flex justify-center items-center">

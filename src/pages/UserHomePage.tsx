@@ -30,7 +30,36 @@ function UserHomePage() {
     type: "IT, Software & Digital",
     exprienceRequirement: "Experienced Professionals",
     imageSource: "../src/assets/hilti-logo.png"
-  }];
+  },
+  {
+    name: "Linux Administrator",
+    location: "Petaling Jaya, Selangor, Malaysia",
+    type: "IT, Software & Digital",
+    exprienceRequirement: "Experienced Professionals",
+    imageSource: "../src/assets/hilti-logo.png"
+  },
+  {
+    name: "Linux Administrator",
+    location: "Petaling Jaya, Selangor, Malaysia",
+    type: "IT, Software & Digital",
+    exprienceRequirement: "Experienced Professionals",
+    imageSource: "../src/assets/hilti-logo.png"
+  },
+  {
+    name: "Linux Administrator",
+    location: "Petaling Jaya, Selangor, Malaysia",
+    type: "IT, Software & Digital",
+    exprienceRequirement: "Experienced Professionals",
+    imageSource: "../src/assets/hilti-logo.png"
+  },
+  {
+    name: "Linux Administrator",
+    location: "Petaling Jaya, Selangor, Malaysia",
+    type: "IT, Software & Digital",
+    exprienceRequirement: "Experienced Professionals",
+    imageSource: "../src/assets/hilti-logo.png"
+  }
+  ];
 
   const [currentPageIndex, setCurrentPageIndex] = useState(0);
   // TODO: Get data and calculate total number of pages needed (6 campaigns per page)
@@ -39,7 +68,7 @@ function UserHomePage() {
   return (
     <div className="h-screen w-screen absolute flex flex-col">
       <UserNavBar activeIndex={0} />
-      <div className="main-container w-full flex flex-col justify-center items-center pl-28 pr-28">
+      <div className="main-container w-full flex flex-col items-center pl-28 pr-28">
         <div className="w-full h-10 flex justify-between relative fixed mt-5">
           <div
             id="campaign-switch"
@@ -116,8 +145,8 @@ function UserHomePage() {
             </button>
           </div>
         </div>
-        <div className="home-main-container overflow-auto mt-10">
-          <div className="grid grid-cols-2 grid-rows-3 gap-16">
+        <div className="home-main-container overflow-y-auto mt-10">
+          <div className="h-auto home-grid">
             {campaignData.map((campaign, i) => <Card name={campaign.name} location={campaign.location} type={campaign.type} experienceRequirement={campaign.exprienceRequirement} imageSrc={campaign.imageSource}/>)}
           </div>
         </div>

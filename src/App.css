@@ -549,8 +549,18 @@ video {
   padding-top: 0.25rem;
   padding-bottom: 0.25rem;
   padding-left: 2rem;
+  cursor: pointer;
 }
 
 .nav-item-active {
   color: red;
+  cursor: pointer;
+}
+
+#feedback-dropdown-list li {
+  width: 100%;
+  padding-left: 1.5rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  cursor: pointer;
 }

@@ -6,13 +6,17 @@ import './index.css';
 import App from './App.tsx';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { AlertsProvider } from './components/Alert/AlertContext.tsx';
+import { Provider } from "react-redux";
+import { store } from "./store/Store.tsx";
 
 ReactDOM.render(
-  <React.StrictMode>
-    <AlertsProvider>
-      <App/>
-    </AlertsProvider>
-  </React.StrictMode>,
+  <Provider store={store}>
+    <React.StrictMode>
+      <AlertsProvider>
+        <App/>
+      </AlertsProvider>
+    </React.StrictMode>
+  </Provider>,
   document.getElementById('root')
 );
 
