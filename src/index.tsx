@@ -1,16 +1,23 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-import "./index.css";
-import App from "./App.tsx";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './index.css';
+// import Main from './Main';
+// import SignUp from './src/components/SignUp.tsx';
+import App from './App.tsx';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { AlertsProvider } from './components/Alert/AlertContext.tsx';
 import { Provider } from "react-redux";
 import { store } from "./store/Store.tsx";
 
-ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
+ReactDOM.render(
   <Provider store={store}>
     <React.StrictMode>
-      <App />
+      <AlertsProvider>
+        <App/>
+      </AlertsProvider>
     </React.StrictMode>
-  </Provider>
+  </Provider>,
+  document.getElementById('root')
 );
 
 // If you want to start measuring performance in your app, pass a function
