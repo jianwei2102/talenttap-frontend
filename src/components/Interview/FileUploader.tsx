@@ -10,21 +10,25 @@ const FileUploader = () => {
     const file = event.target?.files[0];
     if (file) {
       setFileName(file.name);
+      console.log(file.name);
       const reader = new FileReader();
       reader.onload = () => {
         setResume(reader.result);
       };
       reader.readAsDataURL(file);
-
-      event.target.value = "";
     }
+    event.target.value = "";
   };
 
   return (
     <>
       <div
         className="flex flex-col justify-center items-center border-dashed border-2 h-52 cursor-pointer rounded-sm py-10"
-        onClick={() => (document.querySelector(".uploader-field") as HTMLInputElement)?.click()}
+        onClick={() =>
+          (
+            document.querySelector(".uploader-field") as HTMLInputElement
+          )?.click()
+        }
       >
         <input
           type="file"
@@ -49,7 +53,7 @@ const FileUploader = () => {
         )}
       </div>
 
-      {resume ?? (
+      {resume ? (
         <div className="flex justify-between items-center mt-2 py-2 bg-red-200 rounded-2xl">
           <div className="flex items-center ml-4">
             <AiFillFileImage className="mr-2" />
@@ -66,7 +70,7 @@ const FileUploader = () => {
             />
           </button>
         </div>
-      )}
+      ) : <></>}
     </>
   );
 };
