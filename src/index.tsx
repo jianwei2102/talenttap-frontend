@@ -4,10 +4,13 @@ import './index.css';
 // import Main from './Main';
 // import SignUp from './src/components/SignUp.tsx';
 import App from './App.tsx';
+import { AlertsProvider } from './components/alert/AlertContext.tsx';
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
-    <App/>
+    <AlertsProvider>
+      <App/>
+    </AlertsProvider>
   </React.StrictMode>
 )
 
