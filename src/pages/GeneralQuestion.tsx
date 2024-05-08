@@ -19,7 +19,7 @@ const GeneralQuestion = () => {
   return (
     <div className="h-screen w-screen flex items-center justify-center px-20 ">
       <div className="grid grid-cols-2 gap-12">
-        <div className="">
+        <div>
           <div className="text-[#D2051E] text-4xl">Question {questionNo}</div>
           <div className="font-semibold text-wrap text-5xl leading-relaxed mt-8">
             {question}
@@ -35,7 +35,7 @@ const GeneralQuestion = () => {
           </div>
         </div>
 
-        <div className="">
+        <div>
           <div className="grid grid-cols-2">
             <div className="flex flex-col justify-center items-center text-xl">
               Time for Reading:
@@ -46,6 +46,7 @@ const GeneralQuestion = () => {
               <span className="font-semibold">10 minutes</span>
             </div>
           </div>
+          
           <div className="mt-8" style={{ height: "36rem" }}>
             <Recorder />
           </div>

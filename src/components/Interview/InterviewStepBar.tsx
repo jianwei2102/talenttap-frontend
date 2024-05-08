@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { FaCheck } from "react-icons/fa";
 
 type Step = {
   label: string;
@@ -25,7 +26,7 @@ const steps: Step[] = [
   {
     label: "Decision Making",
     step: 5,
-  },
+  }
 ];
 
 const InterviewStepBar = ({ initialActiveStep = 1 }) => {
@@ -37,13 +38,13 @@ const InterviewStepBar = ({ initialActiveStep = 1 }) => {
     }
   }, [initialActiveStep]);
 
-//   const nextStep = () => {
-//     setActiveStep(activeStep + 1);
-//   };
+  //   const nextStep = () => {
+  //     setActiveStep(activeStep + 1);
+  //   };
 
-//   const prevStep = () => {
-//     setActiveStep(activeStep - 1);
-//   };
+  //   const prevStep = () => {
+  //     setActiveStep(activeStep - 1);
+  //   };
 
   const totalSteps = steps.length;
 
@@ -55,28 +56,35 @@ const InterviewStepBar = ({ initialActiveStep = 1 }) => {
         {steps.map(({ step, label }) => (
           <div key={step} className="relative z-10">
             <div
-              className={`w-12 h-12 rounded-full border border-gray-400 ${
-                activeStep > step ? "bg-[#D2051E] border-none" : "bg-white"
-              } flex justify-center items-center transition-all duration-400`}
+              className={`w-12 h-12 rounded-full flex justify-center items-center transition-all duration-400 ${
+                activeStep > step
+                  ? "bg-[#D2051E]"
+                  : "bg-white border border-gray-400"
+              } `}
             >
               {activeStep > step ? (
-                <div className="text-2xl font-semibold text-white">
-                  <>✓</>
+                <div className="text-xl font-semibold text-white">
+                  <FaCheck />
                 </div>
               ) : (
                 <span className="text-lg">{step}</span>
               )}
             </div>
+
             {activeStep === step && (
               <div className="absolute -top-7 left-1/2 transform -translate-x-1/2">
-                <span className="text-md text-nowrap text-[#D2051E]">In progress</span>
+                <span className="text-md text-nowrap text-[#D2051E]">
+                  In progress
+                </span>
               </div>
             )}
+
             <div className="absolute top-16 left-1/2 transform -translate-x-1/2">
               <span className="text-md md:text-nowrap">{label}</span>
             </div>
           </div>
         ))}
+
         <div className="absolute top-1/2 transform -translate-y-1/2 left-0 w-full h-1 bg-pink-200"></div>
         <div
           className="absolute top-1/2 transform -translate-y-1/2 left-0 h-1 bg-[#D2051E] transition-all duration-400"
@@ -84,7 +92,9 @@ const InterviewStepBar = ({ initialActiveStep = 1 }) => {
         ></div>
       </div>
 
-      {/* <div className="flex justify-between mt-24 mx-[-15px]">
+      {/* Test next and previous buttons */}
+      {/*
+      <div className="flex justify-between mt-24 mx-[-15px]">
         <button
           onClick={prevStep}
           disabled={activeStep === 1}

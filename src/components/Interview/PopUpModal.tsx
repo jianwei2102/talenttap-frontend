@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Modal from "react-bootstrap/Modal";
-import { FileUploader } from "..";
+import { FileUploader, CustomButton } from "..";
 
 const PopUpModal = ({ title }) => {
   const [show, setShow] = useState(false);
@@ -11,15 +11,9 @@ const PopUpModal = ({ title }) => {
 
   return (
     <>
-      <div className="flex justify-center items-center">
-        <button
-          className="w-48 h-12 mx-auto mt-10 bg-red-500 text-white rounded-lg text-lg"
-          onClick={handleShow}
-        >
-          {title}
-        </button>
-      </div>
+      <CustomButton title={title} customFunction={handleShow} />
 
+      {/* CVSCreening - PopUp Modal */}
       {title === "Start Application" && (
         <Modal centered size="lg" show={show} onHide={handleClose}>
           <Modal.Header closeButton>
@@ -30,13 +24,10 @@ const PopUpModal = ({ title }) => {
               <div>
                 <span className="font-semibold">Add Resume</span> (*.pdf)
               </div>
-
               <FileUploader />
 
-              <div className="mt-4">
-                <span className="font-semibold">
-                  Highlight why you apply for this job
-                </span>
+              <div className="mt-4 font-semibold">
+                Highlight why you apply for this job
               </div>
               <textarea
                 className="w-full border-2 border-gray-300 rounded-md resize-none h-24 p-2"
@@ -56,6 +47,7 @@ const PopUpModal = ({ title }) => {
         </Modal>
       )}
 
+      {/* Disclaimer - PopUp Modal */}
       {title === "Continue" && (
         <Modal show={show} onHide={handleClose} size="lg" centered>
           <Modal.Body>
@@ -89,14 +81,8 @@ const PopUpModal = ({ title }) => {
                   used for the hiring process in HILTI and will not be shared
                   with third parties.
                 </p>
-                <div className="flex justify-center items-center">
-
-                <button
-                  className="w-48 h-12 mx-auto mt-10 bg-red-500 text-white rounded-lg text-lg"
-                  onClick={() => handleClose()} // Navigate to interview questions
-                  >I Understand</button>
+                <CustomButton title={"I Understand"} customFunction={handleClose} />
               </div>
-                  </div>
             </div>
           </Modal.Body>
         </Modal>

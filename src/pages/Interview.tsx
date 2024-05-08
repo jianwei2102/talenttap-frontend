@@ -1,6 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { UserNavBar, InterviewStepBar, PopUpModal } from "../components";
+import {
+  UserNavBar,
+  InterviewStepBar,
+  PopUpModal,
+  CustomButton,
+} from "../components";
 
 const Interview = () => {
   const navigate = useNavigate();
@@ -32,18 +37,16 @@ const Interview = () => {
     );
     setEndDate("06.01.2024");
 
-    setInterviewSteps(2); // Modify interview stage
+    setInterviewSteps(1); // Modify interview stage
   }, []);
 
   return (
     <>
       <UserNavBar activeIndex={0} />
 
-      <div className="h-full lg:mx-36 lg:my-24 mx-12 my-8">
-        <div className="flex justify-between">
-          <div>
-            <span className="text-[#D2051E] text-4xl font-bold">{name}</span>
-          </div>
+      <div className="h-full mx-12 my-8 lg:mx-36 lg:my-24">
+        <div className="flex flex-row justify-between">
+          <div className="text-[#D2051E] text-4xl font-bold">{name}</div>
           <div className="flex flex-col justify-end items-end">
             <div className="text-right text-xl font-semibold">
               Application Due Date
@@ -75,22 +78,44 @@ const Interview = () => {
             </span>
           ))}
         </div>
-        
+
         {/* Check for interview stage instead of steps */}
-        {interviewSteps === 1 && (
-          <PopUpModal title="Start Application"/>
-        )}
+        {interviewSteps === 1 && <PopUpModal title="Start Application" />}
 
         {interviewSteps === 2 && (
-          <div className="flex flex-col justify-center gap-y-2 items-center">
-            <button
-              className="w-48 h-12 mx-auto mt-10 bg-red-500 text-white rounded-lg text-lg"
-              onClick={() => navigate("/general-interview")}
-            >
-              Start Interview
-            </button>
-            <p>The Interview can be done within 3 days</p>
-          </div>
+          <>
+            <CustomButton
+              title={"Start Interview"}
+              customFunction={() => navigate("/general-interview")}
+            />
+            <p className="text-center mt-2">
+              The Interview can be done within 3 days
+            </p>
+          </>
+        )}
+
+        {interviewSteps === 3 && (
+          <>
+            <CustomButton
+              title={"Start Interview"}
+              customFunction={() => navigate("/technical")}
+            />
+            <p className="text-center mt-2">
+              The Interview can be done within 3 days
+            </p>
+          </>
+        )}
+
+        {interviewSteps === 4 && (
+          <>
+            <CustomButton
+              title={"Schedule Interview"}
+              customFunction={() => {}}
+            />
+            <p className="text-center mt-2">
+              The Interview can be done within 3 days
+            </p>
+          </>
         )}
       </div>
     </>

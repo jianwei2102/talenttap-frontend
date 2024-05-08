@@ -1,12 +1,21 @@
 import React, { useEffect, useState } from "react";
 import VideoRecorder from "react-video-recorder";
+import { CustomButton } from "../";
 
 const Recorder = () => {
   const [permissionGranted, setPermissionGranted] = useState(false);
   const [completed, setCompleted] = useState(false);
+  const [videoBlob, setVideoBlob] = useState(null);
 
   useEffect(() => {
-    // Check camera and microphone permissions
+    // Disable F5 and r key for refreshing the page (to prevent candidate retrying the interview)
+    window.addEventListener("keydown", (e: KeyboardEvent) => {
+      if (e.key === "F5" || e.key === "r") {
+        e.preventDefault();
+      }
+    });
+
+    // Check if camera and microphone permissions are granted
     Promise.all([
       navigator.permissions.query({ name: "camera" }),
       navigator.permissions.query({ name: "microphone" }),
@@ -19,11 +28,12 @@ const Recorder = () => {
 
   if (!permissionGranted) {
     return (
-      <div>Please grant camera and microphone permissions to continue.</div>
       // TODO: Add reminder to hide content and only if permission is granted, show the content
+      <div>Please grant camera and microphone permissions to continue.</div>
     );
   }
 
+  // Start recording count down directly when the camera is on
   let startDirectly = () => {
     const observer = new MutationObserver((mutationsList, observer) => {
       for (let mutation of mutationsList) {
@@ -52,6 +62,7 @@ const Recorder = () => {
     observer.observe(document, { childList: true, subtree: true });
   };
 
+  // Hide the retry button after recording is completed
   const hideRetryButton = () => {
     const observer = new MutationObserver((mutationsList, observer) => {
       for (let mutation of mutationsList) {
@@ -72,6 +83,10 @@ const Recorder = () => {
     observer.observe(document, { childList: true, subtree: true });
   };
 
+  const uploadVideoToDB = () => {
+    // TODO: Set Blob on parent and next to the next question and upload the video to the database
+  };
+
   return (
     <>
       <VideoRecorder
@@ -84,17 +99,13 @@ const Recorder = () => {
         onStopRecording={hideRetryButton}
         onRecordingComplete={(videoBlob) => {
           setCompleted(true);
+          setVideoBlob(videoBlob);
           console.log("videoBlob", videoBlob);
-          // Set Blob on parent and next to the next question and upload the video
         }}
       />
 
       {completed && (
-        <div className="flex flex-col justify-center gap-y-2 items-center">
-          <button className="w-48 h-12 mx-auto mt-10 bg-red-500 text-white rounded-lg text-lg">
-            Next/ Submit
-          </button>
-        </div>
+        <CustomButton title={"Next/ Submit"} customFunction={uploadVideoToDB} />
       )}
     </>
   );

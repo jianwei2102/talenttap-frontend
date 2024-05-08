@@ -15,8 +15,8 @@ const GeneralInterview = () => {
           to finish.
         </div>
 
-        <div className="flex flex-row justify-between gap-8 mt-16">
-          <div className="bg-gray-300 w-72 h-96 px-4 py-5">
+        <div className="grid grid-cols-1 lg:grid-cols-3 2xl:grid-cols-5 justify-between gap-12  mt-20">
+          <div className="bg-gray-300 lg:min-w-64 lg:h-64 2xl:w-72 2xl:min-h-96 px-4 py-5">
             <div className="w-max border-2 border-gray-500 rounded-full px-3 py-3.5 mb-3">
               01
             </div>
@@ -25,8 +25,8 @@ const GeneralInterview = () => {
               interview. Once started, the interview cannot be paused.
             </span>
           </div>
-          <div className="bg-gray-300 w-72 h-96 px-4 py-5">
-            <div className="w-max border-2 border-gray-500 rounded-full px-3 py-3.5 mb-3">
+          <div className="bg-gray-300 lg:min-w-64 lg:h-64 2xl:w-72 2xl:min-h-96 px-4 py-5">
+            <div className="w-max border-2 border-gray-500 rounded-full px-3 py-3.5 mb-3 item">
               02
             </div>
             <span>
@@ -35,7 +35,7 @@ const GeneralInterview = () => {
             </span>
           </div>
 
-          <div className="bg-gray-300 w-72 h-96 px-4 py-5">
+          <div className="bg-gray-300 lg:min-w-64 lg:h-64 2xl:w-72 2xl:min-h-96 px-4 py-5">
             <div className="w-max border-2 border-gray-500 rounded-full px-3 py-3.5 mb-3">
               03
             </div>
@@ -45,7 +45,7 @@ const GeneralInterview = () => {
             </span>
           </div>
 
-          <div className="bg-gray-300 w-72 h-96 px-4 py-5">
+          <div className="bg-gray-300 lg:min-w-64 lg:h-64 2xl:w-72 2xl:min-h-96 px-4 py-5">
             <div className="w-max border-2 border-gray-500 rounded-full px-3 py-3.5 mb-3">
               04
             </div>
@@ -55,7 +55,7 @@ const GeneralInterview = () => {
             </span>
           </div>
 
-          <div className="bg-gray-300 w-72 h-96 px-4 py-5">
+          <div className="bg-gray-300 lg:min-w-64 lg:h-64 2xl:w-72 2xl:min-h-96 px-4 py-5">
             <div className="w-max border-2 border-gray-500 rounded-full px-3 py-3.5 mb-3">
               05
             </div>
