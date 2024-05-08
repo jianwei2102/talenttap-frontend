@@ -1,7 +1,7 @@
 import "../App.css";
 import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import { AlertsContext } from "./alert/AlertContext.tsx";
+import { AlertsContext } from "./Alert/AlertContext.tsx";
 
 interface UserNavBarProps {
 	activeIndex: number;

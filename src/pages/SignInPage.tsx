@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { AlertsContext } from "../components/alert/AlertContext.tsx";
+import { AlertsContext } from "../components/Alert/AlertContext.tsx";
 import { AuthAPI } from "../api/authAPI.ts";
 import User from "../models/User.ts";
 
