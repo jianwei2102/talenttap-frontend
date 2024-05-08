@@ -1,15 +1,20 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
+import ReactDOM from 'react-dom';
 import './index.css';
 // import Main from './Main';
 // import SignUp from './src/components/SignUp.tsx';
 import App from './App.tsx';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { AlertsProvider } from './components/Alert/AlertContext.tsx';
 
-ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
+ReactDOM.render(
   <React.StrictMode>
-    <App/>
-  </React.StrictMode>
-)
+    <AlertsProvider>
+      <App/>
+    </AlertsProvider>
+  </React.StrictMode>,
+  document.getElementById('root')
+);
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
