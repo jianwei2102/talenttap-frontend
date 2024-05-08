@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Recorder } from "../components";
+import { Recorder } from "../../components";
 
 const GeneralQuestion = () => {
   const [questionNo, setQuestionNo] = useState(1);

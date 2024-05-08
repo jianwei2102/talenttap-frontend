@@ -1,6 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import UserNavBar from "../components/UserNavBar.tsx";
+import UserNavBar from "../../components/UserNavBar.tsx";
 
 interface InterviewDaySlot {
 	date: Date;

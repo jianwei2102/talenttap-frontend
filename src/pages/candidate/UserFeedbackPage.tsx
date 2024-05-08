@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import UserNavBar from "../components/UserNavBar.tsx";
+import UserNavBar from "../../components/UserNavBar.tsx";
 
 function UserFeedbackModal() {
 	const [showSatisfactionDropdown, setShowSatisfactionDropdown] = useState(false);

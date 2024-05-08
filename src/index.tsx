@@ -5,7 +5,7 @@ import './index.css';
 // import SignUp from './src/components/SignUp.tsx';
 import App from './App.tsx';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { AlertsProvider } from './components/Alert/AlertContext.tsx';
+import { AlertsProvider } from './components/AlertContext.tsx';
 import { Provider } from "react-redux";
 import { store } from "./store/Store.tsx";
 

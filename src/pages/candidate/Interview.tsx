@@ -5,7 +5,7 @@ import {
   InterviewStepBar,
   PopUpModal,
   CustomButton,
-} from "../components";
+} from "../../components";
 
 const Interview = () => {
   const navigate = useNavigate();

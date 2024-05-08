@@ -1,33 +1,16 @@
 import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { useState } from "react";
 import { login } from "../store/UserReducer.tsx";
-import { AlertsContext } from "../components/Alert/AlertContext.tsx";
+import { AlertsContext } from "../components/AlertContext.tsx";
 import { AuthAPI } from "../api/authAPI.ts";
 import User from "../models/User.ts";
 
 function SignIn() {
 	const navigate = useNavigate();
-  const dispatch = useDispatch();
-  const [formData, setFormData] = useState({ email: "", password: "" });
+	const dispatch = useDispatch();
+	const [formData, setFormData] = useState({ email: "", password: "" });
 	const { addAlert } = useContext(AlertsContext);
-  
-  const [email, setEmail] = useState("");
-	const [password, setPassword] = useState("");
-
-	const emailValueChangeHandle = (event) => {
-		setEmail(event.target.value);
-	};
-
-	const passwordValueChangeHandle = (event) => {
-		setPassword(event.target.value);
-	};
-
-	const loginHandle = () => {
-		dispatch(login(email));
-		navigate("/profile");
-	};
 
 	const goToSignUp = () => {
 		navigate("/signup");
@@ -38,9 +21,9 @@ function SignIn() {
 		setFormData((prevFormData) => ({ ...prevFormData, [name]: value }));
 	};
 
-  const goToAdminDashboard = () => {
-    navigate('/admin');
-  }
+	const goToAdminDashboard = () => {
+		navigate("/admin");
+	};
 
 	const handleSubmit = async (event: React.FormEvent) => {
 		event.preventDefault();
@@ -60,13 +43,14 @@ function SignIn() {
 
 			navigate("/profile", { replace: true });
 			addAlert({ type: "success", message: "Signed In Successfully", timeout: 5 });
+			dispatch(login(formData.email));
 		} catch (error: any) {
 			console.log(error);
 
 			addAlert({ type: "error", message: error.response.data.message, timeout: 5 });
 		}
 	};
-  
+
 	return (
 		<div className="bg-slate-200 h-full w-full absolute flex justify-center items-center">
 			<div className="w-4/6 h-4/6 flex justify-center items-center">

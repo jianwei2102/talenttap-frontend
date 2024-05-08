@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthAPI } from "../api/authAPI.ts";
-import { AlertsContext } from "../components/Alert/AlertContext.tsx";
+import { AlertsContext } from "../components/AlertContext.tsx";
 
 function SignUp() {
 	const navigate = useNavigate();

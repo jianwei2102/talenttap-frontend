@@ -1,5 +1,5 @@
 import React from "react";
-import { UserNavBar, PopUpModal } from "../components";
+import { UserNavBar, PopUpModal } from "../../components";
 
 const GeneralInterview = () => {
   return (

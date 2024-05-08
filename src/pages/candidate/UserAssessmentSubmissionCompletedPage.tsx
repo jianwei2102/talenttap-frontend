@@ -1,5 +1,5 @@
 import React from "react";
-import UserNavBar from "../components/UserNavBar.tsx";
+import UserNavBar from "../../components/UserNavBar.tsx";
 import { useNavigate } from "react-router-dom";
 
 function UserAssessmentSubmissionCompletedPage() {
@@ -17,8 +17,8 @@ function UserAssessmentSubmissionCompletedPage() {
 				<img
 					className="h-1/2"
 					src={require(randomImageIndex === 0
-						? "../assets/congratulations-1.png"
-						: "../assets/congratulations-2.png")}
+						? "../../assets/congratulations-1.png"
+						: "../../assets/congratulations-2.png")}
 					alt=""></img>
 				<span className="w-full font-bold text-2xl text-center mt-5 p-2">
 					Thank you for completing the assessment!

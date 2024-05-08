@@ -1,8 +1,8 @@
 import React from "react";
-import UserNavBar from "../components/UserNavBar.tsx";
+import UserNavBar from "../../components/UserNavBar.tsx";
 import { useState } from "react";
-import Card from "../components/HomeCampaignCard.tsx";
-import MorePageNavigation from "../components/MorePageNavigation.tsx";
+import Card from "../../components/HomeCampaignCard.tsx";
+import MorePageNavigation from "../../components/MorePageNavigation.tsx";
 
 interface Campaign {
   name: string;
