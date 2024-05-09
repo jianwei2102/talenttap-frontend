@@ -47,7 +47,7 @@ function UserHomePage() {
   }, []);
 
   const [currentPageIndex, setCurrentPageIndex] = useState(0);
-
+  const totalPages = 3
   return (
     <div className="h-screen w-screen absolute flex flex-col">
       <UserNavBar activeIndex={0} />
@@ -138,7 +138,7 @@ function UserHomePage() {
           </div>
         </div>
         <div className="fixed absolute bottom-10">
-          <MorePageNavigation currentActivePageIndex={currentPageIndex} totalPages={currentPageIndex} />
+          <MorePageNavigation currentActivePageIndex={currentPageIndex} totalPages={totalPages} />
         </div>
       </div>
     </div>
