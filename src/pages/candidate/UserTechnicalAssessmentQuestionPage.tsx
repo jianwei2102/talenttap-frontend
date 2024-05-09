@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -79,7 +79,22 @@ function UserTechnicalAssessmentQuestionPage() {
 	const [currentQuestionAnswer, setCurrentQuestionAnswer] = useState("");
 	const [currentQuestionLists, setCurrentQuestionLists] = useState(questionSectionList);
 
-	const saveQuestionAnswer = (sectionIndex: number, questionIndex: number) => {
+	const [startTime, setStartTime] = useState<number>(Date.now());
+	const [timeSpentSecs, setTimeSpentSecs] = useState<number[][]>([[]]);
+	const [numAttempts, setNumAttempts] = useState<number[][]>([[]]);
+
+	useEffect(() => {
+		for (let i = 0; i < currentQuestionLists.length; i++) {
+			timeSpentSecs.push([]);
+			numAttempts.push([]);
+			for (let j = 0; j < currentQuestionLists[i].questionList.length; j++) {
+				timeSpentSecs[i].push(0);
+				numAttempts[i].push(0);
+			}
+		}
+	}, []);
+
+	const saveQuestionAnswer = () => {
 		// Save Answer
 		const newQuestionLists = [...currentQuestionLists];
 
@@ -89,12 +104,16 @@ function UserTechnicalAssessmentQuestionPage() {
 		setCurrentQuestionLists(newQuestionLists);
 	};
 
+	const answerHasChanged = () => {
+		return currentQuestionAnswer !== currentQuestionLists[activeSectionIndex].questionList[activeQuestionIndex].answer;
+	};
+
 	const continueHandle = () => {
 		let newQuestionIndex = activeQuestionIndex;
 		let newSectionIndex = activeSectionIndex;
 		let lastQuestion = false;
 
-		saveQuestionAnswer(newSectionIndex, newQuestionIndex);
+		saveQuestionAnswer();
 
 		// Change question and section index
 		if (newQuestionIndex + 1 >= currentQuestionLists[activeSectionIndex].questionList.length) {
@@ -122,8 +141,13 @@ function UserTechnicalAssessmentQuestionPage() {
 	};
 
 	const submitHandle = () => {
-		// TODO: Save questions in db
-		saveQuestionAnswer(activeSectionIndex, activeQuestionIndex);
+		// TODO: Save questions answer & data like timeSpent, numAttempts, etc. in db
+		const elapsedTime = updateTimeSpent();
+		updateNumAttempts(elapsedTime);
+		console.log(timeSpentSecs);
+		console.log(numAttempts);
+ 
+		saveQuestionAnswer();
 		navigate('/submission-completed');
 	};
 
@@ -160,9 +184,41 @@ function UserTechnicalAssessmentQuestionPage() {
 		);
 	};
 
+	const updateTimeSpent = () => {
+		const endTime = Date.now();
+		const previousTimeSpent = timeSpentSecs[activeSectionIndex][activeQuestionIndex];
+		const elapsedTime = endTime - startTime;
+		const accumulatedTimeSpent = elapsedTime + previousTimeSpent;
+
+		setTimeSpentSecs((prev) => {
+			const newTimeSpentSecs = [...prev];
+			newTimeSpentSecs[activeSectionIndex][activeQuestionIndex] = accumulatedTimeSpent;
+			return newTimeSpentSecs;
+		});
+
+		return elapsedTime;
+	};
+
+	const updateNumAttempts = (elapsedTime: number) => {
+		if (elapsedTime < 1000) return;
+
+		if (!answerHasChanged()) return;
+
+		setNumAttempts((prev) => {
+			const prevNumAttempts = numAttempts[activeSectionIndex][activeQuestionIndex];
+			const newNumAttempts = [...prev];
+			newNumAttempts[activeSectionIndex][activeQuestionIndex] = prevNumAttempts + 1;
+			return newNumAttempts;
+		});
+	};
+
 	const QuestionCard = (questionCard: QuestionCardProps) => {
+
 		const navigateToQuestionHandle = () => {
-			saveQuestionAnswer(activeSectionIndex, activeQuestionIndex);
+			const elapsedTime = updateTimeSpent();
+			updateNumAttempts(elapsedTime);
+
+			saveQuestionAnswer();
 
 			let newQuestionIndex = questionCard.questionIndex;
 			let newSectionIndex = questionCard.sectionIndex;
@@ -183,6 +239,8 @@ function UserTechnicalAssessmentQuestionPage() {
 				currentQuestionLists[newSectionIndex].questionList[newQuestionIndex].answer
 			);
 			setCurrentCharacterNum(currentQuestionLists[newSectionIndex].questionList[newQuestionIndex].answer.length);
+
+			setStartTime(Date.now());
 		};
 
 		return (
@@ -192,6 +250,7 @@ function UserTechnicalAssessmentQuestionPage() {
 				<input
 					className="h-4 w-4 bg-gray-100 border-gray-300 rounded-md"
 					type="checkbox"
+					readOnly={true}
 					checked={!questionCard.isEmpty}></input>
 				<span
 					className={questionCard.isActive === true ? "text-sm ml-2 font-bold" : "text-sm ml-2"}>
@@ -251,9 +310,9 @@ function UserTechnicalAssessmentQuestionPage() {
 					<span className="text-white mr-2">{isLastQuestion ? "Submit" : "Continue"}</span>
 					<svg className="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
 						<path
-							stroke-linecap="round"
-							stroke-linejoin="round"
-							stroke-width="2"
+							strokeLinecap="round"
+							strokeLinejoin="round"
+							strokeWidth="2"
 							d="M14 5l7 7m0 0l-7 7m7-7H3"
 						/>
 					</svg>

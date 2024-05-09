@@ -17,6 +17,7 @@ import UserAssessmentSubmissionCompletedPage from "./pages/candidate/UserAssessm
 import Interview from "./pages/candidate/Interview.tsx";
 import GeneralInterview from "./pages/candidate/GeneralInterview.tsx";
 import GeneralQuestion from "./pages/candidate/GeneralQuestion.tsx";
+import TypingAssessmentPage from "./pages/candidate/TypingAssessmentPage.tsx";
 
 function App() {
     return (
@@ -27,6 +28,7 @@ function App() {
                 <Route path="/profile" element={<UserProfilePage/>}/>
                 <Route path="/home" element={<UserHomePage/>}/>
                 <Route path="/feedback" element={<UserFeedbackPage/>}/>
+                <Route path="/typing-assessment" element={<TypingAssessmentPage/>}/>
                 <Route path="/technical" element={<UserTechnicalAssessmentQuestionPage/>}/>
                 <Route path="/hiring-manager-interview-schedule" element={<UserHiringManagerInterviewPage/>}/>
                 <Route path="/submission-completed" element={<UserAssessmentSubmissionCompletedPage/>}/>
