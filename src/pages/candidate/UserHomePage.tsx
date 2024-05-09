@@ -1,19 +1,31 @@
-import React from "react";
 import UserNavBar from "../../components/UserNavBar.tsx";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Card from "../../components/HomeCampaignCard.tsx";
 import MorePageNavigation from "../../components/MorePageNavigation.tsx";
+import React from "react";
+import {getAll} from "../../models/campaigns.js"
 
 interface Campaign {
   name: string;
-  location: string;
-  type: string;
-  exprienceRequirement: string;
-  imageSource: string;
+  jobFunction: string;
+  positionType:string;
+  location:string;
+  createdBy:string;
+  jobDescription:string;
+  image:string;
+  requirement:string;
+  headcount: number;
+  startDate: Date;
+  endDate: Date;
+  workFlexibility: string;
+  department: string;
+  expertise: string;
 }
 
 function UserHomePage() {
   const [activeCampaignIndex, setActiveCampaignIndex] = useState(0);
+  const campaignsPerPage = 6
+  const [campaigns, setCampaigns] = useState<Campaign[]>([])
 
   const showOngoingCampaigns = () => {
     setActiveCampaignIndex(0);
@@ -24,46 +36,17 @@ function UserHomePage() {
   };
 
   // TODO: Get data and populate the array
-  let campaignData: Campaign[] = [{
-    name: "Linux Administrator",
-    location: "Petaling Jaya, Selangor, Malaysia",
-    type: "IT, Software & Digital",
-    exprienceRequirement: "Experienced Professionals",
-    imageSource: "../src/assets/hilti-logo.png"
-  },
-  {
-    name: "Linux Administrator",
-    location: "Petaling Jaya, Selangor, Malaysia",
-    type: "IT, Software & Digital",
-    exprienceRequirement: "Experienced Professionals",
-    imageSource: "../src/assets/hilti-logo.png"
-  },
-  {
-    name: "Linux Administrator",
-    location: "Petaling Jaya, Selangor, Malaysia",
-    type: "IT, Software & Digital",
-    exprienceRequirement: "Experienced Professionals",
-    imageSource: "../src/assets/hilti-logo.png"
-  },
-  {
-    name: "Linux Administrator",
-    location: "Petaling Jaya, Selangor, Malaysia",
-    type: "IT, Software & Digital",
-    exprienceRequirement: "Experienced Professionals",
-    imageSource: "../src/assets/hilti-logo.png"
-  },
-  {
-    name: "Linux Administrator",
-    location: "Petaling Jaya, Selangor, Malaysia",
-    type: "IT, Software & Digital",
-    exprienceRequirement: "Experienced Professionals",
-    imageSource: "../src/assets/hilti-logo.png"
-  }
-  ];
+  useEffect(() => {
+    const fetchData = async () => {
+      const results = await getAll();
+      setCampaigns(results);
+      // TODO: Get data and calculate total number of pages needed (6 campaigns per page)
+      setCurrentPageIndex(Math.ceil(results.length / campaignsPerPage));
+    };
+    fetchData();
+  }, []);
 
   const [currentPageIndex, setCurrentPageIndex] = useState(0);
-  // TODO: Get data and calculate total number of pages needed (6 campaigns per page)
-  const totalPages = 3;
 
   return (
     <div className="h-screen w-screen absolute flex flex-col">
@@ -145,13 +128,17 @@ function UserHomePage() {
             </button>
           </div>
         </div>
-        <div className="home-main-container overflow-y-auto mt-10">
-          <div className="h-auto home-grid">
-            {campaignData.map((campaign, i) => <Card name={campaign.name} location={campaign.location} type={campaign.type} experienceRequirement={campaign.exprienceRequirement} imageSrc={campaign.imageSource}/>)}
+        <div className="home-main-container overflow-auto mt-10">
+          <div className="grid grid-cols-2 grid-rows-3 gap-16">
+            {campaigns.map((campaign, index) => (
+              <div key={index}>
+                <Card name={campaign.name} location={campaign.location} type={campaign.department} experienceRequirement={campaign.requirement} imageSrc={campaign.image}/>
+              </div>
+            ))}
           </div>
         </div>
         <div className="fixed absolute bottom-10">
-          <MorePageNavigation currentActivePageIndex={currentPageIndex} totalPages={totalPages} />
+          <MorePageNavigation currentActivePageIndex={currentPageIndex} totalPages={currentPageIndex} />
         </div>
       </div>
     </div>
