@@ -17,6 +17,7 @@ import UserAssessmentSubmissionCompletedPage from "./pages/candidate/UserAssessm
 import Interview from "./pages/candidate/Interview.tsx";
 import GeneralInterview from "./pages/candidate/GeneralInterview.tsx";
 import GeneralQuestion from "./pages/candidate/GeneralQuestion.tsx";
+import CampaignDetailsDisplay from "./pages/candidate/CampaignDetailsDisplay.tsx";
 
 function App() {
     return (
@@ -35,6 +36,7 @@ function App() {
                 <Route path="/interview" element={<Interview/>}/>
                 <Route path="/general-interview" element={<GeneralInterview/>}/>
                 <Route path="/general-question" element={<GeneralQuestion/>}/>
+                <Route path = '/test' element={<CampaignDetailsDisplay/>}/>
             </Routes>
         </Router>
     );
