@@ -6,6 +6,11 @@ export const getAll = () => {
   return request.then(response => response.data)
 }
 
+export const getSpecific = (id) =>{
+  const request = axios.get(`${baseUrl}/${id}`)
+  return request.then(response => response.data)
+}
+
 export const create = newObject => {
   const request = axios.post(baseUrl, newObject)
   return request.then(response => response.data)
