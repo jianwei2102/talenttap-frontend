@@ -150,7 +150,7 @@ function UserHomePage() {
             {campaignData.map((campaign, i) => <Card name={campaign.name} location={campaign.location} type={campaign.type} experienceRequirement={campaign.exprienceRequirement} imageSrc={campaign.imageSource}/>)}
           </div>
         </div>
-        <div className="fixed absolute bottom-10">
+        <div className="absolute bottom-10">
           <MorePageNavigation currentActivePageIndex={currentPageIndex} totalPages={totalPages} />
         </div>
       </div>
