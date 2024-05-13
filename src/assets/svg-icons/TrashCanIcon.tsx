@@ -2,7 +2,7 @@ import React from "react";
 
 function TrashCanIcon() {
 	return (
-		<svg className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+		<svg className="h-full w-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
 			<path
 				stroke-linecap="round"
 				stroke-linejoin="round"

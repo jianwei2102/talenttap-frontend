@@ -663,6 +663,12 @@ function CreateCampaignPage() {
 				setCurrentQuestion(event.target.value);
 			};
 
+			const handleDeleteQuestionButtonClick = () => {
+				let updatedList = [...generalInterviewQuestionList];
+				updatedList.splice(index - 1, 1);
+				setGeneralInterviewQuestionList(updatedList);
+			};
+
 			const handleKeywordPositiveInputChange = (event) => {
 				let newList = [...currentPositiveKeywordList];
 				let keywordIndex: number = event.target.getAttribute("data-key");
@@ -766,13 +772,25 @@ function CreateCampaignPage() {
 							<span className="text-xl font-bold">{"Question " + index}</span>
 						</Accordion.Header>
 						<Accordion.Body className="flex flex-col p-3">
-							<div className="flex flex-col">
-								<span className="text-lg">Question</span>
-								<input
-									className="w-full border border-black rounded-lg p-2 focus:outline-none"
-									value={currentQuestion}
-									type="text"
-									onChange={handleQuestionInputChange}></input>
+							<div className="flex justify-between items-end">
+								<div className="w-5/6 flex flex-col">
+									<span className="text-lg">Question</span>
+									<input
+										className="w-full border border-black rounded-lg p-2 focus:outline-none"
+										value={currentQuestion}
+										type="text"
+										onChange={handleQuestionInputChange}></input>
+								</div>
+								<div className="w-1/6 flex justify-end">
+									<button
+										className="flex justify-center items-center bg-white border border-black rounded-lg p-2"
+										onClick={handleDeleteQuestionButtonClick}>
+										<span>Delete Question</span>
+										<div className="h-5 text-black">
+											<TrashCanIcon />
+										</div>
+									</button>
+								</div>
 							</div>
 							<div className="w-full flex justify-between mt-3">
 								<div className="w-[45%] h-fit border border-black rounded-lg py-0.5 flex flex-col">
@@ -802,7 +820,9 @@ function CreateCampaignPage() {
 													data-keyword-index={index}
 													data-keyword-type="positive"
 													onClick={handleKeywordDeleteButtonClick}>
-													<TrashCanIcon />
+													<div className="h-full text-red-700">
+														<TrashCanIcon />
+													</div>
 												</button>
 											</div>
 										))}
@@ -841,7 +861,9 @@ function CreateCampaignPage() {
 													data-keyword-index={index}
 													data-keyword-type="negative"
 													onClick={handleKeywordDeleteButtonClick}>
-													<TrashCanIcon />
+													<div className="h-full text-red-700">
+														<TrashCanIcon />
+													</div>
 												</button>
 											</div>
 										))}
@@ -921,6 +943,12 @@ function CreateCampaignPage() {
 				setCurrentSectionName(event.target.value);
 			};
 
+			const handleDeleteSectionButtonClick = () => {
+				let updatedSectionList = [...technicalAssessmentSectionList];
+				updatedSectionList.splice(sectionIndex, 1);
+				setTechnicalAssessmentSectionList(updatedSectionList);
+			};
+
 			const handleAddNewQuestionButtonClick = () => {
 				let newEmptyQuestion: Question = { question: "", keywordPositive: [], keywordNegative: [] };
 				setCurrentQuestionList((prevState) => [...prevState, newEmptyQuestion]);
@@ -940,6 +968,14 @@ function CreateCampaignPage() {
 
 				const handleQuestionInputChange = (event) => {
 					setCurrentQuestion(event.target.value);
+				};
+
+				const handleDeleteQuestionButtonClick = () => {
+					let updatedQuestionList = [...technicalAssessmentSectionList[sectionIndex].questionList];
+					updatedQuestionList.splice(questionIndex - 1, 1);
+					let updatedSectionList = [...technicalAssessmentSectionList];
+					updatedSectionList[sectionIndex].questionList = updatedQuestionList;
+					setTechnicalAssessmentSectionList(updatedSectionList);
 				};
 
 				const handleKeywordPositiveInputChange = (event) => {
@@ -1057,13 +1093,25 @@ function CreateCampaignPage() {
 								<span className="text-xl font-bold">{"Question " + (questionIndex + 1)}</span>
 							</Accordion.Header>
 							<Accordion.Body className="flex flex-col p-3">
-								<div className="flex flex-col">
-									<span className="text-lg">Question</span>
-									<input
-										className="w-full border border-black rounded-lg p-2 focus:outline-none"
-										value={currentQuestion}
-										type="text"
-										onChange={handleQuestionInputChange}></input>
+								<div className="flex justify-between items-end">
+									<div className="w-5/6 flex flex-col">
+										<span className="text-lg">Question</span>
+										<input
+											className="w-full border border-black rounded-lg p-2 focus:outline-none"
+											value={currentQuestion}
+											type="text"
+											onChange={handleQuestionInputChange}></input>
+									</div>
+									<div className="w-1/6 flex justify-end">
+										<button
+											className="flex justify-center items-center bg-white border border-black rounded-lg p-2"
+											onClick={handleDeleteQuestionButtonClick}>
+											<span>Delete Question</span>
+											<div className="h-5 text-black">
+												<TrashCanIcon />
+											</div>
+										</button>
+									</div>
 								</div>
 								<div className="w-full flex justify-between mt-3">
 									<div className="w-[45%] h-fit border border-black rounded-lg py-0.5 flex flex-col">
@@ -1093,7 +1141,9 @@ function CreateCampaignPage() {
 														data-keyword-index={index}
 														data-keyword-type="positive"
 														onClick={handleKeywordDeleteButtonClick}>
-														<TrashCanIcon />
+														<div className="h-full text-red-700">
+															<TrashCanIcon />
+														</div>
 													</button>
 												</div>
 											))}
@@ -1132,7 +1182,9 @@ function CreateCampaignPage() {
 														data-keyword-index={index}
 														data-keyword-type="negative"
 														onClick={handleKeywordDeleteButtonClick}>
-														<TrashCanIcon />
+														<div className="h-full text-red-700">
+															<TrashCanIcon />
+														</div>
 													</button>
 												</div>
 											))}
@@ -1162,10 +1214,20 @@ function CreateCampaignPage() {
 						<Accordion.Body className="flex flex-col">
 							<div className="w-full flex flex-col">
 								<div className="flex justify-between items-center py-2">
-									<span className="text-lg">Section Name</span>
-									<button className="bg-red-400 text-white rounded-lg p-2">
-										AI Generate Question
-									</button>
+									<span className="w-1/2 text-lg">Section Name</span>
+									<div className="w-1/2 flex justify-end">
+										<button
+											className="flex justify-center items-center bg-white border border-black rounded-lg p-2"
+											onClick={handleDeleteSectionButtonClick}>
+											<span>Delete Section</span>
+											<div className="h-5 text-black">
+												<TrashCanIcon />
+											</div>
+										</button>
+										<button className="bg-red-400 text-white rounded-lg p-2 ml-2">
+											AI Generate Question
+										</button>
+									</div>
 								</div>
 								<input
 									type="text"
