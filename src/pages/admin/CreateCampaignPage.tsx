@@ -108,6 +108,13 @@ function CreateCampaignPage() {
 	const [activeSubComponentIndex, setActiveSubComponentIndex] = useState(-1);
 	const [wasDragDropped, setWasDragDropped] = useState(false);
 
+	useEffect(() => {
+		if (activeSubComponentIndex === -1) {
+			setActiveSubComponentIndex(0);
+			setActiveComponentIndex(1);
+		}
+	}, [campaignInterviewComponentList]);
+
 	const handleCreateCampaignButtonClick = () => {
 		//TODO: Save campaignDetails and campaignInterviewComponentList (all the data is in these 2 variables)
 		navigate("/admin");
@@ -617,7 +624,7 @@ function CreateCampaignPage() {
 		updatedInterviewComponentsList.splice(activeSubComponentIndex, 1);
 		setCampaignInterviewComponentList(updatedInterviewComponentsList);
 
-		if (updatedInterviewComponentsList.length < 1) {
+		if (updatedInterviewComponentsList.length === 0) {
 			setActiveSubComponentIndex(-1);
 		} else if (activeSubComponentIndex !== 0) {
 			setActiveSubComponentIndex(activeSubComponentIndex - 1);
