@@ -1,9 +1,10 @@
-import UserNavBar from "../../components/UserNavBar.tsx";
+import { UserNavBar} from "../../components";
 import { useEffect, useState } from "react";
 import Card from "../../components/HomeCampaignCard.tsx";
 import MorePageNavigation from "../../components/MorePageNavigation.tsx";
 import React from "react";
 import {getAll} from "../../models/campaigns.js"
+import { Modal } from "react-bootstrap"; 
 
 interface Campaign {
   name: string;
@@ -22,10 +23,47 @@ interface Campaign {
   expertise: string;
 }
 
+function CookiesPopup({ onAccept }) {
+  const [accepted, setAccepted] = useState(false);
+
+  const handleAccept = () => {
+    setAccepted(true);
+    onAccept();
+  };
+
+  if (!accepted) {
+    return (
+      <Modal show={true} centered backdrop="static" keyboard={false}>
+        <Modal.Header>
+          <Modal.Title>Cookies Consent</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <p>
+            This website uses cookies or similar technologies, to enhance your
+            browsing experience and provide personalized recommendations. By
+            continuing to use our website, you agree to our{' '}
+            <a href="#" className="underline">
+              Privacy Policy
+            </a>
+          </p>
+        </Modal.Body>
+        <Modal.Footer>
+          <button className="btn btn-danger" onClick={handleAccept}>
+            I Accept
+          </button>
+        </Modal.Footer>
+      </Modal>
+    );
+  }
+
+  return null; // No need to render anything if the user has accepted
+}
+
 function UserHomePage() {
   const [activeCampaignIndex, setActiveCampaignIndex] = useState(0);
   const campaignsPerPage = 6
   const [campaigns, setCampaigns] = useState<Campaign[]>([])
+  const [cookiesAccepted, setCookiesAccepted] = useState(false);
 
   const showOngoingCampaigns = () => {
     setActiveCampaignIndex(0);
@@ -33,6 +71,10 @@ function UserHomePage() {
 
   const showAppliedCampaigns = () => {
     setActiveCampaignIndex(1);
+  };
+
+  const handleAcceptCookies = () => {
+    setCookiesAccepted(true);
   };
 
   // TODO: Get data and populate the array
@@ -49,7 +91,9 @@ function UserHomePage() {
   const [currentPageIndex, setCurrentPageIndex] = useState(0);
   const totalPages = 3
   return (
-    <div className="h-screen w-screen absolute flex flex-col">
+    <>
+      {!cookiesAccepted && <CookiesPopup onAccept={handleAcceptCookies} />}
+      <div className="h-screen w-screen absolute flex flex-col">
       <UserNavBar activeIndex={0} />
       <div className="main-container w-full flex flex-col items-center pl-28 pr-28">
         <div className="w-full h-10 flex justify-between relative fixed mt-5">
@@ -142,6 +186,7 @@ function UserHomePage() {
         </div>
       </div>
     </div>
+    </>
   );
 }
 
