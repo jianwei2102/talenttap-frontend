@@ -34,10 +34,6 @@ const Interview = () => {
   const [endDate, setEndDate] = useState("");
   const [interviewSteps, setInterviewSteps] = useState(1);
 
-  // Campaign data / fetch
-  // const fetchCampaign = async () => {
-  // }
-
   useEffect(() => {
     const fetchData = async () => {
       const campaign = await getSpecific(6);
@@ -47,25 +43,6 @@ const Interview = () => {
       setEndDate(campaign.endDate);
     };
     fetchData();
-  }, []);
-
-  useEffect(() => {
-    // const campaign = fetchCampaign();
-    // setName(campaign.name);
-    // setJobFunction(campaign.jobFunction);
-    // setRequirements(campaign.requirements);
-    // setEndDate(campaign.endDate);
-
-    // setName("Linux Administrator");
-    // setJobFunction(`As a Linux Administrator, you are part of our global Compute & Operating Platforms team, based in Kuala Lumpur (Malaysia). You get to work in an agile Global IT Infrastructure team with focus on Linux Server Operating Systems engineering.\n
-    // You will be in charge in\n• Maintaining and developing the server operating platform portfolio of Hilti. 
-    // • Taking advantage of the latest innovations in the field while adhering to the industry best practices and security standards. 
-    // • Collaborating with other engineers in the team and lead Linux Server engineering activities and take responsibility of its performance.`);
-    // setRequirements(
-    //   `• Bachelor’s degree in information technology, Computer Science, Engineering, or technical discipline with a CGPA of 3.0 and above. Master’s Degree is an advantage.\n• Minimum 3 years of experience working in Linux Server Operating System engineering.`
-    // );
-    // setEndDate("06.01.2024");
-
     setInterviewSteps(1); // Modify interview stage
   }, []);
 
