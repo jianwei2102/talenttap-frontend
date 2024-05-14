@@ -1,18 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import QuestionSection from "../../models/QuestionSection";
+import Question from "../../models/Question";
+import { TechnicalAssessmentAPI } from "../../api/technicalAssessmentAPI.ts";
 
-interface QuestionSection {
-	sectionName: string;
-	sectionIndex: number;
-	questionList: Question[];
-}
-
-interface Question {
-	question: string;
-	componentName: string;
-	answer: string;
-}
+const SKILL_ASSESSMENT_ID = 1;
 
 interface QuestionSectionCardProps {
 	questionSection: QuestionSection;
@@ -31,55 +24,69 @@ function UserTechnicalAssessmentQuestionPage() {
 	const navigate = useNavigate();
 
 	// TODO: Get questions from campaign (start)
-	const questionList1: Question[] = [
-		{
-			question:
-				"Share an experience where you successfully negotiated a deal with a challenging customer.",
-			componentName: "Negotiation",
-			answer: "",
-		},
-		{
-			question: "Another question here.",
-			componentName: "Components of a Deal",
-			answer: "",
-		},
-	];
 
-	const questionList2: Question[] = [
-		{
-			question: "Section 2 Question 1.",
-			componentName: "Expanding Customer Base",
-			answer: "",
-		},
-		{
-			question: "Another question here.",
-			componentName: "Opening Message",
-			answer: "",
-		},
-	];
+	useEffect (() => {
 
-	const questionSection1: QuestionSection = {
-		sectionName: "Making Deals",
-		sectionIndex: 0,
-		questionList: questionList1,
-	};
-	const questionSection2: QuestionSection = {
-		sectionName: "Research Skills",
-		sectionIndex: 1,
-		questionList: questionList2,
-	};
+		TechnicalAssessmentAPI.get(SKILL_ASSESSMENT_ID).then((response) => {
+			console.log(response);
 
-	const questionSectionList: QuestionSection[] = [questionSection1, questionSection2];
-	// TODO: Get questions for campaign (end)
+			let sections: QuestionSection[] = [];
+			response.forEach(question => {
+
+				let sectionIndex = -1;
+				for (let i = 0; i < sections.length; i++) {
+					if (sections[i].sectionName === question.sectionName) {
+						sectionIndex = i;
+					}
+				}
+
+				if (sectionIndex === -1) { // section does not exist
+					sections.push({
+						sectionName: question.sectionName,
+						sectionIndex: sections.length,
+						questionList: [{
+							id: question.id,
+							question: question.question,
+							title: question.title,
+							hint: question.hint,
+							allowedTimeSeconds: question.allowedTimeSeconds,
+							maxCharacterAnswer: question.maxCharacterAnswer,
+							answer: "",
+							timeSpent: 0,
+							numAttempts: 0
+						}]
+					});
+				} else { // section already exists
+					sections[sectionIndex].questionList.push({
+						id: question.id,
+						question: question.question,
+						title: question.title,
+						hint: question.hint,
+						allowedTimeSeconds: question.allowedTimeSeconds,
+						maxCharacterAnswer: question.maxCharacterAnswer,
+						answer: "",
+						timeSpent: 0,
+						numAttempts: 0
+					});
+				}
+			});
+
+			console.log("sections: ", sections);
+			setCurrentQuestionLists(sections);
+		});
+
+	}, []);
 
 	const [activeSectionIndex, setActiveSectionIndex] = useState(0);
 	const [activeQuestionIndex, setActiveQuestionIndex] = useState(0);
 	const [currentCharacterNum, setCurrentCharacterNum] = useState(0);
 	const [isLastQuestion, setIsLastQuestion] = useState(false);
 	const [currentQuestionAnswer, setCurrentQuestionAnswer] = useState("");
-	const [currentQuestionLists, setCurrentQuestionLists] = useState(questionSectionList);
+	const [currentQuestionLists, setCurrentQuestionLists] = useState<QuestionSection[]>([]);
 
-	const saveQuestionAnswer = (sectionIndex: number, questionIndex: number) => {
+	const [startTime, setStartTime] = useState<number>(Date.now());
+
+	const saveQuestionAnswer = () => {
 		// Save Answer
 		const newQuestionLists = [...currentQuestionLists];
 
@@ -89,12 +96,16 @@ function UserTechnicalAssessmentQuestionPage() {
 		setCurrentQuestionLists(newQuestionLists);
 	};
 
+	const answerHasChanged = () => {
+		return currentQuestionAnswer !== currentQuestionLists[activeSectionIndex].questionList[activeQuestionIndex].answer;
+	};
+
 	const continueHandle = () => {
 		let newQuestionIndex = activeQuestionIndex;
 		let newSectionIndex = activeSectionIndex;
 		let lastQuestion = false;
 
-		saveQuestionAnswer(newSectionIndex, newQuestionIndex);
+		saveQuestionAnswer();
 
 		// Change question and section index
 		if (newQuestionIndex + 1 >= currentQuestionLists[activeSectionIndex].questionList.length) {
@@ -122,13 +133,19 @@ function UserTechnicalAssessmentQuestionPage() {
 	};
 
 	const submitHandle = () => {
-		// TODO: Save questions in db
-		saveQuestionAnswer(activeSectionIndex, activeQuestionIndex);
+		// TODO: Save questions answer & data like timeSpent, numAttempts, etc. in db
+		const elapsedTime = updateTimeSpent();
+		updateNumAttempts(elapsedTime);
+		console.log(currentQuestionLists);
+
+		saveQuestionAnswer();
+
+		TechnicalAssessmentAPI.post(SKILL_ASSESSMENT_ID, currentQuestionLists).then((response) => {
+			console.log(response);
+		});
+
 		navigate('/submission-completed');
 	};
-
-	// TODO: Change max character number according to question?
-	const maxCharacterNum = 2500;
 
 	const answerCharacterNumberHandle = (event) => {
 		let currentCharacters: string = event.target.value;
@@ -150,7 +167,7 @@ function UserTechnicalAssessmentQuestionPage() {
 						isEmpty={question.answer.length === 0 ? true : false}
 						isActive={
 							section.questionSection.sectionIndex === activeSectionIndex &&
-							index === activeQuestionIndex
+								index === activeQuestionIndex
 								? true
 								: false
 						}
@@ -160,9 +177,32 @@ function UserTechnicalAssessmentQuestionPage() {
 		);
 	};
 
+	const updateTimeSpent = () => {
+		const endTime = Date.now();
+		const currentQuestion = currentQuestionLists[activeSectionIndex].questionList[activeQuestionIndex];
+
+		const elapsedTime = Math.round((endTime - startTime) / 1000);
+		currentQuestion.timeSpent = elapsedTime + currentQuestion.timeSpent;
+
+		return elapsedTime;
+	};
+
+	const updateNumAttempts = (elapsedTime: number) => {
+		if (elapsedTime < 1000) return;
+
+		if (!answerHasChanged()) return;
+
+		const currentQuestion = currentQuestionLists[activeSectionIndex].questionList[activeQuestionIndex];
+		currentQuestion.numAttempts += 1;
+	};
+
 	const QuestionCard = (questionCard: QuestionCardProps) => {
+
 		const navigateToQuestionHandle = () => {
-			saveQuestionAnswer(activeSectionIndex, activeQuestionIndex);
+			const elapsedTime = updateTimeSpent();
+			updateNumAttempts(elapsedTime);
+
+			saveQuestionAnswer();
 
 			let newQuestionIndex = questionCard.questionIndex;
 			let newSectionIndex = questionCard.sectionIndex;
@@ -183,6 +223,8 @@ function UserTechnicalAssessmentQuestionPage() {
 				currentQuestionLists[newSectionIndex].questionList[newQuestionIndex].answer
 			);
 			setCurrentCharacterNum(currentQuestionLists[newSectionIndex].questionList[newQuestionIndex].answer.length);
+
+			setStartTime(Date.now());
 		};
 
 		return (
@@ -192,10 +234,11 @@ function UserTechnicalAssessmentQuestionPage() {
 				<input
 					className="h-4 w-4 bg-gray-100 border-gray-300 rounded-md"
 					type="checkbox"
+					readOnly={true}
 					checked={!questionCard.isEmpty}></input>
 				<span
 					className={questionCard.isActive === true ? "text-sm ml-2 font-bold" : "text-sm ml-2"}>
-					{questionCard.questionIndex + 1 + ". " + questionCard.question.componentName}
+					{questionCard.questionIndex + 1 + ". " + questionCard.question.title}
 				</span>
 			</div>
 		);
@@ -205,16 +248,17 @@ function UserTechnicalAssessmentQuestionPage() {
 		<div className="h-screen w-screen flex justify-between p-20 bg-slate-200">
 			<div className="h-full w-3/4 bg-white p-5 mr-5">
 				<span className="text-3xl font-bold">
-					{String.fromCharCode(65 + activeSectionIndex) +
+					{
+					String.fromCharCode(65 + activeSectionIndex) +
 						". " +
-						currentQuestionLists[activeSectionIndex].sectionName}
+						currentQuestionLists[activeSectionIndex]?.sectionName}
 				</span>
 				<div className="h-full w-full pl-2 pr-2 pt-5 pb-5">
 					<span className="font-bold text-lg">
 						{activeQuestionIndex +
 							1 +
 							". " +
-							currentQuestionLists[activeSectionIndex].questionList[activeQuestionIndex].question}
+							currentQuestionLists[activeSectionIndex]?.questionList[activeQuestionIndex].question}
 					</span>
 					<div className="h-full w-full p-5 flex flex-col">
 						<textarea
@@ -227,7 +271,7 @@ function UserTechnicalAssessmentQuestionPage() {
 							value={currentQuestionAnswer}>
 						</textarea>
 						<div className="w-full flex justify-end pt-3">
-							{currentCharacterNum + "/ " + maxCharacterNum + " characters"}
+							{currentCharacterNum + "/ " + currentQuestionLists[activeSectionIndex]?.questionList[activeQuestionIndex].maxCharacterAnswer + " characters"}
 						</div>
 					</div>
 				</div>
@@ -251,9 +295,9 @@ function UserTechnicalAssessmentQuestionPage() {
 					<span className="text-white mr-2">{isLastQuestion ? "Submit" : "Continue"}</span>
 					<svg className="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
 						<path
-							stroke-linecap="round"
-							stroke-linejoin="round"
-							stroke-width="2"
+							strokeLinecap="round"
+							strokeLinejoin="round"
+							strokeWidth="2"
 							d="M14 5l7 7m0 0l-7 7m7-7H3"
 						/>
 					</svg>

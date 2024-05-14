@@ -1,19 +1,28 @@
 import React, { useState, useEffect } from "react";
 import { Recorder } from "../../components";
+import {getSpecific} from "../../models/generalQuestions.js"
+
+interface Question{
+  question: string,
+  hint: string,
+  recordingTimeSeconds: number,
+  readingTimeSeconds: number
+}
 
 const GeneralQuestion = () => {
+  const [questions, setQuestions] = useState<Question[]>([])
   const [questionNo, setQuestionNo] = useState(1);
   const [question, setQuestion] = useState("");
   const [hint, setHint] = useState("");
 
   useEffect(() => {
-    setQuestionNo(1);
-    setQuestion(
-      "Demonstrate your understanding on using xyz technology to implement abc solution in a project regarding the qwerty problem."
-    );
-    setHint(
-      "Here’s some things to consider: \n• Why should xyz technology be used? \n• How would abc be implemented?"
-    );
+    const fetchData = async () => {
+      const question = await getSpecific(1);
+      setQuestionNo(question.id);
+      setQuestion(question.question);
+      setHint(question.hint);
+    };
+    fetchData();
   }, []);
 
   return (
