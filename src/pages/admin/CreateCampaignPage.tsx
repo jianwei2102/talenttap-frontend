@@ -14,6 +14,7 @@ import {
 	InformationIcon,
 	TrashCanIcon,
 	CrossIcon,
+	RobotIcon,
 } from "../../assets/index.js";
 import { CustomToggle } from "../../components";
 
@@ -108,7 +109,8 @@ function CreateCampaignPage() {
 	const [activeComponentIndex, setActiveComponentIndex] = useState(0);
 	const [activeSubComponentIndex, setActiveSubComponentIndex] = useState(-1);
 	const [isShowingAiGenerateQuestionsModal, setIsShowingAiGenerateQuestionModal] = useState(false);
-	const [aiGenerateQuestionModalSectionIndex, setAiGenerateQuestionModalSectionIndex] = useState(-1);
+	const [aiGenerateQuestionModalSectionIndex, setAiGenerateQuestionModalSectionIndex] =
+		useState(-1);
 	const [wasDragDropped, setWasDragDropped] = useState(false);
 
 	useEffect(() => {
@@ -662,6 +664,15 @@ function CreateCampaignPage() {
 			const [currentNegativeKeywordList, setCurrentNegativeKeywordList] =
 				useState(keywordNegativeList);
 
+			const positiveKeywordSuggestionList = [
+				"Friendliness",
+				"Growth",
+				"Accomplishment",
+				"Collaboration",
+				"Improvement",
+			];
+			const negativeKeywordSuggestionList = ["Frustration", "Sabotage", "Give up"];
+
 			const handleQuestionInputChange = (event) => {
 				setCurrentQuestion(event.target.value);
 			};
@@ -877,6 +888,43 @@ function CreateCampaignPage() {
 										onClick={handleAddNegativeKeywordButtonClick}>
 										Add New Keyword
 									</button>
+								</div>
+							</div>
+							<div className="w-full h-fit border border-red-700 border-2 rounded-xl flex flex-col py-2 px-3 mt-3">
+								<div className="flex items-center">
+									<div className="h-full text-red-700">
+										<RobotIcon />
+									</div>
+									<span className="text-black font-bold text-lg ml-2">
+										AI-Assisted Keyword Suggestion
+									</span>
+									{/* TODO: Add functionality for the generate keyword button */}
+									<button className="bg-red-700 rounded-xl text-white py-1 px-2 ml-3">
+										Generate Keyword
+									</button>
+								</div>
+								<div className="h-fit flex justify-between mt-2">
+									<div className="h-fit w-[45%] flex flex-col">
+										<span className="text-md font-bold underline">Positive Keyword</span>
+										<div className="w-full p-2 flex flex-wrap">
+											{positiveKeywordSuggestionList.map((keyword, index) => (
+												<button className="h-fit w-fit border border-black rounded-xl p-2 m-1">
+													{keyword}
+												</button>
+											))}
+										</div>
+									</div>
+									<div className="w-[1px] bg-red-700 ml-2 mr-2"></div>
+									<div className="h-fit w-[45%] flex flex-col">
+										<span className="text-md font-bold underline">Negative Keyword</span>
+										<div className="w-full p-2 flex flex-wrap">
+											{negativeKeywordSuggestionList.map((keyword, index) => (
+												<button className="h-fit w-fit border border-black rounded-xl p-2 m-1">
+													{keyword}
+												</button>
+											))}
+										</div>
+									</div>
 								</div>
 							</div>
 						</Accordion.Body>
@@ -1384,12 +1432,15 @@ function CreateCampaignPage() {
 
 	const handleAiGenerateQuestionButtonClick = (event) => {
 		if (event.currentTarget.getAttribute("data-section-index") !== undefined) {
-			setAiGenerateQuestionModalSectionIndex(event.currentTarget.getAttribute("data-section-index"));
+			setAiGenerateQuestionModalSectionIndex(
+				event.currentTarget.getAttribute("data-section-index")
+			);
 		}
 		setIsShowingAiGenerateQuestionModal(true);
 	};
 
-	const AiGenerateQuestionsModal = ({sectionIndex}) => {
+	const AiGenerateQuestionsModal = ({ sectionIndex }) => {
+		// TODO : Get AI generated questions from somewhere
 		const aiGeneratedQuestionList = [
 			"Can you describe your experience with configuring and maintaining Linux server environments?",
 			"How do you ensure the security and integrity of Linus systems? Please provide examples of security measures you've implemented.",
@@ -1400,13 +1451,12 @@ function CreateCampaignPage() {
 
 		const handleSelectQuestionCheckbox = (event) => {
 			let selectedIndex = event.currentTarget.getAttribute("data-index");
-			
+
 			if (event.currentTarget.checked) {
 				let updatedList = [...selectedQuestionList];
 				updatedList.push(selectedIndex);
 				setSelectedQuestionList(updatedList);
-			}
-			else {
+			} else {
 				let updatedList = [...selectedQuestionList];
 				let currentIndex = updatedList.find(selectedIndex);
 				if (currentIndex !== undefined) {
@@ -1414,44 +1464,55 @@ function CreateCampaignPage() {
 					setSelectedQuestionList(updatedList);
 				}
 			}
-		}
+		};
 
 		const handleAddToInterviewButtonClick = () => {
 			if (campaignInterviewComponentList[activeSubComponentIndex].type === "General Interview") {
-				
 				// Add selected questions to the question list in general interview
-				let generalInterview = campaignInterviewComponentList[activeSubComponentIndex].interviewInfo as GeneralInterviewInfo;
+				let generalInterview = campaignInterviewComponentList[activeSubComponentIndex]
+					.interviewInfo as GeneralInterviewInfo;
 				let generalInterviewQuestionList = generalInterview.questionList;
 
 				selectedQuestionList.map((questionIndex, i) => {
-					let newQuestion: Question = {question: aiGeneratedQuestionList[questionIndex], keywordPositive: [], keywordNegative: []};
+					let newQuestion: Question = {
+						question: aiGeneratedQuestionList[questionIndex],
+						keywordPositive: [],
+						keywordNegative: [],
+					};
 					generalInterviewQuestionList.push(newQuestion);
 				});
 
-
 				// Update campaign interview component list
 				let updatedCampaignInterviewComponentList = [...campaignInterviewComponentList];
-				updatedCampaignInterviewComponentList[activeSubComponentIndex].interviewInfo = generalInterview;
+				updatedCampaignInterviewComponentList[activeSubComponentIndex].interviewInfo =
+					generalInterview;
 				setCampaignInterviewComponentList(updatedCampaignInterviewComponentList);
-			}
-			else if (campaignInterviewComponentList[activeSubComponentIndex].type === "Technical Assessment") {
-				let technicalAssessment = campaignInterviewComponentList[activeSubComponentIndex].interviewInfo as TechnicalAssessmentInfo;
-				let technicalAssessmentQuestionList = technicalAssessment.sectionList[sectionIndex].questionList;
+			} else if (
+				campaignInterviewComponentList[activeSubComponentIndex].type === "Technical Assessment"
+			) {
+				let technicalAssessment = campaignInterviewComponentList[activeSubComponentIndex]
+					.interviewInfo as TechnicalAssessmentInfo;
+				let technicalAssessmentQuestionList =
+					technicalAssessment.sectionList[sectionIndex].questionList;
 
 				selectedQuestionList.map((questionIndex, i) => {
-					let newQuestion: Question = {question: aiGeneratedQuestionList[questionIndex], keywordPositive: [], keywordNegative: []};
+					let newQuestion: Question = {
+						question: aiGeneratedQuestionList[questionIndex],
+						keywordPositive: [],
+						keywordNegative: [],
+					};
 					technicalAssessmentQuestionList.push(newQuestion);
 				});
 			}
 
-			setIsShowingAiGenerateQuestionModal(false)
+			setIsShowingAiGenerateQuestionModal(false);
 			setAiGenerateQuestionModalSectionIndex(-1);
-		}
+		};
 
 		const closeAiGenerateQuestionsModalButtonClick = () => {
-			setIsShowingAiGenerateQuestionModal(false)
+			setIsShowingAiGenerateQuestionModal(false);
 			setAiGenerateQuestionModalSectionIndex(-1);
-		}
+		};
 
 		return (
 			<div className={isShowingAiGenerateQuestionsModal ? "h-full w-full absolute z-10" : "hidden"}>
@@ -1459,7 +1520,9 @@ function CreateCampaignPage() {
 					<div className="h-full w-full relative flex flex-col items-center bg-white rounded-3xl z-100 px-5 py-3">
 						<div className="w-full flex justify-between">
 							<span className="font-bold text-2xl">AI Generate Question</span>
-							<div className="text-red-700 cursor-pointer" onClick={closeAiGenerateQuestionsModalButtonClick}>
+							<div
+								className="text-red-700 cursor-pointer"
+								onClick={closeAiGenerateQuestionsModalButtonClick}>
 								<CrossIcon />
 							</div>
 						</div>
@@ -1467,13 +1530,15 @@ function CreateCampaignPage() {
 						<div className="h-4/6 w-full flex flex-col overflow-auto">
 							<div className="flex justify-between mb-3">
 								<span className="font-bold text-xl ml-[5%]">Questions</span>
-								<span className="font-bold text-xl">Keywords</span>
 							</div>
 							{aiGeneratedQuestionList.map((question, index) => (
 								<div className="w-full flex items-center mb-3">
-									<input type="checkbox" className="w-[5%] h-[1.5rem]" onChange={handleSelectQuestionCheckbox} data-index={index}></input>
-									<span className="w-[90%] text-lg">{question}</span>
-									<button className="w-[5%] border border-black rounded-xl py-0.5 px-3">+</button>
+									<input
+										type="checkbox"
+										className="w-[5%] h-[1.5rem]"
+										onChange={handleSelectQuestionCheckbox}
+										data-index={index}></input>
+									<span className="w-[95%] text-lg">{question}</span>
 								</div>
 							))}
 						</div>
@@ -1483,7 +1548,9 @@ function CreateCampaignPage() {
 									<input type="checkbox" className="w-[5%] h-[1.5rem]"></input>
 									<span className="ml-2">Select/ Deselect All</span>
 								</div>
-								<button className="w-1/6 bg-red-700 text-white p-2 rounded-lg" onClick={handleAddToInterviewButtonClick}>
+								<button
+									className="w-1/6 bg-red-700 text-white p-2 rounded-lg"
+									onClick={handleAddToInterviewButtonClick}>
 									Add to Interview
 								</button>
 							</div>
@@ -1500,7 +1567,9 @@ function CreateCampaignPage() {
 												cols={50}
 												className="w-full p-2 border border-black rounded-xl mt-1 focus:outline-none resize-none"
 												placeholder="e.g. Considering the role requirements outlined in the Linux Administrator job secription, kindly generate 5 comprehensive interview questions suitable for the initial screening process. Additionally, include positive and negative keyword suggestions for each question to facilitate thorough candidate evaluation and alignment with our hiring criteria."></textarea>
-											<button className="bg-red-700 text-white rounded-lg py-2 mt-2">Generate Your Prompts</button>
+											<button className="bg-red-700 text-white rounded-lg py-2 mt-2">
+												Generate Your Prompts
+											</button>
 										</div>
 									</Accordion.Body>
 								</Accordion.Item>
@@ -1642,7 +1711,7 @@ function CreateCampaignPage() {
 					</div>
 				</div>
 			</div>
-			<AiGenerateQuestionsModal sectionIndex={aiGenerateQuestionModalSectionIndex}/>
+			<AiGenerateQuestionsModal sectionIndex={aiGenerateQuestionModalSectionIndex} />
 		</div>
 	);
 }
