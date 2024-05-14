@@ -50,11 +50,15 @@ td {
   width: 100%;
 }
 
-.modal-backdrop {
+.pop-up-modal-backdrop {
   height: 100%;
   width: 100%;
   position: absolute;
-  background-color: rgb(107, 114, 128, 0.3);
+  top: 0;
+  left: 0;
+  background-color: gray;
+  opacity: 0.3;
+  z-index: 1;
 }
 
 .home-main-container {
