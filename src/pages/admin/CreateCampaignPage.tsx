@@ -13,6 +13,7 @@ import {
 	HiringManagerInterviewIcon,
 	InformationIcon,
 	TrashCanIcon,
+	CrossIcon,
 } from "../../assets/index.js";
 import { CustomToggle } from "../../components";
 
@@ -106,10 +107,11 @@ function CreateCampaignPage() {
 	>([]);
 	const [activeComponentIndex, setActiveComponentIndex] = useState(0);
 	const [activeSubComponentIndex, setActiveSubComponentIndex] = useState(-1);
+	const [isShowingAiGenerateQuestionsModal, setIsShowingAiGenerateQuestionModal] = useState(false);
 	const [wasDragDropped, setWasDragDropped] = useState(false);
 
 	useEffect(() => {
-		if (activeSubComponentIndex === -1) {
+		if (activeSubComponentIndex === -1 && campaignInterviewComponentList.length > 0) {
 			setActiveSubComponentIndex(0);
 			setActiveComponentIndex(1);
 		}
@@ -891,7 +893,11 @@ function CreateCampaignPage() {
 			<div className="flex flex-col">
 				<div className="flex justify-between items-center mb-2">
 					<span className="text-2xl font-bold">General Interview</span>
-					<button className="bg-red-400 text-white rounded-lg p-2">AI Generate Question</button>
+					<button
+						className="bg-red-400 text-white rounded-lg p-2"
+						onClick={handleAiGenerateQuestionButtonClick}>
+						AI Generate Question
+					</button>
 				</div>
 				<Accordion defaultActiveKey={["0"]} alwaysOpen>
 					{generalInterviewQuestionList.map((questionInfo, index) => (
@@ -1224,7 +1230,9 @@ function CreateCampaignPage() {
 												<TrashCanIcon />
 											</div>
 										</button>
-										<button className="bg-red-400 text-white rounded-lg p-2 ml-2">
+										<button
+											className="bg-red-400 text-white rounded-lg p-2 ml-2"
+											onClick={handleAiGenerateQuestionButtonClick}>
 											AI Generate Question
 										</button>
 									</div>
@@ -1372,6 +1380,76 @@ function CreateCampaignPage() {
 		);
 	};
 
+	const handleAiGenerateQuestionButtonClick = () => {
+		setIsShowingAiGenerateQuestionModal(true);
+	};
+
+	const AiGenerateQuestionsModal = () => {
+		const questionList = [
+			"Can you describe your experience with configuring and maintaining Linux server environments?",
+			"How do you ensure the security and integrity of Linus systems? Please provide examples of security measures you've implemented?",
+			"In what ways do you troubleshoot and resolve issues related to Linux-based networks and infrastructure?",
+		];
+		return (
+			<div className={isShowingAiGenerateQuestionsModal ? "h-full w-full absolute z-10" : "hidden"}>
+				<div className="h-full w-full relative py-24 px-48 z-10">
+					<div className="h-full w-full relative flex flex-col items-center bg-white rounded-3xl z-100 px-5 py-3">
+						<div className="w-full flex justify-between">
+							<span className="font-bold text-2xl">AI Generate Question</span>
+							<div className="text-red-700 cursor-pointer" onClick={() => setIsShowingAiGenerateQuestionModal(false)}>
+								<CrossIcon />
+							</div>
+						</div>
+						<div className="h-[1px] w-full bg-gray-400 mt-2 mb-3"></div>
+						<div className="h-4/6 w-full flex flex-col overflow-auto">
+							<div className="flex justify-between mb-3">
+								<span className="font-bold text-xl ml-[5%]">Questions</span>
+								<span className="font-bold text-xl">Keywords</span>
+							</div>
+							{questionList.map((question, index) => (
+								<div className="w-full flex items-center mb-3">
+									<input type="checkbox" className="w-[5%] h-[1.5rem]"></input>
+									<span className="w-[90%] text-lg">{question}</span>
+									<button className="w-[5%] border border-black rounded-xl py-0.5 px-3">+</button>
+								</div>
+							))}
+						</div>
+						<div className="w-full absolute bottom-0 flex-col py-3 px-5">
+							<div className="w-full flex justify-between items-center">
+								<div className="w-4/6 flex items-center">
+									<input type="checkbox" className="w-[5%] h-[1.5rem]"></input>
+									<span className="ml-2">Select/ Deselect All</span>
+								</div>
+								<button className="w-1/6 bg-red-700 text-white p-2 rounded-lg">
+									Add to Interview
+								</button>
+							</div>
+							<Accordion className="mt-3">
+								<Accordion.Item eventKey="">
+									<Accordion.Header>
+										<span className="font-bold text-lg">Custom Interview Inquiry</span>
+									</Accordion.Header>
+									<Accordion.Body>
+										<div className="w-full flex flex-col p-2">
+											<span className="w-full text-left">Write your subject</span>
+											<textarea
+												rows={3}
+												cols={50}
+												className="w-full p-2 border border-black rounded-xl mt-1 focus:outline-none resize-none"
+												placeholder="e.g. Considering the role requirements outlined in the Linux Administrator job secription, kindly generate 5 comprehensive interview questions suitable for the initial screening process. Additionally, include positive and negative keyword suggestions for each question to facilitate thorough candidate evaluation and alignment with our hiring criteria."></textarea>
+											<button className="bg-red-700 text-white rounded-lg py-2 mt-2">Generate Your Prompts</button>
+										</div>
+									</Accordion.Body>
+								</Accordion.Item>
+							</Accordion>
+						</div>
+					</div>
+				</div>
+				<div className="pop-up-modal-backdrop"></div>
+			</div>
+		);
+	};
+
 	return (
 		<div className="h-screen w-screen flex flex-col bg-slate-200">
 			<AdminNavBar activeIndex={-1} />
@@ -1501,6 +1579,7 @@ function CreateCampaignPage() {
 					</div>
 				</div>
 			</div>
+			<AiGenerateQuestionsModal />
 		</div>
 	);
 }
