@@ -6,38 +6,59 @@ import {
   PopUpModal,
   CustomButton,
 } from "../../components";
+import { CampaignAPI } from "../../api/campaignAPI.ts";
+import InterviewData from "../../models/InterviewData.ts";
+
+const CAMPAIGN_ID = 1;
 
 const Interview = () => {
   const navigate = useNavigate();
 
+  // campaign details
   const [name, setName] = useState("");
-  const [jobFunction, setJobFunction] = useState("");
-  const [requirements, setRequirements] = useState("");
+  const [jobDescription, setJobDescription] = useState("");
+  const [requirement, setRequirement] = useState("");
   const [endDate, setEndDate] = useState("");
-  const [interviewSteps, setInterviewSteps] = useState(1);
+  const [activeIndex, setActiveIndex] = useState(1);
 
-  // Campaign data / fetch
-  // const fetchCampaign = async () => {
-  // }
+  // interview details
+  const [interviews, setInterviews] = useState<InterviewData[]>([]);
+
+  const fetchCampaign = async () => {
+    const response = await CampaignAPI.get(CAMPAIGN_ID);
+    const { campaign, generalInterviews, hiringManagerInterviews, skillAssessments } = response;
+
+    console.log('response : ', response);
+
+    setName(campaign.name);
+    setJobDescription(campaign.jobDescription);
+    setRequirement(campaign.requirement);
+    setEndDate(campaign.endDate.split("T")[0]);
+
+    const cvScreening = new InterviewData(0, "", 3, new Date(), new Date(), "Admin", "CV Screening");
+    let interviewSteps: InterviewData[] = [cvScreening];
+
+    for (const i of generalInterviews) {
+      interviewSteps.push(InterviewData.fromJson(i, "General Interview"));
+    }
+
+    for (const i of hiringManagerInterviews) {
+      interviewSteps.push(InterviewData.fromJson(i, "Hiring Manager Interview"));
+    }
+
+    for (const i of skillAssessments) {
+      interviewSteps.push(InterviewData.fromJson(i, "Skill Assessment"));
+    }
+
+    interviewSteps.sort((a: InterviewData, b: InterviewData) => a.sequence - b.sequence);
+    setInterviews(interviewSteps);
+  };
 
   useEffect(() => {
-    // const campaign = fetchCampaign();
-    // setName(campaign.name);
-    // setJobFunction(campaign.jobFunction);
-    // setRequirements(campaign.requirements);
-    // setEndDate(campaign.endDate);
-
-    setName("Linux Administrator");
-    setJobFunction(`As a Linux Administrator, you are part of our global Compute & Operating Platforms team, based in Kuala Lumpur (Malaysia). You get to work in an agile Global IT Infrastructure team with focus on Linux Server Operating Systems engineering.\n
-    You will be in charge in\n• Maintaining and developing the server operating platform portfolio of Hilti. 
-    • Taking advantage of the latest innovations in the field while adhering to the industry best practices and security standards. 
-    • Collaborating with other engineers in the team and lead Linux Server engineering activities and take responsibility of its performance.`);
-    setRequirements(
-      `• Bachelor’s degree in information technology, Computer Science, Engineering, or technical discipline with a CGPA of 3.0 and above. Master’s Degree is an advantage.\n• Minimum 3 years of experience working in Linux Server Operating System engineering.`
-    );
-    setEndDate("06.01.2024");
-
-    setInterviewSteps(1); // Modify interview stage
+    (async () => {
+      await fetchCampaign();
+      setActiveIndex(1); // Modify interview stage
+    })();
   }, []);
 
   return (
@@ -55,62 +76,44 @@ const Interview = () => {
           </div>
         </div>
 
-        <InterviewStepBar initialActiveStep={interviewSteps} />
+        <InterviewStepBar interviews={interviews} initialActiveStep={activeIndex} />
 
-        <div className="leading-8">
-          <span className="text-2xl font-semibold">Overview</span>
-          <br />
-          {jobFunction.split("\n").map((line, i) => (
-            <span key={i}>
-              {line}
-              <br />
-            </span>
-          ))}
-        </div>
-
-        <div className="mt-10 leading-8">
-          <span className="text-2xl font-semibold">Requirements</span>
-          <br />
-          {requirements.split("\n").map((line, i) => (
-            <span key={i}>
-              {line}
-              <br />
-            </span>
-          ))}
-        </div>
-
-        {/* Check for interview stage instead of steps */}
-        {interviewSteps === 1 && <PopUpModal title="Start Application" />}
-
-        {interviewSteps === 2 && (
+        {activeIndex === 0 && (
           <>
+            <div className="leading-8">
+              <span className="text-2xl font-semibold">Overview</span>
+              <br />
+              {jobDescription.split("\n").map((line, i) => (
+                <span key={i}>
+                  {line}
+                  <br />
+                </span>
+              ))}
+            </div>
+
+            <div className="mt-10 leading-8">
+              <span className="text-2xl font-semibold">Requirement</span>
+              <br />
+              {requirement.split("\n").map((line, i) => (
+                <span key={i}>
+                  {line}
+                  <br />
+                </span>
+              ))}
+            </div>
+            <PopUpModal title="Start Application" />
+          </>
+        )}
+
+        {activeIndex !== 0 && (
+          <>
+            <div className="leading-8">
+              {interviews[activeIndex - 2]?.generalInstruction}
+              {/* next step: add constants instructions for all 3 interviews */}
+            </div>
             <CustomButton
               title={"Start Interview"}
               customFunction={() => navigate("/general-interview")}
-            />
-            <p className="text-center mt-2">
-              The Interview can be done within 3 days
-            </p>
-          </>
-        )}
-
-        {interviewSteps === 3 && (
-          <>
-            <CustomButton
-              title={"Start Interview"}
-              customFunction={() => navigate("/technical")}
-            />
-            <p className="text-center mt-2">
-              The Interview can be done within 3 days
-            </p>
-          </>
-        )}
-
-        {interviewSteps === 4 && (
-          <>
-            <CustomButton
-              title={"Schedule Interview"}
-              customFunction={() => {}}
             />
             <p className="text-center mt-2">
               The Interview can be done within 3 days
