@@ -108,6 +108,7 @@ function CreateCampaignPage() {
 	const [activeComponentIndex, setActiveComponentIndex] = useState(0);
 	const [activeSubComponentIndex, setActiveSubComponentIndex] = useState(-1);
 	const [isShowingAiGenerateQuestionsModal, setIsShowingAiGenerateQuestionModal] = useState(false);
+	const [aiGenerateQuestionModalSectionIndex, setAiGenerateQuestionModalSectionIndex] = useState(-1);
 	const [wasDragDropped, setWasDragDropped] = useState(false);
 
 	useEffect(() => {
@@ -1232,6 +1233,7 @@ function CreateCampaignPage() {
 										</button>
 										<button
 											className="bg-red-400 text-white rounded-lg p-2 ml-2"
+											data-section-index={sectionIndex}
 											onClick={handleAiGenerateQuestionButtonClick}>
 											AI Generate Question
 										</button>
@@ -1380,23 +1382,84 @@ function CreateCampaignPage() {
 		);
 	};
 
-	const handleAiGenerateQuestionButtonClick = () => {
+	const handleAiGenerateQuestionButtonClick = (event) => {
+		if (event.currentTarget.getAttribute("data-section-index") !== undefined) {
+			setAiGenerateQuestionModalSectionIndex(event.currentTarget.getAttribute("data-section-index"));
+		}
 		setIsShowingAiGenerateQuestionModal(true);
 	};
 
-	const AiGenerateQuestionsModal = () => {
-		const questionList = [
+	const AiGenerateQuestionsModal = ({sectionIndex}) => {
+		const aiGeneratedQuestionList = [
 			"Can you describe your experience with configuring and maintaining Linux server environments?",
-			"How do you ensure the security and integrity of Linus systems? Please provide examples of security measures you've implemented?",
+			"How do you ensure the security and integrity of Linus systems? Please provide examples of security measures you've implemented.",
 			"In what ways do you troubleshoot and resolve issues related to Linux-based networks and infrastructure?",
 		];
+
+		const [selectedQuestionList, setSelectedQuestionList] = useState<number[]>([]);
+
+		const handleSelectQuestionCheckbox = (event) => {
+			let selectedIndex = event.currentTarget.getAttribute("data-index");
+			
+			if (event.currentTarget.checked) {
+				let updatedList = [...selectedQuestionList];
+				updatedList.push(selectedIndex);
+				setSelectedQuestionList(updatedList);
+			}
+			else {
+				let updatedList = [...selectedQuestionList];
+				let currentIndex = updatedList.find(selectedIndex);
+				if (currentIndex !== undefined) {
+					updatedList.splice(currentIndex, 1);
+					setSelectedQuestionList(updatedList);
+				}
+			}
+		}
+
+		const handleAddToInterviewButtonClick = () => {
+			if (campaignInterviewComponentList[activeSubComponentIndex].type === "General Interview") {
+				
+				// Add selected questions to the question list in general interview
+				let generalInterview = campaignInterviewComponentList[activeSubComponentIndex].interviewInfo as GeneralInterviewInfo;
+				let generalInterviewQuestionList = generalInterview.questionList;
+
+				selectedQuestionList.map((questionIndex, i) => {
+					let newQuestion: Question = {question: aiGeneratedQuestionList[questionIndex], keywordPositive: [], keywordNegative: []};
+					generalInterviewQuestionList.push(newQuestion);
+				});
+
+
+				// Update campaign interview component list
+				let updatedCampaignInterviewComponentList = [...campaignInterviewComponentList];
+				updatedCampaignInterviewComponentList[activeSubComponentIndex].interviewInfo = generalInterview;
+				setCampaignInterviewComponentList(updatedCampaignInterviewComponentList);
+			}
+			else if (campaignInterviewComponentList[activeSubComponentIndex].type === "Technical Assessment") {
+				let technicalAssessment = campaignInterviewComponentList[activeSubComponentIndex].interviewInfo as TechnicalAssessmentInfo;
+				let technicalAssessmentQuestionList = technicalAssessment.sectionList[sectionIndex].questionList;
+
+				selectedQuestionList.map((questionIndex, i) => {
+					let newQuestion: Question = {question: aiGeneratedQuestionList[questionIndex], keywordPositive: [], keywordNegative: []};
+					technicalAssessmentQuestionList.push(newQuestion);
+				});
+			}
+
+			setIsShowingAiGenerateQuestionModal(false)
+			setAiGenerateQuestionModalSectionIndex(-1);
+		}
+
+		const closeAiGenerateQuestionsModalButtonClick = () => {
+			setIsShowingAiGenerateQuestionModal(false)
+			setAiGenerateQuestionModalSectionIndex(-1);
+		}
+
 		return (
 			<div className={isShowingAiGenerateQuestionsModal ? "h-full w-full absolute z-10" : "hidden"}>
 				<div className="h-full w-full relative py-24 px-48 z-10">
 					<div className="h-full w-full relative flex flex-col items-center bg-white rounded-3xl z-100 px-5 py-3">
 						<div className="w-full flex justify-between">
 							<span className="font-bold text-2xl">AI Generate Question</span>
-							<div className="text-red-700 cursor-pointer" onClick={() => setIsShowingAiGenerateQuestionModal(false)}>
+							<div className="text-red-700 cursor-pointer" onClick={closeAiGenerateQuestionsModalButtonClick}>
 								<CrossIcon />
 							</div>
 						</div>
@@ -1406,9 +1469,9 @@ function CreateCampaignPage() {
 								<span className="font-bold text-xl ml-[5%]">Questions</span>
 								<span className="font-bold text-xl">Keywords</span>
 							</div>
-							{questionList.map((question, index) => (
+							{aiGeneratedQuestionList.map((question, index) => (
 								<div className="w-full flex items-center mb-3">
-									<input type="checkbox" className="w-[5%] h-[1.5rem]"></input>
+									<input type="checkbox" className="w-[5%] h-[1.5rem]" onChange={handleSelectQuestionCheckbox} data-index={index}></input>
 									<span className="w-[90%] text-lg">{question}</span>
 									<button className="w-[5%] border border-black rounded-xl py-0.5 px-3">+</button>
 								</div>
@@ -1420,7 +1483,7 @@ function CreateCampaignPage() {
 									<input type="checkbox" className="w-[5%] h-[1.5rem]"></input>
 									<span className="ml-2">Select/ Deselect All</span>
 								</div>
-								<button className="w-1/6 bg-red-700 text-white p-2 rounded-lg">
+								<button className="w-1/6 bg-red-700 text-white p-2 rounded-lg" onClick={handleAddToInterviewButtonClick}>
 									Add to Interview
 								</button>
 							</div>
@@ -1579,7 +1642,7 @@ function CreateCampaignPage() {
 					</div>
 				</div>
 			</div>
-			<AiGenerateQuestionsModal />
+			<AiGenerateQuestionsModal sectionIndex={aiGenerateQuestionModalSectionIndex}/>
 		</div>
 	);
 }
