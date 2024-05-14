@@ -181,7 +181,7 @@ function UserTechnicalAssessmentQuestionPage() {
 		const endTime = Date.now();
 		const currentQuestion = currentQuestionLists[activeSectionIndex].questionList[activeQuestionIndex];
 
-		const elapsedTime = endTime - startTime;
+		const elapsedTime = Math.round((endTime - startTime) / 1000);
 		currentQuestion.timeSpent = elapsedTime + currentQuestion.timeSpent;
 
 		return elapsedTime;
