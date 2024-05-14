@@ -62,6 +62,8 @@ function CookiesPopup({ onAccept }) {
 function UserHomePage() {
   const [activeCampaignIndex, setActiveCampaignIndex] = useState(0);
   const campaignsPerPage = 6
+  const [currentPageIndex, setCurrentPageIndex] = useState(0); // Default to the first page
+  const [totalPages, setTotalPages] = useState(0); // Initialize totalPages
   const [campaigns, setCampaigns] = useState<Campaign[]>([])
   const [cookiesAccepted, setCookiesAccepted] = useState(false);
 
@@ -83,14 +85,13 @@ function UserHomePage() {
       const results = await getAll();
       setCampaigns(results);
       // TODO: Get data and calculate total number of pages needed (6 campaigns per page)
-      setCurrentPageIndex(Math.ceil(results.length / campaignsPerPage));
+      const totalPagesCalculated = Math.ceil(results.length / campaignsPerPage);
+      setTotalPages(totalPagesCalculated);
     };
     fetchData();
   }, []);
 
-  const [currentPageIndex, setCurrentPageIndex] = useState(0);
-  const totalPages = 3
-  return (
+    return (
     <>
       {!cookiesAccepted && <CookiesPopup onAccept={handleAcceptCookies} />}
       <div className="h-screen w-screen absolute flex flex-col">
@@ -173,7 +174,7 @@ function UserHomePage() {
           </div>
         </div>
         <div className="home-main-container overflow-auto mt-10">
-          <div className="grid grid-cols-2 grid-rows-3 gap-16">
+          <div className="h-auto home-grid">
             {campaigns.map((campaign, index) => (
               <div key={index}>
                 <Card name={campaign.name} location={campaign.location} type={campaign.department} experienceRequirement={campaign.requirement} imageSrc={campaign.image}/>
