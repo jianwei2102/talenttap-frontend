@@ -1,19 +1,71 @@
-import React from "react";
-import UserNavBar from "../../components/UserNavBar.tsx";
-import { useState } from "react";
+import { UserNavBar} from "../../components";
+import { useEffect, useState } from "react";
 import Card from "../../components/HomeCampaignCard.tsx";
 import MorePageNavigation from "../../components/MorePageNavigation.tsx";
+import React from "react";
+import {getAll} from "../../models/campaigns.js"
+import { Modal } from "react-bootstrap"; 
 
 interface Campaign {
   name: string;
-  location: string;
-  type: string;
-  exprienceRequirement: string;
-  imageSource: string;
+  jobFunction: string;
+  positionType:string;
+  location:string;
+  createdBy:string;
+  jobDescription:string;
+  image:string;
+  requirement:string;
+  headcount: number;
+  startDate: Date;
+  endDate: Date;
+  workFlexibility: string;
+  department: string;
+  expertise: string;
+}
+
+function CookiesPopup({ onAccept }) {
+  const [accepted, setAccepted] = useState(false);
+
+  const handleAccept = () => {
+    setAccepted(true);
+    onAccept();
+  };
+
+  if (!accepted) {
+    return (
+      <Modal show={true} centered backdrop="static" keyboard={false}>
+        <Modal.Header>
+          <Modal.Title>Cookies Consent</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <p>
+            This website uses cookies or similar technologies, to enhance your
+            browsing experience and provide personalized recommendations. By
+            continuing to use our website, you agree to our{' '}
+            <a href="#" className="underline">
+              Privacy Policy
+            </a>
+          </p>
+        </Modal.Body>
+        <Modal.Footer>
+          <button className="btn btn-danger" onClick={handleAccept}>
+            I Accept
+          </button>
+        </Modal.Footer>
+      </Modal>
+    );
+  }
+
+  return null; // No need to render anything if the user has accepted
 }
 
 function UserHomePage() {
   const [activeCampaignIndex, setActiveCampaignIndex] = useState(0);
+  const campaignsPerPage = 6
+  const [currentPageIndex, setCurrentPageIndex] = useState(0); // Default to the first page
+  const [totalPages, setTotalPages] = useState(0); // Initialize totalPages
+  const [campaigns, setCampaigns] = useState<Campaign[]>([])
+  const [cookiesAccepted, setCookiesAccepted] = useState(false);
 
   const showOngoingCampaigns = () => {
     setActiveCampaignIndex(0);
@@ -23,50 +75,26 @@ function UserHomePage() {
     setActiveCampaignIndex(1);
   };
 
+  const handleAcceptCookies = () => {
+    setCookiesAccepted(true);
+  };
+
   // TODO: Get data and populate the array
-  let campaignData: Campaign[] = [{
-    name: "Linux Administrator",
-    location: "Petaling Jaya, Selangor, Malaysia",
-    type: "IT, Software & Digital",
-    exprienceRequirement: "Experienced Professionals",
-    imageSource: "../src/assets/hilti-logo.png"
-  },
-  {
-    name: "Linux Administrator",
-    location: "Petaling Jaya, Selangor, Malaysia",
-    type: "IT, Software & Digital",
-    exprienceRequirement: "Experienced Professionals",
-    imageSource: "../src/assets/hilti-logo.png"
-  },
-  {
-    name: "Linux Administrator",
-    location: "Petaling Jaya, Selangor, Malaysia",
-    type: "IT, Software & Digital",
-    exprienceRequirement: "Experienced Professionals",
-    imageSource: "../src/assets/hilti-logo.png"
-  },
-  {
-    name: "Linux Administrator",
-    location: "Petaling Jaya, Selangor, Malaysia",
-    type: "IT, Software & Digital",
-    exprienceRequirement: "Experienced Professionals",
-    imageSource: "../src/assets/hilti-logo.png"
-  },
-  {
-    name: "Linux Administrator",
-    location: "Petaling Jaya, Selangor, Malaysia",
-    type: "IT, Software & Digital",
-    exprienceRequirement: "Experienced Professionals",
-    imageSource: "../src/assets/hilti-logo.png"
-  }
-  ];
+  useEffect(() => {
+    const fetchData = async () => {
+      const results = await getAll();
+      setCampaigns(results);
+      // TODO: Get data and calculate total number of pages needed (6 campaigns per page)
+      const totalPagesCalculated = Math.ceil(results.length / campaignsPerPage);
+      setTotalPages(totalPagesCalculated);
+    };
+    fetchData();
+  }, []);
 
-  const [currentPageIndex, setCurrentPageIndex] = useState(0);
-  // TODO: Get data and calculate total number of pages needed (6 campaigns per page)
-  const totalPages = 3;
-
-  return (
-    <div className="h-screen w-screen absolute flex flex-col">
+    return (
+    <>
+      {!cookiesAccepted && <CookiesPopup onAccept={handleAcceptCookies} />}
+      <div className="h-screen w-screen absolute flex flex-col">
       <UserNavBar activeIndex={0} />
       <div className="main-container w-full flex flex-col items-center pl-28 pr-28">
         <div className="w-full h-10 flex justify-between relative fixed mt-5">
@@ -145,9 +173,13 @@ function UserHomePage() {
             </button>
           </div>
         </div>
-        <div className="home-main-container overflow-y-auto mt-10">
+        <div className="home-main-container overflow-auto mt-10">
           <div className="h-auto home-grid">
-            {campaignData.map((campaign, i) => <Card name={campaign.name} location={campaign.location} type={campaign.type} experienceRequirement={campaign.exprienceRequirement} imageSrc={campaign.imageSource}/>)}
+            {campaigns.map((campaign, index) => (
+              <div key={index}>
+                <Card name={campaign.name} location={campaign.location} type={campaign.department} experienceRequirement={campaign.requirement} imageSrc={campaign.image}/>
+              </div>
+            ))}
           </div>
         </div>
         <div className="fixed absolute bottom-10">
@@ -155,6 +187,7 @@ function UserHomePage() {
         </div>
       </div>
     </div>
+    </>
   );
 }
 

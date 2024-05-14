@@ -43,6 +43,12 @@ function SignUp() {
 		}
 	};
 
+	const [isChecked, setIsChecked] = useState(false);
+
+	const handleCheckboxChange = (event) => {
+	  setIsChecked(event.target.checked);
+	};
+
 	return (
 		<div className="bg-slate-200 h-full w-full absolute flex justify-center items-center">
 			<div className="w-4/6 h-4/6 flex justify-center items-center">
@@ -68,14 +74,18 @@ function SignUp() {
 								required></input>
 						</div>
 						<div className="w-full mt-5 flex items-start">
-							<input className="mt-1 h-full" type="checkbox"></input>
+							<input className="mt-1 h-full" type="checkbox" checked={isChecked} onChange={handleCheckboxChange}></input>
 							<span className="ml-2 text-sm">
-								I have read and agreed to the terms and conditions
+								I have read and agreed to the {' '}
+								<a href="https://cloudmails-my.sharepoint.com/:w:/g/personal/tp060751_mail_apu_edu_my/EYppO4IvYUlEmmXwNvz5ghkBd3qS3-Ia9_XtJwUgvGVq_Q" className="text-blue-500 hover:underline">
+									terms and conditions
+								</a>
 							</span>
 						</div>
 						<button
 							type="submit"
-							className="w-full h-10 mt-10 bg-red-700 flex justify-content items-center">
+							disabled={!isChecked}
+							className={`w-full h-10 mt-10 bg-red-700 flex justify-content items-center ${!isChecked ? 'opacity-50 cursor-not-allowed' : ''}`}>
 							<span className="w-full text-center text-white cursor-pointer">Create Account</span>
 						</button>
 						<div className="mt-10 flex justify-center">
