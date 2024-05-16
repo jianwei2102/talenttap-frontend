@@ -12,7 +12,6 @@ import AdminDashboardPage from "./pages/admin/AdminDashboardPage.tsx";
 import UserHomePage from "./pages/candidate/UserHomePage.tsx";
 import UserFeedbackPage from "./pages/candidate/UserFeedbackPage.tsx";
 import UserTechnicalAssessmentQuestionPage from "./pages/candidate/UserTechnicalAssessmentQuestionPage.tsx";
-import UserHiringManagerInterviewPage from "./pages/candidate/UserHiringManagerInterviewPage.tsx";
 import UserAssessmentSubmissionCompletedPage from "./pages/candidate/UserAssessmentSubmissionCompletedPage.tsx";
 import Interview from "./pages/candidate/Interview/Interview.tsx";
 import GeneralInterview from "./pages/candidate/GeneralInterview.tsx";
@@ -33,7 +32,6 @@ function App() {
                 <Route path="/feedback" element={<UserFeedbackPage/>}/>
                 <Route path="/typing-assessment" element={<TypingAssessmentPage/>}/>
                 <Route path="/technical" element={<UserTechnicalAssessmentQuestionPage/>}/>
-                <Route path="/hiring-manager-interview-schedule" element={<UserHiringManagerInterviewPage/>}/>
                 <Route path="/submission-completed" element={<UserAssessmentSubmissionCompletedPage/>}/>
                 <Route path="/admin" element={<AdminDashboardPage/>}/>
                 <Route path="/campaign-list" element={<CampaignListPage/>}/>

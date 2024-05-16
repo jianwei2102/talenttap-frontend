@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Modal from "react-bootstrap/Modal";
 import { FileUploader, CustomButton } from "..";
+import HiringManagerInterviewSchedulingModal from "../../pages/candidate/Interview/HiringManagerInterviewSchedulingModal.tsx";
 
 const PopUpModal = ({ title }) => {
 	const [show, setShow] = useState(false);
@@ -120,7 +121,7 @@ const PopUpModal = ({ title }) => {
 								maxLength={300}
 							></textarea>
 							<div className="float-right">{textLength} / 300 characters</div>
-							
+
 							<div className="w-full mt-5 flex items-start">
 								<input className="mt-1 h-full" type="checkbox" checked={isChecked} onChange={handleCheckboxChange}></input>
 								<span className="ml-2 text-sm">
@@ -175,6 +176,26 @@ const PopUpModal = ({ title }) => {
 									process in HILTI and will not be shared with third parties.
 								</p>
 								<CustomButton title={"I Understand"} customFunction={handleClose} />
+							</div>
+						</div>
+					</Modal.Body>
+				</Modal>
+			)}
+
+			{/* Hiring Manager Interview Scheduling Modal - PopUp Modal */}
+			{title === "Schedule Interview" && (
+				<Modal centered show={show} onHide={handleClose} scrollable={true}>
+					<Modal.Body>
+						<div className="flex flex-col">
+							<div className="flex justify-end items-end">
+								<button
+									type="button"
+									className="btn-close"
+									aria-label="Close"
+									onClick={() => handleClose()}></button>
+							</div>
+							<div className="h-[36rem] flex justify-center items-center">
+								<HiringManagerInterviewSchedulingModal />
 							</div>
 						</div>
 					</Modal.Body>
