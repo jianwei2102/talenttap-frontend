@@ -48,7 +48,7 @@ const FileUploader = () => {
               src={require("../../assets/resume.png")}
               alt="Resume Icon"
             ></img>
-            <p className="mt-1">Browse Files to Upload Resume</p>
+            <p className="mt-1">Browse Files to Upload the Documents</p>
           </>
         )}
       </div>

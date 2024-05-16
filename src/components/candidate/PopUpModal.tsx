@@ -1,13 +1,19 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Modal from "react-bootstrap/Modal";
 import { FileUploader, CustomButton } from "..";
 
 const PopUpModal = ({ title }) => {
 	const [show, setShow] = useState(false);
 	const [textLength, setTextLength] = useState(0);
+	const [visa, setVisa] = useState("Yes");
+	const [referral, setReferral] = useState("No");
 
 	const handleClose = () => setShow(false);
 	const handleShow = () => setShow(true);
+
+	useEffect(() => {
+
+	})
 
 	return (
 		<>
@@ -15,21 +21,103 @@ const PopUpModal = ({ title }) => {
 
 			{/* CVSCreening - PopUp Modal */}
 			{title === "Start Application" && (
-				<Modal centered size="lg" show={show} onHide={handleClose}>
+				<Modal centered size="lg" show={show} onHide={handleClose} scrollable={true}>
 					<Modal.Header closeButton>
 						<Modal.Title>Application Form</Modal.Title>
 					</Modal.Header>
 					<Modal.Body className="flex flex-col">
 						<form className="m-2" action="">
-							<div>
+
+							{/* Resume */}
+							<div className="mb-2">
 								<span className="font-semibold">Add Resume</span> (*.pdf)
 							</div>
 							<FileUploader />
 
-							<div className="mt-4 font-semibold">Highlight why you apply for this job</div>
+							{/* Work Permit/Visa */}
+							<div className="mt-4 font-semibold">Do you have the permit to work in Malaysia?</div>
+							<div className="flex items-center mt-2">
+								<input onChange={(e) => setVisa(e.currentTarget.value)} id="visa-yes" type="radio" name="visa" value="Yes" className="h-4 w-4 border-gray-300 focus:ring-2 focus:ring-blue-300" aria-labelledby="visa-yes" aria-describedby="visa-yes" />
+								<label htmlFor="visa-yes" className="text-sm font-medium text-gray-900 ml-2 block">
+									Yes
+								</label>
+
+								<input onChange={(e) => setVisa(e.currentTarget.value)} id="visa-no" type="radio" name="visa" value="No" className="ml-4 h-4 w-4 border-gray-300 focus:ring-2 focus:ring-blue-300" aria-labelledby="visa-no" aria-describedby="visa-no" />
+								<label htmlFor="visa-no" className="text-sm font-medium text-gray-900 ml-2 block">
+									No
+								</label>
+							</div>
+
+							{visa == "No" && (
+								<div className="ml-8">
+									<div className="mb-2 mt-4">
+										<span className="font-semibold">Add Supporting Documents for Work Visa/Permit</span> (*.pdf)
+									</div>
+									<FileUploader />
+								</div>
+							)}
+
+							{/* Referral */}
+							<div className="mt-4 font-semibold">Do you know anyone who is currently working in Hilti?</div>
+							<div className="flex items-center mt-2">
+								<input onChange={(e) => { setReferral(e.currentTarget.value); console.log(e.currentTarget.value) }} id="referral-yes" type="radio" name="referral" value="Yes" className="h-4 w-4 border-gray-300 focus:ring-2 focus:ring-blue-300" aria-labelledby="referral-yes" aria-describedby="referral-yes" />
+								<label htmlFor="referral-yes" className="text-sm font-medium text-gray-900 ml-2 block">
+									Yes
+								</label>
+
+								<input onChange={(e) => { setReferral(e.currentTarget.value); console.log(e.currentTarget.value) }} id="referral-no" type="radio" name="referral" value="No" className="ml-4 h-4 w-4 border-gray-300 focus:ring-2 focus:ring-blue-300" aria-labelledby="referral-no" aria-describedby="referral-no" />
+								<label htmlFor="referral-no" className="text-sm font-medium text-gray-900 ml-2 block">
+									No
+								</label>
+							</div>
+
+							{referral == "Yes" && (
+								<div className="ml-8">
+									<div className="mt-4">
+										<label htmlFor="referral-name" className="text-sm font-medium text-gray-900 mb-2">
+											Referral Name
+										</label>
+										<input
+											type="text"
+											name="referral-name"
+											id="referral-name"
+											className="w-full border-2 border-gray-300 rounded-md p-2"
+										/>
+									</div>
+									<div className="mt-4">
+										<label htmlFor="referral-email" className="text-sm font-medium text-gray-900 mb-2">
+											Referral Work Email
+										</label>
+										<input
+											type="text"
+											name="referral-email"
+											id="referral-email"
+											className="w-full border-2 border-gray-300 rounded-md p-2"
+										/>
+									</div>
+									<div className="mt-4">
+										<label htmlFor="referral-relationship" className="text-sm font-medium text-gray-900 mb-2">
+											Relationship
+										</label>
+										<input
+											type="text"
+											name="referral-relationship"
+											id="referral-relationship"
+											className="w-full border-2 border-gray-300 rounded-md p-2"
+											placeholder="Parent, Sibling, Friend, etc."
+										/>
+									</div>
+								</div>
+							)}
+
+							{/* Why Apply This Job */}
+							<div className="mt-8 mb-2 font-semibold">Highlight why you apply for this job</div>
 							<textarea
 								className="w-full border-2 border-gray-300 rounded-md resize-none h-24 p-2"
-								onChange={(event) => setTextLength(event.target.value.length)}></textarea>
+								onChange={(event) => setTextLength(event.target.value.length)}
+								placeholder="Type here..."
+								maxLength={300}
+							></textarea>
 							<div className="float-right">{textLength} / 300 characters</div>
 						</form>
 					</Modal.Body>

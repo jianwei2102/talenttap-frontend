@@ -18,7 +18,7 @@ const InterviewStepBar = ({ interviews = [], initialActiveStep = 1 }: Props) => 
 
   const totalSteps = interviews.length;
 
-  const width = `${(100 / (totalSteps - 1)) * (activeStep - 1)}%`;
+  const width = `${(100 / (totalSteps - 1)) * (activeStep)}%`;
 
   return (
     <div className="w-full max-w-6xl lg:max-w-screen-2xl h-32 mx-auto px-4">

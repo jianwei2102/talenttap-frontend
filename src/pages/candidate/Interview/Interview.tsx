@@ -13,6 +13,7 @@ import SkillAssessmentInfo from "./SkillAssessmentInfo.tsx";
 import HiringManagerInterviewInfo from "./HiringManagerInterviewInfo.tsx";
 
 const CAMPAIGN_ID = 1;
+const ACTIVE_INDEX = 0;
 
 const Interview = () => {
   const navigate = useNavigate();
@@ -38,7 +39,7 @@ const Interview = () => {
     setRequirement(campaign.requirement);
     setEndDate(campaign.endDate.split("T")[0]);
 
-    const cvScreening = new InterviewData(0, "", 3 , 7, new Date(), new Date(), "Admin", "CV Screening");
+    const cvScreening = new InterviewData(0, "", 3 , 7, new Date(), new Date(), "Admin", "CV & Visa Checking");
     let interviewSteps: InterviewData[] = [cvScreening];
 
     for (const i of generalInterviews) {
@@ -60,7 +61,7 @@ const Interview = () => {
   useEffect(() => {
     (async () => {
       await fetchCampaign();
-      setActiveIndex(3); // Modify interview stage
+      setActiveIndex(ACTIVE_INDEX); // Modify interview stage
     })();
   }, []);
 
