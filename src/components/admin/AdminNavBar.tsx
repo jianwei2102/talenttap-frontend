@@ -9,18 +9,18 @@ interface UserNavBarProps {
 const AdminNavBar = ({ activeIndex }: UserNavBarProps) => {
   const navigate = useNavigate();
 
-  const goToHomePage = () => {
-    navigate("/home");
+  const goToDashboardPage = () => {
+    navigate("/admin");
     activeIndex = 0;
   };
 
-  const goToProfilePage = () => {
-    navigate("/profile");
+  const goToCampaignListPage = () => {
+    navigate("/campaign-list");
     activeIndex = 1;
   };
 
-  const goToFeedbackPage = () => {
-    navigate("/feedback");
+  const goToReportsPage = () => {
+    // navigate("/feedback");
     activeIndex = 2;
   };
 
@@ -44,24 +44,24 @@ const AdminNavBar = ({ activeIndex }: UserNavBarProps) => {
               ? "nav-item nav-item-active mr-20"
               : "nav-item mr-20"
           } onClick={goToLoginPage}>
-          Dashboard
+          Logout
         </div>
         <div
           className={
             activeIndex === 2 ? "nav-item nav-item-active" : "nav-item"
-          } onClick={goToFeedbackPage}>
-          Campaign
-        </div>
-        <div
-          className={
-            activeIndex === 1 ? "nav-item nav-item-active" : "nav-item"
-          } onClick={goToProfilePage}>
+          } onClick={goToReportsPage}>
           Reports
         </div>
         <div
           className={
+            activeIndex === 1 ? "nav-item nav-item-active" : "nav-item"
+          } onClick={goToCampaignListPage}>
+          Campaign
+        </div>
+        <div
+          className={
             activeIndex === 0 ? "nav-item nav-item-active" : "nav-item"
-          } onClick={goToHomePage}>
+          } onClick={goToDashboardPage}>
           Dashboard
         </div>
       </div>

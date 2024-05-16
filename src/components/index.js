@@ -6,3 +6,4 @@ export { default as FileUploader } from './candidate/FileUploader.tsx';
 export { default as PopUpModal } from './candidate/PopUpModal.tsx';
 export { default as Recorder } from './candidate/Recorder.tsx';
 export { default as CustomButton } from './CustomButton.tsx';
+export { default as CustomToggle} from './CustomDropdownToggle.tsx';

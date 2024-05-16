@@ -17,6 +17,8 @@ import UserAssessmentSubmissionCompletedPage from "./pages/candidate/UserAssessm
 import Interview from "./pages/candidate/Interview/Interview.tsx";
 import GeneralInterview from "./pages/candidate/GeneralInterview.tsx";
 import GeneralQuestion from "./pages/candidate/GeneralQuestion.tsx";
+import CampaignListPage from "./pages/admin/CampaignListPage.tsx";
+import CreateCampaignPage from "./pages/admin/CreateCampaignPage.tsx";
 import TypingAssessmentPage from "./pages/candidate/TypingAssessmentPage.tsx";
 import SkillAssessmentResultPage from "./pages/admin/SkillAssessmentResultPage.tsx";
 
@@ -34,6 +36,8 @@ function App() {
                 <Route path="/hiring-manager-interview-schedule" element={<UserHiringManagerInterviewPage/>}/>
                 <Route path="/submission-completed" element={<UserAssessmentSubmissionCompletedPage/>}/>
                 <Route path="/admin" element={<AdminDashboardPage/>}/>
+                <Route path="/campaign-list" element={<CampaignListPage/>}/>
+                <Route path="/create-campaign" element={<CreateCampaignPage />}/>
                 <Route path="/skill-assessment-result" element={<SkillAssessmentResultPage/>}/>
                 <Route path="/" element={<SignIn/>}/>
                 <Route path="/interview" element={<Interview/>}/>

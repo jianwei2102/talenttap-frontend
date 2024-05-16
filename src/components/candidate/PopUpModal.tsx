@@ -5,15 +5,16 @@ import { FileUploader, CustomButton } from "..";
 const PopUpModal = ({ title }) => {
 	const [show, setShow] = useState(false);
 	const [textLength, setTextLength] = useState(0);
+	const [isChecked, setIsChecked] = useState(false);
 	const [visa, setVisa] = useState("Yes");
 	const [referral, setReferral] = useState("No");
 
 	const handleClose = () => setShow(false);
 	const handleShow = () => setShow(true);
 
-	useEffect(() => {
-
-	})
+	const handleCheckboxChange = (event) => {
+	  setIsChecked(event.target.checked);
+	};
 
 	return (
 		<>
@@ -119,12 +120,24 @@ const PopUpModal = ({ title }) => {
 								maxLength={300}
 							></textarea>
 							<div className="float-right">{textLength} / 300 characters</div>
+							
+							<div className="w-full mt-5 flex items-start">
+								<input className="mt-1 h-full" type="checkbox" checked={isChecked} onChange={handleCheckboxChange}></input>
+								<span className="ml-2 text-sm">
+									I have read and agreed to the {' '}
+									<a href="https://cloudmails-my.sharepoint.com/:w:/g/personal/tp060751_mail_apu_edu_my/EYppO4IvYUlEmmXwNvz5ghkBd3qS3-Ia9_XtJwUgvGVq_Q" className="text-blue-500 hover:underline">
+										Hilti recruitment and hiring privacy statement
+									</a>
+								</span>
+							</div>
 						</form>
 					</Modal.Body>
 					<Modal.Footer>
 						<button
-							className="h-9 w-24 bg-red-500 text-white rounded-md text-lg"
-							onClick={handleClose}>
+							className={`h-9 w-24 bg-red-500 text-white rounded-md text-lg ${!isChecked ? 'opacity-50 cursor-not-allowed' : ''}`}
+							onClick={handleClose}
+							disabled={!isChecked}
+						>
 							Apply
 						</button>
 					</Modal.Footer>
