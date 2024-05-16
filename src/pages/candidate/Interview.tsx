@@ -36,7 +36,7 @@ const Interview = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const campaign = await getSpecific(6);
+      const campaign = await getSpecific(2);
       setName(campaign.name);
       setJobFunction(campaign.jobDescription);
       setRequirements(campaign.requirement);
