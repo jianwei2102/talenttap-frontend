@@ -25,7 +25,7 @@ function UserTechnicalAssessmentQuestionPage() {
 
 	// TODO: Get questions from campaign (start)
 
-	useEffect (() => {
+	useEffect(() => {
 
 		TechnicalAssessmentAPI.get(SKILL_ASSESSMENT_ID).then((response) => {
 			console.log(response);
@@ -53,7 +53,9 @@ function UserTechnicalAssessmentQuestionPage() {
 							maxCharacterAnswer: question.maxCharacterAnswer,
 							answer: "",
 							timeSpent: 0,
-							numAttempts: 0
+							numAttempts: 0,
+							positiveKeywords: [],
+							negativeKeywords: []
 						}]
 					});
 				} else { // section already exists
@@ -66,7 +68,9 @@ function UserTechnicalAssessmentQuestionPage() {
 						maxCharacterAnswer: question.maxCharacterAnswer,
 						answer: "",
 						timeSpent: 0,
-						numAttempts: 0
+						numAttempts: 0,
+						positiveKeywords: [],
+						negativeKeywords: []
 					});
 				}
 			});
@@ -249,7 +253,7 @@ function UserTechnicalAssessmentQuestionPage() {
 			<div className="h-full w-3/4 bg-white p-5 mr-5">
 				<span className="text-3xl font-bold">
 					{
-					String.fromCharCode(65 + activeSectionIndex) +
+						String.fromCharCode(65 + activeSectionIndex) +
 						". " +
 						currentQuestionLists[activeSectionIndex]?.sectionName}
 				</span>

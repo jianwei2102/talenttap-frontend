@@ -39,7 +39,7 @@ const InterviewStepBar = ({ interviews = [], initialActiveStep = 1 }: Props) => 
                   <FaCheck />
                 </div>
               ) : (
-                <span className="text-lg">{sequence}</span>
+                <span className="text-lg">{sequence + 1}</span>
               )}
             </div>
 
