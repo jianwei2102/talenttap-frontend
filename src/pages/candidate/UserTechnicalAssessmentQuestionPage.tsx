@@ -249,7 +249,7 @@ function UserTechnicalAssessmentQuestionPage() {
 	};
 
 	return (
-		<div className="h-screen w-screen flex justify-between p-20 bg-slate-200">
+		<div className="h-screen w-screen flex justify-between p-20 bg-gray-200">
 			<div className="h-full w-3/4 bg-white p-5 mr-5">
 				<span className="text-3xl font-bold">
 					{

@@ -113,7 +113,7 @@ function TypingAssessmentPage() {
 	}, []);
 
 	return (
-		<div className="h-screen w-screen flex p-20 bg-slate-200 justify-center align-center">
+		<div className="h-screen w-screen flex p-20 bg-gray-200 justify-center align-center">
 
 			<Card className="max-w-full w-[650px] border p-5" color="white" placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
 				<h3>Typing Speed Test</h3>

@@ -26,7 +26,7 @@ export default function GraphCard() {
         <h1 className="text-2xl font-bold mb-10">Recruitment Drives</h1>
         <select
           id="countries"
-          className="block w-[30%] p-2 mb-6 text-sm text-gray-900 border border-gray-300 rounded-lg bg-slate-50 focus:ring-blue-500 focus:border-blue-500 "
+          className="block w-[30%] p-2 mb-6 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 "
           onChange={(e) => {
             setChartType(e.target.value);
           }}

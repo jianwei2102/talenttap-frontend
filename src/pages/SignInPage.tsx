@@ -52,7 +52,7 @@ function SignIn() {
 	};
 
 	return (
-		<div className="bg-slate-200 h-full w-full absolute flex justify-center items-center">
+		<div className="bg-gray-200 h-full w-full absolute flex justify-center items-center">
 			<div className="w-4/6 h-4/6 flex justify-center items-center">
 				<div className="inherit h-full w-1/2 bg-white border rounded-l-md flex justify-center items-center">
 					<form className="relative h-3/4 w-5/6 block" onSubmit={handleSubmit}>

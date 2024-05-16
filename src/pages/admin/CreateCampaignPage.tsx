@@ -1583,7 +1583,7 @@ function CreateCampaignPage() {
 	};
 
 	return (
-		<div className="h-screen w-screen flex flex-col bg-slate-200">
+		<div className="h-screen w-screen flex flex-col bg-gray-200">
 			<AdminNavBar activeIndex={-1} />
 			<div className="main-container py-10 px-24">
 				<span className="text-red-700 font-bold text-5xl">Create A New Campaign</span>

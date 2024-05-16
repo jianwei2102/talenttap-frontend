@@ -3,9 +3,10 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import QuestionSection from "../../models/QuestionSection";
 import Question from "../../models/Question";
-import { TechnicalAssessmentAPI } from "../../api/technicalAssessmentAPI.ts";
+import { TechnicalAssessmentResultAPI } from "../../api/technicalAssessmentResultAPI.ts";
 
 const SKILL_ASSESSMENT_ID = 1;
+const CANDIDATE_ID = 1;
 
 interface QuestionSectionCardProps {
     questionSection: QuestionSection;
@@ -23,15 +24,16 @@ interface QuestionCardProps {
 function SkillAssessmentResultPage() {
     const navigate = useNavigate();
 
-    // TODO: Get questions from campaign (start)
-
     useEffect(() => {
 
-        TechnicalAssessmentAPI.get(SKILL_ASSESSMENT_ID).then((response) => {
+        TechnicalAssessmentResultAPI.get(SKILL_ASSESSMENT_ID, CANDIDATE_ID).then((response) => {
             console.log(response);
 
+            let totalScore = 0;
+
             let sections: QuestionSection[] = [];
-            response.forEach(question => {
+            response.forEach(answer => {
+                const question = answer.question;
 
                 let sectionIndex = -1;
                 for (let i = 0; i < sections.length; i++) {
@@ -40,7 +42,7 @@ function SkillAssessmentResultPage() {
                     }
                 }
 
-                // TODO: keywords
+                totalScore += answer.scorePercentage;
 
                 if (sectionIndex === -1) { // section does not exist
                     sections.push({
@@ -53,11 +55,12 @@ function SkillAssessmentResultPage() {
                             hint: question.hint,
                             allowedTimeSeconds: question.allowedTimeSeconds,
                             maxCharacterAnswer: question.maxCharacterAnswer,
-                            answer: "",
+                            answer: answer.answer,
                             timeSpent: 0,
                             numAttempts: 0,
-                            positiveKeywords: [],
-                            negativeKeywords: []
+                            positiveKeywords: question.keywords.filter(keyword => keyword.valueSign === "positive"),
+                            negativeKeywords: question.keywords.filter(keyword => keyword.valueSign === "negative"),
+                            scorePercentage: answer.scorePercentage
                         }]
                     });
                 } else { // section already exists
@@ -68,17 +71,19 @@ function SkillAssessmentResultPage() {
                         hint: question.hint,
                         allowedTimeSeconds: question.allowedTimeSeconds,
                         maxCharacterAnswer: question.maxCharacterAnswer,
-                        answer: "",
+                        answer: answer.answer,
                         timeSpent: 0,
                         numAttempts: 0,
-                        positiveKeywords: [],
-                        negativeKeywords: []
+                        positiveKeywords: question.keywords.filter(keyword => keyword.valueSign === "positive"),
+                        negativeKeywords: question.keywords.filter(keyword => keyword.valueSign === "negative"),
+                        scorePercentage: answer.scorePercentage
                     });
                 }
             });
 
             console.log("sections: ", sections);
             setCurrentQuestionLists(sections);
+            setOverallScore(totalScore / response.length);
         });
 
     }, []);
@@ -90,8 +95,7 @@ function SkillAssessmentResultPage() {
     const [isLastQuestion, setIsLastQuestion] = useState(false);
     const [currentQuestionAnswer, setCurrentQuestionAnswer] = useState("");
     const [currentQuestionLists, setCurrentQuestionLists] = useState<QuestionSection[]>([]);
-
-    const [startTime, setStartTime] = useState<number>(Date.now());
+    const [overallScore, setOverallScore] = useState(0);
 
     const previousHandle = () => {
         let newQuestionIndex = activeQuestionIndex;
@@ -102,21 +106,24 @@ function SkillAssessmentResultPage() {
         if (newQuestionIndex == 0) {
             newSectionIndex = activeSectionIndex - 1;
             newQuestionIndex = currentQuestionLists[newSectionIndex].questionList.length - 1;
-
-            if (newSectionIndex == 0 && newQuestionIndex == 0) {
-                setIsFirstQuestion(true);
-            }
         } else {
             newQuestionIndex -= 1;
+        }
+
+        if (newSectionIndex == 0 && newQuestionIndex == 0) {
+            console.log("first question");
+            isFirstQuestion = true;
         }
 
         setActiveQuestionIndex(newQuestionIndex);
         setActiveSectionIndex(newSectionIndex);
         setIsFirstQuestion(isFirstQuestion);
+        setIsLastQuestion(false);
 
         setCurrentQuestionAnswer(
             currentQuestionLists[newSectionIndex].questionList[newQuestionIndex].answer
         );
+
         setCurrentCharacterNum(currentQuestionLists[newSectionIndex].questionList[newQuestionIndex].answer.length);
     };
 
@@ -131,17 +138,18 @@ function SkillAssessmentResultPage() {
             newSectionIndex = activeSectionIndex + 1;
         } else {
             newQuestionIndex += 1;
+        }
 
-            if (
-                newQuestionIndex + 1 >= currentQuestionLists[activeSectionIndex].questionList.length &&
-                newSectionIndex + 1 >= currentQuestionLists.length
-            ) {
-                lastQuestion = true;
-            }
+        if (
+            newQuestionIndex + 1 >= currentQuestionLists[activeSectionIndex].questionList.length &&
+            newSectionIndex + 1 >= currentQuestionLists.length
+        ) {
+            lastQuestion = true;
         }
 
         setActiveQuestionIndex(newQuestionIndex);
         setActiveSectionIndex(newSectionIndex);
+        setIsFirstQuestion(false);
         setIsLastQuestion(lastQuestion);
 
         setCurrentQuestionAnswer(
@@ -153,12 +161,6 @@ function SkillAssessmentResultPage() {
     const quitHandle = () => {
         // go back last page
         navigate(-1);
-    };
-
-    const answerCharacterNumberHandle = (event) => {
-        let currentCharacters: string = event.target.value;
-        setCurrentCharacterNum(currentCharacters.length);
-        setCurrentQuestionAnswer(currentCharacters);
     };
 
     const QuestionSectionCard = (section: QuestionSectionCardProps) => {
@@ -203,27 +205,34 @@ function SkillAssessmentResultPage() {
                 setIsLastQuestion(false);
             }
 
+            if (questionCard.sectionIndex === 0 && questionCard.questionIndex === 0) {
+                setIsFirstQuestion(true);
+            } else {
+                setIsFirstQuestion(false);
+            }
+
             setCurrentQuestionAnswer(
                 currentQuestionLists[newSectionIndex].questionList[newQuestionIndex].answer
             );
             setCurrentCharacterNum(currentQuestionLists[newSectionIndex].questionList[newQuestionIndex].answer.length);
-
-            setStartTime(Date.now());
         };
 
         return (
             <div
-                className="flex items-center pt-1 pb-1 cursor-pointer"
+                className="flex items-center justify-between pt-1 pb-1 cursor-pointer"
                 onClick={navigateToQuestionHandle}>
-                <input
-                    className="h-4 w-4 bg-gray-100 border-gray-300 rounded-md"
-                    type="checkbox"
-                    readOnly={true}
-                    checked={!questionCard.isEmpty}></input>
-                <span
-                    className={questionCard.isActive === true ? "text-sm ml-2 font-bold" : "text-sm ml-2"}>
-                    {questionCard.questionIndex + 1 + ". " + questionCard.question.title}
-                </span>
+                <div className="flex items-center">
+                    <input
+                        className="h-4 w-4 bg-gray-100 border-gray-300 rounded-md"
+                        type="checkbox"
+                        readOnly={true}
+                        checked={!questionCard.isEmpty}></input>
+                    <span
+                        className={questionCard.isActive === true ? "text-sm ml-2 font-bold" : "text-sm ml-2"}>
+                        {questionCard.questionIndex + 1 + ". " + questionCard.question.title}
+                    </span>
+                </div>
+                <span>{questionCard.question.scorePercentage}%</span>
             </div>
         );
     };
@@ -316,9 +325,14 @@ function SkillAssessmentResultPage() {
                 </div>
 
                 {/* Question section */}
-                <div className="flex flex-col items-center bg-white p-5 rounded-xl shadow-md grow w-full">
-                    <span className="w-full text-lg font-bold text-center p-2">Questions</span>
-                    <div className="w-full overflow-auto">
+                <div className="flex flex-col items-center bg-white px-5 py-4 rounded-xl shadow-md grow w-full h-96">
+                    <span className=
+                        {
+                            "w-full text-3xl font-bold text-center p-2 " + (overallScore >= 70 ? "text-green-500" : overallScore >= 50 ? "text-yellow-500" : "text-red-500")
+                        }>
+                        {overallScore.toFixed(2)}%
+                    </span>
+                    <div className="w-full overflow-y-scroll">
                         {currentQuestionLists.map((section, index) => (
                             <QuestionSectionCard
                                 questionSection={section}
@@ -350,41 +364,66 @@ function SkillAssessmentResultPage() {
                             currentQuestionLists[activeSectionIndex]?.questionList[activeQuestionIndex].question}
                     </span>
                     <div className="h-full w-full p-5 flex flex-col">
-                        <textarea
-                            id="technical-assessment-answer-input"
-                            className="h-5/6 w-full border border-black rounded-sm p-2"
-                            rows={10}
-                            cols={50}
-                            onInput={answerCharacterNumberHandle}
-                            readOnly={true}
-                            value={currentQuestionAnswer}>
-                        </textarea>
+                        <p>{
+                            // highlight keywords in current answer
+                            currentQuestionAnswer.match(/\b(\w+)\b/g)?.map((word) => {
+                                console.log(word)
+                                let isPositive = false;
+                                let isNegative = false;
+
+                                currentQuestionLists[activeSectionIndex]?.questionList[
+                                    activeQuestionIndex
+                                ].positiveKeywords.forEach((keyword) => {
+                                    if (word.toLowerCase() === keyword.keyword.toLowerCase()) {
+                                        isPositive = true;
+                                    }
+                                });
+
+                                currentQuestionLists[activeSectionIndex]?.questionList[
+                                    activeQuestionIndex
+                                ].negativeKeywords.forEach((keyword) => {
+                                    if (word.toLowerCase() === keyword.keyword.toLowerCase()) {
+                                        isNegative = true;
+                                    }
+                                });
+
+                                return (
+                                    <span
+                                        className={
+                                            isPositive
+                                                ? "bg-green-300"
+                                                : isNegative
+                                                    ? "bg-red-300"
+                                                    : ""
+                                        }>
+                                        {word + " "}
+                                    </span>
+                                );
+                            }
+                            )
+                        }</p>
                         <div className="w-full flex justify-end pt-3">
                             {currentCharacterNum + "/ " + currentQuestionLists[activeSectionIndex]?.questionList[activeQuestionIndex].maxCharacterAnswer + " characters"}
                         </div>
 
                         <div className="flex justify-between">
-                        <button
-                            className=
-                            {
-                                "w-1/3 bg-red-700 flex items-center justify-center p-2 mt-5 " +
-                                isFirstQuestion ? "hidden" : "block"
-                            }
-                            onClick={previousHandle}>
-                            <svg className="h-5 w-5 text-white" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5541" width="200" height="200"><path d="M1024 448H243.2L601.6 89.6 512 0 0 512l512 512 89.6-89.6L243.2 576H1024v-128z" p-id="5542" fill="#ffffff"></path></svg>
-                            <span className="text-white ml-2">Previous Question</span>
-                        </button>
+                            <button
+                                className="w-1/3 bg-red-700 flex items-center justify-center p-2 mt-5"
+                                onClick={previousHandle}
+                                disabled={isFirstQuestion ? true : false}
+                            >
+                                <svg className="h-5 w-5 text-white" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5541" width="200" height="200"><path d="M1024 448H243.2L601.6 89.6 512 0 0 512l512 512 89.6-89.6L243.2 576H1024v-128z" p-id="5542" fill="#ffffff"></path></svg>
+                                <span className="text-white ml-2">Previous Question</span>
+                            </button>
 
-                        <button
-                            className=
-                            {
-                                "w-1/3 bg-red-700 flex items-center justify-center p-2 mt-5 " +
-                                isLastQuestion ? "hidden" : "block"
-                            }
-                            onClick={continueHandle}>
-                            <span className="text-white mr-2">Next Question</span>
-                            <svg className="h-5 w-5 text-white" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5327" width="200" height="200"><path d="M512 0l-89.6 89.6 358.4 358.4H0v128h780.8L422.4 934.4 512 1024l512-512z" p-id="5328" fill="#ffffff"></path></svg>
-                        </button>
+                            <button
+                                className="w-1/3 bg-red-700 flex items-center justify-center p-2 mt-5"
+                                onClick={continueHandle}
+                                disabled={isLastQuestion ? true : false}
+                            >
+                                <span className="text-white mr-2">Next Question</span>
+                                <svg className="h-5 w-5 text-white" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5327" width="200" height="200"><path d="M512 0l-89.6 89.6 358.4 358.4H0v128h780.8L422.4 934.4 512 1024l512-512z" p-id="5328" fill="#ffffff"></path></svg>
+                            </button>
                         </div>
                     </div>
                 </div>

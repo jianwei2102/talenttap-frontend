@@ -10,6 +10,7 @@ interface Question {
 	numAttempts: number;
 	positiveKeywords: string[];
 	negativeKeywords: string[];
+	scorePercentage: number;
 }
 
 export default Question;
