@@ -20,6 +20,7 @@ import GeneralQuestion from "./pages/candidate/GeneralQuestion.tsx";
 import CampaignListPage from "./pages/admin/CampaignListPage.tsx";
 import CreateCampaignPage from "./pages/admin/CreateCampaignPage.tsx";
 import TypingAssessmentPage from "./pages/candidate/TypingAssessmentPage.tsx";
+import BriefingVideo from "./pages/candidate/BriefingVideo.tsx";
 
 function App() {
     return (
@@ -41,6 +42,7 @@ function App() {
                 <Route path="/interview" element={<Interview/>}/>
                 <Route path="/general-interview" element={<GeneralInterview/>}/>
                 <Route path="/general-question" element={<GeneralQuestion/>}/>
+                <Route path="/briefing-video" element={<BriefingVideo/>}/>
             </Routes>
         </Router>
     );
