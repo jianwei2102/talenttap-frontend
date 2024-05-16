@@ -204,7 +204,7 @@ function CreateCampaignPage() {
 		}, [wasDragDropped]);
 
 		return (
-			<div ref={ref} className="w-full flex flex-col items-end">
+			<div ref={ref} className="tw-w-full tw-flex tw-flex-col tw-items-end">
 				{campaignInterviewComponentList.map((component, index) => (
 					<InterviewComponentStepCard
 						interviewType={component.type}
@@ -230,7 +230,7 @@ function CreateCampaignPage() {
 		return (
 			<div
 				ref={drop}
-				className="w-[90%] border-gray-400 border-2 border-dashed p-2 mt-3 text-center">
+				className="tw-w-[90%] tw-border-gray-400 tw-border-2 tw-border-dashed tw-p-2 tw-mt-3 tw-text-center">
 				Drag and drop to add interview components!
 			</div>
 		);
@@ -280,13 +280,13 @@ function CreateCampaignPage() {
 				ref={ref}
 				className={
 					activeSubComponentIndex === index
-						? "w-[90%] flex items-center rounded-3xl p-2 mt-3 bg-red-700 text-white"
-						: "w-[90%] flex items-center rounded-3xl p-2 mt-3 bg-white border border-black text-black"
+						? "tw-w-[90%] tw-flex tw-items-center tw-rounded-3xl tw-p-2 tw-mt-3 tw-bg-red-700 tw-text-white"
+						: "tw-w-[90%] tw-flex tw-items-center tw-rounded-3xl tw-p-2 tw-mt-3 tw-bg-white tw-border tw-border-black tw-text-black"
 				}
 				draggable
 				onClick={handleInterviewComponentStepCardClick}>
 				<svg
-					className="h-full w-auto"
+					className="tw-h-full tw-w-auto"
 					width="24"
 					height="24"
 					viewBox="0 0 24 24"
@@ -304,8 +304,8 @@ function CreateCampaignPage() {
 				<div
 					className={
 						activeSubComponentIndex === index
-							? "h-full w-auto ml-0.5 text-white"
-							: "h-full w-auto ml-0.5 text-black"
+							? "tw-h-full tw-w-auto tw-ml-0.5 tw-text-white"
+							: "tw-h-full tw-w-auto tw-ml-0.5 tw-text-black"
 					}>
 					{interviewType === "General Interview" ? (
 						<GeneralInterviewIcon />
@@ -315,7 +315,7 @@ function CreateCampaignPage() {
 						<HiringManagerInterviewIcon />
 					)}
 				</div>
-				<span className="text-sm ml-1.5">{name}</span>
+				<span className="tw-text-sm tw-ml-1.5">{name}</span>
 			</button>
 		);
 	};
@@ -335,11 +335,11 @@ function CreateCampaignPage() {
 		return (
 			<button
 				ref={drag}
-				className="w-full flex items-center justify-between rounded-3xl p-2 mt-3 bg-white border border-black text-black"
+				className="tw-w-full tw-flex tw-items-center tw-justify-between tw-rounded-3xl tw-p-2 tw-mt-3 tw-bg-white tw-border tw-border-black tw-text-black"
 				draggable={true}>
-				<div className="flex items-center">
+				<div className="tw-flex tw-items-center">
 					<svg
-						className="h-full w-auto"
+						className="tw-h-full tw-w-auto"
 						width="24"
 						height="24"
 						viewBox="0 0 24 24"
@@ -354,7 +354,7 @@ function CreateCampaignPage() {
 						<circle cx="15" cy="5" r="1" /> <circle cx="15" cy="12" r="1" />{" "}
 						<circle cx="15" cy="19" r="1" />
 					</svg>
-					<div className="h-full w-auto ml-1 text-black">
+					<div className="tw-h-full tw-w-auto tw-ml-1 tw-text-black">
 						{interviewType === "General Interview" ? (
 							<GeneralInterviewIcon />
 						) : interviewType === "Technical Assessment" ? (
@@ -363,9 +363,9 @@ function CreateCampaignPage() {
 							<HiringManagerInterviewIcon />
 						)}
 					</div>
-					<span className="ml-1.5">{interviewType}</span>
+					<span className="tw-ml-1.5">{interviewType}</span>
 				</div>
-				<div className="h-full w-auto flex justify-end items-center text-black">
+				<div className="tw-h-full tw-w-auto tw-flex tw-justify-end tw-items-center tw-text-black">
 					<InformationIcon />
 				</div>
 			</button>
@@ -494,92 +494,92 @@ function CreateCampaignPage() {
 		};
 
 		return (
-			<div className="h-auto flex flex-col">
-				<span className="font-bold text-3xl">Campaign Details</span>
-				<div className="bg-white rounded-xl shadown p-4 mt-3">
-					<span className="text-2xl">General Information</span>
-					<div className="h-0.5 bg-gray-400 mt-2 mb-3"></div>
-					<div className="w-full flex flex-col">
-						<span className="text-xl">Campaign Name</span>
+			<div className="tw-h-auto tw-flex tw-flex-col">
+				<span className="tw-font-bold tw-text-3xl">Campaign Details</span>
+				<div className="tw-bg-white tw-rounded-xl shadown tw-p-4 tw-mt-3">
+					<span className="tw-text-2xl">General Information</span>
+					<div className="tw-h-0.5 tw-bg-gray-400 tw-mt-2 tw-mb-3"></div>
+					<div className="tw-w-full tw-flex tw-flex-col">
+						<span className="tw-text-xl">Campaign Name</span>
 						<input
 							type="text"
-							className="w-full p-2 border border-black rounded-xl mt-1 focus:outline-none"
+							className="tw-w-full tw-p-2 tw-border tw-border-black tw-rounded-xl tw-mt-1 focus:tw-outline-none"
 							value={campaignName}
 							onChange={handleCampaignNameInputChange}></input>
 					</div>
-					<div className="w-full flex flex-col mt-3">
-						<span className="text-xl">Overview</span>
+					<div className="tw-w-full tw-flex tw-flex-col tw-mt-3">
+						<span className="tw-text-xl">Overview</span>
 						<textarea
-							className="w-full p-2 border border-black rounded-xl mt-1 focus:outline-none resize-none"
+							className="tw-w-full tw-p-2 tw-border tw-border-black tw-rounded-xl tw-mt-1 focus:tw-outline-none tw-resize-none"
 							rows={5}
 							cols={50}
 							value={overview}
 							onChange={handleOverviewInputChange}></textarea>
 					</div>
-					<div className="w-full flex flex-col mt-3">
-						<span className="text-xl">Requirement</span>
+					<div className="tw-w-full tw-flex tw-flex-col tw-mt-3">
+						<span className="tw-text-xl">Requirement</span>
 						<textarea
-							className="w-full p-2 border border-black rounded-xl mt-1 focus:outline-none resize-none"
+							className="tw-w-full tw-p-2 tw-border tw-border-black tw-rounded-xl tw-mt-1 focus:tw-outline-none tw-resize-none"
 							rows={5}
 							cols={50}
 							value={requirement}
 							onChange={handleRequirementInputChange}></textarea>
 					</div>
-					<div className="w-full flex flex-col mt-3">
-						<span className="text-xl">Image</span>
+					<div className="tw-w-full tw-flex tw-flex-col tw-mt-3">
+						<span className="tw-text-xl">Image</span>
 						{/* //TODO Add Image */}
 					</div>
 				</div>
-				<div className="bg-white rounded-xl shadow p-4 mt-3">
-					<span className="text-2xl">Settings</span>
-					<div className="h-0.5 bg-gray-400 mt-2 mb-3 flex flex-col"></div>
-					<div className="flex justify-between items-center py-2">
-						<div className="w-1/4 flex flex-col">
-							<span className="text-xl">Recruitment Headcount</span>
+				<div className="tw-bg-white tw-rounded-xl shadow tw-p-4 tw-mt-3">
+					<span className="tw-text-2xl">Settings</span>
+					<div className="tw-h-0.5 tw-bg-gray-400 tw-mt-2 tw-mb-3 tw-flex tw-flex-col"></div>
+					<div className="tw-flex tw-justify-between tw-items-center tw-py-2">
+						<div className="tw-w-1/4 tw-flex tw-flex-col">
+							<span className="tw-text-xl">Recruitment Headcount</span>
 							<input
 								type="number"
-								className="p-2 border border-black rounded-lg focus:outline-none"
+								className="tw-p-2 tw-border tw-border-black tw-rounded-lg focus:tw-outline-none"
 								value={recruitmentHeadcount}
 								onChange={handleRecruitmentHeadcountInputChange}></input>
 						</div>
-						<div className="w-4/6 flex flex-col">
-							<span className="w-full text-xl">Duration</span>
-							<div className="w-full flex">
+						<div className="tw-w-4/6 tw-flex tw-flex-col">
+							<span className="tw-w-full tw-text-xl">Duration</span>
+							<div className="tw-w-full tw-flex">
 								<DatePicker
-									className="w-full border border-black rounded-lg p-2"
+									className="tw-w-full tw-border tw-border-black tw-rounded-lg tw-p-2"
 									selected={startDuration}
 									onChange={handleStartDurationInputChange}
 								/>
-								<span className="w-1/6 text-center">-</span>
+								<span className="tw-w-1/6 tw-text-center">-</span>
 								<DatePicker
-									className="w-full border border-black rounded-lg p-2"
+									className="tw-w-full tw-border tw-border-black tw-rounded-lg tw-p-2"
 									selected={endDuration}
 									onChange={handleEndDurationInputChange}
 								/>
 							</div>
 						</div>
 					</div>
-					<div className="flex justify-between py-2 mt-3">
-						<div className="w-[45%] flex flex-col">
-							<span className="text-xl">Location</span>
+					<div className="tw-flex tw-justify-between tw-py-2 tw-mt-3">
+						<div className="tw-w-[45%] tw-flex tw-flex-col">
+							<span className="tw-text-xl">Location</span>
 							<input
 								type="text"
-								className="w-full p-2 border border-black rounded-lg focus:outline-none"
+								className="tw-w-full tw-p-2 tw-border tw-border-black tw-rounded-lg focus:tw-outline-none"
 								value={location}
 								onChange={handleLocationInputChange}></input>
 						</div>
-						<div className="w-[45%] flex flex-col">
-							<span className="text-xl">Work Flexibility</span>
+						<div className="tw-w-[45%] tw-flex tw-flex-col">
+							<span className="tw-text-xl">Work Flexibility</span>
 							<Dropdown onSelect={handleWorkFlexibilityInputChange}>
 								<Dropdown.Toggle
 									id="work-flexibility-dropdown"
 									as={CustomToggle}
-									className="w-full flex">
+									className="tw-w-full tw-flex">
 									{workFlexibility === "" ? "Please Select An Option" : workFlexibility}
 								</Dropdown.Toggle>
-								<Dropdown.Menu className="w-full">
+								<Dropdown.Menu className="tw-w-full">
 									{workFlexibilityList.map((item, index) => (
-										<Dropdown.Item className="w-full" eventKey={item}>
+										<Dropdown.Item className="tw-w-full" eventKey={item}>
 											{item}
 										</Dropdown.Item>
 									))}
@@ -587,27 +587,27 @@ function CreateCampaignPage() {
 							</Dropdown>
 						</div>
 					</div>
-					<div className="flex justify-between py-2 mt-3">
-						<div className="w-[45%] flex flex-col">
-							<span className="text-xl">Department</span>
+					<div className="tw-flex tw-justify-between tw-py-2 tw-mt-3">
+						<div className="tw-w-[45%] tw-flex tw-flex-col">
+							<span className="tw-text-xl">Department</span>
 							<Dropdown onSelect={handleDepartmentInputChange}>
-								<Dropdown.Toggle id="department-dropdown" as={CustomToggle} className="w-full flex">
+								<Dropdown.Toggle id="department-dropdown" as={CustomToggle} className="tw-w-full tw-flex">
 									{department === "" ? "Please Select An Option" : department}
 								</Dropdown.Toggle>
-								<Dropdown.Menu className="w-full">
+								<Dropdown.Menu className="tw-w-full">
 									{departmentList.map((item, index) => (
 										<Dropdown.Item eventKey={item}>{item}</Dropdown.Item>
 									))}
 								</Dropdown.Menu>
 							</Dropdown>
 						</div>
-						<div className="w-[45%] flex flex-col">
-							<span className="text-xl">Expertise</span>
+						<div className="tw-w-[45%] tw-flex tw-flex-col">
+							<span className="tw-text-xl">Expertise</span>
 							<Dropdown onSelect={handleExpertiseInputChange}>
-								<Dropdown.Toggle id="expertise-dropdown" as={CustomToggle} className="w-full flex">
+								<Dropdown.Toggle id="expertise-dropdown" as={CustomToggle} className="tw-w-full tw-flex">
 									{expertise === "" ? "Please Select An Option" : expertise}
 								</Dropdown.Toggle>
-								<Dropdown.Menu className="w-full">
+								<Dropdown.Menu className="tw-w-full">
 									{expertiseList.map((item, index) => (
 										<Dropdown.Item eventKey={item}>{item}</Dropdown.Item>
 									))}
@@ -616,9 +616,9 @@ function CreateCampaignPage() {
 						</div>
 					</div>
 				</div>
-				<div className="bg-white rounded-xl shadow p-4 mt-3">
-					<span className="text-2xl">Person Involved</span>
-					<div className="h-0.5 bg-gray-400 mt-2 mb-3 flex flex-col"></div>
+				<div className="tw-bg-white tw-rounded-xl shadow tw-p-4 tw-mt-3">
+					<span className="tw-text-2xl">Person Involved</span>
+					<div className="tw-h-0.5 tw-bg-gray-400 tw-mt-2 tw-mb-3 tw-flex tw-flex-col"></div>
 				</div>
 			</div>
 		);
@@ -679,7 +679,7 @@ function CreateCampaignPage() {
 
 			const handleDeleteQuestionButtonClick = () => {
 				let updatedList = [...generalInterviewQuestionList];
-				updatedList.splice(index - 1, 1);
+				updatedList.splice(index, 1);
 				setGeneralInterviewQuestionList(updatedList);
 			};
 
@@ -763,9 +763,9 @@ function CreateCampaignPage() {
 
 			useEffect(() => {
 				let tempQuestionList = generalInterviewQuestionList;
-				tempQuestionList[index - 1].question = currentQuestion;
-				tempQuestionList[index - 1].keywordPositive = currentPositiveKeywordList;
-				tempQuestionList[index - 1].keywordNegative = currentNegativeKeywordList;
+				tempQuestionList[index].question = currentQuestion;
+				tempQuestionList[index].keywordPositive = currentPositiveKeywordList;
+				tempQuestionList[index].keywordNegative = currentNegativeKeywordList;
 				setGeneralInterviewQuestionList(tempQuestionList);
 			}, [currentQuestion, currentPositiveKeywordList, currentNegativeKeywordList]);
 
@@ -780,146 +780,146 @@ function CreateCampaignPage() {
 			};
 
 			return (
-				<div className="mb-2">
+				<div className="tw-mb-2">
 					<Accordion.Item eventKey={String(index)}>
 						<Accordion.Header>
-							<span className="text-xl font-bold">{"Question " + index}</span>
+							<span className="tw-text-xl tw-font-bold">{"Question " + (index + 1)}</span>
 						</Accordion.Header>
-						<Accordion.Body className="flex flex-col p-3">
-							<div className="flex justify-between items-end">
-								<div className="w-5/6 flex flex-col">
-									<span className="text-lg">Question</span>
+						<Accordion.Body className="tw-flex tw-flex-col tw-p-3">
+							<div className="tw-flex tw-justify-between tw-items-end">
+								<div className="tw-w-5/6 tw-flex tw-flex-col">
+									<span className="tw-text-lg">Question</span>
 									<input
-										className="w-full border border-black rounded-lg p-2 focus:outline-none"
+										className="tw-w-full tw-border tw-border-black tw-rounded-lg tw-p-2 focus:tw-outline-none"
 										value={currentQuestion}
 										type="text"
 										onChange={handleQuestionInputChange}></input>
 								</div>
-								<div className="w-1/6 flex justify-end">
+								<div className="tw-w-1/6 tw-flex tw-justify-end">
 									<button
-										className="flex justify-center items-center bg-white border border-black rounded-lg p-2"
+										className="tw-flex tw-justify-center tw-items-center tw-bg-white tw-border tw-border-black tw-rounded-lg tw-p-2"
 										onClick={handleDeleteQuestionButtonClick}>
 										<span>Delete Question</span>
-										<div className="h-5 text-black">
+										<div className="tw-h-5 tw-text-black">
 											<TrashCanIcon />
 										</div>
 									</button>
 								</div>
 							</div>
-							<div className="w-full flex justify-between mt-3">
-								<div className="w-[45%] h-fit border border-black rounded-lg py-0.5 flex flex-col">
-									<div className="w-full flex p-2">
-										<span className="w-1/2">Positive Keyword</span>
-										<span className="w-1/2">Weightage</span>
+							<div className="tw-w-full tw-flex tw-justify-between tw-mt-3">
+								<div className="tw-w-[45%] tw-h-fit tw-border tw-border-black tw-rounded-lg tw-py-0.5 tw-flex tw-flex-col">
+									<div className="tw-w-full tw-flex tw-p-2">
+										<span className="tw-w-1/2">Positive Keyword</span>
+										<span className="tw-w-1/2">Weightage</span>
 									</div>
-									<div className="flex flex-col px-2">
+									<div className="tw-flex tw-flex-col tw-px-2">
 										{currentPositiveKeywordList.map((keyword, index) => (
-											<div className="w-full flex mb-2">
+											<div className="tw-w-full tw-flex tw-mb-2">
 												<input
 													type="text"
-													className="w-1/2 border border-black rounded-lg px-2 py-0.5 focus:outline-none"
+													className="tw-w-1/2 tw-border tw-border-black tw-rounded-lg tw-px-2 tw-py-0.5 focus:tw-outline-none"
 													value={keyword.keyword}
 													data-key={index}
 													data-type="keyword"
 													onChange={handleKeywordPositiveInputChange}></input>
 												<input
 													type="number"
-													className="w-2/6 border border-black rounded-lg px-2 py-0.5 ml-2 focus:outline-none"
+													className="tw-w-2/6 tw-border tw-border-black tw-rounded-lg tw-px-2 tw-py-0.5 tw-ml-2 focus:tw-outline-none"
 													value={keyword.weightage}
 													data-key={index}
 													data-type="weight"
 													onChange={handleKeywordPositiveInputChange}></input>
 												<button
-													className="w-[20%] text-red-700 flex justify-center items-center"
+													className="tw-w-[20%] tw-text-red-700 tw-flex tw-justify-center tw-items-center"
 													data-keyword-index={index}
 													data-keyword-type="positive"
 													onClick={handleKeywordDeleteButtonClick}>
-													<div className="h-full text-red-700">
+													<div className="tw-h-full tw-text-red-700">
 														<TrashCanIcon />
 													</div>
 												</button>
 											</div>
 										))}
 									</div>
-									<div className="h-[0.5px] w-full bg-black"></div>
+									<div className="tw-h-[0.5px] tw-w-full tw-bg-black"></div>
 									<button
-										className="w-full rounded-lg bg-white text-black py-1"
+										className="tw-w-full tw-rounded-lg tw-bg-white tw-text-black tw-py-1"
 										onClick={handleAddPositiveKeywordButtonClick}>
 										Add New Keyword
 									</button>
 								</div>
-								<div className="w-[45%] h-fit border border-black rounded-lg py-0.5 flex flex-col">
-									<div className="w-full flex p-2">
-										<span className="w-1/2">Negative Keyword</span>
-										<span className="w-1/2">Weightage</span>
+								<div className="tw-w-[45%] tw-h-fit tw-border tw-border-black tw-rounded-lg tw-py-0.5 tw-flex tw-flex-col">
+									<div className="tw-w-full tw-flex tw-p-2">
+										<span className="tw-w-1/2">Negative Keyword</span>
+										<span className="tw-w-1/2">Weightage</span>
 									</div>
-									<div className="flex flex-col px-2">
+									<div className="tw-flex tw-flex-col tw-px-2">
 										{currentNegativeKeywordList.map((keyword, index) => (
-											<div className="w-full flex mb-2">
+											<div className="tw-w-full tw-flex tw-mb-2">
 												<input
 													type="text"
-													className="w-1/2 border border-black rounded-lg px-2 py-0.5 focus:outline-none"
+													className="tw-w-1/2 tw-border tw-border-black tw-rounded-lg tw-px-2 tw-py-0.5 focus:tw-outline-none"
 													value={keyword.keyword}
 													data-key={index}
 													data-type="keyword"
 													onChange={handleKeywordNegativeInputChange}></input>
 												<input
 													type="number"
-													className="w-2/6 border border-black rounded-lg px-2 py-0.5 ml-2 focus:outline-none"
+													className="tw-w-2/6 tw-border tw-border-black tw-rounded-lg tw-px-2 tw-py-0.5 tw-ml-2 focus:tw-outline-none"
 													value={keyword.weightage}
 													data-key={index}
 													data-type="weight"
 													onChange={handleKeywordNegativeInputChange}></input>
 												<button
-													className="w-[20%] text-red-700 flex justify-center items-center"
+													className="tw-w-[20%] tw-text-red-700 tw-flex tw-justify-center tw-items-center"
 													data-keyword-index={index}
 													data-keyword-type="negative"
 													onClick={handleKeywordDeleteButtonClick}>
-													<div className="h-full text-red-700">
+													<div className="tw-h-full tw-text-red-700">
 														<TrashCanIcon />
 													</div>
 												</button>
 											</div>
 										))}
 									</div>
-									<div className="h-[0.5px] w-full bg-black"></div>
+									<div className="tw-h-[0.5px] tw-w-full tw-bg-black"></div>
 									<button
-										className="w-full rounded-lg bg-white text-black py-1"
+										className="tw-w-full tw-rounded-lg tw-bg-white tw-text-black tw-py-1"
 										onClick={handleAddNegativeKeywordButtonClick}>
 										Add New Keyword
 									</button>
 								</div>
 							</div>
-							<div className="w-full h-fit border border-red-700 border-2 rounded-xl flex flex-col py-2 px-3 mt-3">
-								<div className="flex items-center">
-									<div className="h-full text-red-700">
+							<div className="tw-w-full tw-h-fit tw-border tw-border-red-700 tw-border-2 tw-rounded-xl tw-flex tw-flex-col tw-py-2 tw-px-3 tw-mt-3">
+								<div className="tw-flex tw-items-center">
+									<div className="tw-h-full tw-text-red-700">
 										<RobotIcon />
 									</div>
-									<span className="text-black font-bold text-lg ml-2">
+									<span className="tw-text-black tw-font-bold tw-text-lg tw-ml-2">
 										AI-Assisted Keyword Suggestion
 									</span>
 									{/* TODO: Add functionality for the generate keyword button */}
-									<button className="bg-red-700 rounded-xl text-white py-1 px-2 ml-3">
+									<button className="tw-bg-red-700 tw-rounded-xl tw-text-white tw-py-1 tw-px-2 tw-ml-3">
 										Generate Keyword
 									</button>
 								</div>
-								<div className="h-fit flex justify-between mt-2">
-									<div className="h-fit w-[45%] flex flex-col">
-										<span className="text-md font-bold underline">Positive Keyword</span>
-										<div className="w-full p-2 flex flex-wrap">
+								<div className="tw-h-fit tw-flex tw-justify-between tw-mt-2">
+									<div className="tw-h-fit tw-w-[45%] tw-flex tw-flex-col">
+										<span className="tw-text-md tw-font-bold underline">Positive Keyword</span>
+										<div className="tw-w-full tw-p-2 tw-flex tw-flex-wrap">
 											{positiveKeywordSuggestionList.map((keyword, index) => (
-												<button className="h-fit w-fit border border-black rounded-xl p-2 m-1">
+												<button className="tw-h-fit w-fit tw-border tw-border-black tw-rounded-xl tw-p-2 tw-m-1">
 													{keyword}
 												</button>
 											))}
 										</div>
 									</div>
-									<div className="w-[1px] bg-red-700 ml-2 mr-2"></div>
-									<div className="h-fit w-[45%] flex flex-col">
-										<span className="text-md font-bold underline">Negative Keyword</span>
-										<div className="w-full p-2 flex flex-wrap">
+									<div className="tw-w-[1px] tw-bg-red-700 tw-ml-2 tw-mr-2"></div>
+									<div className="tw-h-fit tw-w-[45%] tw-flex tw-flex-col">
+										<span className="tw-text-md tw-font-bold underline">Negative Keyword</span>
+										<div className="tw-w-full tw-p-2 tw-flex tw-flex-wrap">
 											{negativeKeywordSuggestionList.map((keyword, index) => (
-												<button className="h-fit w-fit border border-black rounded-xl p-2 m-1">
+												<button className="tw-h-fit tw-w-fit tw-border tw-border-black tw-rounded-xl tw-p-2 tw-m-1">
 													{keyword}
 												</button>
 											))}
@@ -939,33 +939,33 @@ function CreateCampaignPage() {
 		};
 
 		return (
-			<div className="flex flex-col">
-				<div className="flex justify-between items-center mb-2">
-					<span className="text-2xl font-bold">General Interview</span>
+			<div className="tw-flex tw-flex-col">
+				<div className="tw-flex tw-justify-between tw-items-center tw-mb-2">
+					<span className="tw-text-2xl tw-font-bold">General Interview</span>
 					<button
-						className="bg-red-400 text-white rounded-lg p-2"
+						className="tw-bg-red-400 tw-text-white tw-rounded-lg tw-p-2"
 						onClick={handleAiGenerateQuestionButtonClick}>
 						AI Generate Question
 					</button>
 				</div>
-				<Accordion defaultActiveKey={["0"]} alwaysOpen>
+				<Accordion defaultActiveKey={["test"]} alwaysOpen>
 					{generalInterviewQuestionList.map((questionInfo, index) => (
 						<QuestionCard
 							question={questionInfo.question}
 							keywordPositiveList={questionInfo.keywordPositive}
 							keywordNegativeList={questionInfo.keywordNegative}
-							index={index + 1}
+							index={index}
 						/>
 					))}
 				</Accordion>
-				<div className="w-full flex justify-between items-center mt-3">
+				<div className="tw-w-full tw-flex tw-justify-between tw-items-center tw-mt-3">
 					<button
-						className="w-2/6 bg-red-700 text-white text-center p-2 rounded-lg"
+						className="tw-w-2/6 tw-bg-red-700 tw-text-white tw-text-center tw-p-2 tw-rounded-lg"
 						onClick={handleAddNewQuestionButtonClick}>
 						Add New Question
 					</button>
 					<button
-						className="w-2/6 bg-white text-black border border-black text-center p-2 rounded-lg"
+						className="tw-w-2/6 tw-bg-white tw-text-black tw-border tw-border-black tw-text-center tw-p-2 tw-rounded-lg"
 						onClick={handleDeleteInterviewComponentButtonClick}>
 						Delete Interview Component
 					</button>
@@ -1142,111 +1142,111 @@ function CreateCampaignPage() {
 				};
 
 				return (
-					<div className="mb-2">
+					<div className="tw-mb-2">
 						<Accordion.Item eventKey={String(questionIndex)}>
 							<Accordion.Header>
-								<span className="text-xl font-bold">{"Question " + (questionIndex + 1)}</span>
+								<span className="tw-text-xl tw-font-bold">{"Question " + (questionIndex + 1)}</span>
 							</Accordion.Header>
-							<Accordion.Body className="flex flex-col p-3">
-								<div className="flex justify-between items-end">
-									<div className="w-5/6 flex flex-col">
-										<span className="text-lg">Question</span>
+							<Accordion.Body className="tw-flex tw-flex-col tw-p-3">
+								<div className="tw-flex tw-justify-between tw-items-end">
+									<div className="tw-w-5/6 tw-flex tw-flex-col">
+										<span className="tw-text-lg">Question</span>
 										<input
-											className="w-full border border-black rounded-lg p-2 focus:outline-none"
+											className="tw-w-full tw-border tw-border-black tw-rounded-lg tw-p-2 focus:tw-outline-none"
 											value={currentQuestion}
 											type="text"
 											onChange={handleQuestionInputChange}></input>
 									</div>
-									<div className="w-1/6 flex justify-end">
+									<div className="tw-w-1/6 tw-flex tw-justify-end">
 										<button
-											className="flex justify-center items-center bg-white border border-black rounded-lg p-2"
+											className="tw-flex tw-justify-center tw-items-center tw-bg-white tw-border tw-border-black tw-rounded-lg tw-p-2"
 											onClick={handleDeleteQuestionButtonClick}>
 											<span>Delete Question</span>
-											<div className="h-5 text-black">
+											<div className="tw-h-5 tw-text-black">
 												<TrashCanIcon />
 											</div>
 										</button>
 									</div>
 								</div>
-								<div className="w-full flex justify-between mt-3">
-									<div className="w-[45%] h-fit border border-black rounded-lg py-0.5 flex flex-col">
-										<div className="w-full flex p-2">
-											<span className="w-1/2">Positive Keyword</span>
-											<span className="w-1/2">Weightage</span>
+								<div className="tw-w-full tw-flex tw-justify-between tw-mt-3">
+									<div className="tw-w-[45%] tw-h-fit tw-border tw-border-black tw-rounded-lg tw-py-0.5 tw-flex tw-flex-col">
+										<div className="tw-w-full tw-flex tw-p-2">
+											<span className="tw-w-1/2">Positive Keyword</span>
+											<span className="tw-w-1/2">Weightage</span>
 										</div>
-										<div className="flex flex-col px-2">
+										<div className="tw-flex tw-flex-col tw-px-2">
 											{currentPositiveKeywordList.map((keyword, index) => (
-												<div className="w-full flex mb-2">
+												<div className="tw-w-full tw-flex tw-mb-2">
 													<input
 														type="text"
-														className="w-1/2 border border-black rounded-lg px-2 py-0.5 focus:outline-none"
+														className="tw-w-1/2 tw-border tw-border-black tw-rounded-lg tw-px-2 tw-py-0.5 focus:tw-outline-none"
 														value={keyword.keyword}
 														data-key={index}
 														data-type="keyword"
 														onChange={handleKeywordPositiveInputChange}></input>
 													<input
 														type="number"
-														className="w-2/6 border border-black rounded-lg px-2 py-0.5 ml-2 focus:outline-none"
+														className="tw-w-2/6 tw-border tw-border-black tw-rounded-lg tw-px-2 tw-py-0.5 tw-ml-2 focus:tw-outline-none"
 														value={keyword.weightage}
 														data-key={index}
 														data-type="weight"
 														onChange={handleKeywordPositiveInputChange}></input>
 													<button
-														className="w-[20%] text-red-700 flex justify-center items-center"
+														className="tw-w-[20%] tw-text-red-700 tw-flex tw-justify-center tw-items-center"
 														data-keyword-index={index}
 														data-keyword-type="positive"
 														onClick={handleKeywordDeleteButtonClick}>
-														<div className="h-full text-red-700">
+														<div className="tw-h-full tw-text-red-700">
 															<TrashCanIcon />
 														</div>
 													</button>
 												</div>
 											))}
 										</div>
-										<div className="h-[0.5px] w-full bg-black"></div>
+										<div className="tw-h-[0.5px] tw-w-full tw-bg-black"></div>
 										<button
-											className="w-full rounded-lg bg-white text-black py-1"
+											className="tw-w-full tw-rounded-lg tw-bg-white tw-text-black tw-py-1"
 											onClick={handleAddPositiveKeywordButtonClick}>
 											Add New Keyword
 										</button>
 									</div>
-									<div className="w-[45%] h-fit border border-black rounded-lg py-0.5 flex flex-col">
-										<div className="w-full flex p-2">
-											<span className="w-1/2">Negative Keyword</span>
-											<span className="w-1/2">Weightage</span>
+									<div className="tw-w-[45%] tw-h-fit tw-border tw-border-black tw-rounded-lg tw-py-0.5 tw-flex tw-flex-col">
+										<div className="tw-w-full tw-flex tw-p-2">
+											<span className="tw-w-1/2">Negative Keyword</span>
+											<span className="tw-w-1/2">Weightage</span>
 										</div>
-										<div className="flex flex-col px-2">
+										<div className="tw-flex tw-flex-col tw-px-2">
 											{currentNegativeKeywordList.map((keyword, index) => (
-												<div className="w-full flex mb-2">
+												<div className="tw-w-full tw-flex tw-mb-2">
 													<input
 														type="text"
-														className="w-1/2 border border-black rounded-lg px-2 py-0.5 focus:outline-none"
+														className="tw-w-1/2 tw-border tw-border-black tw-rounded-lg tw-px-2 tw-py-0.5 focus:tw-outline-none"
 														value={keyword.keyword}
 														data-key={index}
 														data-type="keyword"
 														onChange={handleKeywordNegativeInputChange}></input>
 													<input
 														type="number"
-														className="w-2/6 border border-black rounded-lg px-2 py-0.5 ml-2 focus:outline-none"
+														className="tw-w-2/6 tw-border tw-border-black tw-rounded-lg tw-px-2 tw-py-0.5 tw-ml-2 focus:tw-outline-none"
 														value={keyword.weightage}
 														data-key={index}
 														data-type="weight"
 														onChange={handleKeywordNegativeInputChange}></input>
 													<button
-														className="w-[20%] text-red-700 flex justify-center items-center"
+														className="tw-w-[20%] tw-text-red-700 tw-flex tw-justify-center tw-items-center"
 														data-keyword-index={index}
 														data-keyword-type="negative"
 														onClick={handleKeywordDeleteButtonClick}>
-														<div className="h-full text-red-700">
+														<div className="tw-h-full tw-text-red-700">
 															<TrashCanIcon />
 														</div>
 													</button>
 												</div>
 											))}
 										</div>
-										<div className="h-[0.5px] w-full bg-black"></div>
+										<div className="tw-h-[0.5px] tw-w-full tw-bg-black"></div>
 										<button
-											className="w-full rounded-lg bg-white text-black py-1"
+											className="tw-w-full tw-rounded-lg tw-bg-white tw-text-black tw-py-1"
 											onClick={handleAddNegativeKeywordButtonClick}>
 											Add New Keyword
 										</button>
@@ -1259,28 +1259,28 @@ function CreateCampaignPage() {
 			};
 
 			return (
-				<div className="mb-2">
+				<div className="tw-mb-2">
 					<Accordion.Item eventKey={String(sectionIndex)}>
 						<Accordion.Header>
-							<span className="text-xl font-bold">
+							<span className="tw-text-xl tw-font-bold">
 								{currentSectionName === "" ? "Section " + (sectionIndex + 1) : currentSectionName}
 							</span>
 						</Accordion.Header>
-						<Accordion.Body className="flex flex-col">
-							<div className="w-full flex flex-col">
-								<div className="flex justify-between items-center py-2">
-									<span className="w-1/2 text-lg">Section Name</span>
-									<div className="w-1/2 flex justify-end">
+						<Accordion.Body className="tw-flex tw-flex-col">
+							<div className="tw-w-full tw-flex tw-flex-col">
+								<div className="tw-flex tw-justify-between tw-items-center tw-py-2">
+									<span className="tw-w-1/2 tw-text-lg">Section Name</span>
+									<div className="tw-w-1/2 tw-flex tw-justify-end">
 										<button
-											className="flex justify-center items-center bg-white border border-black rounded-lg p-2"
+											className="tw-flex tw-justify-center tw-items-center tw-bg-white tw-border tw-border-black tw-rounded-lg tw-p-2"
 											onClick={handleDeleteSectionButtonClick}>
 											<span>Delete Section</span>
-											<div className="h-5 text-black">
+											<div className="tw-h-5 tw-text-black">
 												<TrashCanIcon />
 											</div>
 										</button>
 										<button
-											className="bg-red-400 text-white rounded-lg p-2 ml-2"
+											className="tw-bg-red-400 tw-text-white tw-rounded-lg tw-p-2 tw-ml-2"
 											data-section-index={sectionIndex}
 											onClick={handleAiGenerateQuestionButtonClick}>
 											AI Generate Question
@@ -1289,11 +1289,11 @@ function CreateCampaignPage() {
 								</div>
 								<input
 									type="text"
-									className="w-full border border-black rounded-lg p-2 focus:outline-none"
+									className="tw-w-full tw-border tw-border-black tw-rounded-lg tw-p-2 focus:tw-outline-none"
 									value={currentSectionName}
 									onChange={handleSectionNameChange}></input>
 							</div>
-							<Accordion alwaysOpen className="mt-3">
+							<Accordion alwaysOpen className="tw-mt-3">
 								{currentQuestionList.map((question, questionIndex) => (
 									<QuestionCard
 										question={question.question}
@@ -1304,7 +1304,7 @@ function CreateCampaignPage() {
 								))}
 							</Accordion>
 							<button
-								className="w-2/6 bg-red-700 text-white rounded-lg py-2 mt-3"
+								className="tw-w-2/6 tw-bg-red-700 tw-text-white tw-rounded-lg tw-py-2 tw-mt-3"
 								onClick={handleAddNewQuestionButtonClick}>
 								Add New Question
 							</button>
@@ -1320,9 +1320,9 @@ function CreateCampaignPage() {
 		};
 
 		return (
-			<div className="flex flex-col">
-				<div className="flex justify-between items-center mb-2">
-					<span className="text-2xl font-bold">Technical Assessment</span>
+			<div className="tw-flex tw-flex-col">
+				<div className="tw-flex tw-justify-between tw-items-center tw-mb-2">
+					<span className="tw-text-2xl tw-font-bold">Technical Assessment</span>
 				</div>
 				<Accordion defaultActiveKey={["0"]} alwaysOpen>
 					{technicalAssessmentSectionList.map((section, index) => (
@@ -1333,14 +1333,14 @@ function CreateCampaignPage() {
 						/>
 					))}
 				</Accordion>
-				<div className="w-full flex justify-between items-center mt-3">
+				<div className="tw-w-full tw-flex tw-justify-between tw-items-center tw-mt-3">
 					<button
-						className="w-2/6 bg-red-700 text-white text-center p-2 rounded-lg"
+						className="tw-w-2/6 tw-bg-red-700 tw-text-white tw-text-center tw-p-2 tw-rounded-lg"
 						onClick={handleAddNewSectionButtonClick}>
 						Add New Section
 					</button>
 					<button
-						className="w-2/6 bg-white text-black border border-black text-center p-2 rounded-lg"
+						className="tw-w-2/6 tw-bg-white tw-text-black tw-border tw-border-black tw-text-center tw-p-2 tw-rounded-lg"
 						onClick={handleDeleteInterviewComponentButtonClick}>
 						Delete Interview Component
 					</button>
@@ -1382,46 +1382,46 @@ function CreateCampaignPage() {
 		}, [interviewTitle, durationMinutes, description]);
 
 		return (
-			<div className="flex flex-col">
-				<span className="font-bold text-3xl">Hiring Manager Interview</span>
-				<div className="bg-white rounded-xl border border-gray-400 p-4 mt-3">
-					<span className="text-2xl">Settings</span>
-					<div className="h-0.5 bg-gray-500 mt-2 mb-3"></div>
-					<div className="w-full flex justify-between">
-						<div className="w-[65%] flex flex-col">
-							<span className="text-xl">Interview Title</span>
+			<div className="tw-flex tw-flex-col">
+				<span className="tw-font-bold tw-text-3xl">Hiring Manager Interview</span>
+				<div className="tw-bg-white tw-rounded-xl tw-border tw-border-gray-400 tw-p-4 tw-mt-3">
+					<span className="tw-text-2xl">Settings</span>
+					<div className="tw-h-0.5 tw-bg-gray-500 tw-mt-2 tw-mb-3"></div>
+					<div className="tw-w-full tw-flex tw-justify-between">
+						<div className="tw-w-[65%] tw-flex tw-flex-col">
+							<span className="tw-text-xl">Interview Title</span>
 							<input
 								type="text"
-								className="w-full p-2 border border-black rounded-xl mt-1 focus:outline-none"
+								className="tw-w-full tw-p-2 tw-border tw-border-black tw-rounded-xl tw-mt-1 focus:tw-outline-none"
 								value={interviewTitle}
 								onChange={handleInterviewTitleInputChange}></input>
 						</div>
-						<div className="w-[25%] flex flex-col">
-							<span className="text-xl">{"Duration (Minutes)"}</span>
+						<div className="tw-w-[25%] tw-flex tw-flex-col">
+							<span className="tw-text-xl">{"Duration (Minutes)"}</span>
 							<input
 								type="number"
-								className="w-full p-2 border border-black rounded-xl mt-1 focus:outline-none"
+								className="tw-w-full tw-p-2 tw-border tw-border-black tw-rounded-xl tw-mt-1 focus:tw-outline-none"
 								value={durationMinutes}
 								onChange={handleDurationMinutesInputChange}></input>
 						</div>
 					</div>
-					<div className="w-full flex flex-col mt-3">
-						<span className="text-xl">Short Description</span>
+					<div className="tw-w-full tw-flex tw-flex-col tw-mt-3">
+						<span className="tw-text-xl">Short Description</span>
 						<textarea
-							className="w-full p-2 border border-black rounded-xl mt-1 focus:outline-none resize-none"
+							className="tw-w-full tw-p-2 tw-border tw-border-black tw-rounded-xl tw-mt-1 focus:tw-outline-none tw-resize-none"
 							rows={5}
 							cols={50}
 							value={description}
 							onChange={handleDescriptionInputChange}></textarea>
 					</div>
 				</div>
-				<div className="bg-white rounded-xl border border-gray-400 p-4 mt-3">
-					<span className="text-2xl">Person Involved</span>
-					<div className="h-0.5 bg-gray-500 mt-2 mb-3"></div>
+				<div className="tw-bg-white tw-rounded-xl tw-border tw-border-gray-400 tw-p-4 tw-mt-3">
+					<span className="tw-text-2xl">Person Involved</span>
+					<div className="tw-h-0.5 tw-bg-gray-500 tw-mt-2 tw-mb-3"></div>
 				</div>
-				<div className="w-full flex justify-end items-center mt-3">
+				<div className="tw-w-full tw-flex tw-justify-end tw-items-center tw-mt-3">
 					<button
-						className="w-2/6 bg-white text-black border border-black text-center p-2 rounded-lg"
+						className="tw-w-2/6 tw-bg-white tw-text-black tw-border tw-border-black tw-text-center tw-p-2 tw-rounded-lg"
 						onClick={handleDeleteInterviewComponentButtonClick}>
 						Delete Interview Component
 					</button>
@@ -1515,59 +1515,59 @@ function CreateCampaignPage() {
 		};
 
 		return (
-			<div className={isShowingAiGenerateQuestionsModal ? "h-full w-full absolute z-10" : "hidden"}>
-				<div className="h-full w-full relative py-24 px-48 z-10">
-					<div className="h-full w-full relative flex flex-col items-center bg-white rounded-3xl z-100 px-5 py-3">
-						<div className="w-full flex justify-between">
-							<span className="font-bold text-2xl">AI Generate Question</span>
+			<div className={isShowingAiGenerateQuestionsModal ? "tw-h-full tw-w-full tw-absolute tw-z-10" : "tw-hidden"}>
+				<div className="tw-h-full tw-w-full tw-relative tw-py-24 tw-px-48 tw-z-10">
+					<div className="tw-h-full tw-w-full tw-relative tw-flex tw-flex-col tw-items-center tw-bg-white tw-rounded-3xl tw-z-100 tw-px-5 tw-py-3">
+						<div className="tw-w-full tw-flex tw-justify-between">
+							<span className="tw-font-bold tw-text-2xl">AI Generate Question</span>
 							<div
-								className="text-red-700 cursor-pointer"
+								className="tw-text-red-700 tw-cursor-pointer"
 								onClick={closeAiGenerateQuestionsModalButtonClick}>
 								<CrossIcon />
 							</div>
 						</div>
-						<div className="h-[1px] w-full bg-gray-400 mt-2 mb-3"></div>
-						<div className="h-4/6 w-full flex flex-col overflow-auto">
-							<div className="flex justify-between mb-3">
-								<span className="font-bold text-xl ml-[5%]">Questions</span>
+						<div className="tw-h-[1px] tw-w-full tw-bg-gray-400 tw-mt-2 tw-mb-3"></div>
+						<div className="tw-h-4/6 tw-w-full tw-flex tw-flex-col tw-overflow-auto">
+							<div className="tw-flex tw-justify-between tw-mb-3">
+								<span className="tw-font-bold tw-text-xl tw-ml-[5%]">Questions</span>
 							</div>
 							{aiGeneratedQuestionList.map((question, index) => (
-								<div className="w-full flex items-center mb-3">
+								<div className="tw-w-full tw-flex tw-items-center tw-mb-3">
 									<input
 										type="checkbox"
-										className="w-[5%] h-[1.5rem]"
+										className="tw-w-[5%] tw-h-[1.5rem]"
 										onChange={handleSelectQuestionCheckbox}
 										data-index={index}></input>
-									<span className="w-[95%] text-lg">{question}</span>
+									<span className="tw-w-[95%] tw-text-lg">{question}</span>
 								</div>
 							))}
 						</div>
-						<div className="w-full absolute bottom-0 flex-col py-3 px-5">
-							<div className="w-full flex justify-between items-center">
-								<div className="w-4/6 flex items-center">
-									<input type="checkbox" className="w-[5%] h-[1.5rem]"></input>
-									<span className="ml-2">Select/ Deselect All</span>
+						<div className="tw-w-full tw-absolute tw-bottom-0 tw-flex-col tw-py-3 tw-px-5">
+							<div className="tw-w-full tw-flex tw-justify-between tw-items-center">
+								<div className="tw-w-4/6 tw-flex tw-items-center">
+									<input type="checkbox" className="tw-w-[5%] tw-h-[1.5rem]"></input>
+									<span className="tw-ml-2">Select/ Deselect All</span>
 								</div>
 								<button
-									className="w-1/6 bg-red-700 text-white p-2 rounded-lg"
+									className="tw-w-1/6 tw-bg-red-700 tw-text-white tw-p-2 tw-rounded-lg"
 									onClick={handleAddToInterviewButtonClick}>
 									Add to Interview
 								</button>
 							</div>
-							<Accordion className="mt-3">
+							<Accordion className="tw-mt-3">
 								<Accordion.Item eventKey="">
 									<Accordion.Header>
-										<span className="font-bold text-lg">Custom Interview Inquiry</span>
+										<span className="tw-font-bold tw-text-lg">Custom Interview Inquiry</span>
 									</Accordion.Header>
 									<Accordion.Body>
-										<div className="w-full flex flex-col p-2">
-											<span className="w-full text-left">Write your subject</span>
+										<div className="tw-w-full tw-flex tw-flex-col tw-p-2">
+											<span className="tw-w-full tw-text-left">Write your subject</span>
 											<textarea
 												rows={3}
 												cols={50}
-												className="w-full p-2 border border-black rounded-xl mt-1 focus:outline-none resize-none"
+												className="tw-w-full tw-p-2 tw-border tw-border-black tw-rounded-xl tw-mt-1 focus:tw-outline-none tw-resize-none"
 												placeholder="e.g. Considering the role requirements outlined in the Linux Administrator job secription, kindly generate 5 comprehensive interview questions suitable for the initial screening process. Additionally, include positive and negative keyword suggestions for each question to facilitate thorough candidate evaluation and alignment with our hiring criteria."></textarea>
-											<button className="bg-red-700 text-white rounded-lg py-2 mt-2">
+											<button className="tw-bg-red-700 tw-text-white tw-rounded-lg tw-py-2 tw-mt-2">
 												Generate Your Prompts
 											</button>
 										</div>
@@ -1583,27 +1583,27 @@ function CreateCampaignPage() {
 	};
 
 	return (
-		<div className="h-screen w-screen flex flex-col bg-slate-200">
+		<div className="tw-h-screen tw-w-screen tw-flex tw-flex-col tw-bg-slate-200">
 			<AdminNavBar activeIndex={-1} />
-			<div className="main-container py-10 px-24">
-				<span className="text-red-700 font-bold text-5xl">Create A New Campaign</span>
-				<div className="h-[95%] w-full flex">
+			<div className="main-container tw-py-10 tw-px-24">
+				<span className="tw-text-red-700 tw-font-bold tw-text-5xl">Create A New Campaign</span>
+				<div className="tw-h-[95%] tw-w-full tw-flex">
 					<div
 						id="create-campaign-navigation"
-						className="h-full w-1/4 bg-white rounded-lg py-3 px-4 mt-3 shadow overflow-auto">
+						className="tw-h-full tw-w-1/4 tw-bg-white tw-rounded-lg tw-py-3 tw-px-4 tw-mt-3 shadow tw-overflow-auto">
 						<DndProvider backend={HTML5Backend}>
-							<div className="w-full">
-								<span className="font-bold text-lg">Contents List</span>
-								<div id="campaign-steps-container" className="flex flex-col mt-2 ml-5">
+							<div className="tw-w-full">
+								<span className="tw-font-bold tw-text-lg">Contents List</span>
+								<div id="campaign-steps-container" className="tw-flex tw-flex-col tw-mt-2 tw-ml-5">
 									<button
 										className={
 											activeComponentIndex === 0
-												? "w-full rounded-3xl text-white bg-red-700 p-2 flex justify-start items-center"
-												: "w-full rounded-3xl text-black bg-white border border-black p-2 flex justify-start items-center"
+												? "tw-w-full tw-rounded-3xl tw-text-white tw-bg-red-700 tw-p-2 tw-flex tw-justify-start tw-items-center"
+												: "tw-w-full tw-rounded-3xl tw-text-black tw-bg-white tw-border tw-border-black tw-p-2 tw-flex tw-justify-start tw-items-center"
 										}
 										onClick={handleCampaignDetailsButtonClick}>
 										<svg
-											className="h-full w-auto"
+											className="tw-h-full tw-w-auto"
 											width="24"
 											height="24"
 											viewBox="0 0 24 24"
@@ -1619,18 +1619,18 @@ function CreateCampaignPage() {
 											<line x1="12" y1="12" x2="12" y2="12.01" />{" "}
 											<path d="M3 13a20 20 0 0 0 18 0" />
 										</svg>
-										<span className="ml-2">Campaign Details</span>
+										<span className="tw-ml-2">Campaign Details</span>
 									</button>
 									<button
 										className={
 											activeComponentIndex === 1
-												? "w-full rounded-3xl text-white bg-red-700 p-2 flex justify-start items-center mt-3"
-												: "w-full rounded-3xl text-black bg-white border border-black p-2 flex justify-start items-center mt-3"
+												? "tw-w-full tw-rounded-3xl tw-text-white tw-bg-red-700 tw-p-2 tw-flex tw-justify-start tw-items-center tw-mt-3"
+												: "tw-w-full tw-rounded-3xl tw-text-black tw-bg-white tw-border tw-border-black tw-p-2 tw-flex tw-justify-start tw-items-center tw-mt-3"
 										}
 										name="CustomizeInterviewButton"
 										onClick={handleCustomizeInterviewButtonClick}>
 										<svg
-											className="h-full w-auto"
+											className="tw-h-full tw-w-auto"
 											width="24"
 											height="24"
 											viewBox="0 0 24 24"
@@ -1648,9 +1648,9 @@ function CreateCampaignPage() {
 											<polyline points="16 12 21 17 17 21 12 16" />{" "}
 											<line x1="16" y1="17" x2="14.5" y2="18.5" />
 										</svg>
-										<span className="ml-2">Customize Interview</span>
+										<span className="tw-ml-2">Customize Interview</span>
 									</button>
-									<div className="w-full flex flex-col items-end">
+									<div className="tw-w-full tw-flex tw-flex-col tw-items-end">
 										<InterviewComponentMainContainer />
 										<InterviewComponentDropContainer
 											handleDrop={handleInterviewComponentInsertionDrop}
@@ -1658,10 +1658,10 @@ function CreateCampaignPage() {
 									</div>
 								</div>
 							</div>
-							<div className="h-0.5 w-full bg-black mt-5"></div>
-							<div className="w-full mt-3">
-								<span className="font-bold text-lg">Interview Type</span>
-								<div className="flex flex-col">
+							<div className="tw-h-0.5 tw-w-full tw-bg-black tw-mt-5"></div>
+							<div className="tw-w-full tw-mt-3">
+								<span className="tw-font-bold tw-text-lg">Interview Type</span>
+								<div className="tw-flex tw-flex-col">
 									<InterviewComponentButton
 										interviewType="General Interview"
 										handleDrop={handleInterviewComponentInsertionDrop}
@@ -1677,24 +1677,24 @@ function CreateCampaignPage() {
 								</div>
 							</div>
 						</DndProvider>
-						<div className="h-0.5 w-full bg-black mt-5"></div>
-						<div className="w-full mt-3 flex flex-col">
-							<span className="font-bold text-lg">Action Button</span>
-							<div className="flex flex-col items-center">
+						<div className="tw-h-0.5 tw-w-full tw-bg-black tw-mt-5"></div>
+						<div className="tw-w-full tw-mt-3 tw-flex tw-flex-col">
+							<span className="tw-font-bold tw-text-lg">Action Button</span>
+							<div className="tw-flex tw-flex-col tw-items-center">
 								<button
-									className="w-1/2 bg-red-700 text-white rounded-2xl p-2 mt-3"
+									className="tw-w-1/2 tw-bg-red-700 tw-text-white tw-rounded-2xl tw-p-2 tw-mt-3"
 									onClick={handleCreateCampaignButtonClick}>
 									Create Campaign
 								</button>
 								<button
-									className="w-1/2 bg-white text-red-700 border-2 border-red-700 rounded-2xl p-2 mt-3 mb-5"
+									className="tw-w-1/2 tw-bg-white tw-text-red-700 tw-border-2 tw-border-red-700 tw-rounded-2xl tw-p-2 tw-mt-3 tw-mb-5"
 									onClick={handleDiscardButtonClick}>
 									Discard
 								</button>
 							</div>
 						</div>
 					</div>
-					<div id="campaign-details-container" className="h-auto w-3/4 ml-5 mt-3 overflow-auto">
+					<div id="campaign-details-container" className="tw-h-auto tw-w-3/4 tw-ml-5 tw-mt-3 tw-overflow-auto">
 						{activeComponentIndex === 0 ? (
 							<CampaignDetailsContainer />
 						) : campaignInterviewComponentList.length < 1 ? (

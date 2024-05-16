@@ -41,18 +41,18 @@ export default function OngoingCampaignCard() {
         overflow: "auto",
         // maxHeight: "600px",
       }}
-      className="bg-white flex flex-auto flex-col grow p-5 rounded-lg h-full"
+      className="tw-bg-white tw-flex tw-flex-auto tw-flex-col grow tw-p-5 tw-rounded-lg tw-h-full"
     >
       {/* Header Section*/}
-      <div className="flex flex-row items-center justify-between mb-5">
+      <div className="tw-flex tw-flex-row tw-items-center tw-justify-between tw-mb-5">
         {/* Icon */}
-        <div className="border-black border rounded-lg p-1 mr-5">
+        <div className="tw-border-black tw-border tw-rounded-lg tw-p-1 tw-mr-5">
           <PersonOutlineIcon classes="" color="error" fontSize="large" />
         </div>
         {/* Title */}
-        <h4 className="text-lg font-bold grow">Ongoing Campaigns</h4>
+        <h4 className="tw-text-lg tw-font-bold grow">Ongoing Campaigns</h4>
         {/* Button */}
-        <button className="text-red-500 rounded-lg px-2 py-1 ml-auto font-bold">
+        <button className="tw-text-red-500 tw-rounded-lg tw-px-2 tw-py-1 tw-ml-auto tw-font-bold">
           View All
         </button>
       </div>

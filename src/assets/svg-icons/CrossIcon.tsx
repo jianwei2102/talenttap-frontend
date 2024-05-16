@@ -2,7 +2,7 @@ import React from "react";
 
 function CrossIcon() {
 	return (
-		<svg className="h-full" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+		<svg className="tw-h-full" fill="none" viewBox="0 0 24 24" stroke="currentColor">
 			<path
 				stroke-linecap="round"
 				stroke-linejoin="round"

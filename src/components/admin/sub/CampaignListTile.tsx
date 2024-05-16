@@ -14,17 +14,17 @@ interface CampaignListTileProps {
 
 export default function CampaignListTile({id, title, newHire, startdate, endDate}: CampaignListTileProps) {
     return (
-        <div className="w-100 border border-black flex flex-row p-5 rounded-xl justify-between mb-6">
+        <div className="tw-w-100 tw-border tw-border-black tw-flex tw-flex-row tw-p-5 tw-rounded-xl tw-justify-between tw-mb-6">
         {/* List Tile Information */}
-        <div className="flex flex-col me-4">
+        <div className="tw-flex tw-flex-col me-4">
           {/* ID */}
-          <h5 className="mb-2">Campaign ID #{id}</h5>
+          <h5 className="tw-mb-2">Campaign ID #{id}</h5>
           {/* Campaign Name */}
-          <h3 className="text-red-500 font-extrabold text-2xl mb-2">
+          <h3 className="tw-text-red-500 tw-font-extrabold tw-text-2xl tw-mb-2">
             {title}
           </h3>
 
-          <div className="flex flex-row justify-between">
+          <div className="tw-flex tw-flex-row tw-justify-between">
             <div>
               <Icon
                 color="error"
@@ -34,7 +34,7 @@ export default function CampaignListTile({id, title, newHire, startdate, endDate
                 check_circle_outlined
               </Icon>
 
-              <span className="text-black ml-2">{newHire} new hires</span>
+              <span className="tw-text-black tw-ml-2">{newHire} new hires</span>
             </div>
             <div>
               <Icon
@@ -44,13 +44,13 @@ export default function CampaignListTile({id, title, newHire, startdate, endDate
               >
                 date_range
               </Icon>
-              <span className="text-black ml-2">{startdate}-{endDate}</span>
+              <span className="tw-text-black tw-ml-2">{startdate}-{endDate}</span>
             </div>
           </div>
         </div>
 
         {/* List Tile Picture */}
-        <div style={{overflow: "hidden", width: 100, height: 100}} className="rounded-xl">
+        <div style={{overflow: "tw-hidden", width: 100, height: 100}} className="tw-rounded-xl">
           <img
             src={hilti}
             alt="login background"

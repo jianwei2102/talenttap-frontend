@@ -50,34 +50,34 @@ function SignUp() {
 	};
 
 	return (
-		<div className="bg-slate-200 h-full w-full absolute flex justify-center items-center">
-			<div className="w-4/6 h-4/6 flex justify-center items-center">
-				<div className="inherit h-full w-1/2 bg-white border rounded-l-md flex justify-center items-center">
-					<form className="relative h-3/4 w-5/6 block" onSubmit={handleSubmit}>
-						<span className="text-3xl font-bold text-black">Sign Up</span>
-						<div className="block mt-10 h-1/6">
-							<span className="text-lg text-black">E-mail address</span>
+		<div className="tw-bg-slate-200 tw-h-full tw-w-full tw-absolute tw-flex tw-justify-center tw-items-center">
+			<div className="tw-w-4/6 tw-h-4/6 tw-flex tw-justify-center tw-items-center">
+				<div className="inherit tw-h-full tw-w-1/2 tw-bg-white tw-border tw-rounded-l-md tw-flex tw-justify-center tw-items-center">
+					<form className="tw-relative tw-h-3/4 tw-w-5/6 block" onSubmit={handleSubmit}>
+						<span className="tw-text-3xl tw-font-bold tw-text-black">Sign Up</span>
+						<div className="block tw-mt-10 tw-h-1/6">
+							<span className="tw-text-lg tw-text-black">E-mail address</span>
 							<input
-								className="mt-2 border border-gray-900 rounded-sm w-full h-1/2 p-2"
+								className="tw-mt-2 tw-border tw-border-gray-900 tw-rounded-sm tw-w-full tw-h-1/2 tw-p-2"
 								type="text"
 								name="email"
 								onChange={handleChange}
 								required></input>
 						</div>
-						<div className="block mt-5 h-1/6">
-							<span className="text-lg text-black">Password</span>
+						<div className="block tw-mt-5 tw-h-1/6">
+							<span className="tw-text-lg tw-text-black">Password</span>
 							<input
-								className="mt-2 border border-gray-900 rounded-sm w-full h-1/2 p-2"
+								className="tw-mt-2 tw-border tw-border-gray-900 tw-rounded-sm tw-w-full tw-h-1/2 tw-p-2"
 								type="password"
 								name="password"
 								onChange={handleChange}
 								required></input>
 						</div>
-						<div className="w-full mt-5 flex items-start">
-							<input className="mt-1 h-full" type="checkbox" checked={isChecked} onChange={handleCheckboxChange}></input>
-							<span className="ml-2 text-sm">
+						<div className="tw-w-full tw-mt-5 tw-flex tw-items-start">
+							<input className="tw-mt-1 tw-h-full" type="checkbox" checked={isChecked} onChange={handleCheckboxChange}></input>
+							<span className="tw-ml-2 tw-text-sm">
 								I have read and agreed to the {' '}
-								<a href="https://cloudmails-my.sharepoint.com/:w:/g/personal/tp060751_mail_apu_edu_my/EYppO4IvYUlEmmXwNvz5ghkBd3qS3-Ia9_XtJwUgvGVq_Q" className="text-blue-500 hover:underline">
+								<a href="https://cloudmails-my.sharepoint.com/:w:/g/personal/tp060751_mail_apu_edu_my/EYppO4IvYUlEmmXwNvz5ghkBd3qS3-Ia9_XtJwUgvGVq_Q" className="tw-text-blue-500 hover:underline">
 									terms and conditions
 								</a>
 							</span>
@@ -85,23 +85,23 @@ function SignUp() {
 						<button
 							type="submit"
 							disabled={!isChecked}
-							className={`w-full h-10 mt-10 bg-red-700 flex justify-content items-center ${!isChecked ? 'opacity-50 cursor-not-allowed' : ''}`}>
-							<span className="w-full text-center text-white cursor-pointer">Create Account</span>
+							className={`tw-w-full tw-h-10 tw-mt-10 tw-bg-red-700 tw-flex tw-justify-content tw-items-center ${!isChecked ? 'opacity-50 cursor-not-allowed' : ''}`}>
+							<span className="tw-w-full tw-text-center tw-text-white tw-cursor-pointer">Create Account</span>
 						</button>
-						<div className="mt-10 flex justify-center">
+						<div className="tw-mt-10 tw-flex tw-justify-center">
 							<span>Already have an account?</span>
-							<span className="text-red-700 ml-1 cursor-pointer" onClick={goToSignIn}>
+							<span className="tw-text-red-700 tw-ml-1 tw-cursor-pointer" onClick={goToSignIn}>
 								Sign in
 							</span>
 						</div>
 					</form>
 				</div>
-				<div className="inherit h-full w-1/2 border rounded-r-md flex justify-center items-center relative">
+				<div className="inherit tw-h-full tw-w-1/2 tw-border tw-rounded-r-md tw-flex tw-justify-center tw-items-center tw-relative">
 					<img
-						className="inherit h-full w-full object-fill border rounded-r-md z-0 absolute"
+						className="inherit tw-h-full tw-w-full tw-object-fill tw-border tw-rounded-r-md tw-z-0 tw-absolute"
 						src={require("../assets/wave-background.png")}
 						alt="login background"></img>
-					<span className="text-5xl text-center font-bold text-white z-10">
+					<span className="tw-text-5xl tw-text-center tw-font-bold tw-text-white tw-z-10">
 						Create <br /> Account
 					</span>
 				</div>
