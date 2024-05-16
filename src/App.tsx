@@ -14,7 +14,7 @@ import UserFeedbackPage from "./pages/candidate/UserFeedbackPage.tsx";
 import UserTechnicalAssessmentQuestionPage from "./pages/candidate/UserTechnicalAssessmentQuestionPage.tsx";
 import UserHiringManagerInterviewPage from "./pages/candidate/UserHiringManagerInterviewPage.tsx";
 import UserAssessmentSubmissionCompletedPage from "./pages/candidate/UserAssessmentSubmissionCompletedPage.tsx";
-import Interview from "./pages/candidate/Interview.tsx";
+import Interview from "./pages/candidate/Interview/Interview.tsx";
 import GeneralInterview from "./pages/candidate/GeneralInterview.tsx";
 import GeneralQuestion from "./pages/candidate/GeneralQuestion.tsx";
 import TypingAssessmentPage from "./pages/candidate/TypingAssessmentPage.tsx";

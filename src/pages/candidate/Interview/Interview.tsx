@@ -5,9 +5,12 @@ import {
   InterviewStepBar,
   PopUpModal,
   CustomButton,
-} from "../../components";
-import { CampaignAPI } from "../../api/campaignAPI.ts";
-import InterviewData from "../../models/InterviewData.ts";
+} from "../../../components/index.js";
+import { CampaignAPI } from "../../../api/campaignAPI.ts";
+import InterviewData from "../../../models/InterviewData.ts";
+import GeneralInterviewInfo from "./GeneralInterviewInfo.tsx";
+import SkillAssessmentInfo from "./SkillAssessmentInfo.tsx";
+import HiringManagerInterviewInfo from "./HiringManagerInterviewInfo.tsx";
 
 const CAMPAIGN_ID = 1;
 
@@ -19,7 +22,7 @@ const Interview = () => {
   const [jobDescription, setJobDescription] = useState("");
   const [requirement, setRequirement] = useState("");
   const [endDate, setEndDate] = useState("");
-  const [activeIndex, setActiveIndex] = useState(1);
+  const [activeIndex, setActiveIndex] = useState(0);
 
   // interview details
   const [interviews, setInterviews] = useState<InterviewData[]>([]);
@@ -35,7 +38,7 @@ const Interview = () => {
     setRequirement(campaign.requirement);
     setEndDate(campaign.endDate.split("T")[0]);
 
-    const cvScreening = new InterviewData(0, "", 3, new Date(), new Date(), "Admin", "CV Screening");
+    const cvScreening = new InterviewData(0, "", 3 , 7, new Date(), new Date(), "Admin", "CV Screening");
     let interviewSteps: InterviewData[] = [cvScreening];
 
     for (const i of generalInterviews) {
@@ -57,7 +60,7 @@ const Interview = () => {
   useEffect(() => {
     (async () => {
       await fetchCampaign();
-      setActiveIndex(1); // Modify interview stage
+      setActiveIndex(3); // Modify interview stage
     })();
   }, []);
 
@@ -108,16 +111,45 @@ const Interview = () => {
         {activeIndex !== 0 && (
           <>
             <div className="leading-8">
-              {interviews[activeIndex - 2]?.generalInstruction}
-              {/* next step: add constants instructions for all 3 interviews */}
+              {interviews[activeIndex]?.type == "General Interview" && (
+                <>
+                  {GeneralInterviewInfo()}
+                  <CustomButton
+                    title={"Start Interview"}
+                    customFunction={() => navigate("/general-interview")}
+                  />
+                  <p className="text-center mt-2">
+                    The Interview can be done within {interviews[activeIndex]?.daysBeforeExpired} days
+                  </p>
+                </>
+              )}
+
+              {interviews[activeIndex]?.type == "Hiring Manager Interview" && (
+                <>
+                  {HiringManagerInterviewInfo()}
+                  <CustomButton
+                    title={"Schedule Interview"}
+                    customFunction={() => navigate("/hiring-manager-interview-schedule")}
+                  />
+                  <p className="text-center mt-2">
+                    The Interview can be done within {interviews[activeIndex]?.daysBeforeExpired} days
+                  </p>
+                </>
+              )}
+
+              {interviews[activeIndex]?.type == "Skill Assessment" && (
+                <>
+                  {SkillAssessmentInfo()}
+                  <CustomButton
+                    title={"Start Assessment"}
+                    customFunction={() => navigate("/technical")}
+                  />
+                  <p className="text-center mt-2">
+                    The Interview can be done within {interviews[activeIndex]?.daysBeforeExpired} days
+                  </p>
+                </>
+              )}
             </div>
-            <CustomButton
-              title={"Start Interview"}
-              customFunction={() => navigate("/general-interview")}
-            />
-            <p className="text-center mt-2">
-              The Interview can be done within 3 days
-            </p>
           </>
         )}
       </div>
