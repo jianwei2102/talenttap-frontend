@@ -21,7 +21,7 @@ const InterviewStepBar = ({ interviews = [], initialActiveStep = 1 }: Props) => 
   const width = `${(100 / (totalSteps - 1)) * (activeStep)}%`;
 
   return (
-    <div className="tw-w-full max-tw-w-6xl lg:max-tw-w-screen-2xl tw-h-32 tw-mx-auto tw-px-4">
+    <div className="tw-w-full tw-max-w-6xl lg:tw-max-w-screen-2xl tw-h-32 tw-mx-auto tw-px-4">
 
       {/* Stages */}
       <div className="tw-flex tw-justify-between tw-mt-16 tw-relative">
@@ -44,7 +44,7 @@ const InterviewStepBar = ({ interviews = [], initialActiveStep = 1 }: Props) => 
             </div>
 
             {activeStep === sequence && (
-              <div className="tw-absolute tw-top-7 tw-left-1/2 tw-transform tw--translate-x-1/2">
+              <div className="tw-absolute tw--top-7 tw-left-1/2 tw-transform tw--translate-x-1/2">
                 <span className="tw-text-md tw-text-nowrap tw-text-[#D2051E]">
                   In progress
                 </span>
@@ -65,11 +65,11 @@ const InterviewStepBar = ({ interviews = [], initialActiveStep = 1 }: Props) => 
       </div>
 
       {/* Processing Days in between */}
-      <div className="flex justify-around">
+      <div className="tw-flex tw-justify-around">
         {interviews.slice(1).map(({ daysBeforeExpired, sequence }) => (
           <span
             key={sequence}
-            className={`text-sm text-gray-700`}
+            className={`tw-text-sm tw-text-gray-700`}
           >
             Around {daysBeforeExpired} days
           </span>

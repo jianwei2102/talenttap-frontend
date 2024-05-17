@@ -86,7 +86,7 @@ function HomeCampaignCard({
         </div>
       </div>
       <img
-        className="tw-w-2/6 tw-object-cover"
+        className="tw-w-2/6 tw-object-cover tw-rounded"
         alt="campaign picture"
         src={imageSrc}></img>
     </div>

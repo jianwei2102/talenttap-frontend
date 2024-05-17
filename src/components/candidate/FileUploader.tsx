@@ -23,7 +23,7 @@ const FileUploader = () => {
   return (
     <>
       <div
-        className="tw-flex tw-flex-col tw-justify-center tw-items-center tw-border-dashed tw-border-2 tw-h-52 tw-cursor-pointer tw-rounded-sm tw-py-10"
+        className="tw-flex tw-flex-col tw-justify-center tw-items-center tw-border-dashed tw-border-2 tw-h-56 tw-cursor-pointer tw-rounded-sm tw-py-10"
         onClick={() =>
           (
             document.querySelector(".uploader-field") as HTMLInputElement
@@ -33,7 +33,7 @@ const FileUploader = () => {
         <input
           type="file"
           id="file"
-          className="uploader-field"
+          className="uploader-field tw-hidden"
           accept="application/pdf"
           tw-hidden
           onChange={handleFileChange}
@@ -59,7 +59,7 @@ const FileUploader = () => {
             <AiFillFileImage className="tw-mr-2" />
             {fileName}
           </div>
-          <button className="hover:tw-bg-red-400 hover:tw-rounded-full hover:tw-p-0.5 tw-mr-2">
+          <button className="tw-hover:bg-red-400 tw-hover:rounded-full tw-hover:p-0.5 tw-mr-2">
             <MdDelete
               color="#D20584"
               className=" tw-w-5 tw-h-5"

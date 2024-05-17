@@ -74,11 +74,11 @@ const Interview = () => {
     <>
       <UserNavBar activeIndex={0} />
       
-      <div className="h-full mx-12 my-8 lg:mx-36 lg:my-24">
-        <div className="flex flex-row justify-between">
-          <div className="text-[#D2051E] text-4xl font-bold">{name}</div>
-          <div className="flex flex-col justify-end items-end">
-            <div className="text-right text-xl font-semibold">
+      <div className="tw-h-full tw-mx-12 tw-my-8 tw-lg:mx-36 tw-lg:my-24">
+        <div className="tw-flex tw-flex-row tw-justify-between">
+          <div className="tw-text-[#D2051E] tw-text-4xl tw-font-bold">{name}</div>
+          <div className="tw-flex tw-flex-col tw-justify-end tw-items-end">
+            <div className="tw-text-right tw-text-xl tw-font-semibold">
               Application Due Date
             </div>
             <div>{endDate}</div>
@@ -89,8 +89,8 @@ const Interview = () => {
 
         {activeIndex === 0 && (
           <>
-            <div className="leading-8">
-              <span className="text-2xl font-semibold">Overview</span>
+            <div className="tw-leading-8">
+              <span className="tw-text-2xl tw-font-semibold">Overview</span>
               <br />
               {jobDescription.split("\n").map((line, i) => (
                 <span key={i}>
@@ -100,8 +100,8 @@ const Interview = () => {
               ))}
             </div>
 
-            <div className="mt-10 leading-8">
-              <span className="text-2xl font-semibold">Requirement</span>
+            <div className="tw-mt-10 tw-leading-8">
+              <span className="tw-text-2xl tw-font-semibold">Requirement</span>
               <br />
               {requirement.split("\n").map((line, i) => (
                 <span key={i}>
@@ -116,7 +116,7 @@ const Interview = () => {
 
         {activeIndex !== 0 && (
           <>
-            <div className="leading-8">
+            <div className="tw-leading-8">
               {interviews[activeIndex]?.type == "General Interview" && (
                 <>
                   {GeneralInterviewInfo()}
@@ -124,7 +124,7 @@ const Interview = () => {
                     title={"Start Interview"}
                     customFunction={() => navigate("/general-interview")}
                   />
-                  <p className="text-center mt-2">
+                  <p className="tw-text-center tw-mt-2">
                     The Interview can be done within {interviews[activeIndex]?.daysBeforeExpired} days
                   </p>
                 </>
@@ -134,7 +134,7 @@ const Interview = () => {
                 <>
                   {HiringManagerInterviewInfo()}
                   <PopUpModal title={"Schedule Interview"} />
-                  <p className="text-center mt-2">
+                  <p className="tw-text-center tw-mt-2">
                     The Interview can be done within {interviews[activeIndex]?.daysBeforeExpired} days
                   </p>
                 </>
@@ -147,7 +147,7 @@ const Interview = () => {
                     title={"Start Assessment"}
                     customFunction={() => navigate("/technical")}
                   />
-                  <p className="text-center mt-2">
+                  <p className="tw-text-center tw-mt-2">
                     The Interview can be done within {interviews[activeIndex]?.daysBeforeExpired} days
                   </p>
                 </>

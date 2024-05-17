@@ -115,7 +115,7 @@ function TypingAssessmentPage() {
 	return (
 		<div className="tw-h-screen tw-w-screen tw-flex tw-p-20 tw-bg-gray-200 tw-justify-center align-center">
 
-			<Card className="max-tw-w-full tw-w-[650px] tw-border tw-p-5" color="white" placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
+			<Card className="tw-max-w-full tw-w-[650px] tw-border tw-p-5" color="white" placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
 				<h3>Typing Speed Test</h3>
 				<Progress className="tw-my-3" value={progress} size="lg" color="red" placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined} />
 				<p className="tw-flex tw-flex-wrap tw-mb-5">
