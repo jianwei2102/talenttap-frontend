@@ -1,7 +1,10 @@
 import React from "react";
 import { UserNavBar, PopUpModal } from "../../components";
+import { useNavigate } from "react-router-dom";
 
 const GeneralInterview = () => {
+  const navigate = useNavigate();
+
   return (
     <>
       <UserNavBar activeIndex={0} />
@@ -67,7 +70,7 @@ const GeneralInterview = () => {
         </div>
       </div>
 
-      <PopUpModal title="Continue" />
+      <PopUpModal title="Continue" onClose={() => navigate("/general-question")} />
     </>
   );
 };

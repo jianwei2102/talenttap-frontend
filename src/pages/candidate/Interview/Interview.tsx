@@ -13,7 +13,6 @@ import SkillAssessmentInfo from "./SkillAssessmentInfo.tsx";
 import HiringManagerInterviewInfo from "./HiringManagerInterviewInfo.tsx";
 
 const CAMPAIGN_ID = 1;
-const ACTIVE_INDEX = 0;
 
 const Interview = () => {
   const navigate = useNavigate();
@@ -61,7 +60,7 @@ const Interview = () => {
   useEffect(() => {
     (async () => {
       await fetchCampaign();
-      setActiveIndex(ACTIVE_INDEX); // Modify interview stage
+      setActiveIndex(activeIndex); // Modify interview stage
     })();
   }, []);
 
@@ -105,7 +104,7 @@ const Interview = () => {
                 </span>
               ))}
             </div>
-            <PopUpModal title="Start Application" />
+            <PopUpModal title="Start Application" onClose={() => {setActiveIndex(1)}} />
           </>
         )}
 

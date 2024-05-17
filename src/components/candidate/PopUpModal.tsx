@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Modal from "react-bootstrap/Modal";
 import { FileUploader, CustomButton } from "..";
 
-const PopUpModal = ({ title }) => {
+const PopUpModal = ({ title, onClose=()=>{} }) => {
 	const [show, setShow] = useState(false);
 	const [textLength, setTextLength] = useState(0);
 	const [isChecked, setIsChecked] = useState(false);
@@ -13,7 +13,7 @@ const PopUpModal = ({ title }) => {
 	const handleShow = () => setShow(true);
 
 	const handleCheckboxChange = (event) => {
-	  setIsChecked(event.target.checked);
+		setIsChecked(event.target.checked);
 	};
 
 	return (
@@ -51,6 +51,17 @@ const PopUpModal = ({ title }) => {
 
 							{visa == "No" && (
 								<div className="ml-8">
+									<div className="mt-4">
+										<label htmlFor="visa-name" className="text-sm font-medium text-gray-900 mb-2">
+											Work Visa/Permit Name
+										</label>
+										<input
+											type="text"
+											name="visa-name"
+											id="visa-name"
+											className="w-full border-2 border-gray-300 rounded-md p-2"
+										/>
+									</div>
 									<div className="mb-2 mt-4">
 										<span className="font-semibold">Add Supporting Documents for Work Visa/Permit</span> (*.pdf)
 									</div>
@@ -76,7 +87,7 @@ const PopUpModal = ({ title }) => {
 								<div className="ml-8">
 									<div className="mt-4">
 										<label htmlFor="referral-name" className="text-sm font-medium text-gray-900 mb-2">
-											Referral Name
+											Referrer Name
 										</label>
 										<input
 											type="text"
@@ -87,7 +98,7 @@ const PopUpModal = ({ title }) => {
 									</div>
 									<div className="mt-4">
 										<label htmlFor="referral-email" className="text-sm font-medium text-gray-900 mb-2">
-											Referral Work Email
+											Referrer Work Email
 										</label>
 										<input
 											type="text"
@@ -112,15 +123,15 @@ const PopUpModal = ({ title }) => {
 							)}
 
 							{/* Why Apply This Job */}
-							<div className="mt-8 mb-2 font-semibold">Highlight why you apply for this job</div>
+							<div className="mt-8 mb-2 font-semibold">Tell us why would you like to apply for the job (in 500 characters)</div>
 							<textarea
 								className="w-full border-2 border-gray-300 rounded-md resize-none h-24 p-2"
 								onChange={(event) => setTextLength(event.target.value.length)}
 								placeholder="Type here..."
-								maxLength={300}
+								maxLength={500}
 							></textarea>
-							<div className="float-right">{textLength} / 300 characters</div>
-							
+							<div className="float-right">{textLength} / 500 characters</div>
+
 							<div className="w-full mt-5 flex items-start">
 								<input className="mt-1 h-full" type="checkbox" checked={isChecked} onChange={handleCheckboxChange}></input>
 								<span className="ml-2 text-sm">
@@ -135,7 +146,7 @@ const PopUpModal = ({ title }) => {
 					<Modal.Footer>
 						<button
 							className={`h-9 w-24 bg-red-500 text-white rounded-md text-lg ${!isChecked ? 'opacity-50 cursor-not-allowed' : ''}`}
-							onClick={handleClose}
+							onClick={() => { handleClose(); onClose(); }}
 							disabled={!isChecked}
 						>
 							Apply
@@ -174,7 +185,7 @@ const PopUpModal = ({ title }) => {
 									<br />• I acknowledge that the video submitted will only be used for the hiring
 									process in HILTI and will not be shared with third parties.
 								</p>
-								<CustomButton title={"I Understand"} customFunction={handleClose} />
+								<CustomButton title={"I Understand"} customFunction={() => { handleClose(); onClose() }} />
 							</div>
 						</div>
 					</Modal.Body>
