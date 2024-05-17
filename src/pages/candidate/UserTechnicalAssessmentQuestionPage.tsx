@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom";
 import QuestionSection from "../../models/QuestionSection";
 import Question from "../../models/Question";
 import { TechnicalAssessmentAPI } from "../../api/technicalAssessmentAPI.ts";
+import CountdownTimer from "../../components/candidate/Countdown.tsx";
+import { time } from "console";
 
 const SKILL_ASSESSMENT_ID = 1;
 
@@ -244,7 +246,9 @@ function UserTechnicalAssessmentQuestionPage() {
 		);
 	};
 
+
 	return (
+		<div>
 		<div className="h-screen w-screen flex justify-between p-20 bg-slate-200">
 			<div className="h-full w-3/4 bg-white p-5 mr-5">
 				<span className="text-3xl font-bold">
@@ -277,6 +281,7 @@ function UserTechnicalAssessmentQuestionPage() {
 				</div>
 			</div>
 			<div className="h-full w-1/4 flex flex-col items-center bg-white p-5">
+				<CountdownTimer time = {10}/>
 				<span className="w-full text-lg font-bold text-center p-2">Questions</span>
 				<span className="w-full text-sm text-slate-400 text-center p-2">
 					Please answer all questions below:
@@ -304,6 +309,7 @@ function UserTechnicalAssessmentQuestionPage() {
 				</button>
 			</div>
 		</div>
+	</div>
 	);
 }
 
