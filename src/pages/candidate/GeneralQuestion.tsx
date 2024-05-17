@@ -15,14 +15,16 @@ const GeneralQuestion = () => {
   const [question, setQuestion] = useState("");
   const [hint, setHint] = useState("");
 
+  const fetchData = async () => {
+    const question = await getSpecific(1);
+    setQuestionNo(question.id);
+    setQuestion(question.question);
+    setHint(question.hint);
+  };
+
   useEffect(() => {
-    const fetchData = async () => {
-      const question = await getSpecific(1);
-      setQuestionNo(question.id);
-      setQuestion(question.question);
-      setHint(question.hint);
-    };
     fetchData();
+    
   }, []);
 
   return (

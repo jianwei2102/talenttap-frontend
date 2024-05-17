@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import VideoRecorder from "react-video-recorder";
 import { CustomButton } from "../";
+import { useNavigate } from "react-router-dom";
 
 const Recorder = () => {
   const [permissionGranted, setPermissionGranted] = useState(false);
@@ -22,6 +23,13 @@ const Recorder = () => {
     ]).then((results) => {
       if (results.every((result) => result.state === "granted")) {
         setPermissionGranted(true);
+      } else {
+        navigator.mediaDevices.getUserMedia({ audio: true, video: true })
+          .then((stream) => {
+            stream.getTracks().forEach((track) => {
+              console.log(track);
+            });
+          })
       }
     });
   }, []);
