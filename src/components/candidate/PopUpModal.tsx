@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Modal from "react-bootstrap/Modal";
 import { FileUploader, CustomButton } from "..";
+import HiringManagerInterviewSchedulingModal from "../../pages/candidate/Interview/HiringManagerInterviewSchedulingModal.tsx";
 
 const PopUpModal = ({ title, onClose=()=>{} }) => {
 	const [show, setShow] = useState(false);
@@ -186,6 +187,46 @@ const PopUpModal = ({ title, onClose=()=>{} }) => {
 									process in HILTI and will not be shared with third parties.
 								</p>
 								<CustomButton title={"I Understand"} customFunction={() => { handleClose(); onClose() }} />
+							</div>
+						</div>
+					</Modal.Body>
+				</Modal>
+			)}
+
+			{/* Hiring Manager Interview Scheduling Modal - PopUp Modal */}
+			{title === "Schedule Interview" && (
+				<Modal centered show={show} onHide={handleClose} scrollable={true}>
+					<Modal.Body>
+						<div className="flex flex-col">
+							<div className="flex justify-end items-end">
+								<button
+									type="button"
+									className="btn-close"
+									aria-label="Close"
+									onClick={() => handleClose()}></button>
+							</div>
+							<div className="h-[36rem] flex justify-center items-center">
+								<HiringManagerInterviewSchedulingModal />
+							</div>
+						</div>
+					</Modal.Body>
+				</Modal>
+			)}
+
+			{/* Hiring Manager Interview Scheduling Modal - PopUp Modal */}
+			{title === "Schedule Interview" && (
+				<Modal centered show={show} onHide={handleClose} scrollable={true}>
+					<Modal.Body>
+						<div className="flex flex-col">
+							<div className="flex justify-end items-end">
+								<button
+									type="button"
+									className="btn-close"
+									aria-label="Close"
+									onClick={() => handleClose()}></button>
+							</div>
+							<div className="h-[36rem] flex justify-center items-center">
+								<HiringManagerInterviewSchedulingModal />
 							</div>
 						</div>
 					</Modal.Body>

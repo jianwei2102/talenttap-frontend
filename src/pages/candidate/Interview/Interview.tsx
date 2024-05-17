@@ -27,39 +27,39 @@ const Interview = () => {
   // interview details
   const [interviews, setInterviews] = useState<InterviewData[]>([]);
 
-  const fetchCampaign = async () => {
-    const response = await CampaignAPI.get(CAMPAIGN_ID);
-    const { campaign, generalInterviews, hiringManagerInterviews, skillAssessments } = response;
+  // const fetchCampaign = async () => {
+  //   const response = await CampaignAPI.get(CAMPAIGN_ID);
+  //   const { campaign, generalInterviews, hiringManagerInterviews, skillAssessments } = response;
 
-    console.log('response : ', response);
+  //   console.log('response : ', response);
 
-    setName(campaign.name);
-    setJobDescription(campaign.jobDescription);
-    setRequirement(campaign.requirement);
-    setEndDate(campaign.endDate.split("T")[0]);
+  //   setName(campaign.name);
+  //   setJobDescription(campaign.jobDescription);
+  //   setRequirement(campaign.requirement);
+  //   setEndDate(campaign.endDate.split("T")[0]);
 
-    const cvScreening = new InterviewData(0, "", 3 , 7, new Date(), new Date(), "Admin", "CV & Visa Checking");
-    let interviewSteps: InterviewData[] = [cvScreening];
+  //   const cvScreening = new InterviewData(0, "", 3 , 7, new Date(), new Date(), "Admin", "CV & Visa Checking");
+  //   let interviewSteps: InterviewData[] = [cvScreening];
 
-    for (const i of generalInterviews) {
-      interviewSteps.push(InterviewData.fromJson(i, "General Interview"));
-    }
+  //   for (const i of generalInterviews) {
+  //     interviewSteps.push(InterviewData.fromJson(i, "General Interview"));
+  //   }
 
-    for (const i of hiringManagerInterviews) {
-      interviewSteps.push(InterviewData.fromJson(i, "Hiring Manager Interview"));
-    }
+  //   for (const i of hiringManagerInterviews) {
+  //     interviewSteps.push(InterviewData.fromJson(i, "Hiring Manager Interview"));
+  //   }
 
-    for (const i of skillAssessments) {
-      interviewSteps.push(InterviewData.fromJson(i, "Skill Assessment"));
-    }
+  //   for (const i of skillAssessments) {
+  //     interviewSteps.push(InterviewData.fromJson(i, "Skill Assessment"));
+  //   }
 
-    interviewSteps.sort((a: InterviewData, b: InterviewData) => a.sequence - b.sequence);
-    setInterviews(interviewSteps);
-  };
+  //   interviewSteps.sort((a: InterviewData, b: InterviewData) => a.sequence - b.sequence);
+  //   setInterviews(interviewSteps);
+  // };
 
   useEffect(() => {
     (async () => {
-      await fetchCampaign();
+      // await fetchCampaign();
       setActiveIndex(activeIndex); // Modify interview stage
     })();
   }, []);
@@ -67,7 +67,7 @@ const Interview = () => {
   return (
     <>
       <UserNavBar activeIndex={0} />
-
+      <PopUpModal title={"Schedule Interview"} />
       <div className="h-full mx-12 my-8 lg:mx-36 lg:my-24">
         <div className="flex flex-row justify-between">
           <div className="text-[#D2051E] text-4xl font-bold">{name}</div>
@@ -127,10 +127,7 @@ const Interview = () => {
               {interviews[activeIndex]?.type == "Hiring Manager Interview" && (
                 <>
                   {HiringManagerInterviewInfo()}
-                  <CustomButton
-                    title={"Schedule Interview"}
-                    customFunction={() => navigate("/hiring-manager-interview-schedule")}
-                  />
+                  <PopUpModal title={"Schedule Interview"} />
                   <p className="text-center mt-2">
                     The Interview can be done within {interviews[activeIndex]?.daysBeforeExpired} days
                   </p>

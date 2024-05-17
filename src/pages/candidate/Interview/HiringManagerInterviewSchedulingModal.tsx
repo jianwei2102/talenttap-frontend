@@ -1,6 +1,5 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import UserNavBar from "../../components/UserNavBar.tsx";
 
 interface InterviewDaySlot {
 	date: Date;
@@ -42,8 +41,8 @@ function generateInterviewTimeSlots(): string[] {
 }
 
 function convertIntToDayString(num: number): string {
-	const dayList = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
-	return dayList[num - 1];
+	const dayList = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+	return dayList[num];
 }
 
 //TODO: Get interviewer names
@@ -55,7 +54,7 @@ const interviewSlots: InterviewDaySlot[] = [];
 
 let currentDate = new Date();
 for (let index = 0; index < 10; index++) {
-	let month = currentDate.getMonth();
+	let month = currentDate.getMonth() + 1;
 	let day = currentDate.getDate() + index + 1;
 
 	if (day > 30) {
@@ -69,24 +68,16 @@ for (let index = 0; index < 10; index++) {
 	});
 }
 
-function HiringManagerInterviewPage() {
+function HiringManagerInterviewSchedulingModal() {
 	// TODO: Check if interviewee already scheduled an interview
 	const [isInterviewScheduled, setIsInterviewScheduled] = useState(false);
-	const [showInterviewSchedulingModal, setShowInterviewSchedulingModal] = useState(false);
+	// const [showInterviewSchedulingModal, setShowInterviewSchedulingModal] = useState(true);
 	const [showScheduledInterviewModal, setShowScheduledInterviewModal] = useState(false);
 	const [activeInterviewDayCardIndex, setActiveInterviewDayCardIndex] = useState(-1);
 	const [interviewDayCardMinIndex, setInterviewDayCardMinIndex] = useState(0);
 	const [interviewDayCardMaxIndex, setInterviewDayCardMaxIndex] = useState(4);
 	const [interviewTimeSlotIndex, setInterviewTimeSlotIndex] = useState(-1);
 	const [selectedInterviewDay, setSelectedInterviewDay] = useState(new Date());
-
-	const openInterviewSchedulingModalHandle = () => {
-		setShowInterviewSchedulingModal(true);
-	};
-
-	const closeInterviewSchedulingModalHandle = () => {
-		setShowInterviewSchedulingModal(false);
-	};
 
 	const closeScheduledInterviewModalHandle = () => {
 		setShowScheduledInterviewModal(false);
@@ -183,7 +174,6 @@ function HiringManagerInterviewPage() {
 		scheduledDate.setHours(Number(hours));
 		scheduledDate.setMinutes(Number(minutes));
 
-		setShowInterviewSchedulingModal(false);
 		setIsInterviewScheduled(true);
 		setShowScheduledInterviewModal(true);
 
@@ -191,42 +181,10 @@ function HiringManagerInterviewPage() {
 	};
 
 	return (
-		<div className="h-screen w-screen flex flex-col">
-			<UserNavBar activeIndex={-1} />
-			{/* TODO: Add progress bar */}
-			{/* TODO: Add position information (best to turn into a component since its repeating from other pages)*/}
-			<div className="flex flex-col justify-center items-center">
-				<button
-					className="bg-red-700 text-white px-5 py-2"
-					onClick={openInterviewSchedulingModalHandle}>
-					Schedule Interview
-				</button>
-				<span className="text-gray-500 text-sm px-5 py-2 mt-2">
-					The interview can be done within 3 days.
-				</span>
-			</div>
+		<div className="h-full w-full flex justify-center items-center">
 			<div
-				className={
-					showInterviewSchedulingModal
-						? "modal-backdrop flex justify-center items-center"
-						: "hidden"
-				}>
-				<div className="h-4/6 w-2/6 bg-white rounded-3xl absolute z-100 p-3">
-					<div className="w-full flex flex-row-reverse">
-						<svg
-							className="h-8 w-8 text-black cursor-pointer"
-							fill="none"
-							viewBox="0 0 24 24"
-							stroke="currentColor"
-							onClick={closeInterviewSchedulingModalHandle}>
-							<path
-								stroke-linecap="round"
-								stroke-linejoin="round"
-								stroke-width="2"
-								d="M6 18L18 6M6 6l12 12"
-							/>
-						</svg>
-					</div>
+				className="h-full w-full flex justify-center items-center z-10">
+				<div className="h-full w-full bg-white rounded-3xl z-100 p-3">
 					<div className="w-full h-full p-2 flex flex-col">
 						<span className="font-bold text-2xl p-2">
 							{"30 minute call with " + interviewerList.join(" & ")}
@@ -403,4 +361,4 @@ function HiringManagerInterviewPage() {
 	);
 }
 
-export default HiringManagerInterviewPage;
+export default HiringManagerInterviewSchedulingModal;
