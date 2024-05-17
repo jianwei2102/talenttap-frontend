@@ -14,26 +14,26 @@ function UserAssessmentSubmissionCompletedPage() {
 	return (
 		<div>
 			<UserNavBar activeIndex={-1} />
-			<div className="main-container flex flex-col justify-center items-center">
+			<div className="main-container tw-flex tw-flex-col tw-justify-center tw-items-center">
 				<img
-					className="h-1/2"
+					className="tw-h-1/2"
 					src={require(randomImageIndex === 0
 						? "../../assets/congratulations-1.png"
 						: "../../assets/congratulations-2.png")}
 					alt=""></img>
-				<span className="w-full font-bold text-2xl text-center mt-5 p-2">
+				<span className="tw-w-full tw-font-bold tw-text-2xl tw-text-center tw-mt-5 tw-p-2">
 					Thank you for completing the assessment!
 				</span>
-				<span className="w-full text-center text-lg mt-2">
+				<span className="tw-w-full tw-text-center tw-text-lg tw-mt-2">
 					You will be notified via email once your results have been finalized.
 				</span>
-				<span className="w-full text-center text-lg">
+				<span className="tw-w-full tw-text-center tw-text-lg">
 					Contact us at talenttap@hilti.com if you have any inquiries.
 				</span>
-				<button className="flex justify-center items-center bg-red-700 p-2 mt-10 border rounded-md" onClick={handleButtonClick}>
-					<span className="text-white text-sm">Back To Home</span>
+				<button className="tw-flex tw-justify-center tw-items-center tw-bg-red-700 tw-p-2 tw-mt-10 tw-border tw-rounded-md" onClick={handleButtonClick}>
+					<span className="tw-text-white tw-text-sm">Back To Home</span>
 					<svg
-						className={"h-5 w-5 text-white ml-2"}
+						className={"tw-h-5 w-5 tw-text-white tw-ml-2"}
 						fill="none"
 						viewBox="0 0 24 24"
 						stroke="currentColor">

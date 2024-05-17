@@ -11,7 +11,7 @@ const CustomToggle = React.forwardRef<HTMLAnchorElement, CustomToggleProps>(({ c
       e.preventDefault();
       onClick(e);
     }}
-    className='w-full bg-white border border-black rounded-lg p-2 flex text-lg'
+    className='tw-w-full tw-bg-white tw-border tw-border-black tw-rounded-lg tw-p-2 tw-flex tw-text-lg'
   >
     {children}
     ▼

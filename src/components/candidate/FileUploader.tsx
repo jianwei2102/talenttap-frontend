@@ -23,7 +23,7 @@ const FileUploader = () => {
   return (
     <>
       <div
-        className="flex flex-col justify-center items-center border-dashed border-2 h-52 cursor-pointer rounded-sm py-10"
+        className="tw-flex tw-flex-col tw-justify-center tw-items-center tw-border-dashed tw-border-2 tw-h-52 tw-cursor-pointer tw-rounded-sm tw-py-10"
         onClick={() =>
           (
             document.querySelector(".uploader-field") as HTMLInputElement
@@ -35,34 +35,34 @@ const FileUploader = () => {
           id="file"
           className="uploader-field"
           accept="application/pdf"
-          hidden
+          tw-hidden
           onChange={handleFileChange}
         />
 
         {resume ? (
-          <embed src={resume} className="w-52 h-56" />
+          <embed src={resume} className="tw-w-52 tw-h-56" />
         ) : (
           <>
             <img
-              className="h-3/6 w-3/6 object-contain"
+              className="tw-h-3/6 tw-w-3/6 tw-object-contain"
               src={require("../../assets/resume.png")}
               alt="Resume Icon"
             ></img>
-            <p className="mt-1">Browse Files to Upload the Documents</p>
+            <p className="tw-mt-1">Browse Files to Upload the Documents</p>
           </>
         )}
       </div>
 
       {resume ? (
-        <div className="flex justify-between items-center mt-2 py-2 bg-red-200 rounded-2xl">
-          <div className="flex items-center ml-4">
-            <AiFillFileImage className="mr-2" />
+        <div className="tw-flex tw-justify-between tw-items-center tw-mt-2 tw-py-2 tw-bg-red-200 tw-rounded-2xl">
+          <div className="tw-flex tw-items-center tw-ml-4">
+            <AiFillFileImage className="tw-mr-2" />
             {fileName}
           </div>
-          <button className="hover:bg-red-400 hover:rounded-full hover:p-0.5 mr-2">
+          <button className="hover:tw-bg-red-400 hover:tw-rounded-full hover:tw-p-0.5 tw-mr-2">
             <MdDelete
               color="#D20584"
-              className=" w-5 h-5"
+              className=" tw-w-5 tw-h-5"
               onClick={() => {
                 setResume(null);
                 setFileName("No selected file");

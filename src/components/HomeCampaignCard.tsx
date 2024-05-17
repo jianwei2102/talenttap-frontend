@@ -26,13 +26,13 @@ function HomeCampaignCard({
   }
 
   return (
-    <div className="w-full h-48 border border-stone-400 rounded flex justify-between p-5 cursor-pointer" onClick={handleCardClick}>
-      <div className="w-4/6 flex flex-col mr-2">
-        <span className="text-xl text-red-700 font-bold mb-3">{name}</span>
-        <div className="h-5/6 flex flex-col justify-around">
-          <div className="h-auto w-full mb-2 flex items-center">
+    <div className="tw-w-full tw-h-48 tw-border tw-border-stone-400 tw-rounded tw-flex tw-justify-between tw-p-5" onClick={handleCardClick}>
+      <div className="tw-w-4/6 tw-flex tw-flex-col tw-mr-2">
+        <span className="tw-text-xl tw-text-red-700 tw-font-bold tw-mb-3">{name}</span>
+        <div className="tw-h-5/6 tw-flex tw-flex-col tw-justify-around">
+          <div className="tw-h-auto tw-w-full tw-mb-2 tw-flex tw-items-center">
             <svg
-              className="h-5 w-5 text-red-500"
+              className="tw-h-5 tw-w-5 tw-text-red-500"
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
@@ -43,11 +43,11 @@ function HomeCampaignCard({
               <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />{" "}
               <circle cx="12" cy="10" r="3" />
             </svg>
-            <span className="text-md ml-2">{location}</span>
+            <span className="tw-text-md tw-ml-2">{location}</span>
           </div>
-          <div className="h-auto mb-2 flex items-center">
+          <div className="tw-h-auto tw-mb-2 tw-flex tw-items-center">
             <svg
-              className="h-5 w-5 text-red-500"
+              className="tw-h-5 tw-w-5 tw-text-red-500"
               width="24"
               height="24"
               viewBox="0 0 24 24"
@@ -65,11 +65,11 @@ function HomeCampaignCard({
               <line x1="5" y1="12" x2="5" y2="12.01" />{" "}
               <line x1="5" y1="18" x2="5" y2="18.01" />
             </svg>
-            <span className="text-md ml-2">{type}</span>
+            <span className="tw-text-md tw-ml-2">{type}</span>
           </div>
-          <div className="h-auto mb-2 flex items-center">
+          <div className="tw-h-auto tw-mb-2 tw-flex tw-items-center">
             <svg
-              className="h-5 w-5 text-red-500"
+              className="tw-h-5 tw-w-5 tw-text-red-500"
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
@@ -81,12 +81,12 @@ function HomeCampaignCard({
               <line x1="12" y1="16" x2="12" y2="12" />{" "}
               <line x1="12" y1="8" x2="12.01" y2="8" />
             </svg>
-            <span className="text-md ml-2">{startDate}</span>
+            <span className="tw-text-md tw-ml-2">{startDate}</span>
           </div>
         </div>
       </div>
       <img
-        className="w-2/6 object-cover rounded-md"
+        className="tw-w-2/6 tw-object-cover"
         alt="campaign picture"
         src={imageSrc}></img>
     </div>

@@ -21,45 +21,45 @@ const InterviewStepBar = ({ interviews = [], initialActiveStep = 1 }: Props) => 
   const width = `${(100 / (totalSteps - 1)) * (activeStep)}%`;
 
   return (
-    <div className="w-full max-w-6xl lg:max-w-screen-2xl h-32 mx-auto px-4">
+    <div className="tw-w-full max-tw-w-6xl lg:max-tw-w-screen-2xl tw-h-32 tw-mx-auto tw-px-4">
 
       {/* Stages */}
-      <div className="flex justify-between mt-16 relative">
+      <div className="tw-flex tw-justify-between tw-mt-16 tw-relative">
         {interviews.map(({ sequence, type }) => (
-          <div key={sequence} className="relative z-10">
+          <div key={sequence} className="tw-relative tw-z-10">
 
             <div
-              className={`w-12 h-12 rounded-full flex justify-center items-center transition-all duration-400 ${activeStep > sequence
-                  ? "bg-[#D2051E]"
-                  : "bg-white border border-gray-400"
+              className={`tw-w-12 tw-h-12 tw-rounded-full tw-flex tw-justify-center tw-items-center tw-transition-all tw-duration-400 ${activeStep > sequence
+                  ? "tw-bg-[#D2051E]"
+                  : "tw-bg-white tw-border tw-border-gray-400"
                 } `}
             >
               {activeStep > sequence ? (
-                <div className="text-xl font-semibold text-white">
+                <div className="tw-text-xl tw-font-semibold tw-text-white">
                   <FaCheck />
                 </div>
               ) : (
-                <span className="text-lg">{sequence + 1}</span>
+                <span className="tw-text-lg">{sequence + 1}</span>
               )}
             </div>
 
             {activeStep === sequence && (
-              <div className="absolute -top-7 left-1/2 transform -translate-x-1/2">
-                <span className="text-md text-nowrap text-[#D2051E]">
+              <div className="tw-absolute tw-top-7 tw-left-1/2 tw-transform tw--translate-x-1/2">
+                <span className="tw-text-md tw-text-nowrap tw-text-[#D2051E]">
                   In progress
                 </span>
               </div>
             )}
 
-            <div className="absolute top-16 left-1/2 transform -translate-x-1/2">
-              <span className="text-md md:text-nowrap">{type}</span>
+            <div className="tw-absolute tw-top-16 tw-left-1/2 tw-transform tw--translate-x-1/2">
+              <span className="tw-text-md md:tw-text-nowrap">{type}</span>
             </div>
           </div>
         ))}
 
-        <div className="absolute top-1/2 transform -translate-y-1/2 left-0 w-full h-1 bg-pink-200"></div>
+        <div className="tw-absolute tw-top-1/2 tw-transform tw--translate-y-1/2 tw-left-0 tw-w-full tw-h-1 tw-bg-pink-200"></div>
         <div
-          className="absolute top-1/2 transform -translate-y-1/2 left-0 h-1 bg-[#D2051E] transition-all duration-400"
+          className="tw-absolute tw-top-1/2 tw-transform tw--translate-y-1/2 tw-left-0 tw-h-1 tw-bg-[#D2051E] tw-transition-all tw-duration-400"
           style={{ width }}
         ></div>
       </div>

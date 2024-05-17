@@ -30,15 +30,15 @@ const GeneralQuestion = () => {
   }, []);
 
   return (
-    <div className="h-screen w-screen flex items-center justify-center px-20 ">
-      <div className="grid grid-cols-2 gap-12">
+    <div className="tw-h-screen tw-w-screen tw-flex tw-items-center tw-justify-center tw-px-20 ">
+      <div className="tw-grid tw-grid-cols-2 tw-gap-12">
         <div>
-          <div className="text-[#D2051E] text-4xl">Question {questionNo}</div>
-          <div className="font-semibold text-wrap text-5xl leading-relaxed mt-8">
+          <div className="tw-text-[#D2051E] tw-text-4xl">Question {questionNo}</div>
+          <div className="tw-font-semibold tw-text-wrap tw-text-5xl leading-relaxed tw-mt-8">
             {question}
           </div>
 
-          <div className="mt-8 text-3xl leading-relaxed">
+          <div className="tw-mt-8 tw-text-3xl leading-relaxed">
             {hint.split("\n").map((line, i) => (
               <span key={i}>
                 {line}
@@ -58,18 +58,18 @@ const GeneralQuestion = () => {
         </div>
 
         <div>
-          <div className="grid grid-cols-2">
-            <div className="flex flex-col justify-center items-center text-xl">
+          <div className="tw-grid tw-grid-cols-2">
+            <div className="tw-flex tw-flex-col tw-justify-center tw-items-center tw-text-xl">
               Time for Reading:
-              <span className="font-semibold">20 seconds</span>
+              <span className="tw-font-semibold">20 seconds</span>
             </div>
-            <div className="flex flex-col justify-center items-center text-xl">
+            <div className="tw-flex tw-flex-col tw-justify-center tw-items-center tw-text-xl">
               Time for Answering:
-              <span className="font-semibold">10 minutes</span>
+              <span className="tw-font-semibold">10 minutes</span>
             </div>
           </div>
 
-          <div className="mt-8" style={{ height: "36rem" }}>
+          <div className="tw-mt-8" style={{ height: "36rem" }}>
             <Recorder />
           </div>
         </div>

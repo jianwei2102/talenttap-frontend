@@ -52,59 +52,59 @@ function SignIn() {
 	};
 
 	return (
-		<div className="bg-gray-200 h-full w-full absolute flex justify-center items-center">
-			<div className="w-4/6 h-4/6 flex justify-center items-center">
-				<div className="inherit h-full w-1/2 bg-white border rounded-l-md flex justify-center items-center">
-					<form className="relative h-3/4 w-5/6 block" onSubmit={handleSubmit}>
-						<span className="text-3xl font-bold text-black">Log In</span>
-						<div className="block mt-10 h-1/6">
-							<span className="text-lg text-black">E-mail address</span>
+		<div className="tw-bg-gray-200 tw-h-full tw-w-full tw-absolute tw-flex tw-justify-center tw-items-center">
+			<div className="tw-w-4/6 tw-h-4/6 tw-flex tw-justify-center tw-items-center">
+				<div className="inherit tw-h-full tw-w-1/2 tw-bg-white tw-border tw-rounded-l-md tw-flex tw-justify-center tw-items-center">
+					<form className="tw-relative tw-h-3/4 tw-w-5/6 block" onSubmit={handleSubmit}>
+						<span className="tw-text-3xl tw-font-bold tw-text-black">Log In</span>
+						<div className="block tw-mt-10 tw-h-1/6">
+							<span className="tw-text-lg tw-text-black">E-mail address</span>
 							<input
-								className="mt-2 border border-gray-900 rounded-sm w-full h-1/2 p-2"
+								className="tw-mt-2 tw-border tw-border-gray-900 tw-rounded-sm tw-w-full tw-h-1/2 tw-p-2"
 								type="text"
 								name="email"
 								required
 								onChange={handleChange}></input>
 						</div>
-						<div className="block mt-5 h-1/6">
-							<span className="text-lg text-black">Password</span>
+						<div className="block tw-mt-5 tw-h-1/6">
+							<span className="tw-text-lg tw-text-black">Password</span>
 							<input
-								className="mt-2 border border-gray-900 rounded-sm w-full h-1/2 p-2"
+								className="tw-mt-2 tw-border tw-border-gray-900 tw-rounded-sm tw-w-full tw-h-1/2 tw-p-2"
 								type="password"
 								name="password"
 								required
 								onChange={handleChange}></input>
 						</div>
-						<div className="w-full mt-5 flex items-center">
-							<div className="w-1/2 flex items-start">
-								<input className="mt-1 h-full" type="checkbox"></input>
-								<span className="ml-2 text-sm">Remember me</span>
+						<div className="tw-w-full tw-mt-5 tw-flex tw-items-center">
+							<div className="tw-w-1/2 tw-flex tw-items-start">
+								<input className="tw-mt-1 tw-h-full" type="checkbox"></input>
+								<span className="tw-ml-2 tw-text-sm">Remember me</span>
 							</div>
-							<div className="w-1/2 flex justify-end">
-								<span className="text-red-700 text-right text-sm cursor-pointer">
+							<div className="tw-w-1/2 tw-flex tw-justify-end">
+								<span className="tw-text-red-700 tw-text-right tw-text-sm tw-cursor-pointer">
 									Forgot Password?
 								</span>
 							</div>
 						</div>
 						<button
-							className="w-full h-10 mt-10 bg-red-700 flex justify-content items-center cursor-pointer"
+							className="tw-w-full tw-h-10 tw-mt-10 tw-bg-red-700 tw-flex tw-justify-content tw-items-center tw-cursor-pointer"
 							type="submit">
-							<span className="w-full text-center text-white">Sign In</span>
+							<span className="tw-w-full tw-text-center tw-text-white">Sign In</span>
 						</button>
-						<div className="mt-10 flex justify-center">
+						<div className="tw-mt-10 tw-flex tw-justify-center">
 							<span>New here?</span>
-							<span className="text-red-700 ml-1 cursor-pointer" onClick={goToSignUp}>
+							<span className="tw-text-red-700 tw-ml-1 tw-cursor-pointer" onClick={goToSignUp}>
 								Create an account
 							</span>
 						</div>
 					</form>
 				</div>
-				<div className="inherit h-full w-1/2 border rounded-r-md flex justify-center items-center relative">
+				<div className="inherit tw-h-full tw-w-1/2 tw-border tw-rounded-r-md tw-flex tw-justify-center tw-items-center tw-relative">
 					<img
-						className="inherit h-full w-full object-fill border rounded-r-md z-0 absolute"
+						className="inherit tw-h-full tw-w-full tw-object-fill tw-border tw-rounded-r-md tw-z-0 tw-absolute"
 						src={require("../assets/wave-background.png")}
 						alt="login background"></img>
-					<span className="text-5xl text-center font-bold text-white z-10">
+					<span className="tw-text-5xl tw-text-center tw-font-bold tw-text-white tw-z-10">
 						Welcome <br /> Back
 					</span>
 				</div>

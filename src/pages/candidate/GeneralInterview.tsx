@@ -9,8 +9,8 @@ const GeneralInterview = () => {
     <>
       <UserNavBar activeIndex={0} />
 
-      <div className="h-full lg:mx-36 lg:my-24 mx-12 my-8">
-        <div className="text-[#D2051E] text-4xl font-bold">
+      <div className="tw-h-full lg:tw-mx-36 lg:tw-my-24 tw-mx-12 tw-my-8">
+        <div className="tw-text-[#D2051E] tw-text-4xl tw-font-bold">
           How to get started
         </div>
         <div>
@@ -18,9 +18,9 @@ const GeneralInterview = () => {
           to finish.
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 2xl:grid-cols-5 justify-between gap-12  mt-20">
-          <div className="bg-gray-300 lg:min-w-64 lg:h-64 2xl:w-72 2xl:min-h-96 px-4 py-5">
-            <div className="w-max border-2 border-gray-500 rounded-full px-3 py-3.5 mb-3">
+        <div className="tw-grid tw-grid-cols-1 lg:tw-grid-cols-3 2xl:tw-grid-cols-5 tw-justify-between tw-gap-12  tw-mt-20">
+          <div className="tw-bg-gray-300 lg:min-tw-w-64 lg:tw-h-64 2xl:tw-w-72 2xl:min-tw-h-96 tw-px-4 tw-py-5">
+            <div className="tw-w-max tw-border-2 tw-border-gray-500 tw-rounded-full tw-px-3 tw-py-3.5 tw-mb-3">
               01
             </div>
             <span>
@@ -28,8 +28,8 @@ const GeneralInterview = () => {
               interview. Once started, the interview cannot be paused.
             </span>
           </div>
-          <div className="bg-gray-300 lg:min-w-64 lg:h-64 2xl:w-72 2xl:min-h-96 px-4 py-5">
-            <div className="w-max border-2 border-gray-500 rounded-full px-3 py-3.5 mb-3 item">
+          <div className="tw-bg-gray-300 lg:min-tw-w-64 lg:tw-h-64 2xl:tw-w-72 2xl:min-tw-h-96 tw-px-4 tw-py-5">
+            <div className="tw-w-max tw-border-2 tw-border-gray-500 tw-rounded-full tw-px-3 tw-py-3.5 tw-mb-3 item">
               02
             </div>
             <span>
@@ -38,8 +38,8 @@ const GeneralInterview = () => {
             </span>
           </div>
 
-          <div className="bg-gray-300 lg:min-w-64 lg:h-64 2xl:w-72 2xl:min-h-96 px-4 py-5">
-            <div className="w-max border-2 border-gray-500 rounded-full px-3 py-3.5 mb-3">
+          <div className="tw-bg-gray-300 lg:min-tw-w-64 lg:tw-h-64 2xl:tw-w-72 2xl:min-tw-h-96 tw-px-4 tw-py-5">
+            <div className="tw-w-max tw-border-2 tw-border-gray-500 tw-rounded-full tw-px-3 tw-py-3.5 tw-mb-3">
               03
             </div>
             <span>
@@ -48,8 +48,8 @@ const GeneralInterview = () => {
             </span>
           </div>
 
-          <div className="bg-gray-300 lg:min-w-64 lg:h-64 2xl:w-72 2xl:min-h-96 px-4 py-5">
-            <div className="w-max border-2 border-gray-500 rounded-full px-3 py-3.5 mb-3">
+          <div className="tw-bg-gray-300 lg:min-tw-w-64 lg:tw-h-64 2xl:tw-w-72 2xl:min-tw-h-96 tw-px-4 tw-py-5">
+            <div className="tw-w-max tw-border-2 tw-border-gray-500 tw-rounded-full tw-px-3 tw-py-3.5 tw-mb-3">
               04
             </div>
             <span>
@@ -58,8 +58,8 @@ const GeneralInterview = () => {
             </span>
           </div>
 
-          <div className="bg-gray-300 lg:min-w-64 lg:h-64 2xl:w-72 2xl:min-h-96 px-4 py-5">
-            <div className="w-max border-2 border-gray-500 rounded-full px-3 py-3.5 mb-3">
+          <div className="tw-bg-gray-300 lg:min-tw-w-64 lg:tw-h-64 2xl:tw-w-72 2xl:min-tw-h-96 tw-px-4 tw-py-5">
+            <div className="tw-w-max tw-border-2 tw-border-gray-500 tw-rounded-full tw-px-3 tw-py-3.5 tw-mb-3">
               05
             </div>
             <span>

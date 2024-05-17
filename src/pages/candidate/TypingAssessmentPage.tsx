@@ -113,12 +113,12 @@ function TypingAssessmentPage() {
 	}, []);
 
 	return (
-		<div className="h-screen w-screen flex p-20 bg-gray-200 justify-center align-center">
+		<div className="tw-h-screen tw-w-screen tw-flex tw-p-20 tw-bg-gray-200 tw-justify-center align-center">
 
-			<Card className="max-w-full w-[650px] border p-5" color="white" placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
+			<Card className="max-tw-w-full tw-w-[650px] tw-border tw-p-5" color="white" placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
 				<h3>Typing Speed Test</h3>
-				<Progress className="my-3" value={progress} size="lg" color="red" placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined} />
-				<p className="flex flex-wrap mb-5">
+				<Progress className="tw-my-3" value={progress} size="lg" color="red" placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined} />
+				<p className="tw-flex tw-flex-wrap tw-mb-5">
 					{text.split(" ").map((word, w_idx) => {
 						let highlight = false;
 						let currentWord = false;
@@ -134,9 +134,9 @@ function TypingAssessmentPage() {
 
 						return (
 							<span
-								className={`m-1
-                                ${highlight && "text-green-600"} 
-                                ${currentWord && "border-b-1 border-black"}`}
+								className={`tw-m-1
+                                ${highlight && "tw-text-green-600"} 
+                                ${currentWord && "tw-border-b-1 tw-border-black"}`}
 								key={w_idx}
 							>
 								{word.split("").map((letter, l_idx) => {
@@ -148,8 +148,8 @@ function TypingAssessmentPage() {
 										<span
 											className={`letter ${isCurrentWord && shouldBeHighlighted
 												? isWronglyTyped
-													? "text-red-600"
-													: "text-green-600"
+													? "tw-text-red-600"
+													: "tw-text-green-600"
 												: ""
 												}`}
 											key={l_idx}
