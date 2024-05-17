@@ -60,14 +60,20 @@ const Interview = () => {
   useEffect(() => {
     (async () => {
       await fetchCampaign();
-      setActiveIndex(activeIndex); // Modify interview stage
+
+      if (localStorage.getItem("interview-index") === null) {
+        localStorage.setItem("interview-index", activeIndex.toString());
+      }
+      const i = parseInt(localStorage.getItem("interview-index") || activeIndex.toString());
+
+      setActiveIndex(i); // Modify interview stage
     })();
   }, []);
 
   return (
     <>
       <UserNavBar activeIndex={0} />
-      <PopUpModal title={"Schedule Interview"} />
+      
       <div className="h-full mx-12 my-8 lg:mx-36 lg:my-24">
         <div className="flex flex-row justify-between">
           <div className="text-[#D2051E] text-4xl font-bold">{name}</div>

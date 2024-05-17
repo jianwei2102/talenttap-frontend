@@ -1,10 +1,12 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 interface HomeCampaignCardProps {
   name: string;
   location: string;
   type: string;
   experienceRequirement: string;
+  startDate: string;
   imageSrc: string;
 }
 
@@ -13,10 +15,18 @@ function HomeCampaignCard({
   location,
   type,
   experienceRequirement,
+  startDate,
   imageSrc,
 }: HomeCampaignCardProps) {
+  const navigate = useNavigate();
+
+  const handleCardClick = () => {
+    localStorage.setItem("interview-index", "0");
+    navigate("/interview");
+  }
+
   return (
-    <div className="w-full h-48 border border-stone-400 rounded flex justify-between p-5">
+    <div className="w-full h-48 border border-stone-400 rounded flex justify-between p-5 cursor-pointer" onClick={handleCardClick}>
       <div className="w-4/6 flex flex-col mr-2">
         <span className="text-xl text-red-700 font-bold mb-3">{name}</span>
         <div className="h-5/6 flex flex-col justify-around">
@@ -71,12 +81,12 @@ function HomeCampaignCard({
               <line x1="12" y1="16" x2="12" y2="12" />{" "}
               <line x1="12" y1="8" x2="12.01" y2="8" />
             </svg>
-            <span className="text-md ml-2">{experienceRequirement}</span>
+            <span className="text-md ml-2">{startDate}</span>
           </div>
         </div>
       </div>
       <img
-        className="w-2/6 object-contain"
+        className="w-2/6 object-cover rounded-md"
         alt="campaign picture"
         src={imageSrc}></img>
     </div>

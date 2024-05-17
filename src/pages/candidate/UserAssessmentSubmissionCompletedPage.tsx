@@ -6,8 +6,9 @@ function UserAssessmentSubmissionCompletedPage() {
     const navigate = useNavigate();
 	const randomImageIndex = Math.floor(Math.random() * 2);
 
-    const backToHome = () => {
-        navigate('/home');
+    const handleButtonClick = () => {
+		localStorage.setItem("interview-index", "3");
+        navigate('/interview');
     };
 
 	return (
@@ -29,7 +30,7 @@ function UserAssessmentSubmissionCompletedPage() {
 				<span className="w-full text-center text-lg">
 					Contact us at talenttap@hilti.com if you have any inquiries.
 				</span>
-				<button className="flex justify-center items-center bg-red-700 p-2 mt-10 border rounded-md" onClick={backToHome}>
+				<button className="flex justify-center items-center bg-red-700 p-2 mt-10 border rounded-md" onClick={handleButtonClick}>
 					<span className="text-white text-sm">Back To Home</span>
 					<svg
 						className={"h-5 w-5 text-white ml-2"}

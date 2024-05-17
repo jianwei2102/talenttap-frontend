@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Recorder } from "../../components";
-import {getSpecific} from "../../models/generalQuestions.js"
+import { getSpecific } from "../../models/generalQuestions.js"
+import { useNavigate } from "react-router-dom";
 
-interface Question{
+interface Question {
   question: string,
   hint: string,
   recordingTimeSeconds: number,
@@ -10,6 +11,7 @@ interface Question{
 }
 
 const GeneralQuestion = () => {
+  const navigate = useNavigate();
   const [questions, setQuestions] = useState<Question[]>([])
   const [questionNo, setQuestionNo] = useState(1);
   const [question, setQuestion] = useState("");
@@ -24,7 +26,7 @@ const GeneralQuestion = () => {
 
   useEffect(() => {
     fetchData();
-    
+
   }, []);
 
   return (
@@ -44,6 +46,15 @@ const GeneralQuestion = () => {
               </span>
             ))}
           </div>
+
+          <div className="mt-8">
+            <button className="bg-[#D2051E] text-white px-8 py-2 rounded-md" onClick={() => {
+              localStorage.setItem("interview-index", "2");
+              navigate("/interview")
+            }}>
+              Next
+            </button>
+          </div>
         </div>
 
         <div>
@@ -57,7 +68,7 @@ const GeneralQuestion = () => {
               <span className="font-semibold">10 minutes</span>
             </div>
           </div>
-          
+
           <div className="mt-8" style={{ height: "36rem" }}>
             <Recorder />
           </div>

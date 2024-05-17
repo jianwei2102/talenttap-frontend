@@ -177,7 +177,7 @@ function UserHomePage() {
           <div className="h-auto home-grid">
             {campaigns.map((campaign, index) => (
               <div key={index}>
-                <Card name={campaign.name} location={campaign.location} type={campaign.department} experienceRequirement={campaign.requirement} imageSrc={campaign.image}/>
+                <Card name={campaign.name} location={campaign.location} type={campaign.department} experienceRequirement={campaign.requirement} startDate={campaign.startDate.toString().slice(0, 10)} imageSrc={campaign.image}/>
               </div>
             ))}
           </div>

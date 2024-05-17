@@ -55,7 +55,8 @@ function UserTechnicalAssessmentQuestionPage() {
 							timeSpent: 0,
 							numAttempts: 0,
 							positiveKeywords: [],
-							negativeKeywords: []
+							negativeKeywords: [],
+							scorePercentage: 0
 						}]
 					});
 				} else { // section already exists
@@ -70,7 +71,8 @@ function UserTechnicalAssessmentQuestionPage() {
 						timeSpent: 0,
 						numAttempts: 0,
 						positiveKeywords: [],
-						negativeKeywords: []
+						negativeKeywords: [],
+						scorePercentage: 0
 					});
 				}
 			});
