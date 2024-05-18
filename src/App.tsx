@@ -20,6 +20,7 @@ import CampaignListPage from "./pages/admin/CampaignListPage.tsx";
 import CreateCampaignPage from "./pages/admin/CreateCampaignPage.tsx";
 import TypingAssessmentPage from "./pages/candidate/TypingAssessmentPage.tsx";
 import SkillAssessmentResultPage from "./pages/admin/SkillAssessmentResultPage.tsx";
+import GeneralInterviewResultPage from "./pages/admin/GeneralInterviewResultPage/GeneralInterviewResultPage.tsx";
 
 function App() {
     return (
@@ -36,6 +37,7 @@ function App() {
                 <Route path="/admin" element={<AdminDashboardPage/>}/>
                 <Route path="/campaign-list" element={<CampaignListPage/>}/>
                 <Route path="/create-campaign" element={<CreateCampaignPage />}/>
+                <Route path="/general-interview-result" element={<GeneralInterviewResultPage/>}/>
                 <Route path="/skill-assessment-result" element={<SkillAssessmentResultPage/>}/>
                 <Route path="/" element={<SignIn/>}/>
                 <Route path="/interview" element={<Interview/>}/>

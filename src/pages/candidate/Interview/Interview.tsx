@@ -74,7 +74,7 @@ const Interview = () => {
     <>
       <UserNavBar activeIndex={0} />
       
-      <div className="tw-h-full tw-mx-12 tw-my-8 tw-lg:mx-36 tw-lg:my-24">
+      <div className="tw-h-full tw-mx-12 tw-my-8 lg:tw-mx-36 lg:tw-my-24">
         <div className="tw-flex tw-flex-row tw-justify-between">
           <div className="tw-text-[#D2051E] tw-text-4xl tw-font-bold">{name}</div>
           <div className="tw-flex tw-flex-col tw-justify-end tw-items-end">

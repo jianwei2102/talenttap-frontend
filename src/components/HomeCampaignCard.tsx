@@ -26,7 +26,7 @@ function HomeCampaignCard({
   }
 
   return (
-    <div className="tw-w-full tw-h-48 tw-border tw-border-stone-400 tw-rounded tw-flex tw-justify-between tw-p-5" onClick={handleCardClick}>
+    <div className="tw-w-full tw-h-48 tw-border tw-border-stone-400 tw-rounded tw-flex tw-justify-between tw-p-5 tw-cursor-pointer" onClick={handleCardClick}>
       <div className="tw-w-4/6 tw-flex tw-flex-col tw-mr-2">
         <span className="tw-text-xl tw-text-red-700 tw-font-bold tw-mb-3">{name}</span>
         <div className="tw-h-5/6 tw-flex tw-flex-col tw-justify-around">

@@ -165,8 +165,8 @@ function SkillAssessmentResultPage() {
 
     const QuestionSectionCard = (section: QuestionSectionCardProps) => {
         return (
-            <div className="w-full pt-3 pb-3 pl-1 pr-1 flex flex-col">
-                <span className="mb-2 font-bold text-md">
+            <div className="tw-w-full tw-pt-3 tw-pb-3 tw-pl-1 tw-pr-1 tw-flex tw-flex-col">
+                <span className="tw-mb-2 tw-font-bold tw-text-md">
                     {section.characterIndex + ". " + section.questionSection.sectionName}
                 </span>
                 {section.questionSection.questionList.map((question, index) => (
@@ -219,16 +219,16 @@ function SkillAssessmentResultPage() {
 
         return (
             <div
-                className="flex items-center justify-between pt-1 pb-1 cursor-pointer"
+                className="tw-flex tw-items-center tw-justify-between tw-pt-1 tw-pb-1 tw-cursor-pointer"
                 onClick={navigateToQuestionHandle}>
-                <div className="flex items-center">
+                <div className="tw-flex tw-items-center">
                     <input
-                        className="h-4 w-4 bg-gray-100 border-gray-300 rounded-md"
+                        className="tw-h-4 tw-w-4 tw-bg-gray-100 tw-border-gray-300 tw-rounded-md"
                         type="checkbox"
                         readOnly={true}
                         checked={!questionCard.isEmpty}></input>
                     <span
-                        className={questionCard.isActive === true ? "text-sm ml-2 font-bold" : "text-sm ml-2"}>
+                        className={questionCard.isActive === true ? "tw-text-sm tw-ml-2 tw-font-bold" : "tw-text-sm tw-ml-2"}>
                         {questionCard.questionIndex + 1 + ". " + questionCard.question.title}
                     </span>
                 </div>
@@ -238,31 +238,31 @@ function SkillAssessmentResultPage() {
     };
 
     return (
-        <div className="h-screen w-screen flex justify-between p-20 bg-gray-100">
+        <div className="tw-h-screen tw-w-screen tw-flex tw-justify-between tw-p-20 tw-bg-gray-100">
             {/* sidebar */}
-            <div className="h-full w-1/4 flex flex-col">
+            <div className="tw-h-full tw-w-1/4 tw-flex tw-flex-col">
 
                 {/* Avatar card */}
-                <div className="flex flex-col bg-white rounded-xl w-full mb-8">
-                    <div className="shadow-md rounded-2xl p-4">
-                        <div className="flex-none sm:flex">
-                            <div className=" relative h-32 w-32">
-                                <img src="https://images.unsplash.com/photo-1589386417686-0d34b5903d23?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjN8fHByb2Zlc3Npb25hbHxlbnwwfDB8MHx8fDA%3D" alt="aji" className=" w-32 h-32 object-cover rounded-2xl" />
+                <div className="tw-flex tw-flex-col tw-bg-white tw-rounded-xl tw-w-full tw-mb-8">
+                    <div className="tw-shadow-md tw-rounded-2xl tw-p-4">
+                        <div className="tw-flex-none sm:tw-flex">
+                            <div className="tw-relative tw-h-32 tw-w-32">
+                                <img src="https://images.unsplash.com/photo-1589386417686-0d34b5903d23?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjN8fHByb2Zlc3Npb25hbHxlbnwwfDB8MHx8fDA%3D" alt="aji" className="tw-w-32 tw-h-32 tw-object-cover tw-rounded-2xl" />
                             </div>
-                            <div className="flex-auto sm:ml-5 justify-evenly">
-                                <div className="flex items-center justify-between sm:mt-2">
-                                    <div className="flex items-center">
-                                        <div className="flex flex-col">
-                                            <div className="w-full flex-none text-lg font-bold leading-none">Stanford Swiss</div>
-                                            <div className="flex-auto text-gray-600 my-1">
+                            <div className="tw-flex-auto sm:tw-ml-5 tw-justify-evenly">
+                                <div className="tw-flex tw-items-center tw-justify-between sm:tw-mt-2">
+                                    <div className="tw-flex tw-items-center">
+                                        <div className="tw-flex tw-flex-col">
+                                            <div className="tw-w-full tw-flex-none tw-text-lg tw-font-bold tw-leading-none">Stanford Swiss</div>
+                                            <div className="tw-flex-auto tw-text-gray-600 tw-my-1">
                                                 <span>standford.swiss@gmail.com</span>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div className="flex flex-row items-center">
-                                    <div className="flex-1 inline-flex   items-center ml-2 space-x-2">
-                                        <a href="https://www.behance.net/ajeeshmon" target="_blank"><svg className=" cursor-pointer w-5 h-5 p-1  rounded-2xl hover:bg-blue-500 hover:text-white transition ease-in duration-300" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="48" height="48" viewBox="0 0 172 172" >
+                                <div className="tw-flex tw-flex-row tw-items-center">
+                                    <div className="tw-flex-1 tw-inline-flex tw-items-center tw-ml-2 tw-space-x-2">
+                                        <a href="https://www.behance.net/ajeeshmon" target="_blank"><svg className="tw-cursor-pointer tw-w-5 tw-h-5 tw-p-1 tw-rounded-2xl tw-hover:bg-blue-500 tw-hover:text-white tw-transition tw-ease-in tw-duration-300" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="48" height="48" viewBox="0 0 172 172" >
                                             <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" >
                                                 <path d="M0,172v-172h172v172z" fill="none"></path>
                                                 <g fill="#ffffff">
@@ -271,7 +271,7 @@ function SkillAssessmentResultPage() {
                                             </g>
                                         </svg></a>
 
-                                        <a href="https://www.linkedin.com/in/ajeeshmon" target="_blank"><svg className="cursor-pointer w-5 h-5 p-1  rounded-2xl hover:bg-blue-500 hover:text-white transition ease-in duration-300" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="30" height="30" viewBox="0 0 172 172" >
+                                        <a href="https://www.linkedin.com/in/ajeeshmon" target="_blank"><svg className="tw-cursor-pointer tw-w-5 tw-h-5 tw-p-1 tw-rounded-2xl tw-hover:bg-blue-500 tw-hover:text-white tw-transition tw-ease-in tw-duration-300" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="30" height="30" viewBox="0 0 172 172" >
                                             <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" >
                                                 <path d="M0,172v-172h172v172z" fill="none"></path>
                                                 <g fill="#ffffff">
@@ -279,7 +279,7 @@ function SkillAssessmentResultPage() {
                                                 </g>
                                             </g>
                                         </svg></a>
-                                        <a href="https://twitter.com/ajeemon?lang=en" target="_blank"><svg className="cursor-pointer w-5 h-5 p-1  rounded-2xl hover:bg-blue-400 hover:text-white transition ease-in duration-300" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="24" height="24" viewBox="0 0 172 172" >
+                                        <a href="https://twitter.com/ajeemon?lang=en" target="_blank"><svg className="tw-cursor-pointer tw-w-5 tw-h-5 tw-p-1 tw-rounded-2xl tw-hover:bg-blue-500 tw-hover:text-white tw-transition tw-ease-in tw-duration-300" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="24" height="24" viewBox="0 0 172 172" >
                                             <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" >
                                                 <path d="M0,172v-172h172v172z" fill="none"></path>
                                                 <g fill="#ffffff">
@@ -289,9 +289,9 @@ function SkillAssessmentResultPage() {
                                         </svg></a>
                                     </div>
                                 </div>
-                                <div className="flex flex-col text-sm text-gray-600">
-                                    <div className="flex-1 inline-flex">
-                                        <svg className="h-5 w-5 mr-2" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <div className="tw-flex tw-flex-col tw-text-sm tw-text-gray-600">
+                                    <div className="tw-flex-1 tw-inline-flex">
+                                        <svg className="tw-h-5 tw-w-5 tw-mr-2" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <g clip-path="url(#clip0_573_1183)">
                                                 <path d="M19.166 5.75008H15.3327V3.83341C15.3327 2.76966 14.4798 1.91675 13.416 1.91675H9.58268C8.51893 1.91675 7.66602 2.76966 7.66602 3.83341V5.75008H3.83268C2.76893 5.75008 1.9256 6.603 1.9256 7.66675L1.91602 18.2084C1.91602 19.2722 2.76893 20.1251 3.83268 20.1251H19.166C20.2298 20.1251 21.0827 19.2722 21.0827 18.2084V7.66675C21.0827 6.603 20.2298 5.75008 19.166 5.75008ZM13.416 5.75008H9.58268V3.83341H13.416V5.75008Z" fill="#999999" />
                                             </g>
@@ -304,8 +304,8 @@ function SkillAssessmentResultPage() {
 
                                         <p className="">Software Engineer</p>
                                     </div>
-                                    <div className="flex-1 inline-flex">
-                                        <svg className="h-5 w-5 mr-2" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <div className="tw-flex-1 tw-inline-flex">
+                                        <svg className="tw-h-5 tw-w-5 tw-mr-2" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <g clip-path="url(#clip0_573_1188)">
                                                 <path d="M11.4993 1.91675C7.7906 1.91675 4.79102 4.91633 4.79102 8.62508C4.79102 13.6563 11.4993 21.0834 11.4993 21.0834C11.4993 21.0834 18.2077 13.6563 18.2077 8.62508C18.2077 4.91633 15.2081 1.91675 11.4993 1.91675ZM11.4993 11.0209C10.1768 11.0209 9.10352 9.94758 9.10352 8.62508C9.10352 7.30258 10.1768 6.22925 11.4993 6.22925C12.8218 6.22925 13.8952 7.30258 13.8952 8.62508C13.8952 9.94758 12.8218 11.0209 11.4993 11.0209Z" fill="#999999" />
                                             </g>
@@ -325,14 +325,14 @@ function SkillAssessmentResultPage() {
                 </div>
 
                 {/* Question section */}
-                <div className="flex flex-col items-center bg-white px-5 py-4 rounded-xl shadow-md grow w-full h-96">
+                <div className="tw-flex tw-flex-col tw-items-center tw-bg-white tw-px-5 tw-py-4 tw-rounded-xl tw-shadow-md tw-grow tw-w-full tw-h-96">
                     <span className=
                         {
-                            "w-full text-3xl font-bold text-center p-2 " + (overallScore >= 70 ? "text-green-500" : overallScore >= 50 ? "text-yellow-500" : "text-red-500")
+                            "tw-w-full tw-text-3xl tw-font-bold tw-text-center tw-p-2 " + (overallScore >= 70 ? "tw-text-green-500" : overallScore >= 50 ? "tw-text-yellow-500" : "tw-text-red-500")
                         }>
                         {overallScore.toFixed(2)}%
                     </span>
-                    <div className="w-full overflow-y-scroll">
+                    <div className="tw-w-full tw-overflow-y-scroll">
                         {currentQuestionLists.map((section, index) => (
                             <QuestionSectionCard
                                 questionSection={section}
@@ -341,29 +341,29 @@ function SkillAssessmentResultPage() {
                         ))}
                     </div>
                     <button
-                        className=" w-4/6 bg-red-700 flex items-center justify-center p-2 mt-5"
+                        className="tw-w-4/6 tw-bg-red-700 tw-flex tw-items-center tw-justify-center tw-p-2 tw-mt-5"
                         onClick={quitHandle}>
-                        <span className="text-white mr-2">Quit</span>
+                        <span className="tw-text-white tw-mr-2">Quit</span>
                     </button>
                 </div>
             </div>
 
             {/* main content */}
-            <div className="h-full w-3/4 ml-8 bg-white p-5 rounded-xl shadow-md">
-                <span className="text-3xl font-bold">
+            <div className="tw-h-full tw-w-3/4 tw-ml-8 tw-bg-white tw-p-5 tw-rounded-xl tw-shadow-md">
+                <span className="tw-text-3xl tw-font-bold">
                     {
                         String.fromCharCode(65 + activeSectionIndex) +
                         ". " +
                         currentQuestionLists[activeSectionIndex]?.sectionName}
                 </span>
-                <div className="h-full w-full pl-2 pr-2 pt-5 pb-5">
-                    <span className="font-bold text-lg">
+                <div className="tw-h-full tw-w-full tw-pl-2 tw-pr-2 tw-pt-5 tw-pb-5">
+                    <span className="tw-font-bold tw-text-lg">
                         {activeQuestionIndex +
                             1 +
                             ". " +
                             currentQuestionLists[activeSectionIndex]?.questionList[activeQuestionIndex].question}
                     </span>
-                    <div className="h-full w-full p-5 flex flex-col">
+                    <div className="tw-h-full tw-w-full tw-p-5 tw-flex tw-flex-col">
                         <p>{
                             // highlight keywords in current answer
                             currentQuestionAnswer.match(/\b(\w+)\b/g)?.map((word) => {
@@ -391,9 +391,9 @@ function SkillAssessmentResultPage() {
                                     <span
                                         className={
                                             isPositive
-                                                ? "bg-green-300"
+                                                ? "tw-bg-green-300"
                                                 : isNegative
-                                                    ? "bg-red-300"
+                                                    ? "tw-bg-red-300"
                                                     : ""
                                         }>
                                         {word + " "}
@@ -402,27 +402,27 @@ function SkillAssessmentResultPage() {
                             }
                             )
                         }</p>
-                        <div className="w-full flex justify-end pt-3">
+                        <div className="tw-w-full tw-flex tw-justify-end tw-pt-3">
                             {currentCharacterNum + "/ " + currentQuestionLists[activeSectionIndex]?.questionList[activeQuestionIndex].maxCharacterAnswer + " characters"}
                         </div>
 
-                        <div className="flex justify-between">
+                        <div className="tw-flex tw-justify-between">
                             <button
-                                className="w-1/3 bg-red-700 flex items-center justify-center p-2 mt-5"
+                                className="tw-w-1/3 tw-bg-red-700 tw-flex tw-items-center tw-justify-center tw-p-2 tw-mt-5"
                                 onClick={previousHandle}
                                 disabled={isFirstQuestion ? true : false}
                             >
-                                <svg className="h-5 w-5 text-white" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5541" width="200" height="200"><path d="M1024 448H243.2L601.6 89.6 512 0 0 512l512 512 89.6-89.6L243.2 576H1024v-128z" p-id="5542" fill="#ffffff"></path></svg>
-                                <span className="text-white ml-2">Previous Question</span>
+                                <svg className="tw-h-5 tw-w-5 tw-text-white" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5541" width="200" height="200"><path d="M1024 448H243.2L601.6 89.6 512 0 0 512l512 512 89.6-89.6L243.2 576H1024v-128z" p-id="5542" fill="#ffffff"></path></svg>
+                                <span className="tw-text-white tw-ml-2">Previous Question</span>
                             </button>
 
                             <button
-                                className="w-1/3 bg-red-700 flex items-center justify-center p-2 mt-5"
+                                className="tw-w-1/3 tw-bg-red-700 tw-flex tw-items-center tw-justify-center tw-p-2 tw-mt-5"
                                 onClick={continueHandle}
                                 disabled={isLastQuestion ? true : false}
                             >
-                                <span className="text-white mr-2">Next Question</span>
-                                <svg className="h-5 w-5 text-white" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5327" width="200" height="200"><path d="M512 0l-89.6 89.6 358.4 358.4H0v128h780.8L422.4 934.4 512 1024l512-512z" p-id="5328" fill="#ffffff"></path></svg>
+                                <span className="tw-text-white tw-mr-2">Next Question</span>
+                                <svg className="tw-h-5 tw-w-5 tw-text-white" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5327" width="200" height="200"><path d="M512 0l-89.6 89.6 358.4 358.4H0v128h780.8L422.4 934.4 512 1024l512-512z" p-id="5328" fill="#ffffff"></path></svg>
                             </button>
                         </div>
                     </div>
