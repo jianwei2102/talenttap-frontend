@@ -47,9 +47,9 @@ export default function AdminDashboardPage() {
 	return (
 		<div className="tw-h-screen tw-w-screen tw-absolute tw-flex tw-flex-col">
 			<AdminNavBar activeIndex={0} />
-			<div className="main-container tw-px-10 tw-overflow-auto">
+			<div className="main-container tw-px-10 tw-overflow-auto tw-bg-gray-100">
 				{/* Header Section */}
-				<div className="tw-flex tw-flex-row tw-w-full tw-justify-between tw-items-center tw-mb-10">
+				<div className="tw-flex tw-flex-row tw-w-full tw-justify-between tw-items-center tw-mb-10 tw-mt-10">
 					<div>
 						<p className="tw-mb-2">Pages / Dashboard</p>
 						<h1 className="tw-text-3xl tw-font-bold">Main Dashboard</h1>
@@ -78,12 +78,12 @@ export default function AdminDashboardPage() {
 					})}
 				</div>
 				{/* Recruitment Drives & Ongoing campaign sections */}
-				<div className="tw-flex tw-flex-row tw-w-full tw-mb-6" style={{ maxHeight: "600px" }}>
+				<div className="tw-flex tw-flex-row tw-justify-between tw-w-full tw-mb-6" style={{ maxHeight: "600px" }}>
 					{/* Recruitment Drives */}
-					<div className="tw-w-full me-6">
+					<div className="tw-w-[70%] me-6">
 						<GraphCard />
 					</div>
-					<div className="min-tw-w-[38%]">
+					<div className="tw-w-[28%]">
 						<OngoingCampaignCard />
 					</div>
 				</div>
