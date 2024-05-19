@@ -10,3 +10,6 @@ export {default as SmileyEmojiIcon} from './svg-icons/SmileyEmojiIcon.tsx';
 export {default as NeutralEmojiIcon} from './svg-icons/NeutralEmojiIcon.tsx';
 export {default as CircleCheckIcon} from './svg-icons/CircleCheckIcon.tsx';
 export {default as CircleCrossIcon} from './svg-icons/CircleCrossIcon.tsx';
+export {default as SquareAddIcon} from './svg-icons/SquareAddIcon.tsx';
+export {default as PeopleTwoIcon} from './svg-icons/PeopleTwoIcon.tsx';
+export {default as CalendarIcon} from './svg-icons/CalendarIcon.tsx';
