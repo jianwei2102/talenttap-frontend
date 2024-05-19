@@ -19,6 +19,7 @@ import GeneralInterview from "./pages/candidate/GeneralInterview.tsx";
 import GeneralQuestion from "./pages/candidate/GeneralQuestion.tsx";
 import CampaignListPage from "./pages/admin/CampaignListPage.tsx";
 import CreateCampaignPage from "./pages/admin/CreateCampaignPage.tsx";
+import CandidateProfilePage from "./pages/admin/CandidateProfilePage.tsx";
 import TypingAssessmentPage from "./pages/candidate/TypingAssessmentPage.tsx";
 
 function App() {
@@ -37,6 +38,7 @@ function App() {
                 <Route path="/admin" element={<AdminDashboardPage/>}/>
                 <Route path="/campaign-list" element={<CampaignListPage/>}/>
                 <Route path="/create-campaign" element={<CreateCampaignPage />}/>
+                <Route path="/candidate-profile" element={<CandidateProfilePage />}/>
                 <Route path="/" element={<SignIn/>}/>
                 <Route path="/interview" element={<Interview/>}/>
                 <Route path="/general-interview" element={<GeneralInterview/>}/>
