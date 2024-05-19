@@ -1641,7 +1641,7 @@ function CreateCampaignPage() {
 	};
 
 	return (
-		<div className="tw-h-screen tw-w-screen tw-flex tw-flex-col tw-bg-slate-200">
+		<div className="tw-h-screen tw-w-screen tw-flex tw-flex-col tw-bg-gray-100">
 			<AdminNavBar activeIndex={-1} />
 			<div className="main-container tw-py-10 tw-px-24">
 				<span className="tw-text-red-700 tw-font-bold tw-text-5xl">Create A New Campaign</span>

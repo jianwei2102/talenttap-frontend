@@ -649,7 +649,7 @@ function CandidateProfilePage() {
 	};
 
 	return (
-		<div className="tw-h-screen tw-w-screen tw-flex tw-flex-col">
+		<div className="tw-h-screen tw-w-screen tw-flex tw-flex-col tw-bg-gray-100">
 			<AdminNavBar activeIndex={-1} />
 			<div className="main-container tw-flex tw-overflow-auto">
 				<div id="profile-navigation" className="tw-w-[20%] tw-flex tw-flex-col tw-py-5 tw-px-3">

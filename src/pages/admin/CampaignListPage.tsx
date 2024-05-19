@@ -72,7 +72,7 @@ function CampaignListPage() {
 	};
 
 	return (
-		<div className="tw-h-screen tw-w-screen tw-flex tw-flex-col">
+		<div className="tw-h-screen tw-w-screen tw-flex tw-flex-col tw-bg-gray-100">
 			<AdminNavBar activeIndex={1} />
 			<div className="main-container tw-flex tw-flex-col tw-px-10 tw-py-5 tw-overflow-auto">
 				<div className="tw-w-full tw-flex tw-justify-between tw-items-center">
@@ -98,7 +98,7 @@ function CampaignListPage() {
 					</div>
 					<div className="tw-grid tw-grid-cols-1 lg:tw-grid-cols-2 2xl:tw-grid-cols-3 tw-justify-between tw-gap-12 tw-mt-5">
 						{campaignList.map((campaign, index) => (
-							<div className="tw-border tw-border-black tw-rounded-lg tw-flex tw-flex-col tw-p-5 tw-pb-10">
+							<div className="tw-bg-white tw-border tw-border-black tw-rounded-lg tw-flex tw-flex-col tw-p-5 tw-pb-10">
 								<div className="tw-w-full">
 									<span>{"Campaign ID #" + campaign.id}</span>
 								</div>

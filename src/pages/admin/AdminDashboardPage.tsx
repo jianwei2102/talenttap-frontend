@@ -45,9 +45,9 @@ export default function AdminDashboardPage() {
 	};
 
 	return (
-		<div className="tw-h-screen tw-w-screen tw-absolute tw-flex tw-flex-col">
+		<div className="tw-h-screen tw-w-screen tw-absolute tw-flex tw-flex-col tw-bg-gray-100">
 			<AdminNavBar activeIndex={0} />
-			<div className="main-container tw-px-10 tw-overflow-auto tw-bg-gray-100">
+			<div className="main-container tw-px-10 tw-overflow-auto">
 				{/* Header Section */}
 				<div className="tw-flex tw-flex-row tw-w-full tw-justify-between tw-items-center tw-mb-10 tw-mt-10">
 					<div>
