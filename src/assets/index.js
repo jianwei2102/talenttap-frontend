@@ -5,3 +5,8 @@ export {default as TechnicalAssessmentIcon} from './svg-icons/TechnicalAssessmen
 export {default as TrashCanIcon} from './svg-icons/TrashCanIcon.tsx';
 export {default as CrossIcon} from './svg-icons/CrossIcon.tsx';
 export {default as RobotIcon} from './svg-icons/RobotIcon.tsx';
+export {default as SadEmojiIcon} from './svg-icons/SadEmojiIcon.tsx'
+export {default as SmileyEmojiIcon} from './svg-icons/SmileyEmojiIcon.tsx';
+export {default as NeutralEmojiIcon} from './svg-icons/NeutralEmojiIcon.tsx';
+export {default as CircleCheckIcon} from './svg-icons/CircleCheckIcon.tsx';
+export {default as CircleCrossIcon} from './svg-icons/CircleCrossIcon.tsx';
