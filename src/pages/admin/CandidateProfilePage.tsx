@@ -652,7 +652,7 @@ function CandidateProfilePage() {
 		<div className="tw-h-screen tw-w-screen tw-flex tw-flex-col tw-bg-gray-100">
 			<AdminNavBar activeIndex={-1} />
 			<div className="main-container tw-flex tw-overflow-auto">
-				<div id="profile-navigation" className="tw-w-[20%] tw-flex tw-flex-col tw-py-5 tw-px-3">
+				<div id="profile-navigation" className="tw-w-[20%] tw-flex tw-flex-col tw-py-5 tw-px-3 tw-bg-white">
 					<div className="tw-w-full tw-flex tw-justify-start">
 						<button className="tw-bg-red-700 tw-text-white tw-py-2 tw-px-5 tw-rounded-lg">
 							Back
@@ -725,7 +725,7 @@ function CandidateProfilePage() {
 				<div className="tw-w-[2px] tw-h-full tw-bg-gray-300"></div>
 				<div
 					id="candidate-information"
-					className="tw-w-[20%] tw-flex-col tw-items-center tw-overflow-auto">
+					className="tw-w-[20%] tw-flex-col tw-items-center tw-overflow-auto tw-bg-white">
 					<div className="tw-h-1/6 tw-w-full tw-p-3">
 						<img
 							alt="candidate image"
