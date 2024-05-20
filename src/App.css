@@ -437,7 +437,7 @@ video {
   display: none;
 }
 
-/* *, ::before, ::after {
+*, ::before, ::after {
   --tw-border-spacing-x: 0;
   --tw-border-spacing-y: 0;
   --tw-translate-x: 0;
@@ -543,7 +543,7 @@ video {
   --tw-contain-layout:  ;
   --tw-contain-paint:  ;
   --tw-contain-style:  ;
-} */
+}
 
 .nav-item {
   padding-top: 0.25rem;

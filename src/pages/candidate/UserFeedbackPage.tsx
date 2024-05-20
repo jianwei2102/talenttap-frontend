@@ -20,22 +20,22 @@ function UserFeedbackModal() {
 	}
 
 	return (
-		<div className="w-screen h-screen flex flex-col">
+		<div className="tw-w-screen tw-h-screen tw-flex tw-flex-col">
 			<UserNavBar activeIndex={2} />
-			<div className="main-container flex flex-col justify-center items-center">
-				<span className="text-2xl font-bold text-center py-5">Feedback for the System</span>
-				<div className="w-2/6 flex flex-col justify-center relative">
-					<span className="font-bold py-2">General Satisfaction</span>
+			<div className="main-container tw-flex tw-flex-col tw-justify-center tw-items-center">
+				<span className="tw-text-2xl tw-font-bold tw-text-center tw-py-5">Feedback for the System</span>
+				<div className="tw-w-2/6 tw-flex tw-flex-col tw-justify-center tw-relative">
+					<span className="tw-font-bold tw-py-2">General Satisfaction</span>
 					<button
 						id="dropdownDefaultButton"
 						data-dropdown-toggle="dropdown"
-						className="w-auto text-black bg-white border border-black rounded-lg text-sm px-5 py-2.5 text-center flex justify-between items-center z-1"
+						className="tw-w-auto tw-text-black tw-bg-white tw-border tw-border-black tw-rounded-lg tw-text-sm tw-px-5 tw-py-2.5 tw-text-center tw-flex tw-justify-between tw-items-center tw-z-1"
 						type="button"
 						onClick={showSatisfactionDropdownHandle}>
 						{selectedSatisfaction}
 						<svg
-							className="w-2.5 h-2.5 ms-3"
-							aria-hidden="true"
+							className="tw-w-2.5 tw-h-2.5 ms-3"
+							aria-tw-hidden="true"
 							xmlns="http://www.w3.org/2000/svg"
 							fill="none"
 							viewBox="0 0 10 6">
@@ -52,12 +52,12 @@ function UserFeedbackModal() {
 						id="dropdown"
 						className={
 							showSatisfactionDropdown
-								? "z-10 absolute bg-white border border-black rounded-lg shadow w-full top-20"
-								: "hidden"
+								? "tw-z-10 tw-absolute tw-bg-white tw-border tw-border-black tw-rounded-lg shadow tw-w-full tw-top-20"
+								: "tw-hidden"
 						}>
 						<ul
 						id="feedback-dropdown-list"
-							className="py-2 text-sm text-black"
+							className="tw-py-2 tw-text-sm tw-text-black"
 							aria-labelledby="dropdownDefaultButton">
 							<li onClick={() => setSelectedSatisfactionHandle("Extremely Satisfied")}>
 								Extremely Satisfied
@@ -77,11 +77,11 @@ function UserFeedbackModal() {
 						</ul>
 					</div>
 				</div>
-				<div className="w-2/6 flex flex-col justify-center z-1 mt-10">
-					<span className="font-bold py-2">Description (Optional)</span>
-					<textarea className="border border-black rounded-lg p-2 focus:outline-none" rows={5} cols={100} placeholder="We appreciate your honest feedback so that we can improve this system to serve you better in the future!"></textarea>
+				<div className="tw-w-2/6 tw-flex tw-flex-col tw-justify-center tw-z-1 tw-mt-10">
+					<span className="tw-font-bold tw-py-2">Description (Optional)</span>
+					<textarea className="tw-border tw-border-black tw-rounded-lg tw-p-2 focus:tw-outline-none" rows={5} cols={100} placeholder="We appreciate your honest feedback so that we can improve this system to serve you better in the future!"></textarea>
 				</div>
-				<button className="bg-red-700 text-white text-center text-lg py-2 px-5 mt-16" onClick={submitFeedbackHandle}>Confirm</button>
+				<button className="tw-bg-red-700 tw-text-white tw-text-center tw-text-lg tw-py-2 tw-px-5 tw-mt-16" onClick={submitFeedbackHandle}>Confirm</button>
 			</div>
 		</div>
 	);

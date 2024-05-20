@@ -5,12 +5,12 @@ let iconType = {
   up: {
     icon: "trending_up",
     color: "success",
-    bg: 'bg-green-300'
+    bg: 'tw-bg-green-300'
   },
   down: {
     icon: "trending_down",
     color: "error",
-    bg: 'bg-red-300'
+    bg: 'tw-bg-red-300'
   },
 };
 
@@ -35,15 +35,15 @@ export default function StatisticCard({
         rel="stylesheet"
         href="https://fonts.googleapis.com/icon?family=Material+Icons"
       />
-      <div className="bg-white flex flex-auto flex-col max-w-96 min-w-80  p-5 rounded-lg">
-        <div className="flex flex-row justify-between">
-          <div className="mb-5">
-            <p className="mb-2">{title}</p>
-            <h1 className="text-3xl font-bold">{figure}</h1>
+      <div className="tw-bg-white tw-flex tw-flex-auto tw-flex-col max-w-96 min-w-80  tw-p-5 tw-rounded-lg">
+        <div className="tw-flex tw-flex-row tw-justify-between">
+          <div className="tw-mb-5">
+            <p className="tw-mb-2">{title}</p>
+            <h1 className="tw-text-3xl tw-font-bold">{figure}</h1>
           </div>
           <div>
             {/* Icon Container */}
-            <div className="border-black border rounded-lg p-1">
+            <div className="tw-border-black tw-border tw-rounded-lg tw-p-1">
               <Icon
                 color="error"
                 // fontSize="large"
@@ -54,9 +54,9 @@ export default function StatisticCard({
             </div>
           </div>
         </div>
-        <div className="flex flex-row justify-start">
-          <p className="mb-2 flex-1">vs Last Year</p>
-          <div className={`${iconType[type].bg} rounded-full px-5 py-1 flex`}>
+        <div className="tw-flex tw-flex-row tw-justify-start">
+          <p className="tw-mb-2 tw-flex-1">vs Last Year</p>
+          <div className={`${iconType[type].bg} tw-rounded-full tw-px-5 tw-py-1 tw-flex`}>
             <p className="">{percentage}%</p>
             <Icon
               color={iconType[type].color}

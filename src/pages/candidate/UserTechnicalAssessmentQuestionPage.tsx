@@ -157,8 +157,8 @@ function UserTechnicalAssessmentQuestionPage() {
 
 	const QuestionSectionCard = (section: QuestionSectionCardProps) => {
 		return (
-			<div className="w-full pt-3 pb-3 pl-1 pr-1 flex flex-col">
-				<span className="mb-2 font-bold text-md">
+			<div className="tw-w-full tw-pt-3 tw-pb-3 tw-pl-1 tw-pr-1 tw-flex tw-flex-col">
+				<span className="tw-mb-2 tw-font-bold tw-text-md">
 					{section.characterIndex + ". " + section.questionSection.sectionName}
 				</span>
 				{section.questionSection.questionList.map((question, index) => (
@@ -231,15 +231,15 @@ function UserTechnicalAssessmentQuestionPage() {
 
 		return (
 			<div
-				className="flex items-center pt-1 pb-1 cursor-pointer"
+				className="tw-flex tw-items-center tw-pt-1 tw-pb-1 tw-cursor-pointer"
 				onClick={navigateToQuestionHandle}>
 				<input
-					className="h-4 w-4 bg-gray-100 border-gray-300 rounded-md"
+					className="tw-h-4 tw-w-4 tw-bg-gray-100 tw-border-gray-300 tw-rounded-md"
 					type="checkbox"
 					readOnly={true}
 					checked={!questionCard.isEmpty}></input>
 				<span
-					className={questionCard.isActive === true ? "text-sm ml-2 font-bold" : "text-sm ml-2"}>
+					className={questionCard.isActive === true ? "tw-text-sm tw-ml-2 tw-font-bold" : "tw-text-sm tw-ml-2"}>
 					{questionCard.questionIndex + 1 + ". " + questionCard.question.title}
 				</span>
 			</div>
@@ -249,44 +249,44 @@ function UserTechnicalAssessmentQuestionPage() {
 
 	return (
 		<div>
-		<div className="h-screen w-screen flex justify-between p-20 bg-slate-200">
-			<div className="h-full w-3/4 bg-white p-5 mr-5">
-				<span className="text-3xl font-bold">
+		<div className="tw-h-screen tw-w-screen tw-flex tw-justify-between tw-p-20 tw-bg-slate-200">
+			<div className="tw-h-full tw-w-3/4 tw-bg-white tw-p-5 tw-mr-5">
+				<span className="tw-text-3xl tw-font-bold">
 					{
 					String.fromCharCode(65 + activeSectionIndex) +
 						". " +
 						currentQuestionLists[activeSectionIndex]?.sectionName}
 				</span>
-				<div className="h-full w-full pl-2 pr-2 pt-5 pb-5">
-					<span className="font-bold text-lg">
+				<div className="tw-h-full tw-w-full tw-pl-2 tw-pr-2 tw-pt-5 tw-pb-5">
+					<span className="tw-font-bold tw-text-lg">
 						{activeQuestionIndex +
 							1 +
 							". " +
 							currentQuestionLists[activeSectionIndex]?.questionList[activeQuestionIndex].question}
 					</span>
-					<div className="h-full w-full p-5 flex flex-col">
+					<div className="tw-h-full tw-w-full tw-p-5 tw-flex tw-flex-col">
 						<textarea
 							id="technical-assessment-answer-input"
-							className="h-5/6 w-full border border-black rounded-sm p-2"
+							className="tw-h-5/6 tw-w-full tw-border tw-border-black tw-rounded-sm tw-p-2"
 							rows={10}
 							cols={50}
 							onInput={answerCharacterNumberHandle}
 							readOnly={false}
 							value={currentQuestionAnswer}>
 						</textarea>
-						<div className="w-full flex justify-end pt-3">
+						<div className="tw-w-full tw-flex tw-justify-end tw-pt-3">
 							{currentCharacterNum + "/ " + currentQuestionLists[activeSectionIndex]?.questionList[activeQuestionIndex].maxCharacterAnswer + " characters"}
 						</div>
 					</div>
 				</div>
 			</div>
-			<div className="h-full w-1/4 flex flex-col items-center bg-white p-5">
+			<div className="tw-h-full tw-w-1/4 tw-flex tw-flex-col tw-items-center tw-bg-white tw-p-5">
 				<CountdownTimer time = {10}/>
-				<span className="w-full text-lg font-bold text-center p-2">Questions</span>
-				<span className="w-full text-sm text-slate-400 text-center p-2">
+				<span className="tw-w-full tw-text-lg tw-font-bold tw-text-center tw-p-2">Questions</span>
+				<span className="tw-w-full tw-text-sm tw-text-slate-400 tw-text-center tw-p-2">
 					Please answer all questions below:
 				</span>
-				<div className="w-full h-1/2 overflow-auto">
+				<div className="tw-w-full tw-h-1/2 tw-overflow-auto">
 					{currentQuestionLists.map((section, index) => (
 						<QuestionSectionCard
 							questionSection={section}
@@ -295,10 +295,10 @@ function UserTechnicalAssessmentQuestionPage() {
 					))}
 				</div>
 				<button
-					className=" w-4/6 bg-red-700 flex items-center justify-center p-2"
+					className=" tw-w-4/6 tw-bg-red-700 tw-flex tw-items-center tw-justify-center tw-p-2"
 					onClick={isLastQuestion ? submitHandle : continueHandle}>
-					<span className="text-white mr-2">{isLastQuestion ? "Submit" : "Continue"}</span>
-					<svg className="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+					<span className="tw-text-white tw-mr-2">{isLastQuestion ? "Submit" : "Continue"}</span>
+					<svg className="tw-h-5 tw-w-5 tw-text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
 						<path
 							strokeLinecap="round"
 							strokeLinejoin="round"

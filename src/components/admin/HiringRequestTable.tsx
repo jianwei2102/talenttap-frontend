@@ -60,9 +60,9 @@ let mockData: HiringRequest[] = [
 
 export default function HiringRequestTable() {
     return (
-        <div className="w-full bg-white p-5 rounded-2xl mb-6">
-            <h1 className="text-2xl font-bold mb-7">New Hiring Requests</h1>
-            <table className="table-fixed w-full">
+        <div className="tw-w-full tw-bg-white tw-p-5 tw-rounded-2xl tw-mb-6">
+            <h1 className="tw-text-2xl tw-font-bold tw-mb-7">New Hiring Requests</h1>
+            <table className="table-tw-fixed tw-w-full">
               <thead>
                 <tr>
                   <th>HIRING MANAGER NAME</th>
@@ -81,7 +81,7 @@ export default function HiringRequestTable() {
                           <Icon
                             color={iconType[request.status].color}
                             fontSize="large"
-                            className="me-2 mb-[-1px]"
+                            className="me-2 tw-mb-[-1px]"
                             sx={{ marginBottom: -1 }}
                           >
                             {iconType[request.status].icon}
@@ -90,8 +90,8 @@ export default function HiringRequestTable() {
                         </td>
                         <td>{request.date}</td>
                         <td>
-                          <div className="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-300">
-                            <div className={`bg-red-600 h-2.5 rounded-full w-[${request.progress}%]`}></div>
+                          <div className="tw-w-full tw-bg-gray-200 tw-rounded-full tw-h-2.5 dark:tw-bg-gray-300">
+                            <div className={`tw-bg-red-600 tw-h-2.5 tw-rounded-full tw-w-[${request.progress}%]`}></div>
                           </div>
                         </td>
                       </tr>
