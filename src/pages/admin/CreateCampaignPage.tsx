@@ -17,6 +17,11 @@ import {
 	RobotIcon,
 } from "../../assets/index.js";
 import { CustomToggle } from "../../components";
+import {
+  BedrockRuntimeClient,
+  InvokeModelCommand,
+} from "@aws-sdk/client-bedrock-runtime";
+// import {fromIni} from "@aws-sdk/credential-providers";
 
 interface CampaignDetails {
 	name: string;
@@ -642,7 +647,12 @@ function CreateCampaignPage() {
 		const [generalInterviewQuestionList, setGeneralInterviewQuestionList] = useState(
 			generalInterview.questionList
 		);
-
+		
+		type Keyword = {
+			keyword: string;
+			weightage: number;
+		};
+		  
 		useEffect(() => {
 			let updatedList = campaignInterviewComponentList;
 			let generalInterviewInfo: GeneralInterviewInfo = {
@@ -664,14 +674,17 @@ function CreateCampaignPage() {
 			const [currentNegativeKeywordList, setCurrentNegativeKeywordList] =
 				useState(keywordNegativeList);
 
-			const positiveKeywordSuggestionList = [
-				"Friendliness",
-				"Growth",
-				"Accomplishment",
-				"Collaboration",
-				"Improvement",
-			];
-			const negativeKeywordSuggestionList = ["Frustration", "Sabotage", "Give up"];
+			const [positiveKeywordSuggestionList, setPositiveKeywordSuggestionList] = useState([]);
+			const [negativeKeywordSuggestionList, setNegativeKeywordSuggestionList] = useState([]);
+
+			useEffect(() => {
+				const fetchKeywords = async () => {
+					  const {positiveKeywords, negativeKeywords} = await handleAiGenerateKeywordButtonClick();
+					  setPositiveKeywordSuggestionList(positiveKeywords);
+					  setNegativeKeywordSuggestionList(negativeKeywords);
+				};
+				fetchKeywords();
+			}, [currentQuestion]);
 
 			const handleQuestionInputChange = (event) => {
 				setCurrentQuestion(event.target.value);
@@ -686,7 +699,7 @@ function CreateCampaignPage() {
 			const handleKeywordPositiveInputChange = (event) => {
 				let newList = [...currentPositiveKeywordList];
 				let keywordIndex: number = event.target.getAttribute("data-key");
-
+		
 				if (event.target.getAttribute("data-type") === "keyword") {
 					if (newList.length <= keywordIndex) {
 						for (let i = newList.length; i <= keywordIndex - 1; i += 1) {
@@ -790,6 +803,7 @@ function CreateCampaignPage() {
 								<div className="tw-w-5/6 tw-flex tw-flex-col">
 									<span className="tw-text-lg">Question</span>
 									<input
+										id="question"
 										className="tw-w-full tw-border tw-border-black tw-rounded-lg tw-p-2 focus:tw-outline-none"
 										value={currentQuestion}
 										type="text"
@@ -898,8 +912,9 @@ function CreateCampaignPage() {
 									<span className="tw-text-black tw-font-bold tw-text-lg tw-ml-2">
 										AI-Assisted Keyword Suggestion
 									</span>
-									{/* TODO: Add functionality for the generate keyword button */}
-									<button className="tw-bg-red-700 tw-rounded-xl tw-text-white tw-py-1 tw-px-2 tw-ml-3">
+									<button 
+										className="tw-bg-red-700 tw-rounded-xl tw-text-white tw-py-1 tw-px-2 tw-ml-3"
+										onClick={handleAiGenerateKeywordButtonClick}>
 										Generate Keyword
 									</button>
 								</div>
@@ -944,8 +959,8 @@ function CreateCampaignPage() {
 					<span className="tw-text-2xl tw-font-bold">General Interview</span>
 					<button
 						className="tw-bg-red-400 tw-text-white tw-rounded-lg tw-p-2"
-						onClick={handleAiGenerateQuestionButtonClick}>
-						AI Generate Question
+						onClick={handleAiGeneratePromptButtonClick}>
+						AI Generate Prompt
 					</button>
 				</div>
 				<Accordion defaultActiveKey={["test"]} alwaysOpen>
@@ -1430,7 +1445,7 @@ function CreateCampaignPage() {
 		);
 	};
 
-	const handleAiGenerateQuestionButtonClick = (event) => {
+	const handleAiGeneratePromptButtonClick = (event) => {
 		if (event.currentTarget.getAttribute("data-section-index") !== undefined) {
 			setAiGenerateQuestionModalSectionIndex(
 				event.currentTarget.getAttribute("data-section-index")
@@ -1439,14 +1454,165 @@ function CreateCampaignPage() {
 		setIsShowingAiGenerateQuestionModal(true);
 	};
 
-	const AiGenerateQuestionsModal = ({ sectionIndex }) => {
-		// TODO : Get AI generated questions from somewhere
-		const aiGeneratedQuestionList = [
-			"Can you describe your experience with configuring and maintaining Linux server environments?",
-			"How do you ensure the security and integrity of Linus systems? Please provide examples of security measures you've implemented.",
-			"In what ways do you troubleshoot and resolve issues related to Linux-based networks and infrastructure?",
-		];
+	const handleAiGenerateQuestionButtonClick = async () => {
+		const AWS_REGION = "us-east-1";
+		const MODEL_ID = "anthropic.claude-3-haiku-20240307-v1:0";
+		var textarea = document.querySelector('textarea');
+		if (!textarea) return;
+		const DEFAULT_PROMPT = "Prompt the user to enter their prompt so that you can assist them";
+		const PROMPT = textarea.value || DEFAULT_PROMPT;
 
+		// send prompt to claude AI, get response
+		console.log("=".repeat(35));
+		console.log("Welcome to the Amazon Bedrock demo!");
+		console.log("=".repeat(35));
+	  
+		console.log("Model: Anthropic Claude 3 Haiku");
+		console.log("Invoking model...\n");
+
+		// Create a new Bedrock Runtime client instance.
+		const client = new BedrockRuntimeClient({ 
+			credentials: {
+				accessKeyId: 'AKIAU6GD2HB2LJCL3FPI',
+				secretAccessKey: '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'
+			},
+			region: AWS_REGION 
+		});
+	
+		// Prepare the payload for the model.
+		const payload = {
+		anthropic_version: "bedrock-2023-05-31",
+		max_tokens: 1000,
+		messages: [{ role: "user", content: [{ type: "text", text: PROMPT }] }],
+		};
+	
+		// Invoke Claude with the payload and wait for the response.
+		const apiResponse = await client.send(
+		new InvokeModelCommand({
+			contentType: "application/json",
+			body: JSON.stringify(payload),
+			modelId: MODEL_ID,
+		}),
+		);
+
+		// Decode and return the response(s)
+		const decodedResponseBody = new TextDecoder().decode(apiResponse.body);
+		/** @type {ResponseBody} */
+		const responseBody = JSON.parse(decodedResponseBody);
+		const responses = responseBody.content;
+
+		if (responses.length === 1) {
+			const responseText = responses[0].text;
+			// console.log(responseText)
+			const lines = responseText.split('\n');
+			const output = lines.filter(line => /^\d/.test(line));
+			return output;
+		} else {
+			console.log("Haiku returned multiple responses:");
+			console.log(responses);
+			return responses.map(response => response.text);
+		}
+	};
+
+	const handleAiGenerateKeywordButtonClick = async() =>{
+		const AWS_REGION = "us-east-1";
+		const MODEL_ID = "anthropic.claude-3-haiku-20240307-v1:0";
+		var inputField = document.querySelector('#question') as HTMLInputElement;
+		if (!inputField) return;
+		const DEFAULT_PROMPT = "Prompt the user to enter their prompt so that you can assist them";
+		const CUSTOMIZED_PROMPT = `${inputField.value}. Based on this question, generate positive and negative keywords. Positive keyword are the keywords in the answer and negative keywords are the keywords from other field/wrong answer/not related to the question `;
+		const PROMPT = CUSTOMIZED_PROMPT || DEFAULT_PROMPT;
+
+		// send prompt to claude AI, get response
+		console.log("=".repeat(35));
+		console.log("Welcome to the Amazon Bedrock demo!");  
+		console.log("=".repeat(35));
+	  
+		console.log("Model: Anthropic Claude 3 Haiku");
+		console.log("Invoking model...\n");
+
+		// Create a new Bedrock Runtime client instance.
+		const client = new BedrockRuntimeClient({ 
+			credentials: {
+				accessKeyId: 'AKIAU6GD2HB2LJCL3FPI',
+				secretAccessKey: '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'
+			},
+			region: AWS_REGION 
+		});
+	
+		// Prepare the payload for the model.
+		const payload = {
+		anthropic_version: "bedrock-2023-05-31",
+		max_tokens: 1000,
+		messages: [{ role: "user", content: [{ type: "text", text: PROMPT }] }],
+		};
+	
+		// Invoke Claude with the payload and wait for the response.
+		const apiResponse = await client.send(
+		new InvokeModelCommand({
+			contentType: "application/json",
+			body: JSON.stringify(payload),
+			modelId: MODEL_ID,
+		}),
+		);
+
+		// Decode and return the response(s)
+		const decodedResponseBody = new TextDecoder().decode(apiResponse.body);
+		/** @type {ResponseBody} */
+		const responseBody = JSON.parse(decodedResponseBody);
+		const responses = responseBody.content;
+
+		if (responses.length === 1) {
+			const responseText = responses[0].text;
+			console.log(responseText)
+			
+			const positiveKeywords: string[] = [];
+        	const negativeKeywords: string[] = [];
+			let currentList: string[] | null = null;
+
+			const lines = responseText.split('\n');
+			for (const line of lines) {
+				if (line.toLowerCase().includes('positive keywords:')) {
+					currentList = positiveKeywords;
+					continue;
+				}
+				if (line.toLowerCase().includes('negative keywords:')) {
+					currentList = negativeKeywords;
+					continue;
+				}
+				if (currentList !== null && line.trim().startsWith('-')) {
+					currentList.push(line.replace('-', '').trim());
+				}
+			}
+			return {positiveKeywords, negativeKeywords}
+			
+		} else {
+			console.log("Haiku returned multiple responses:");
+			console.log(responses);
+			return responses.map(response => response.text);
+		}
+	}
+
+	const AiGenerateQuestionsModal = ({ sectionIndex }) => {
+		const [aiGeneratedQuestionList, setAiGeneratedQuestionList] = useState([]);
+		const [prompt, setPrompt] = useState('');
+
+		const handlePromptChange = (event) =>{
+			setPrompt(event.target.value);
+		}
+  
+		useEffect(() => {
+		  const fetchQuestions = async () => {
+			if(prompt){
+				const questions = await handleAiGenerateQuestionButtonClick();
+				console.log(questions)
+				setAiGeneratedQuestionList(questions);
+			}
+		  };
+	  
+		  fetchQuestions();
+		}, [prompt]);
+	  
 		const [selectedQuestionList, setSelectedQuestionList] = useState<number[]>([]);
 
 		const handleSelectQuestionCheckbox = (event) => {
@@ -1532,7 +1698,7 @@ function CreateCampaignPage() {
 								<span className="tw-font-bold tw-text-xl tw-ml-[5%]">Questions</span>
 							</div>
 							{aiGeneratedQuestionList.map((question, index) => (
-								<div className="tw-w-full tw-flex tw-items-center tw-mb-3">
+								<div key={index} className="tw-w-full tw-flex tw-items-center tw-mb-3">
 									<input
 										type="checkbox"
 										className="tw-w-[5%] tw-h-[1.5rem]"
@@ -1563,12 +1729,15 @@ function CreateCampaignPage() {
 										<div className="tw-w-full tw-flex tw-flex-col tw-p-2">
 											<span className="tw-w-full tw-text-left">Write your subject</span>
 											<textarea
+												value={prompt}
+												onChange={handlePromptChange}
+												id="textarea"
 												rows={3}
 												cols={50}
 												className="tw-w-full tw-p-2 tw-border tw-border-black tw-rounded-xl tw-mt-1 focus:tw-outline-none tw-resize-none"
 												placeholder="e.g. Considering the role requirements outlined in the Linux Administrator job secription, kindly generate 5 comprehensive interview questions suitable for the initial screening process. Additionally, include positive and negative keyword suggestions for each question to facilitate thorough candidate evaluation and alignment with our hiring criteria."></textarea>
-											<button className="tw-bg-red-700 tw-text-white tw-rounded-lg tw-py-2 tw-mt-2">
-												Generate Your Prompts
+											<button className="tw-bg-red-700 tw-text-white tw-rounded-lg tw-py-2 tw-mt-2" onClick={handleAiGenerateQuestionButtonClick}>
+												Generate Your Question
 											</button>
 										</div>
 									</Accordion.Body>
