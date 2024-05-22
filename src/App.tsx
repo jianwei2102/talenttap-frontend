@@ -23,6 +23,7 @@ import TypingAssessmentPage from "./pages/candidate/TypingAssessmentPage.tsx";
 import BriefingVideo1 from "./pages/candidate/BriefingVideo1.tsx";
 import BriefingVideo2 from "./pages/candidate/BriefingVideo2.tsx";
 import BriefingVideo3 from "./pages/candidate/BriefingVideo3.tsx";
+import LLM from "./pages/LLMPage.tsx"
 
 function App() {
     return (
@@ -47,6 +48,7 @@ function App() {
                 <Route path="/briefing-video/1" element={<BriefingVideo1/>}/>
                 <Route path="/briefing-video/2" element={<BriefingVideo2/>}/>
                 <Route path="/briefing-video/3" element={<BriefingVideo3/>}/>
+                <Route path="/llm" element={<LLM/>}/>
             </Routes>
         </Router>
     );
