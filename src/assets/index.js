@@ -13,3 +13,8 @@ export {default as CircleCrossIcon} from './svg-icons/CircleCrossIcon.tsx';
 export {default as SquareAddIcon} from './svg-icons/SquareAddIcon.tsx';
 export {default as PeopleTwoIcon} from './svg-icons/PeopleTwoIcon.tsx';
 export {default as CalendarIcon} from './svg-icons/CalendarIcon.tsx';
+export {default as EyeIcon} from './svg-icons/EyeIcon.tsx';
+export {default as MoreVerticalIcon} from './svg-icons/MoreVerticalIcon.tsx';
+export {default as ThumbsUpIcon} from './svg-icons/ThumbsUpIcon.tsx';
+export {default as ThumbsDownIcon} from './svg-icons/ThumbsDownIcon.tsx';
+export {default as IdIcon} from './svg-icons/IdIcon.tsx';
