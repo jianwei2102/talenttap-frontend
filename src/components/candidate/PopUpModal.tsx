@@ -198,15 +198,8 @@ const PopUpModal = ({ title, onClose=()=>{} }) => {
 				<Modal centered show={show} onHide={handleClose} scrollable={true}>
 					<Modal.Body>
 						<div className="tw-flex tw-flex-col">
-							<div className="tw-flex tw-justify-end tw-items-end">
-								<button
-									type="button"
-									className="btn-close"
-									aria-label="Close"
-									onClick={() => handleClose()}></button>
-							</div>
 							<div className="tw-h-[36rem] tw-flex tw-justify-center tw-items-center">
-								<HiringManagerInterviewSchedulingModal />
+								<HiringManagerInterviewSchedulingModal onClose={handleClose} />
 							</div>
 						</div>
 					</Modal.Body>

@@ -69,7 +69,7 @@ for (let index = 0; index < 10; index++) {
 	});
 }
 
-function HiringManagerInterviewSchedulingModal() {
+function HiringManagerInterviewSchedulingModal({ onClose }) {
 	// TODO: Check if interviewee already scheduled an interview
 	const [isInterviewScheduled, setIsInterviewScheduled] = useState(false);
 	// const [showInterviewSchedulingModal, setShowInterviewSchedulingModal] = useState(true);
@@ -82,6 +82,7 @@ function HiringManagerInterviewSchedulingModal() {
 
 	const closeScheduledInterviewModalHandle = () => {
 		setShowScheduledInterviewModal(false);
+		onClose();
 	};
 
 	const InterviewTimeSlotCard = ({ timeSlot, index }: InterviewTimeSlotCardProps) => {
@@ -184,7 +185,9 @@ function HiringManagerInterviewSchedulingModal() {
 	return (
 		<div className="tw-h-full tw-w-full tw-flex tw-justify-center tw-items-center">
 			<div
-				className="tw-h-full tw-w-full tw-flex tw-justify-center tw-items-center tw-z-10">
+				className={
+					showScheduledInterviewModal ? "tw-hidden" : "tw-flex tw-h-full tw-w-full tw-justify-center tw-items-center tw-z-10"
+				}>
 				<div className="tw-h-full tw-w-full tw-bg-white tw-rounded-3xl tw-z-100 tw-p-3">
 					<div className="tw-w-full tw-h-full tw-p-2 tw-flex tw-flex-col">
 						<span className="tw-font-bold tw-text-2xl tw-p-2">
@@ -248,10 +251,10 @@ function HiringManagerInterviewSchedulingModal() {
 			<div
 				className={
 					showScheduledInterviewModal
-						? "tw-w-screen tw-h-screen tw-absolute tw-bg-gray-500 tw-bg-opacity-30 tw-flex tw-justify-center tw-items-center"
+						? "tw-w-full tw-h-full tw-bg-gray-500 tw-bg-opacity-30 tw-flex tw-justify-center tw-items-center"
 						: "tw-hidden"
 				}>
-				<div className="tw-h-4/6 tw-w-2/6 tw-bg-white tw-rounded-3xl tw-absolute tw-z-10 tw-p-3 tw-pb-8 tw-flex tw-flex-col tw-items-center">
+				<div className="tw-bg-white tw-- tw-h-full tw-flex tw-flex-col tw-items-center">
 					<div className="tw-w-full tw-flex tw-flex-row-reverse">
 						<svg
 							className="tw-h-8 tw-w-8 tw-text-black tw-cursor-pointer"
