@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import AdminNavBar from "../../components/admin/AdminNavBar.tsx";
 import StatisticCard from "../../components/admin/StatisticCard.tsx";
@@ -7,6 +7,7 @@ import HiringRequestTable from "../../components/admin/HiringRequestTable.tsx";
 import GraphCard from "../../components/admin/GraphCard.tsx";
 import Icon from "@mui/material/Icon";
 import Accordion from "react-bootstrap/Accordion";
+import CommandBar from "../../components/CommandBar.tsx";
 
 let statisticCardDate = [
 	{
@@ -39,7 +40,7 @@ let statisticCardDate = [
 	},
 ];
 
-export default function AdminDashboardPage() {
+const AdminDashboardPage: React.FC = () => {
 	const navigate = useNavigate();
 
 	const handleStartNewCampaignButtonClick = () => {
@@ -98,7 +99,10 @@ export default function AdminDashboardPage() {
 						</div>
 					</div>
 				</div>
+				<CommandBar/>
 			</div>
 		</>
 	);
 }
+
+export default AdminDashboardPage

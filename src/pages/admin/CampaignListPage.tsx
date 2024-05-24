@@ -1,6 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import AdminNavBar from "../../components/admin/AdminNavBar.tsx";
+import CommandBar from "../../components/CommandBar.tsx";
 
 function CampaignListPage() {
 	const navigate = useNavigate();
@@ -39,6 +40,7 @@ function CampaignListPage() {
 				</div>
 				<div className="tw-grid tw-grid-cols-1 lg:tw-grid-cols-2 2xl:tw-grid-cols-3 tw-justify-between tw-gap-12  tw-mt-20"></div>
 			</div>
+			<CommandBar/>
 		</div>
 	);
 }

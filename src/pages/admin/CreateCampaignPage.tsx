@@ -7,6 +7,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import Accordion from "react-bootstrap/Accordion";
 import Dropdown from "react-bootstrap/Dropdown";
 import AdminNavBar from "../../components/admin/AdminNavBar.tsx";
+import CommandBar from "../../components/CommandBar.tsx";
 import {
 	GeneralInterviewIcon,
 	TechnicalAssessmentIcon,
@@ -1881,6 +1882,7 @@ function CreateCampaignPage() {
 				</div>
 			</div>
 			<AiGenerateQuestionsModal sectionIndex={aiGenerateQuestionModalSectionIndex} />
+			<CommandBar/>
 		</div>
 	);
 }
