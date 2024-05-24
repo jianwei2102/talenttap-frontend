@@ -1,4 +1,5 @@
 import React from "react";
+import {useNavigate} from "react-router-dom";
 import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
 import CampaignListTile from "../../components/admin/sub/CampaignListTile.tsx";
 
@@ -35,6 +36,7 @@ let mockData = [
 ];
 
 export default function OngoingCampaignCard() {
+  const navigate = useNavigate();
   return (
     <div
       style={{
@@ -52,7 +54,7 @@ export default function OngoingCampaignCard() {
         {/* Title */}
         <h4 className="tw-text-lg tw-font-bold grow">Ongoing Campaigns</h4>
         {/* Button */}
-        <button className="tw-text-red-500 tw-rounded-lg tw-px-2 tw-py-1 tw-ml-auto tw-font-bold">
+        <button className="tw-text-red-500 tw-rounded-lg tw-px-2 tw-py-1 tw-ml-auto tw-font-bold" onClick={() => navigate("/campaign-list")}>
           View All
         </button>
       </div>

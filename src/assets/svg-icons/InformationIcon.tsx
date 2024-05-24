@@ -3,8 +3,7 @@ import React from "react";
 function InformationIcon() {
 	return (
 		<svg
-			width="25"
-			height="25"
+			className="tw-h-full tw-w-fit"
 			viewBox="0 0 24 24"
 			fill="none"
 			stroke="currentColor"

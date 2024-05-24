@@ -1,4 +1,5 @@
 import React from "react";
+import {useNavigate} from "react-router-dom";
 import Icon from "@mui/material/Icon";
 import hilti from "../../../assets/hilti-sales.png";
 
@@ -13,8 +14,10 @@ interface CampaignListTileProps {
 }
 
 export default function CampaignListTile({id, title, newHire, startdate, endDate}: CampaignListTileProps) {
+  const navigate = useNavigate();
     return (
-        <div className="tw-w-100 tw-border tw-border-black tw-flex tw-flex-row tw-p-5 tw-rounded-xl tw-justify-between tw-mb-6">
+      // TODO: Change the onClick function to store the selected campaign id as the state to pass into the campaign process results page
+        <div className="tw-w-100 tw-border tw-border-black tw-flex tw-flex-row tw-p-5 tw-rounded-xl tw-justify-between tw-mb-6 tw-cursor-pointer" onClick={() => navigate("/campaign-process-results")}>
         {/* List Tile Information */}
         <div className="tw-flex tw-flex-col me-4">
           {/* ID */}

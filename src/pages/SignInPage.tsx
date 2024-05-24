@@ -52,9 +52,9 @@ function SignIn() {
 	};
 
 	return (
-		<div className="tw-bg-slate-200 tw-h-full tw-w-full tw-absolute tw-flex tw-justify-center tw-items-center">
-			<div className="tw-w-4/6 tw-h-4/6 tw-flex tw-justify-center tw-items-center">
-				<div className="inherit tw-h-full tw-w-1/2 tw-bg-white tw-border tw-rounded-l-md tw-flex tw-justify-center tw-items-center">
+		<div className="tw-bg-gray-200 tw-h-full tw-w-full tw-absolute tw-flex tw-justify-center tw-items-center">
+			<div className="tw-w-full lg:tw-w-4/6 lg:tw-h-4/6 tw-flex tw-flex-col lg:tw-flex-row tw-justify-center tw-items-center">
+				<div className="inherit tw-h-full tw-py-8 tw-w-5/6 lg:tw-w-1/2 tw-bg-white tw-border tw-rounded-l-md tw-flex tw-justify-center tw-items-center">
 					<form className="tw-relative tw-h-3/4 tw-w-5/6 block" onSubmit={handleSubmit}>
 						<span className="tw-text-3xl tw-font-bold tw-text-black">Log In</span>
 						<div className="block tw-mt-10 tw-h-1/6">
@@ -99,7 +99,7 @@ function SignIn() {
 						</div>
 					</form>
 				</div>
-				<div className="inherit tw-h-full tw-w-1/2 tw-border tw-rounded-r-md tw-flex tw-justify-center tw-items-center tw-relative">
+				<div className="inherit tw-h-full tw-py-8 tw-w-5/6 lg:tw-w-1/2 tw-border tw-rounded-r-md tw-flex tw-justify-center tw-items-center tw-relative">
 					<img
 						className="inherit tw-h-full tw-w-full tw-object-fill tw-border tw-rounded-r-md tw-z-0 tw-absolute"
 						src={require("../assets/wave-background.png")}

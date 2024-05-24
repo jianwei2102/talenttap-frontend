@@ -1,10 +1,12 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 interface HomeCampaignCardProps {
   name: string;
   location: string;
   type: string;
   experienceRequirement: string;
+  startDate: string;
   imageSrc: string;
 }
 
@@ -13,10 +15,18 @@ function HomeCampaignCard({
   location,
   type,
   experienceRequirement,
+  startDate,
   imageSrc,
 }: HomeCampaignCardProps) {
+  const navigate = useNavigate();
+
+  const handleCardClick = () => {
+    localStorage.setItem("interview-index", "0");
+    navigate("/interview");
+  }
+
   return (
-    <div className="tw-w-full tw-h-48 tw-border tw-border-stone-400 tw-rounded tw-flex tw-justify-between tw-p-5">
+    <div className="tw-w-full tw-h-48 tw-border tw-border-stone-400 tw-rounded tw-flex tw-justify-between tw-p-5 tw-cursor-pointer" onClick={handleCardClick}>
       <div className="tw-w-4/6 tw-flex tw-flex-col tw-mr-2">
         <span className="tw-text-xl tw-text-red-700 tw-font-bold tw-mb-3">{name}</span>
         <div className="tw-h-5/6 tw-flex tw-flex-col tw-justify-around">
@@ -71,12 +81,12 @@ function HomeCampaignCard({
               <line x1="12" y1="16" x2="12" y2="12" />{" "}
               <line x1="12" y1="8" x2="12.01" y2="8" />
             </svg>
-            <span className="tw-text-md tw-ml-2">{experienceRequirement}</span>
+            <span className="tw-text-md tw-ml-2">{startDate}</span>
           </div>
         </div>
       </div>
       <img
-        className="tw-w-2/6 tw-object-contain"
+        className="tw-w-2/6 tw-object-cover tw-rounded"
         alt="campaign picture"
         src={imageSrc}></img>
     </div>

@@ -8,6 +8,9 @@ interface Question {
 	answer: string;
 	timeSpent: number;
 	numAttempts: number;
+	positiveKeywords: string[];
+	negativeKeywords: string[];
+	scorePercentage: number;
 }
 
 export default Question;
