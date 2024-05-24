@@ -24,6 +24,7 @@ import {
   IdIcon,
   CrossIcon,
 } from "../../assets/index.js";
+import { useNavigate } from "react-router-dom";
 
 // Used for General Interview and Technical Assessment table data
 type CandidateCVData = {
@@ -67,15 +68,32 @@ declare module "@tanstack/react-table" {
 }
 
 function CampaignProcessResultsPage() {
+  const navigate = useNavigate();
+  
   const campaignName = "ASEAN Software Engineer 2024";
   const interviewComponentList = [
     { name: "CV Round", type: "CV Filtering" },
     { name: "General Interview 1", type: "General Interview" },
-    { name: "Technical Assessment 1", type: "General Interview" },
+    { name: "Technical Assessment 1", type: "Technical Assessment" },
     { name: "Technical Assessment 2", type: "Technical Assessment" },
     { name: "Hiring Manager Interview 1", type: "Hiring Manager Interview" },
   ];
   const [activeComponentIndex, setActiveComponentIndex] = useState(0);
+
+  const handleViewCandidateResultsButtonClick = () => {
+    switch (interviewComponentList[activeComponentIndex].type) {
+      case "General Interview":
+        navigate("/general-interview-result");
+        break;
+      case "Technical Assessment":
+        navigate("/skill-assessment-result");
+        break;
+    }
+  };
+
+  const handleViewCandidateProfileButtonClick = () => {
+    navigate("/candidate-profile");
+  }
 
   const CandidateCVComponent = () => {
     // TODO: fetch data for general interview/ technical assessment
@@ -216,11 +234,6 @@ function CampaignProcessResultsPage() {
           cell: (props) => (
             <div className="tw-flex tw-space-x-5">
               <button
-                className="tw-h-8 tw-text-gray-600"
-                onClick={handleViewCandidateProfileButtonClick}>
-                <EyeIcon />
-              </button>
-              <button
                 data-key={props.row.getValue("name")}
                 className="tw-h-8 tw-text-gray-600"
                 onClick={handleMoreMenuButtonClick}>
@@ -286,10 +299,6 @@ function CampaignProcessResultsPage() {
         updatedData[index].status = "Rejected";
         setData(updatedData);
       }
-    };
-
-    const handleViewCandidateProfileButtonClick = () => {
-      //TODO: view candidate profile button click
     };
 
     return (
@@ -645,7 +654,7 @@ function CampaignProcessResultsPage() {
             <div className="tw-flex tw-space-x-5">
               <button
                 className="tw-h-8 tw-text-gray-600"
-                onClick={handleViewCandidateProfileButtonClick}>
+                onClick={handleViewCandidateResultsButtonClick}>
                 <EyeIcon />
               </button>
               <button
@@ -725,10 +734,6 @@ function CampaignProcessResultsPage() {
         updatedData[index].status = "High Priority / KIV";
         setData(updatedData);
       }
-    };
-
-    const handleViewCandidateProfileButtonClick = () => {
-      //TODO: view candidate profile button click
     };
 
     return (
@@ -1133,11 +1138,6 @@ function CampaignProcessResultsPage() {
           cell: (props) => (
             <div className="tw-flex tw-space-x-5">
               <button
-                className="tw-h-8 tw-text-gray-600"
-                onClick={handleViewCandidateProfileButtonClick}>
-                <EyeIcon />
-              </button>
-              <button
                 data-key={props.row.getValue("name")}
                 className="tw-h-8 tw-text-gray-600"
                 onClick={handleMoreMenuButtonClick}>
@@ -1205,10 +1205,6 @@ function CampaignProcessResultsPage() {
         updatedData[index].status = "Rejected";
         setData(updatedData);
       }
-    };
-
-    const handleViewCandidateProfileButtonClick = () => {
-      //TODO: view candidate profile button click
     };
 
     const handleViewInterviewDetailsButtonClick = (event) => {

@@ -27,6 +27,7 @@ import {
 	SmileyEmojiIcon,
 } from "../../assets/index.js";
 import AdminNavBar from "../../components/admin/AdminNavBar.tsx";
+import { useNavigate } from "react-router-dom";
 
 interface CandidateInformation {
 	name: string;
@@ -84,6 +85,8 @@ interface SkillGap {
 }
 
 function CandidateProfilePage() {
+	const navigate = useNavigate();
+
 	// Candidate Information Initalization
 	const candidateInformation: CandidateInformation = {
 		name: "Jane Doe",
@@ -167,10 +170,10 @@ function CandidateProfilePage() {
 		},
 	];
 	const interviewComponentList = [
-		{name: "General Interview", isCompleted: true},
-		{name: "Technical Assessment Interview", isCompleted: true},
-		{name: "Hiring Manager Interview", isCompleted: false},
-		{name: "CIO Interview", isCompleted: false},
+		{name: "General Interview", type: "General Interview", isCompleted: true},
+		{name: "Technical Assessment Interview", type: "Technical Assessment", isCompleted: true},
+		{name: "Hiring Manager Interview", type: "Hiring Manager Interview", isCompleted: false},
+		{name: "CIO Interview", type: "Hiring Manager Interview", isCompleted: false},
 	];
 
 	// States for the Candidate Profile Page
@@ -181,6 +184,17 @@ function CandidateProfilePage() {
 			setActiveComponentIndex(Number(event.currentTarget.getAttribute("data-component-index")));
 		}
 	};
+
+	const handleProfileInterviewComponentButtonClick = (event) => {
+		switch (event.currentTarget.getAttribute("data-interview-type")) {
+			case "General Interview":
+				navigate("/general-interview-result");
+				break;
+			case "Technical Assessment":
+				navigate("/skill-assessment-result");
+				break;
+		};
+	}
 
 	const GeneralInformationComponent = () => {
 		return (
@@ -697,7 +711,7 @@ function CandidateProfilePage() {
 					<div id="interview-component-navigation" className="tw-w-full tw-h-fit tw-flex tw-flex-col">
 						{
 							interviewComponentList.map((component, index) =>
-								<button className="tw-flex tw-justify-between tw-items-center tw-m-3">
+								<button className="tw-flex tw-justify-between tw-items-center tw-m-3" data-interview-type={component.type} onClick={handleProfileInterviewComponentButtonClick}>
 									<span className="tw-h-full tw-w-[75%] tw-text-lg">{component.name}</span>
 									<div className="tw-h-full tw-w-[20%] tw-flex tw-items-center tw-justify-center">
 										{component.isCompleted ? <div className="tw-text-green-700"><CircleCheckIcon /></div> : <div className="tw-text-red-700"><CircleCrossIcon /></div>}
