@@ -2,9 +2,9 @@ import React from "react";
 
 const CustomButton = ({title, customFunction}) => {
   return (
-    <div className="flex justify-center items-center">
+    <div className="tw-flex tw-justify-center tw-items-center">
       <button
-        className="w-48 h-12 mx-auto mt-10 bg-red-500 text-white rounded-lg text-lg"
+        className="tw-w-48 tw-h-12 tw-mx-auto tw-mt-10 tw-bg-red-500 tw-text-white tw-rounded-lg tw-text-lg"
         onClick={customFunction}
       >
         {title}

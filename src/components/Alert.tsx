@@ -28,19 +28,19 @@ export const Alert: React.FC<AlertProps> = ({
 	let classes = containerClassName;
 	switch (type) {
 		case "default":
-			classes += "text-black bg-gray-300";
+			classes += "tw-text-black tw-bg-gray-300";
 			break;
 		case "info":
-			classes += "bg-indigo-500 text-white";
+			classes += "tw-bg-indigo-500 tw-text-white";
 			break;
 		case "success":
-			classes += "bg-green-700 text-white";
+			classes += "tw-bg-green-700 tw-text-white";
 			break;
 		case "warning":
-			classes += "bg-yellow-500 text-white";
+			classes += "tw-bg-yellow-500 tw-text-white";
 			break;
 		case "error":
-			classes += "bg-red-500 text-white";
+			classes += "tw-bg-red-500 tw-text-white";
 			break;
 		default:
 			break;
@@ -48,8 +48,8 @@ export const Alert: React.FC<AlertProps> = ({
 
 	return (
 		<div
-			className={`ttnc-alert relative flex items-center text-paragraph-base px-6 pt-4 pb-3 mb-5 rounded-lg ${classes}`}>
-			<i className="pe-7s-info text-2xl mr-2"></i>
+			className={`ttnc-alert tw-relative tw-flex tw-items-center tw-text-paragraph-base tw-px-6 tw-pt-4 tw-pb-3 tw-mb-5 tw-rounded-lg ${classes}`}>
+			<i className="pe-7s-info tw-text-2xl tw-mr-2"></i>
 			{message}
 		</div>
 	);
@@ -61,7 +61,7 @@ export interface AlertWrapperProps {
 
 export const AlertsWrapper = ({ children }: { children: React.ReactNode }) => {
 	return (
-		<div className="fixed top-0 right-0 p-4 z-50 pointer-events-none max-w-sm min-w-fit w-full">
+		<div className="tw-fixed tw-top-0 tw-right-0 tw-p-4 tw-z-50 pointer-events-none max-w-sm min-w-fit tw-w-full">
 			{children}
 		</div>
 	);

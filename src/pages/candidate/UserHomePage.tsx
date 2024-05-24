@@ -94,18 +94,18 @@ function UserHomePage() {
     return (
     <>
       {!cookiesAccepted && <CookiesPopup onAccept={handleAcceptCookies} />}
-      <div className="h-screen w-screen absolute flex flex-col">
+      <div className="tw-h-screen tw-w-screen tw-absolute tw-flex tw-flex-col">
       <UserNavBar activeIndex={0} />
-      <div className="main-container w-full flex flex-col items-center pl-28 pr-28">
-        <div className="w-full h-10 flex justify-between relative fixed mt-5">
+      <div className="main-container tw-w-full tw-flex tw-flex-col tw-items-center tw-pl-28 tw-pr-28">
+        <div className="tw-w-full tw-h-10 tw-flex tw-justify-between tw-relative tw-fixed tw-mt-5">
           <div
             id="campaign-switch"
-            className="w-2/6 flex justify-center items-center border border-stone-400 rounded-md p-1">
+            className="tw-w-2/6 tw-flex tw-justify-center tw-items-center tw-border tw-border-stone-400 tw-rounded-md tw-p-1">
             <div
               className={
                 activeCampaignIndex === 0
-                  ? "bg-red-700 text-white text-sm text-center mr-2 flex justify-center items-center p-1 rounded-md h-full w-5/6 cursor-pointer"
-                  : "bg-white text-black text-sm text-center mr-2 flex justify-center items-center p-1 h-full w-5/6 cursor-pointer"
+                  ? "tw-bg-red-700 tw-text-white tw-text-sm tw-text-center tw-mr-2 tw-flex tw-justify-center tw-items-center tw-p-1 tw-rounded-md tw-h-full tw-w-5/6 tw-cursor-pointer"
+                  : "tw-bg-white tw-text-black tw-text-sm tw-text-center tw-mr-2 tw-flex tw-justify-center tw-items-center tw-p-1 tw-h-full tw-w-5/6 tw-cursor-pointer"
               }
               onClick={showOngoingCampaigns}>
               Ongoing Campaign
@@ -113,17 +113,17 @@ function UserHomePage() {
             <div
               className={
                 activeCampaignIndex === 1
-                  ? "bg-red-700 text-white text-sm text-center flex justify-center items-center p-1 rounded-md h-full w-5/6 cursor-pointer"
-                  : "bg-white text-black text-sm text-center flex justify-center items-center p-1 h-full w-5/6 cursor-pointer"
+                  ? "tw-bg-red-700 tw-text-white tw-text-sm tw-text-center tw-flex tw-justify-center tw-items-center tw-p-1 tw-rounded-md tw-h-full tw-w-5/6 tw-cursor-pointer"
+                  : "tw-bg-white tw-text-black tw-text-sm tw-text-center tw-flex tw-justify-center tw-items-center tw-p-1 tw-h-full tw-w-5/6 tw-cursor-pointer"
               }
               onClick={showAppliedCampaigns}>
               Applied Campaign
             </div>
           </div>
-          <div className="w-3/4 h-full flex justify-between items-center ml-40">
-            <div className="w-2/6 h-full border border-stone-400 rounded-md flex items-center pl-1">
+          <div className="tw-w-3/4 tw-h-full tw-flex tw-justify-between tw-items-center tw-ml-40">
+            <div className="tw-w-2/6 tw-h-full tw-border tw-border-stone-400 tw-rounded-md tw-flex tw-items-center tw-pl-1">
               <svg
-                className="h-4/6 w-auto text-red-500"
+                className="tw-h-4/6 tw-w-auto tw-text-red-500"
                 width="24"
                 height="24"
                 viewBox="0 0 24 24"
@@ -139,13 +139,13 @@ function UserHomePage() {
               </svg>
               <input
                 id="job-search-input"
-                className="w-5/6 text-xs w-full pl-2 pt-1.5 pb-1.5 border-none"
+                className="tw-w-5/6 tw-text-xs tw-w-full tw-pl-2 tw-pt-1.5 tw-pb-1.5 tw-border-none"
                 type="text"
                 placeholder="Search by job title or keyword"></input>
             </div>
-            <div className="w-2/6 h-full border border-stone-400 rounded-md flex items-center pl-1">
+            <div className="tw-w-2/6 tw-h-full tw-border tw-border-stone-400 tw-rounded-md tw-flex tw-items-center tw-pl-1">
               <svg
-                className="h-4/6 text-red-500"
+                className="tw-h-4/6 tw-text-red-500"
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
@@ -164,17 +164,17 @@ function UserHomePage() {
               />
               <input
                 id="location-search-input"
-                className="w-5/6 text-xs w-full pl-2 pt-1.5 pb-1.5 border-none"
+                className="tw-w-5/6 tw-text-xs tw-w-full tw-pl-2 tw-pt-1.5 tw-pb-1.5 tw-border-none"
                 type="text"
                 placeholder="All locations"></input>
             </div>
-            <button className="w-1/4 bg-red-700 text-center text-white text-md p-2 border rounded-md">
+            <button className="tw-w-1/4 tw-bg-red-700 tw-text-center tw-text-white tw-text-md tw-p-2 tw-border tw-rounded-md">
               SEARCH
             </button>
           </div>
         </div>
-        <div className="home-main-container overflow-auto mt-10">
-          <div className="h-auto home-grid">
+        <div className="home-main-container tw-overflow-auto tw-mt-10">
+          <div className="tw-h-auto home-grid">
             {campaigns.map((campaign, index) => (
               <div key={index}>
                 <Card name={campaign.name} location={campaign.location} type={campaign.department} experienceRequirement={campaign.requirement} imageSrc={campaign.image}/>
@@ -182,7 +182,7 @@ function UserHomePage() {
             ))}
           </div>
         </div>
-        <div className="absolute bottom-10">
+        <div className="tw-absolute tw-bottom-10">
           <MorePageNavigation currentActivePageIndex={currentPageIndex} totalPages={totalPages} />
         </div>
       </div>

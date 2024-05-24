@@ -50,11 +50,11 @@ const Interview = () => {
     <>
       <UserNavBar activeIndex={0} />
 
-      <div className="h-full mx-12 my-8 lg:mx-36 lg:my-24">
-        <div className="flex flex-row justify-between">
-          <div className="text-[#D2051E] text-4xl font-bold">{name}</div>
-          <div className="flex flex-col justify-end items-end">
-            <div className="text-right text-xl font-semibold">
+      <div className="tw-h-full tw-mx-12 tw-my-8 lg:tw-mx-36 lg:tw-my-24">
+        <div className="tw-flex tw-flex-row tw-justify-between">
+          <div className="tw-text-[#D2051E] tw-text-4xl tw-font-bold">{name}</div>
+          <div className="tw-flex tw-flex-col tw-justify-end tw-items-end">
+            <div className="tw-text-right tw-text-xl tw-font-semibold">
               Application Due Date
             </div>
             <div>{endDate}</div>
@@ -64,7 +64,7 @@ const Interview = () => {
         <InterviewStepBar initialActiveStep={interviewSteps} />
 
         <div className="leading-8">
-          <span className="text-2xl font-semibold">Overview</span>
+          <span className="tw-text-2xl tw-font-semibold">Overview</span>
           <br />
           {jobFunction.split("\n").map((line, i) => (
             <span key={i}>
@@ -74,8 +74,8 @@ const Interview = () => {
           ))}
         </div>
 
-        <div className="mt-10 leading-8">
-          <span className="text-2xl font-semibold">Requirements</span>
+        <div className="tw-mt-10 leading-8">
+          <span className="tw-text-2xl tw-font-semibold">Requirements</span>
           <br />
           {requirements.split("\n").map((line, i) => (
             <span key={i}>
@@ -94,7 +94,7 @@ const Interview = () => {
               title={"Start Interview"}
               customFunction={() => navigate("/general-interview")}
             />
-            <p className="text-center mt-2">
+            <p className="tw-text-center tw-mt-2">
               The Interview can be done within 3 days
             </p>
           </>
@@ -106,7 +106,7 @@ const Interview = () => {
               title={"Start Interview"}
               customFunction={() => navigate("/technical")}
             />
-            <p className="text-center mt-2">
+            <p className="tw-text-center tw-mt-2">
               The Interview can be done within 3 days
             </p>
           </>
@@ -118,7 +118,7 @@ const Interview = () => {
               title={"Schedule Interview"}
               customFunction={() => {}}
             />
-            <p className="text-center mt-2">
+            <p className="tw-text-center tw-mt-2">
               The Interview can be done within 3 days
             </p>
           </>

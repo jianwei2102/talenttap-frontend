@@ -24,24 +24,24 @@ const PopUpModal = ({ title }) => {
 					<Modal.Header closeButton>
 						<Modal.Title>Application Form</Modal.Title>
 					</Modal.Header>
-					<Modal.Body className="flex flex-col">
-						<form className="m-2" action="">
+					<Modal.Body className="tw-flex tw-flex-col">
+						<form className="tw-m-2" action="">
 							<div>
-								<span className="font-semibold">Add Resume</span> (*.pdf)
+								<span className="tw-font-semibold">Add Resume</span> (*.pdf)
 							</div>
 							<FileUploader />
 
-							<div className="mt-4 font-semibold">Highlight why you apply for this job</div>
+							<div className="tw-mt-4 tw-font-semibold">Highlight why you apply for this job</div>
 							<textarea
-								className="w-full border-2 border-gray-300 rounded-md resize-none h-24 p-2"
+								className="tw-w-full tw-border-2 tw-border-gray-300 tw-rounded-md tw-resize-none tw-h-24 tw-p-2"
 								onChange={(event) => setTextLength(event.target.value.length)}></textarea>
 							<div className="float-right">{textLength} / 300 characters</div>
 							
-							<div className="w-full mt-5 flex items-start">
-								<input className="mt-1 h-full" type="checkbox" checked={isChecked} onChange={handleCheckboxChange}></input>
-								<span className="ml-2 text-sm">
+							<div className="tw-w-full tw-mt-5 tw-flex tw-items-start">
+								<input className="tw-mt-1 tw-h-full" type="checkbox" checked={isChecked} onChange={handleCheckboxChange}></input>
+								<span className="tw-ml-2 tw-text-sm">
 									I have read and agreed to the {' '}
-									<a href="https://cloudmails-my.sharepoint.com/:w:/g/personal/tp060751_mail_apu_edu_my/EYppO4IvYUlEmmXwNvz5ghkBd3qS3-Ia9_XtJwUgvGVq_Q" className="text-blue-500 hover:underline">
+									<a href="https://cloudmails-my.sharepoint.com/:w:/g/personal/tp060751_mail_apu_edu_my/EYppO4IvYUlEmmXwNvz5ghkBd3qS3-Ia9_XtJwUgvGVq_Q" className="tw-text-blue-500 hover:underline">
 										Hilti recruitment and hiring privacy statement
 									</a>
 								</span>
@@ -50,7 +50,7 @@ const PopUpModal = ({ title }) => {
 					</Modal.Body>
 					<Modal.Footer>
 						<button
-							className={`h-9 w-24 bg-red-500 text-white rounded-md text-lg ${!isChecked ? 'opacity-50 cursor-not-allowed' : ''}`}
+							className={`tw-h-9 tw-w-24 tw-bg-red-500 tw-text-white tw-rounded-md tw-text-lg ${!isChecked ? 'opacity-50 cursor-not-allowed' : ''}`}
 							onClick={handleClose}
 							disabled={!isChecked}
 						>
@@ -64,15 +64,15 @@ const PopUpModal = ({ title }) => {
 			{title === "Continue" && (
 				<Modal show={show} onHide={handleClose} size="lg" centered>
 					<Modal.Body>
-						<div className="p-2">
-							<div className="flex justify-end items-end">
+						<div className="tw-p-2">
+							<div className="tw-flex tw-justify-end tw-items-end">
 								<button
 									type="button"
 									className="btn-close"
 									aria-label="Close"
 									onClick={() => handleClose()}></button>
 							</div>
-							<div className="flex items-center justify-center font-bold text-3xl mb-3">
+							<div className="tw-flex tw-items-center tw-justify-center tw-font-bold tw-text-3xl tw-mb-3">
 								Disclaimer
 							</div>
 							<div>

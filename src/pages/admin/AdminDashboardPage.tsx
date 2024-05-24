@@ -6,6 +6,7 @@ import OngoingCampaignCard from "../../components/admin/OngoingCampaignCard.tsx"
 import HiringRequestTable from "../../components/admin/HiringRequestTable.tsx";
 import GraphCard from "../../components/admin/GraphCard.tsx";
 import Icon from "@mui/material/Icon";
+import Accordion from "react-bootstrap/Accordion";
 
 let statisticCardDate = [
 	{
@@ -47,18 +48,18 @@ export default function AdminDashboardPage() {
 
 	return (
 		<>
-			<div className="h-screen w-screen absolute flex flex-col  pb-5">
+			<div className="tw-h-screen tw-w-screen tw-absolute tw-flex tw-flex-col  tw-pb-5">
 				<AdminNavBar activeIndex={0} />
-				<div className="mt-10 px-10">
+				<div className="tw-mt-10 tw-px-10">
 					{/* Header Section */}
-					<div className="flex flex-row w-full justify-between items-center mb-10">
+					<div className="tw-flex tw-flex-row tw-w-full tw-justify-between tw-items-center tw-mb-10">
 						<div>
-							<p className="mb-2">Pages / Dashboard</p>
-							<h1 className="text-3xl font-bold">Main Dashboard</h1>
+							<p className="tw-mb-2">Pages / Dashboard</p>
+							<h1 className="tw-text-3xl tw-font-bold">Main Dashboard</h1>
 						</div>
-						<div className="w-auto">
+						<div className="tw-w-auto">
 							<button
-								className="w-full bg-red-700 text-center text-white text-md p-3 rounded-full"
+								className="tw-w-full tw-bg-red-700 tw-text-center tw-text-white tw-text-md tw-p-3 tw-rounded-full"
 								onClick={handleStartNewCampaignButtonClick}>
 								Start New Campaign
 							</button>
@@ -66,7 +67,7 @@ export default function AdminDashboardPage() {
 					</div>
 
 					{/* Statistic Card Section */}
-					<div className="grid grid-cols-4 gap-10 grid-flow-row mb-6 w-full">
+					<div className="tw-grid tw-grid-cols-4 tw-gap-10 tw-grid-flow-row tw-mb-6 tw-w-full">
 						{statisticCardDate.map(function (card) {
 							return (
 								<StatisticCard
@@ -80,19 +81,19 @@ export default function AdminDashboardPage() {
 						})}
 					</div>
 					{/* Recruitment Drives & Ongoing campaign sections */}
-					<div className="flex flex-row w-full mb-6" style={{ maxHeight: "600px" }}>
+					<div className="tw-flex tw-flex-row tw-w-full tw-mb-6" style={{ maxHeight: "600px" }}>
 						{/* Recruitment Drives */}
-						<div className="w-full me-6">
+						<div className="tw-w-full me-6">
 							<GraphCard />
 						</div>
-						<div className="min-w-[38%]">
+						<div className="min-tw-w-[38%]">
 							<OngoingCampaignCard />
 						</div>
 					</div>
 
 					{/* New Hiring Request Section */}
-					<div className="w-full">
-						<div className="ml-auto w-[60%]">
+					<div className="tw-w-full">
+						<div className="tw-ml-auto tw-w-[60%]">
 							<HiringRequestTable />
 						</div>
 					</div>
