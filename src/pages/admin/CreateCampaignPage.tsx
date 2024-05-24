@@ -109,6 +109,7 @@ function CreateCampaignPage() {
 	const [activeComponentIndex, setActiveComponentIndex] = useState(0);
 	const [activeSubComponentIndex, setActiveSubComponentIndex] = useState(-1);
 	const [isShowingAiGenerateQuestionsModal, setIsShowingAiGenerateQuestionModal] = useState(false);
+	const [isShowingOneClickPostingModal, setIsShowingOneClickPostingModal] = useState(false);
 	const [aiGenerateQuestionModalSectionIndex, setAiGenerateQuestionModalSectionIndex] =
 		useState(-1);
 	const [wasDragDropped, setWasDragDropped] = useState(false);
@@ -122,7 +123,7 @@ function CreateCampaignPage() {
 
 	const handleCreateCampaignButtonClick = () => {
 		//TODO: Save campaignDetails and campaignInterviewComponentList (all the data is in these 2 variables)
-		navigate("/admin");
+		setIsShowingOneClickPostingModal(true);
 	};
 
 	const handleDiscardButtonClick = () => {
@@ -591,7 +592,10 @@ function CreateCampaignPage() {
 						<div className="tw-w-[45%] tw-flex tw-flex-col">
 							<span className="tw-text-xl">Department</span>
 							<Dropdown onSelect={handleDepartmentInputChange}>
-								<Dropdown.Toggle id="department-dropdown" as={CustomToggle} className="tw-w-full tw-flex">
+								<Dropdown.Toggle
+									id="department-dropdown"
+									as={CustomToggle}
+									className="tw-w-full tw-flex">
 									{department === "" ? "Please Select An Option" : department}
 								</Dropdown.Toggle>
 								<Dropdown.Menu className="tw-w-full">
@@ -604,7 +608,10 @@ function CreateCampaignPage() {
 						<div className="tw-w-[45%] tw-flex tw-flex-col">
 							<span className="tw-text-xl">Expertise</span>
 							<Dropdown onSelect={handleExpertiseInputChange}>
-								<Dropdown.Toggle id="expertise-dropdown" as={CustomToggle} className="tw-w-full tw-flex">
+								<Dropdown.Toggle
+									id="expertise-dropdown"
+									as={CustomToggle}
+									className="tw-w-full tw-flex">
 									{expertise === "" ? "Please Select An Option" : expertise}
 								</Dropdown.Toggle>
 								<Dropdown.Menu className="tw-w-full">
@@ -1515,7 +1522,12 @@ function CreateCampaignPage() {
 		};
 
 		return (
-			<div className={isShowingAiGenerateQuestionsModal ? "tw-h-full tw-w-full tw-absolute tw-z-10" : "tw-hidden"}>
+			<div
+				className={
+					isShowingAiGenerateQuestionsModal
+						? "tw-h-full tw-w-full tw-absolute tw-z-10"
+						: "tw-hidden"
+				}>
 				<div className="tw-h-full tw-w-full tw-relative tw-py-24 tw-px-48 tw-z-10">
 					<div className="tw-h-full tw-w-full tw-relative tw-flex tw-flex-col tw-items-center tw-bg-white tw-rounded-3xl tw-z-100 tw-px-5 tw-py-3">
 						<div className="tw-w-full tw-flex tw-justify-between">
@@ -1582,8 +1594,54 @@ function CreateCampaignPage() {
 		);
 	};
 
+	const OneClickPostingModal = () => {
+		return (
+			<div
+				className={
+					isShowingOneClickPostingModal ? "tw-h-full tw-w-full tw-absolute tw-z-10" : "tw-hidden"
+				}>
+				<div className="tw-h-full tw-w-full tw-relative tw-py-48 tw-px-64 tw-z-10">
+					<div className="tw-h-full tw-w-full tw-relative tw-flex tw-flex-col tw-items-center tw-bg-white tw-rounded-3xl tw-z-100">
+						<div className="tw-w-full tw-flex tw-justify-end tw-p-5">
+							<button className="tw-text-black tw-w-[2rem]" onClick={() => setIsShowingOneClickPostingModal(false)}>
+								<CrossIcon />
+							</button>
+						</div>
+						<div
+							id="company-logo-list"
+							className="tw-w-full tw-h-fit tw-flex tw-flex-wrap tw-justify-center tw-items-center tw-px-10 tw-py-10">
+							<img
+								className="tw-h-[3rem] tw-m-5"
+								alt="glassdoor-logo"
+								src={require("../../assets/glassdoor-logo.png")}></img>
+							<img
+								className="tw-h-[3rem] tw-m-5"
+								alt="indeed-logo"
+								src={require("../../assets/indeed-logo.png")}></img>
+							<img
+								className="tw-h-[3rem] tw-m-5"
+								alt="jobstreet-logo"
+								src={require("../../assets/jobstreet-logo.png")}></img>
+							<img
+								className="tw-h-[3rem] tw-m-5"
+								alt="linkedin-logo"
+								src={require("../../assets/linkedin-logo.png")}></img>
+						</div>
+						<div className="tw-absolute tw-bottom-10 tw-flex tw-flex-col tw-justify-center">
+							<button className="tw-bg-red-700 tw-rounded-lg tw-text-white tw-py-3 tw-px-5" onClick={() => navigate("/admin")}>
+								One Click Job Posting
+							</button>
+							<span className="tw-mt-5">The job posting will be advertised to all the above platforms with only one click.</span>
+						</div>
+					</div>
+				</div>
+				<div className="pop-up-modal-backdrop"></div>
+			</div>
+		);
+	};
+
 	return (
-		<div className="tw-h-screen tw-w-screen tw-flex tw-flex-col tw-bg-slate-200">
+		<div className="tw-h-screen tw-w-screen tw-flex tw-flex-col tw-bg-gray-100">
 			<AdminNavBar activeIndex={-1} />
 			<div className="main-container tw-py-10 tw-px-24">
 				<span className="tw-text-red-700 tw-font-bold tw-text-5xl">Create A New Campaign</span>
@@ -1694,7 +1752,9 @@ function CreateCampaignPage() {
 							</div>
 						</div>
 					</div>
-					<div id="campaign-details-container" className="tw-h-auto tw-w-3/4 tw-ml-5 tw-mt-3 tw-overflow-auto">
+					<div
+						id="campaign-details-container"
+						className="tw-h-auto tw-w-3/4 tw-ml-5 tw-mt-3 tw-overflow-auto">
 						{activeComponentIndex === 0 ? (
 							<CampaignDetailsContainer />
 						) : campaignInterviewComponentList.length < 1 ? (
@@ -1712,6 +1772,7 @@ function CreateCampaignPage() {
 				</div>
 			</div>
 			<AiGenerateQuestionsModal sectionIndex={aiGenerateQuestionModalSectionIndex} />
+			<OneClickPostingModal />
 		</div>
 	);
 }

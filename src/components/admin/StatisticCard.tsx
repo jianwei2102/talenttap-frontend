@@ -54,14 +54,14 @@ export default function StatisticCard({
             </div>
           </div>
         </div>
-        <div className="tw-flex tw-flex-row tw-justify-start">
-          <p className="tw-mb-2 tw-flex-1">vs Last Year</p>
-          <div className={`${iconType[type].bg} tw-rounded-full tw-px-5 tw-py-1 tw-flex`}>
-            <p className="">{percentage}%</p>
+        <div className="tw-flex tw-flex-row tw-justify-start tw-items-end">
+          <span className="tw-mb-2 tw-flex-1">vs Last Year</span>
+          <div className={`${iconType[type].bg} tw-rounded-full tw-px-5 tw-py-2 tw-flex tw-justify-center tw-items-center tw-m-0`}>
+            <span className="tw-flex tw-justify-center tw-items-center">{percentage + "%"}</span>
             <Icon
               color={iconType[type].color}
               fontSize="large"
-              sx={{ marginLeft: 2, paddingBottom: 0, marginBottom: -1 }}
+              sx={{ marginLeft: 1, paddingBottom: 0 }}
             >
               {iconType[type].icon}
             </Icon>
