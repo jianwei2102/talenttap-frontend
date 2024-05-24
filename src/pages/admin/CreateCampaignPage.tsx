@@ -1939,10 +1939,10 @@ function CreateCampaignPage() {
 							<HiringManagerInterviewDetailsCard />
 						)}
 					</div>
+					<CommandBar/>
 				</div>
 			</div>
 			<AiGenerateQuestionsModal sectionIndex={aiGenerateQuestionModalSectionIndex} />
-			<CommandBar/>
 			<OneClickPostingModal />
 		</div>
 	);

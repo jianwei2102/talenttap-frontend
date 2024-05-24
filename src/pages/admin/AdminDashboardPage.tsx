@@ -97,8 +97,8 @@ const AdminDashboardPage: React.FC = () => {
 						<HiringRequestTable />
 					</div>
 				</div>
-			</div>
 				<CommandBar/>
+			</div>
 		</div>
 	);
 }

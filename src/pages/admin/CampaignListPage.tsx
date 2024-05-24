@@ -155,8 +155,8 @@ function CampaignListPage() {
 						))}
 					</div>
 				</div>
+				<CommandBar/>
 			</div>
-			<CommandBar/>
 		</div>
 	);
 }
