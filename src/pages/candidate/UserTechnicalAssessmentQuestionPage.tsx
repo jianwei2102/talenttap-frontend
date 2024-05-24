@@ -25,7 +25,7 @@ function UserTechnicalAssessmentQuestionPage() {
 
 	// TODO: Get questions from campaign (start)
 
-	useEffect (() => {
+	useEffect(() => {
 
 		TechnicalAssessmentAPI.get(SKILL_ASSESSMENT_ID).then((response) => {
 			console.log(response);
@@ -53,7 +53,10 @@ function UserTechnicalAssessmentQuestionPage() {
 							maxCharacterAnswer: question.maxCharacterAnswer,
 							answer: "",
 							timeSpent: 0,
-							numAttempts: 0
+							numAttempts: 0,
+							positiveKeywords: [],
+							negativeKeywords: [],
+							scorePercentage: 0
 						}]
 					});
 				} else { // section already exists
@@ -66,7 +69,10 @@ function UserTechnicalAssessmentQuestionPage() {
 						maxCharacterAnswer: question.maxCharacterAnswer,
 						answer: "",
 						timeSpent: 0,
-						numAttempts: 0
+						numAttempts: 0,
+						positiveKeywords: [],
+						negativeKeywords: [],
+						scorePercentage: 0
 					});
 				}
 			});
@@ -245,11 +251,11 @@ function UserTechnicalAssessmentQuestionPage() {
 	};
 
 	return (
-		<div className="tw-h-screen tw-w-screen tw-flex tw-justify-between tw-p-20 tw-bg-slate-200">
-			<div className="tw-h-full tw-w-3/4 tw-bg-white tw-p-5 tw-mr-5">
+		<div className="tw-h-screen tw-w-screen tw-flex tw-justify-between tw-p-20 tw-bg-gray-200">
+			<div className="tw-h-full tw-w-3/4 tw-bg-white tw-p-20 tw-mr-5">
 				<span className="tw-text-3xl tw-font-bold">
 					{
-					String.fromCharCode(65 + activeSectionIndex) +
+						String.fromCharCode(65 + activeSectionIndex) +
 						". " +
 						currentQuestionLists[activeSectionIndex]?.sectionName}
 				</span>

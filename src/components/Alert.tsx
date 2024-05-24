@@ -49,7 +49,7 @@ export const Alert: React.FC<AlertProps> = ({
 	return (
 		<div
 			className={`ttnc-alert tw-relative tw-flex tw-items-center tw-text-paragraph-base tw-px-6 tw-pt-4 tw-pb-3 tw-mb-5 tw-rounded-lg ${classes}`}>
-			<i className="pe-7s-info tw-text-2xl tw-mr-2"></i>
+			<i className="tw-pe-7s-info tw-text-2xl tw-mr-2"></i>
 			{message}
 		</div>
 	);
@@ -61,7 +61,7 @@ export interface AlertWrapperProps {
 
 export const AlertsWrapper = ({ children }: { children: React.ReactNode }) => {
 	return (
-		<div className="tw-fixed tw-top-0 tw-right-0 tw-p-4 tw-z-50 pointer-events-none max-w-sm min-w-fit tw-w-full">
+		<div className="tw-fixed tw-top-0 tw-right-0 tw-p-4 tw-z-50 tw-pointer-events-none tw-max-w-sm tw-min-w-fit tw-w-full">
 			{children}
 		</div>
 	);

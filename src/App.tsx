@@ -12,9 +12,8 @@ import AdminDashboardPage from "./pages/admin/AdminDashboardPage.tsx";
 import UserHomePage from "./pages/candidate/UserHomePage.tsx";
 import UserFeedbackPage from "./pages/candidate/UserFeedbackPage.tsx";
 import UserTechnicalAssessmentQuestionPage from "./pages/candidate/UserTechnicalAssessmentQuestionPage.tsx";
-import UserHiringManagerInterviewPage from "./pages/candidate/UserHiringManagerInterviewPage.tsx";
 import UserAssessmentSubmissionCompletedPage from "./pages/candidate/UserAssessmentSubmissionCompletedPage.tsx";
-import Interview from "./pages/candidate/Interview.tsx";
+import Interview from "./pages/candidate/Interview/Interview.tsx";
 import GeneralInterview from "./pages/candidate/GeneralInterview.tsx";
 import GeneralQuestion from "./pages/candidate/GeneralQuestion.tsx";
 import CampaignListPage from "./pages/admin/CampaignListPage.tsx";
@@ -22,6 +21,11 @@ import CreateCampaignPage from "./pages/admin/CreateCampaignPage.tsx";
 import CandidateProfilePage from "./pages/admin/CandidateProfilePage.tsx";
 import CampaignProcessResultsPage from "./pages/admin/CampaignProcessResultsPage.tsx";
 import TypingAssessmentPage from "./pages/candidate/TypingAssessmentPage.tsx";
+import SkillAssessmentResultPage from "./pages/admin/SkillAssessmentResultPage.tsx";
+import GeneralInterviewResultPage from "./pages/admin/GeneralInterviewResultPage/GeneralInterviewResultPage.tsx";
+import CandidateSummaryPage from "./pages/sidebar/CandidateSummaryPage/CandidateSummaryPage.tsx";
+import GeneralInterviewDetailPage from "./pages/sidebar/GeneralInterviewDetailPage/GeneralInterviewDetailPage.tsx";
+import SkillAssessmentDetailPage from "./pages/sidebar/SkillAssessmentDetailPage/SkillAssessmentDetailPage.tsx";
 
 function App() {
     return (
@@ -34,17 +38,23 @@ function App() {
                 <Route path="/feedback" element={<UserFeedbackPage/>}/>
                 <Route path="/typing-assessment" element={<TypingAssessmentPage/>}/>
                 <Route path="/technical" element={<UserTechnicalAssessmentQuestionPage/>}/>
-                <Route path="/hiring-manager-interview-schedule" element={<UserHiringManagerInterviewPage/>}/>
                 <Route path="/submission-completed" element={<UserAssessmentSubmissionCompletedPage/>}/>
                 <Route path="/admin" element={<AdminDashboardPage/>}/>
                 <Route path="/campaign-list" element={<CampaignListPage/>}/>
                 <Route path="/create-campaign" element={<CreateCampaignPage />}/>
+                <Route path="/general-interview-result" element={<GeneralInterviewResultPage/>}/>
+                <Route path="/skill-assessment-result" element={<SkillAssessmentResultPage/>}/>
                 <Route path="/candidate-profile" element={<CandidateProfilePage />}/>
                 <Route path="/campaign-process-results" element={<CampaignProcessResultsPage/>} />
                 <Route path="/" element={<SignIn/>}/>
                 <Route path="/interview" element={<Interview/>}/>
                 <Route path="/general-interview" element={<GeneralInterview/>}/>
                 <Route path="/general-question" element={<GeneralQuestion/>}/>
+
+                {/* Sidebar */}
+                <Route path="/candidate-summary" element={<CandidateSummaryPage/>}/>
+                <Route path="/general-interview-detail" element={<GeneralInterviewDetailPage/>}/>
+                <Route path="/skill-assessment-detail" element={<SkillAssessmentDetailPage/>}/>
             </Routes>
         </Router>
     );

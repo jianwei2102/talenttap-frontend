@@ -50,7 +50,7 @@ function SignUp() {
 	};
 
 	return (
-		<div className="tw-bg-slate-200 tw-h-full tw-w-full tw-absolute tw-flex tw-justify-center tw-items-center">
+		<div className="tw-bg-gray-200 tw-h-full tw-w-full tw-absolute tw-flex tw-justify-center tw-items-center">
 			<div className="tw-w-4/6 tw-h-4/6 tw-flex tw-justify-center tw-items-center">
 				<div className="inherit tw-h-full tw-w-1/2 tw-bg-white tw-border tw-rounded-l-md tw-flex tw-justify-center tw-items-center">
 					<form className="tw-relative tw-h-3/4 tw-w-5/6 block" onSubmit={handleSubmit}>

@@ -1,6 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import UserNavBar from "../../components/UserNavBar.tsx";
+import UserNavBar from "../../../components/UserNavBar";
 
 interface InterviewDaySlot {
 	date: Date;
@@ -42,8 +42,8 @@ function generateInterviewTimeSlots(): string[] {
 }
 
 function convertIntToDayString(num: number): string {
-	const dayList = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
-	return dayList[num - 1];
+	const dayList = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+	return dayList[num];
 }
 
 //TODO: Get interviewer names
@@ -55,7 +55,7 @@ const interviewSlots: InterviewDaySlot[] = [];
 
 let currentDate = new Date();
 for (let index = 0; index < 10; index++) {
-	let month = currentDate.getMonth();
+	let month = currentDate.getMonth() + 1;
 	let day = currentDate.getDate() + index + 1;
 
 	if (day > 30) {
@@ -69,10 +69,10 @@ for (let index = 0; index < 10; index++) {
 	});
 }
 
-function HiringManagerInterviewPage() {
+function HiringManagerInterviewSchedulingModal({ onClose }) {
 	// TODO: Check if interviewee already scheduled an interview
 	const [isInterviewScheduled, setIsInterviewScheduled] = useState(false);
-	const [showInterviewSchedulingModal, setShowInterviewSchedulingModal] = useState(false);
+	// const [showInterviewSchedulingModal, setShowInterviewSchedulingModal] = useState(true);
 	const [showScheduledInterviewModal, setShowScheduledInterviewModal] = useState(false);
 	const [activeInterviewDayCardIndex, setActiveInterviewDayCardIndex] = useState(-1);
 	const [interviewDayCardMinIndex, setInterviewDayCardMinIndex] = useState(0);
@@ -80,16 +80,9 @@ function HiringManagerInterviewPage() {
 	const [interviewTimeSlotIndex, setInterviewTimeSlotIndex] = useState(-1);
 	const [selectedInterviewDay, setSelectedInterviewDay] = useState(new Date());
 
-	const openInterviewSchedulingModalHandle = () => {
-		setShowInterviewSchedulingModal(true);
-	};
-
-	const closeInterviewSchedulingModalHandle = () => {
-		setShowInterviewSchedulingModal(false);
-	};
-
 	const closeScheduledInterviewModalHandle = () => {
 		setShowScheduledInterviewModal(false);
+		onClose();
 	};
 
 	const InterviewTimeSlotCard = ({ timeSlot, index }: InterviewTimeSlotCardProps) => {
@@ -183,7 +176,6 @@ function HiringManagerInterviewPage() {
 		scheduledDate.setHours(Number(hours));
 		scheduledDate.setMinutes(Number(minutes));
 
-		setShowInterviewSchedulingModal(false);
 		setIsInterviewScheduled(true);
 		setShowScheduledInterviewModal(true);
 
@@ -191,42 +183,12 @@ function HiringManagerInterviewPage() {
 	};
 
 	return (
-		<div className="tw-h-screen tw-w-screen tw-flex tw-flex-col">
-			<UserNavBar activeIndex={-1} />
-			{/* TODO: Add progress bar */}
-			{/* TODO: Add position information (best to turn into a component since its repeating from other pages)*/}
-			<div className="tw-flex tw-flex-col tw-justify-center tw-items-center">
-				<button
-					className="tw-bg-red-700 tw-text-white tw-px-5 tw-py-2"
-					onClick={openInterviewSchedulingModalHandle}>
-					Schedule Interview
-				</button>
-				<span className="tw-text-gray-500 tw-text-sm tw-px-5 tw-py-2 tw-mt-2">
-					The interview can be done within 3 days.
-				</span>
-			</div>
+		<div className="tw-h-full tw-w-full tw-flex tw-justify-center tw-items-center">
 			<div
 				className={
-					showInterviewSchedulingModal
-						? "modal-backdrop tw-flex tw-justify-center tw-items-center"
-						: "tw-hidden"
+					showScheduledInterviewModal ? "tw-hidden" : "tw-flex tw-h-full tw-w-full tw-justify-center tw-items-center tw-z-10"
 				}>
-				<div className="tw-h-4/6 tw-w-2/6 tw-bg-white tw-rounded-3xl tw-absolute tw-z-100 tw-p-3">
-					<div className="tw-w-full tw-flex tw-flex-row-reverse">
-						<svg
-							className="tw-h-8 tw-w-8 tw-text-black tw-cursor-pointer"
-							fill="none"
-							viewBox="0 0 24 24"
-							stroke="currentColor"
-							onClick={closeInterviewSchedulingModalHandle}>
-							<path
-								stroke-linecap="round"
-								stroke-linejoin="round"
-								stroke-width="2"
-								d="M6 18L18 6M6 6l12 12"
-							/>
-						</svg>
-					</div>
+				<div className="tw-h-full tw-w-full tw-bg-white tw-rounded-3xl tw-z-100 tw-p-3">
 					<div className="tw-w-full tw-h-full tw-p-2 tw-flex tw-flex-col">
 						<span className="tw-font-bold tw-text-2xl tw-p-2">
 							{"30 minute call with " + interviewerList.join(" & ")}
@@ -289,10 +251,10 @@ function HiringManagerInterviewPage() {
 			<div
 				className={
 					showScheduledInterviewModal
-						? "tw-w-screen tw-h-screen tw-absolute tw-bg-gray-500 tw-bg-opacity-30 tw-flex tw-justify-center tw-items-center"
+						? "tw-w-full tw-h-full tw-bg-gray-500 tw-bg-opacity-30 tw-flex tw-justify-center tw-items-center"
 						: "tw-hidden"
 				}>
-				<div className="tw-h-4/6 tw-w-2/6 tw-bg-white tw-rounded-3xl tw-absolute tw-z-10 tw-p-3 tw-pb-8 tw-flex tw-flex-col tw-items-center">
+				<div className="tw-bg-white tw-- tw-h-full tw-flex tw-flex-col tw-items-center">
 					<div className="tw-w-full tw-flex tw-flex-row-reverse">
 						<svg
 							className="tw-h-8 tw-w-8 tw-text-black tw-cursor-pointer"
@@ -323,7 +285,7 @@ function HiringManagerInterviewPage() {
 					<span className="tw-font-bold tw-text-center tw-text-2xl tw-mt-8">
 						Thank you! Your meeting is confirmed.
 					</span>
-					<div className="hiring-manager-scheduled-interview-modal-grid divide-y divide-gray-400 tw-border tw-rounded-lg tw-border-gray-400 tw-m-5">
+					<div className="hiring-manager-scheduled-interview-modal-grid tw-divide-y tw-divide-gray-400 tw-border tw-rounded-lg tw-border-gray-400 tw-m-5">
 						<div className="tw-w-full tw-flex tw-flex-col tw-px-3 tw-py-5">
 							<span className="tw-text-left">You are meeting with</span>
 							<span className="tw-text-left tw-font-bold tw-text-lg">{interviewerList.join(" & ")}</span>
@@ -403,4 +365,4 @@ function HiringManagerInterviewPage() {
 	);
 }
 
-export default HiringManagerInterviewPage;
+export default HiringManagerInterviewSchedulingModal;
