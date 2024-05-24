@@ -5,8 +5,6 @@ import StatisticCard from "../../components/admin/StatisticCard.tsx";
 import OngoingCampaignCard from "../../components/admin/OngoingCampaignCard.tsx";
 import HiringRequestTable from "../../components/admin/HiringRequestTable.tsx";
 import GraphCard from "../../components/admin/GraphCard.tsx";
-import Icon from "@mui/material/Icon";
-import Accordion from "react-bootstrap/Accordion";
 
 let statisticCardDate = [
 	{
@@ -47,58 +45,56 @@ export default function AdminDashboardPage() {
 	};
 
 	return (
-		<>
-			<div className="tw-h-screen tw-w-screen tw-absolute tw-flex tw-flex-col tw-pb-5">
-				<AdminNavBar activeIndex={0} />
-				<div className="tw-mt-10 tw-px-10">
-					{/* Header Section */}
-					<div className="tw-flex tw-flex-row tw-w-full tw-justify-between tw-items-center tw-mb-10">
-						<div>
-							<p className="tw-mb-2">Pages / Dashboard</p>
-							<h1 className="tw-text-3xl tw-font-bold">Main Dashboard</h1>
-						</div>
-						<div className="tw-w-auto">
-							<button
-								className="tw-w-full tw-bg-red-700 tw-text-center tw-text-white tw-text-md tw-p-3 tw-rounded-full"
-								onClick={handleStartNewCampaignButtonClick}>
-								Start New Campaign
-							</button>
-						</div>
+		<div className="tw-h-screen tw-w-screen tw-absolute tw-flex tw-flex-col tw-bg-gray-100">
+			<AdminNavBar activeIndex={0} />
+			<div className="main-container tw-px-10 tw-overflow-auto">
+				{/* Header Section */}
+				<div className="tw-flex tw-flex-row tw-w-full tw-justify-between tw-items-center tw-mb-10 tw-mt-10">
+					<div>
+						<p className="tw-mb-2">Pages / Dashboard</p>
+						<h1 className="tw-text-3xl tw-font-bold">Main Dashboard</h1>
 					</div>
+					<div className="tw-w-auto">
+						<button
+							className="tw-w-full tw-bg-red-700 tw-text-center tw-text-white tw-text-md tw-p-3 tw-rounded-full"
+							onClick={handleStartNewCampaignButtonClick}>
+							Start New Campaign
+						</button>
+					</div>
+				</div>
 
-					{/* Statistic Card Section */}
-					<div className="tw-grid tw-grid-cols-4 tw-gap-10 tw-grid-flow-row tw-mb-6 tw-w-full">
-						{statisticCardDate.map(function (card) {
-							return (
-								<StatisticCard
-									title={card.title}
-									figure={card.figure}
-									percentage={card.percentage}
-									type={card.type}
-									icon={card.icon}
-								/>
-							);
-						})}
+				{/* Statistic Card Section */}
+				<div className="tw-grid tw-grid-cols-4 tw-gap-10 tw-grid-flow-row tw-mb-6 tw-w-full">
+					{statisticCardDate.map(function (card) {
+						return (
+							<StatisticCard
+								title={card.title}
+								figure={card.figure}
+								percentage={card.percentage}
+								type={card.type}
+								icon={card.icon}
+							/>
+						);
+					})}
+				</div>
+				{/* Recruitment Drives & Ongoing campaign sections */}
+				<div className="tw-flex tw-flex-row tw-justify-between tw-w-full tw-mb-6" style={{ maxHeight: "600px" }}>
+					{/* Recruitment Drives */}
+					<div className="tw-w-[70%] me-6">
+						<GraphCard />
 					</div>
-					{/* Recruitment Drives & Ongoing campaign sections */}
-					<div className="tw-flex tw-flex-row tw-w-full tw-mb-6" style={{ maxHeight: "600px" }}>
-						{/* Recruitment Drives */}
-						<div className="tw-w-full me-6">
-							<GraphCard />
-						</div>
-						<div className="min-tw-w-[38%]">
-							<OngoingCampaignCard />
-						</div>
+					<div className="tw-w-[28%]">
+						<OngoingCampaignCard />
 					</div>
+				</div>
 
-					{/* New Hiring Request Section */}
-					<div className="tw-w-full">
-						<div className="tw-ml-auto tw-w-[60%]">
-							<HiringRequestTable />
-						</div>
+				{/* New Hiring Request Section */}
+				<div className="tw-w-full">
+					<div className="tw-ml-auto tw-w-[60%]">
+						<HiringRequestTable />
 					</div>
 				</div>
 			</div>
-		</>
+		</div>
 	);
 }
