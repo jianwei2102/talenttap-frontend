@@ -82,7 +82,7 @@ function CampaignListPage() {
 						<span className="tw-text-black tw-font-bold tw-text-2xl">Campaign List</span>
 					</div>
 					<button
-						className="tw-h-3/4 tw-bg-red-700 tw-rounded-lg tw-flex tw-items-center tw-p-1.5"
+						className="tw-h-3/4 tw-bg-red-700 tw-rounded-lg tw-flex tw-items-center tw-p-2"
 						onClick={createCampaignHandle}>
 						<div className="tw-text-white tw-flex tw-items-center">
 							<SquareAddIcon />
