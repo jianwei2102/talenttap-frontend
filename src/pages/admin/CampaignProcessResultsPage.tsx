@@ -77,17 +77,17 @@ const supportTextSections = [
   {
     section: "View Candidate Results in Selected Interview Component",
     message:
-      'To view a candidate\'s results in a specific interview component (for example \"General Interview 1\"), click on the interview component in the navigation list (left-middle side of the page), then click on the eye icon on the candidate\'s row.',
+      "To view a candidate's results in a specific interview component (for example \"General Interview 1\"), click on the interview component in the navigation list (left-middle side of the page), then click on the eye icon on the candidate's row.",
   },
   {
     section: "Approve and Reject Candidates",
     message:
-      'To approve or deject a candidate in an interview component, click on the more menu icon (3 vertical dots) on the candidate\'s row, then click on the \"Approve\" or \"Reject\" button.',
+      'To approve or deject a candidate in an interview component, click on the more menu icon (3 vertical dots) on the candidate\'s row, then click on the "Approve" or "Reject" button.',
   },
   {
     section: "View Candidate Profile",
     message:
-      'To view a candidate\'s profile which has an overview of the candidate, click on the more menu icon (3 vertical dots) on the candidate\'s row, then click on the \"View Candidate Profile\" button.',
+      "To view a candidate's profile which has an overview of the candidate, click on the more menu icon (3 vertical dots) on the candidate's row, then click on the \"View Candidate Profile\" button.",
   },
   {
     section: "Ctrl + K Shortcut Key",
@@ -1667,8 +1667,8 @@ function CampaignProcessResultsPage() {
         </div>
       </div>
 
-            {/* Support Section */}
-            <button
+      {/* Support Section */}
+      <button
         className="tw-absolute tw-fixed tw-bottom-5 tw-right-5 tw-rounded-full tw-bg-blue-500 tw-text-white tw-py-2 tw-px-4 tw-flex tw-justify-center tw-items-center"
         onClick={() => setIsShowingSupportModal(true)}>
         Support
@@ -1687,8 +1687,12 @@ function CampaignProcessResultsPage() {
           onClick={() => setIsShowingSupportModal(false)}></div>
         <div className="tw-h-4/6 tw-w-1/2 tw-px-5 tw-pt-10 tw-pb-5 tw-bg-white tw-rounded-xl tw-shadow tw-z-10 tw-overflow-auto">
           <div className="tw-w-full tw-flex tw-justify-between tw-items-center">
-            <span className="tw-font-bold tw-text-2xl">Welcome to the Campaign Process Results Page!</span>
-            <div className="tw-h-8 tw-text-black tw-cursor-pointer" onClick={() => setIsShowingSupportModal(false)}>
+            <span className="tw-font-bold tw-text-2xl">
+              Welcome to the Campaign Process Results Page!
+            </span>
+            <div
+              className="tw-h-8 tw-text-black tw-cursor-pointer"
+              onClick={() => setIsShowingSupportModal(false)}>
               <CrossIcon />
             </div>
           </div>
