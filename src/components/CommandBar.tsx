@@ -257,7 +257,7 @@ const CommandBar: React.FC = () => {
   };
 
   return (
-    <div className={isOpen ? "tw-min-h-screen tw-flex tw-items-center tw-justify-center" : "tw-hidden"}>
+    <div className={isOpen ? "tw-w-screen tw-h-screen tw-absolute tw-flex tw-items-center tw-justify-center" : "tw-hidden"} onClick={closePopup}>
       <Popup isOpen={isOpen} onClose={closePopup} />
     </div>
   );

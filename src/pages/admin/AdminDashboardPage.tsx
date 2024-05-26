@@ -5,7 +5,7 @@ import StatisticCard from "../../components/admin/StatisticCard.tsx";
 import OngoingCampaignCard from "../../components/admin/OngoingCampaignCard.tsx";
 import HiringRequestTable from "../../components/admin/HiringRequestTable.tsx";
 import GraphCard from "../../components/admin/GraphCard.tsx";
-import { SquareAddIcon } from "../../assets/index.js";
+import { CrossIcon, HelpIcon, SquareAddIcon } from "../../assets/index.js";
 import CommandBar from "../../components/CommandBar.tsx";
 
 let statisticCardDate = [
@@ -39,8 +39,32 @@ let statisticCardDate = [
   },
 ];
 
+const supportTextSections = [
+  {
+    section: "Overview",
+    message:
+      "The Admin Dashboard Page allows you to view information regarding the recruitment at HILTI. Feel free to take a look at the statistic reports that have been compiled on the dashboard.",
+  },
+  {
+    section: "Create A New Campaign",
+    message:
+      'To create a new campaign, simply click on the "Start New Campaign" button on the top right section of the page. ',
+  },
+  {
+    section: "View Ongoing Campaigns",
+    message:
+      'To view ongoing campaigns, scroll through the "Ongoing Campaigns" container on the right side of the Admin Dashboard. Click on any of the campaign cards to view the progress and results of the campaign. Alternatively, click on the "Campaign" text on the navigation bar (top of your screen) to view the entire campaign list.',
+  },
+  {
+    section: "Ctrl + K Shortcut Key",
+    message:
+      "Simply click on Ctrl + K on your keyboard to display the command box! The command box helps you navigate to frequently visited areas of the site, without needing to click on multiple buttons. If you need any help, you can also search through the website, which employs AI to get the resources that you need.",
+  },
+];
+
 const AdminDashboardPage: React.FC = () => {
   const navigate = useNavigate();
+  const [isShowingSupportModal, setIsShowingSupportModal] = useState(false);
 
   return (
     <div className="tw-h-screen tw-w-screen tw-absolute tw-flex tw-flex-col tw-bg-gray-100">
@@ -97,8 +121,46 @@ const AdminDashboardPage: React.FC = () => {
             <HiringRequestTable />
           </div>
         </div>
-        <CommandBar />
       </div>
+
+      {/* Support Section */}
+      <button
+        className="tw-absolute tw-fixed tw-bottom-5 tw-right-5 tw-rounded-full tw-bg-blue-500 tw-text-white tw-py-2 tw-px-4 tw-flex tw-justify-center tw-items-center"
+        onClick={() => setIsShowingSupportModal(true)}>
+        Support
+        <div className="tw-w-5 tw-h-5 tw-ml-2">
+          <HelpIcon />
+        </div>
+      </button>
+      <div
+        className={
+          isShowingSupportModal
+            ? "tw-h-screen tw-w-screen tw-absolute tw-fixed tw-flex tw-justify-center tw-items-center"
+            : "tw-hidden"
+        }>
+        <div
+          className="pop-up-modal-backdrop"
+          onClick={() => setIsShowingSupportModal(false)}></div>
+        <div className="tw-h-4/6 tw-w-1/2 tw-px-5 tw-pt-10 tw-pb-5 tw-bg-white tw-rounded-xl tw-shadow tw-z-10 tw-overflow-auto">
+          <div className="tw-w-full tw-flex tw-justify-between tw-items-center">
+            <span className="tw-font-bold tw-text-2xl">Welcome to the Admin Dashboard Page!</span>
+            <div className="tw-h-8 tw-text-black tw-cursor-pointer" onClick={() => setIsShowingSupportModal(false)}>
+              <CrossIcon />
+            </div>
+          </div>
+          <span className="tw-text-lg tw-text-justify">
+            {supportTextSections.map((support, index) => (
+              <div className="tw-w-full tw-h-fit tw-bg-gray-100 tw-rounded-lg tw-p-2 tw-flex tw-flex-col tw-mt-5">
+                <span className="tw-font-bold tw-text-xl">{support.section}</span>
+                <span className="tw-mt-3">{support.message}</span>
+              </div>
+            ))}
+          </span>
+        </div>
+      </div>
+
+      {/* Command Bar */}
+      <CommandBar />
     </div>
   );
 };
