@@ -48,7 +48,7 @@ const supportTextSections = [
   {
     section: "Create A New Campaign",
     message:
-      'To create a new campaign, simply click on the "Start New Campaign" button on the top right section of the page. ',
+      'To create a new campaign, simply click on the "Start New Campaign" button on the top right section of the page.',
   },
   {
     section: "View Ongoing Campaigns",
