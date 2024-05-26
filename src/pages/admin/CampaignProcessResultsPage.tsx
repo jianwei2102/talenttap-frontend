@@ -69,7 +69,7 @@ declare module "@tanstack/react-table" {
 
 function CampaignProcessResultsPage() {
   const navigate = useNavigate();
-  
+
   const campaignName = "ASEAN Software Engineer 2024";
   const interviewComponentList = [
     { name: "CV Round", type: "CV Filtering" },
@@ -93,7 +93,7 @@ function CampaignProcessResultsPage() {
 
   const handleViewCandidateProfileButtonClick = () => {
     navigate("/candidate-profile");
-  }
+  };
 
   const CandidateCVComponent = () => {
     // TODO: fetch data for general interview/ technical assessment
@@ -103,7 +103,7 @@ function CampaignProcessResultsPage() {
         name: "Jane Doe",
         title: "Software Engineer",
         status: "Passed",
-        cvLink: "https://www.google.com",
+        cvLink: "https://talenttap-data.s3.amazonaws.com/Michelle+Chin+Yee+Lin_Resume+2024.pdf",
       },
       {
         rank: 2,
@@ -374,7 +374,7 @@ function CampaignProcessResultsPage() {
                     <td className="tw-pr-10">
                       {cell.getValue() !== "" ? (
                         <a href={String(cell.getValue())} target="_blank">
-                          {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                          {cell.row.getValue("name") + " - CV"}
                         </a>
                       ) : (
                         <></>
@@ -1137,6 +1137,11 @@ function CampaignProcessResultsPage() {
           header: "Action",
           cell: (props) => (
             <div className="tw-flex tw-space-x-5">
+              <button
+                className="tw-h-8 tw-text-gray-600"
+                onClick={() => navigate("/candidate-summary")}>
+                <EyeIcon />
+              </button>
               <button
                 data-key={props.row.getValue("name")}
                 className="tw-h-8 tw-text-gray-600"
