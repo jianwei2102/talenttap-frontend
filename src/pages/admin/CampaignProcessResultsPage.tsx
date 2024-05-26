@@ -308,7 +308,7 @@ function CampaignProcessResultsPage() {
     const handleMoreMenuButtonClick = (event) => {
       let currentTargetRect = event.currentTarget.getBoundingClientRect();
       setMoreMenuModalX(currentTargetRect.left);
-      setMoreMenuModalY(currentTargetRect.top);
+      setMoreMenuModalY(currentTargetRect.top - 100);
       setIsShowingMoreMenuModal(true);
       setMoreMenuModalDataKey(event.currentTarget.getAttribute("data-key"));
     };
@@ -728,7 +728,7 @@ function CampaignProcessResultsPage() {
     const handleMoreMenuButtonClick = (event) => {
       let currentTargetRect = event.currentTarget.getBoundingClientRect();
       setMoreMenuModalX(currentTargetRect.left);
-      setMoreMenuModalY(currentTargetRect.top);
+      setMoreMenuModalY(currentTargetRect.top - 100);
       setIsShowingMoreMenuModal(true);
       setMoreMenuModalDataKey(event.currentTarget.getAttribute("data-key"));
     };
@@ -1219,7 +1219,7 @@ function CampaignProcessResultsPage() {
     const handleMoreMenuButtonClick = (event) => {
       let currentTargetRect = event.currentTarget.getBoundingClientRect();
       setMoreMenuModalX(currentTargetRect.left);
-      setMoreMenuModalY(currentTargetRect.top);
+      setMoreMenuModalY(currentTargetRect.top - 100);
       setIsShowingMoreMenuModal(true);
       setMoreMenuModalDataKey(event.currentTarget.getAttribute("data-key"));
     };
