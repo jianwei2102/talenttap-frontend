@@ -20,7 +20,7 @@ const data = [
 ];
 
 export const EmployeeTurnoverRateByDepartment = (
-  <ResponsiveContainer width="100%" height={500}>
+  <ResponsiveContainer width="100%" height={475}>
     <BarChart
       width={730}
       height={250}

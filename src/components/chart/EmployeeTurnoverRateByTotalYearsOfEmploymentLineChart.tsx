@@ -26,7 +26,7 @@ const data = [
 ];
 
 export const EmployeeTurnoverRateByTotalYearsOfEmploymentLineChart = (
-  <ResponsiveContainer width="100%" height={500}>
+  <ResponsiveContainer width="100%" height={475}>
     <AreaChart data={data} margin={{ top: 20, right: 20, bottom: 20, left: 20 }}>
       <defs>
         <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">

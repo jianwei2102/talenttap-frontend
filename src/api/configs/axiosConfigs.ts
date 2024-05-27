@@ -1,6 +1,6 @@
 import axios from "axios";
 
-let BASE_URL = "http://localhost:3003/api";
+let BASE_URL = process.env.REACT_APP_BACKEND_URL;
 
 axios.defaults.withCredentials = true;
 
