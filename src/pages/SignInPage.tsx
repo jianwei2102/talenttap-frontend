@@ -41,7 +41,13 @@ function SignIn() {
 			// add the below userModel to global state after state management is implemented
 			const userModel = User.fromJson(user);
 
-			navigate("/profile", { replace: true });
+			if (userModel.getIsAdmin()) {
+				navigate("/admin", {replace: true});
+			}
+			else {
+				navigate("/profile", { replace: true });
+			}
+
 			addAlert({ type: "success", message: "Signed In Successfully", timeout: 5 });
 			dispatch(login(formData.email));
 		} catch (error: any) {
