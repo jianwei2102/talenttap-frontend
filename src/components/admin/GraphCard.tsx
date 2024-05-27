@@ -38,6 +38,11 @@ export default function GraphCard() {
           <option value="CostPerHire">Cost Per Hire</option>
         </select>
       </div>
+      <div className="tw-w-full tw-text-center tw-text-xl tw-font-bold">
+        {
+          chartType === "EmployeeTurnoverRateByTotalYearsofEmployment" ? "Employee Turnover Rate by Total Years of Employment" : chartType === "EmployeeTurnoverRateByDepartment" ? "Employee Turnover Rate by Department" : "Cost Per Hire"
+        }
+      </div>
       {chartType && mockData[chartType]()}
     </div>
   );
