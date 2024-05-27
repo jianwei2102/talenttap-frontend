@@ -1,7 +1,8 @@
 import "../../App.css";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { BriefcaseIcon, PeopleTwoIcon } from "../../assets";
+import { BriefcaseIcon, PeopleTwoIcon, GridIcon } from "../../assets";
+import CommandBar from "../CommandBar.tsx";
 
 interface UserNavBarProps {
   activeIndex: number;
@@ -11,6 +12,7 @@ const AdminNavBar = ({ activeIndex }: UserNavBarProps) => {
   const navigate = useNavigate();
   const [notificationCount, setNotificationCount] = useState(5);
   const [isShowingNotificationModal, setIsShowingNotificationModal] = useState(false);
+  const [isShowingCommandBarModal, setIsShowingCommandBarModal] = useState(false);
 
   // Notification data
   const notificationData = [
@@ -79,6 +81,11 @@ const AdminNavBar = ({ activeIndex }: UserNavBarProps) => {
     navigate("/login");
     activeIndex = 3;
   };
+
+  const clickFn = (isOpen: boolean) => {
+    setIsShowingCommandBarModal(isOpen);
+    return isOpen;
+  }
 
   return (
     <div className="tw-w-full tw-h-20 tw-relative tw-fixed tw-flex tw-items-center tw-bg-transparent">

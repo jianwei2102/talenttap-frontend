@@ -1630,9 +1630,16 @@ function CampaignProcessResultsPage() {
     <div className="tw-h-screen tw-w-screen tw-absolute tw-flex tw-flex-col tw-bg-gray-100">
       <AdminNavBar activeIndex={-1} />
       <div className="main-container tw-px-10 tw-flex tw-flex-col">
-        <span className="tw-text-red-700 tw-font-bold tw-text-lg tw-italic tw-mt-5">
-          Campaign Process Results
-        </span>
+        <div className="tw-flex tw-items-center tw-mt-5">
+          <span className="tw-text-red-700 tw-font-bold tw-text-lg tw-italic">
+            Campaign Process Results
+          </span>
+          <div
+            className="tw-h-5 tw-text-black tw-ml-2 tw-cursor-pointer"
+            onClick={() => setIsShowingSupportModal(true)}>
+            <HelpIcon />
+          </div>
+        </div>
         <span className="tw-font-bold tw-text-2xl tw-mt-3">{campaignName}</span>
         <div
           id="interview-component-navigation"
@@ -1668,14 +1675,6 @@ function CampaignProcessResultsPage() {
       </div>
 
       {/* Support Section */}
-      <button
-        className="tw-absolute tw-fixed tw-bottom-5 tw-right-5 tw-rounded-full tw-bg-blue-500 tw-text-white tw-py-2 tw-px-4 tw-flex tw-justify-center tw-items-center"
-        onClick={() => setIsShowingSupportModal(true)}>
-        Support
-        <div className="tw-w-5 tw-h-5 tw-ml-2">
-          <HelpIcon />
-        </div>
-      </button>
       <div
         className={
           isShowingSupportModal

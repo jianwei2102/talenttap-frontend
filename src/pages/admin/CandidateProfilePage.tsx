@@ -666,7 +666,7 @@ function CandidateProfilePage() {
 			<div className="main-container tw-flex tw-overflow-auto">
 				<div id="profile-navigation" className="tw-w-[20%] tw-flex tw-flex-col tw-py-5 tw-px-3 tw-bg-white">
 					<div className="tw-w-full tw-flex tw-justify-start">
-						<button className="tw-bg-red-700 tw-text-white tw-py-2 tw-px-5 tw-rounded-lg">
+						<button className="tw-bg-red-700 tw-text-white tw-py-2 tw-px-5 tw-rounded-lg" onClick={() => navigate(-1)}>
 							Back
 						</button>
 					</div>

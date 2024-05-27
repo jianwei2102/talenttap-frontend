@@ -96,32 +96,32 @@ const supportTextSections = [
   {
     section: "Overview",
     message:
-      "The Create Campaign Page allows you to create a new campaign to recruit people for a job opening. This page allows you to customize all details of the campaign, with the highlight being the flexibility to reorder any of the interview components to fit your needs! (Remember to click on the \"Create Campaign\" button before leaving!)",
+      'The Create Campaign Page allows you to create a new campaign to recruit people for a job opening. This page allows you to customize all details of the campaign, with the highlight being the flexibility to reorder any of the interview components to fit your needs! (Remember to click on the "Create Campaign" button before leaving!)',
   },
   {
     section: "Campaign Details Navigation",
     message:
-      'To navigate between the different components in your campaign, click on the buttons in the content list section on the left side of your screen.',
+      "To navigate between the different components in your campaign, click on the buttons in the content list section on the left side of your screen.",
   },
   {
     section: "Add Interview Components",
     message:
-      'To add interview components to your campaign, click and hold one of the interview components in the interview type list, then drag it to the container in the content list, and drop it. Your selected interview component will be added to your campaign.',
+      "To add interview components to your campaign, click and hold one of the interview components in the interview type list, then drag it to the container in the content list, and drop it. Your selected interview component will be added to your campaign.",
   },
   {
     section: "What is a General Interview Component?",
     message:
-      'A general interview component allows you to interview potential candidates, without needing you to be present! You will need to configure the questions that you want to ask candidates, as well as the keywords that you want the candidates to say during the interview. Each question will require a list of positive and negative keywords, each with its own configurable weight. Positve keywords will increase the score of the candidate, whilst negative keywords will decrease it. The weight of the keyword refers to its importance in calculating the score, the greater the weight of the keyword, the more it affects the candidate\'s calculated score. Don\'t worry, the score is only a guideline. At the end of the day, it is YOU who will decide if the candidate proceeds to the next round.',
+      "A general interview component allows you to interview potential candidates, without needing you to be present! You will need to configure the questions that you want to ask candidates, as well as the keywords that you want the candidates to say during the interview. Each question will require a list of positive and negative keywords, each with its own configurable weight. Positve keywords will increase the score of the candidate, whilst negative keywords will decrease it. The weight of the keyword refers to its importance in calculating the score, the greater the weight of the keyword, the more it affects the candidate's calculated score. Don't worry, the score is only a guideline. At the end of the day, it is YOU who will decide if the candidate proceeds to the next round.",
   },
   {
     section: "What is a Technical Assessment Component?",
     message:
-      'A technical assessment component allows you to quiz potential candidates, without needing you to be present! You will need to configure the questions that you want to ask candidates, as well as the keywords that you want the candidates to say during the interview. Each question will require a list of positive and negative keywords, each with its own configurable weight. Positve keywords will increase the score of the candidate, whilst negative keywords will decrease it. The weight of the keyword refers to its importance in calculating the score, the greater the weight of the keyword, the more it affects the candidate\'s calculated score. Don\'t worry, the score is only a guideline. At the end of the day, it is YOU who will decide if the candidate proceeds to the next round.',
+      "A technical assessment component allows you to quiz potential candidates, without needing you to be present! You will need to configure the questions that you want to ask candidates, as well as the keywords that you want the candidates to say during the interview. Each question will require a list of positive and negative keywords, each with its own configurable weight. Positve keywords will increase the score of the candidate, whilst negative keywords will decrease it. The weight of the keyword refers to its importance in calculating the score, the greater the weight of the keyword, the more it affects the candidate's calculated score. Don't worry, the score is only a guideline. At the end of the day, it is YOU who will decide if the candidate proceeds to the next round.",
   },
   {
     section: "What is a Hiring Manager Interview Component?",
     message:
-      'A hiring manager interview component is just a normal interview, where YOU (or another employee) will directly interview the candidates.',
+      "A hiring manager interview component is just a normal interview, where YOU (or another employee) will directly interview the candidates.",
   },
   {
     section: "Ctrl + K Shortcut Key",
@@ -1858,7 +1858,14 @@ function CreateCampaignPage() {
     <div className="tw-h-screen tw-w-screen tw-flex tw-flex-col tw-bg-gray-100">
       <AdminNavBar activeIndex={-1} />
       <div className="main-container tw-py-10 tw-px-24">
-        <span className="tw-text-red-700 tw-font-bold tw-text-5xl">Create A New Campaign</span>
+        <div className="tw-flex tw-items-center">
+          <span className="tw-text-red-700 tw-font-bold tw-text-5xl">Create A New Campaign</span>
+          <div
+            className="tw-h-5 tw-text-black tw-ml-2 tw-cursor-pointer"
+            onClick={() => setIsShowingSupportModal(true)}>
+            <HelpIcon />
+          </div>
+        </div>
         <div className="tw-h-[95%] tw-w-full tw-flex">
           <div
             id="create-campaign-navigation"
@@ -1990,14 +1997,6 @@ function CreateCampaignPage() {
       <OneClickPostingModal />
 
       {/* Support Section */}
-      <button
-        className="tw-absolute tw-fixed tw-bottom-5 tw-right-5 tw-rounded-full tw-bg-blue-500 tw-text-white tw-py-2 tw-px-4 tw-flex tw-justify-center tw-items-center"
-        onClick={() => setIsShowingSupportModal(true)}>
-        Support
-        <div className="tw-w-5 tw-h-5 tw-ml-2">
-          <HelpIcon />
-        </div>
-      </button>
       <div
         className={
           isShowingSupportModal

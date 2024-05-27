@@ -22,8 +22,7 @@ interface Campaign {
 const supportTextSections = [
   {
     section: "Overview",
-    message:
-      "The Admin Campaign List Page shows you all the campaigns at HILTI.",
+    message: "The Admin Campaign List Page shows you all the campaigns at HILTI.",
   },
   {
     section: "Create A New Campaign",
@@ -32,13 +31,12 @@ const supportTextSections = [
   },
   {
     section: "View Campaigns",
-    message:
-      'Scroll down the page to view all the ongoing campaigns at HILTI.',
+    message: "Scroll down the page to view all the ongoing campaigns at HILTI.",
   },
   {
     section: "View Campaign Process and Results",
     message:
-      'To view a specific campaign\'s process and results, simply click on the card of the campaign that you wish to view.',
+      "To view a specific campaign's process and results, simply click on the card of the campaign that you wish to view.",
   },
   {
     section: "Ctrl + K Shortcut Key",
@@ -119,7 +117,14 @@ function CampaignListPage() {
         <div className="tw-w-full tw-flex tw-justify-between tw-items-center">
           <div className="tw-w-auto tw-flex tw-flex-col">
             <span className="tw-text-gray-400">Pages / Campaign</span>
-            <span className="tw-text-black tw-font-bold tw-text-2xl">Campaign List</span>
+            <div className="tw-flex tw-items-center">
+              <span className="tw-text-black tw-font-bold tw-text-2xl">Campaign List</span>
+              <div
+                className="tw-h-5 tw-text-black tw-ml-2 tw-cursor-pointer"
+                onClick={() => setIsShowingSupportModal(true)}>
+                <HelpIcon />
+              </div>
+            </div>
           </div>
           <button
             className="tw-h-3/4 tw-bg-red-700 tw-rounded-lg tw-flex tw-items-center tw-p-2"
@@ -199,18 +204,10 @@ function CampaignListPage() {
             ))}
           </div>
         </div>
-        <CommandBar />
+        {/* <CommandBar /> */}
       </div>
 
       {/* Support Section */}
-      <button
-        className="tw-absolute tw-fixed tw-bottom-5 tw-right-5 tw-rounded-full tw-bg-blue-500 tw-text-white tw-py-2 tw-px-4 tw-flex tw-justify-center tw-items-center"
-        onClick={() => setIsShowingSupportModal(true)}>
-        Support
-        <div className="tw-w-5 tw-h-5 tw-ml-2">
-          <HelpIcon />
-        </div>
-      </button>
       <div
         className={
           isShowingSupportModal
@@ -241,6 +238,8 @@ function CampaignListPage() {
           </span>
         </div>
       </div>
+
+      <CommandBar />
     </div>
   );
 }

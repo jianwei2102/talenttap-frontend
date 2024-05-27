@@ -5,7 +5,13 @@ import StatisticCard from "../../components/admin/StatisticCard.tsx";
 import OngoingCampaignCard from "../../components/admin/OngoingCampaignCard.tsx";
 import HiringRequestTable from "../../components/admin/HiringRequestTable.tsx";
 import GraphCard from "../../components/admin/GraphCard.tsx";
-import { CrossIcon, HelpIcon, SquareAddIcon } from "../../assets/index.js";
+import {
+  CrossIcon,
+  HelpIcon,
+  SquareAddIcon,
+  InformationIcon,
+  GridIcon,
+} from "../../assets/index.js";
 import CommandBar from "../../components/CommandBar.tsx";
 
 let statisticCardDate = [
@@ -65,16 +71,24 @@ const supportTextSections = [
 const AdminDashboardPage: React.FC = () => {
   const navigate = useNavigate();
   const [isShowingSupportModal, setIsShowingSupportModal] = useState(false);
+  const [isClickOpenCommandBar, setIsClickOpenCommandBar] = useState(false);
 
   return (
-    <div className="tw-h-screen tw-w-screen tw-absolute tw-flex tw-flex-col tw-bg-gray-100">
+    <div id="test" className="tw-h-screen tw-w-screen tw-absolute tw-flex tw-flex-col tw-bg-gray-100">
       <AdminNavBar activeIndex={0} />
-      <div className="main-container tw-flex tw-flex-col tw-px-10 tw-py-5 tw-overflow-auto">
+      <div id="main" className="main-container tw-flex tw-flex-col tw-px-10 tw-py-5 tw-overflow-auto">
         {/* Header Section */}
         <div className="tw-w-full tw-flex tw-justify-between tw-items-center">
           <div className="tw-w-auto tw-flex tw-flex-col">
             <span className="tw-text-gray-400">Pages / Dashboard</span>
-            <span className="tw-text-black tw-font-bold tw-text-2xl">Dashboard</span>
+            <div className="tw-flex tw-items-center">
+              <span className="tw-text-black tw-font-bold tw-text-2xl">Dashboard</span>
+              <div
+                className="tw-h-5 tw-text-black tw-ml-2 tw-cursor-pointer"
+                onClick={() => setIsShowingSupportModal(true)}>
+                <HelpIcon />
+              </div>
+            </div>
           </div>
           <button
             className="tw-h-3/4 tw-bg-red-700 tw-rounded-lg tw-flex tw-items-center tw-p-2"
@@ -124,14 +138,6 @@ const AdminDashboardPage: React.FC = () => {
       </div>
 
       {/* Support Section */}
-      <button
-        className="tw-absolute tw-fixed tw-bottom-5 tw-right-5 tw-rounded-full tw-bg-blue-500 tw-text-white tw-py-2 tw-px-4 tw-flex tw-justify-center tw-items-center"
-        onClick={() => setIsShowingSupportModal(true)}>
-        Support
-        <div className="tw-w-5 tw-h-5 tw-ml-2">
-          <HelpIcon />
-        </div>
-      </button>
       <div
         className={
           isShowingSupportModal
@@ -144,7 +150,9 @@ const AdminDashboardPage: React.FC = () => {
         <div className="tw-h-4/6 tw-w-1/2 tw-px-5 tw-pt-10 tw-pb-5 tw-bg-white tw-rounded-xl tw-shadow tw-z-10 tw-overflow-auto">
           <div className="tw-w-full tw-flex tw-justify-between tw-items-center">
             <span className="tw-font-bold tw-text-2xl">Welcome to the Admin Dashboard Page!</span>
-            <div className="tw-h-8 tw-text-black tw-cursor-pointer" onClick={() => setIsShowingSupportModal(false)}>
+            <div
+              className="tw-h-8 tw-text-black tw-cursor-pointer"
+              onClick={() => setIsShowingSupportModal(false)}>
               <CrossIcon />
             </div>
           </div>
@@ -159,7 +167,6 @@ const AdminDashboardPage: React.FC = () => {
         </div>
       </div>
 
-      {/* Command Bar */}
       <CommandBar />
     </div>
   );
