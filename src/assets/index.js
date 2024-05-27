@@ -18,3 +18,6 @@ export {default as MoreVerticalIcon} from './svg-icons/MoreVerticalIcon.tsx';
 export {default as ThumbsUpIcon} from './svg-icons/ThumbsUpIcon.tsx';
 export {default as ThumbsDownIcon} from './svg-icons/ThumbsDownIcon.tsx';
 export {default as IdIcon} from './svg-icons/IdIcon.tsx';
+export {default as BriefcaseIcon} from './svg-icons/BriefcaseIcon.tsx';
+export {default as HelpIcon} from './svg-icons/HelpIcon.tsx';
+export {default as GridIcon} from './svg-icons/GridIcon.tsx';

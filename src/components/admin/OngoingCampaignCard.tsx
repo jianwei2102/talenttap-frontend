@@ -1,7 +1,7 @@
 import React from "react";
 import {useNavigate} from "react-router-dom";
-import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
 import CampaignListTile from "../../components/admin/sub/CampaignListTile.tsx";
+import { BriefcaseIcon } from "../../assets/index.js";
 
 
 let mockData = [
@@ -48,8 +48,8 @@ export default function OngoingCampaignCard() {
       {/* Header Section*/}
       <div className="tw-flex tw-flex-row tw-items-center tw-justify-between tw-mb-5">
         {/* Icon */}
-        <div className="tw-border-black tw-border tw-rounded-lg tw-p-1 tw-mr-5">
-          <PersonOutlineIcon classes="" color="error" fontSize="large" />
+        <div className="tw-border-black tw-border tw-rounded-lg tw-p-1 tw-mr-5 tw-text-red-700">
+          <BriefcaseIcon />
         </div>
         {/* Title */}
         <h4 className="tw-text-lg tw-font-bold grow">Ongoing Campaigns</h4>
