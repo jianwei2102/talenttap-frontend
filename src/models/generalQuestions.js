@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 let BASE_URL = process.env.REACT_APP_BACKEND_URL;
-const baseUrl = `${BASE_URL}/api/generalInterviewQuestions`
+const baseUrl = `${BASE_URL}/generalInterviewQuestions`
 
 export const getAll = () => {
   const request = axios.get(baseUrl)
