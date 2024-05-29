@@ -70,7 +70,7 @@ const GeneralInterview = () => {
         </div>
       </div>
 
-      <PopUpModal title="Continue" onClose={() => navigate("/general-question")} />
+      <PopUpModal title="Continue" onClose={() => navigate("/briefing-video/1")} />
     </>
   );
 };
