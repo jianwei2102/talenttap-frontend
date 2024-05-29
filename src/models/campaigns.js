@@ -1,5 +1,7 @@
 import axios from 'axios'
-const baseUrl = 'http://localhost:3003/api/campaigns'
+
+let BASE_URL = process.env.REACT_APP_BACKEND_URL;
+const baseUrl = `${BASE_URL}/campaigns`
 
 export const getAll = () => {
   const request = axios.get(baseUrl)

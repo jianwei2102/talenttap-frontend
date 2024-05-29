@@ -1,6 +1,5 @@
 import React, { useMemo, useState, useEffect } from "react";
 import {
-  createColumnHelper,
   flexRender,
   getCoreRowModel,
   useReactTable,
@@ -23,8 +22,10 @@ import {
   ThumbsDownIcon,
   IdIcon,
   CrossIcon,
+  HelpIcon,
 } from "../../assets/index.js";
 import { useNavigate } from "react-router-dom";
+import CommandBar from "../../components/CommandBar.tsx";
 
 // Used for General Interview and Technical Assessment table data
 type CandidateCVData = {
@@ -67,9 +68,37 @@ declare module "@tanstack/react-table" {
   }
 }
 
+const supportTextSections = [
+  {
+    section: "Overview",
+    message:
+      "The Campaign Process Results Page allows you to view each process in the selected campaign and the results of the candidates in each interview component.",
+  },
+  {
+    section: "View Candidate Results in Selected Interview Component",
+    message:
+      "To view a candidate's results in a specific interview component (for example \"General Interview 1\"), click on the interview component in the navigation list (left-middle side of the page), then click on the eye icon on the candidate's row.",
+  },
+  {
+    section: "Approve and Reject Candidates",
+    message:
+      'To approve or deject a candidate in an interview component, click on the more menu icon (3 vertical dots) on the candidate\'s row, then click on the "Approve" or "Reject" button.',
+  },
+  {
+    section: "View Candidate Profile",
+    message:
+      "To view a candidate's profile which has an overview of the candidate, click on the more menu icon (3 vertical dots) on the candidate's row, then click on the \"View Candidate Profile\" button.",
+  },
+  {
+    section: "Ctrl + K Shortcut Key",
+    message:
+      "Simply click on Ctrl + K on your keyboard to display the command box! The command box helps you navigate to frequently visited areas of the site, without needing to click on multiple buttons. If you need any help, you can also search through the website, which employs AI to get the resources that you need.",
+  },
+];
+
 function CampaignProcessResultsPage() {
   const navigate = useNavigate();
-  
+
   const campaignName = "ASEAN Software Engineer 2024";
   const interviewComponentList = [
     { name: "CV Round", type: "CV Filtering" },
@@ -79,6 +108,7 @@ function CampaignProcessResultsPage() {
     { name: "Hiring Manager Interview 1", type: "Hiring Manager Interview" },
   ];
   const [activeComponentIndex, setActiveComponentIndex] = useState(0);
+  const [isShowingSupportModal, setIsShowingSupportModal] = useState(false);
 
   const handleViewCandidateResultsButtonClick = () => {
     switch (interviewComponentList[activeComponentIndex].type) {
@@ -93,7 +123,7 @@ function CampaignProcessResultsPage() {
 
   const handleViewCandidateProfileButtonClick = () => {
     navigate("/candidate-profile");
-  }
+  };
 
   const CandidateCVComponent = () => {
     // TODO: fetch data for general interview/ technical assessment
@@ -103,7 +133,7 @@ function CampaignProcessResultsPage() {
         name: "Jane Doe",
         title: "Software Engineer",
         status: "Passed",
-        cvLink: "https://www.google.com",
+        cvLink: "https://talenttap-data.s3.amazonaws.com/Michelle+Chin+Yee+Lin_Resume+2024.pdf",
       },
       {
         rank: 2,
@@ -278,7 +308,7 @@ function CampaignProcessResultsPage() {
     const handleMoreMenuButtonClick = (event) => {
       let currentTargetRect = event.currentTarget.getBoundingClientRect();
       setMoreMenuModalX(currentTargetRect.left);
-      setMoreMenuModalY(currentTargetRect.top);
+      setMoreMenuModalY(currentTargetRect.top - 100);
       setIsShowingMoreMenuModal(true);
       setMoreMenuModalDataKey(event.currentTarget.getAttribute("data-key"));
     };
@@ -374,7 +404,7 @@ function CampaignProcessResultsPage() {
                     <td className="tw-pr-10">
                       {cell.getValue() !== "" ? (
                         <a href={String(cell.getValue())} target="_blank">
-                          {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                          {cell.row.getValue("name") + " - CV"}
                         </a>
                       ) : (
                         <></>
@@ -698,7 +728,7 @@ function CampaignProcessResultsPage() {
     const handleMoreMenuButtonClick = (event) => {
       let currentTargetRect = event.currentTarget.getBoundingClientRect();
       setMoreMenuModalX(currentTargetRect.left);
-      setMoreMenuModalY(currentTargetRect.top);
+      setMoreMenuModalY(currentTargetRect.top - 100);
       setIsShowingMoreMenuModal(true);
       setMoreMenuModalDataKey(event.currentTarget.getAttribute("data-key"));
     };
@@ -1138,6 +1168,11 @@ function CampaignProcessResultsPage() {
           cell: (props) => (
             <div className="tw-flex tw-space-x-5">
               <button
+                className="tw-h-8 tw-text-gray-600"
+                onClick={() => navigate("/candidate-summary")}>
+                <EyeIcon />
+              </button>
+              <button
                 data-key={props.row.getValue("name")}
                 className="tw-h-8 tw-text-gray-600"
                 onClick={handleMoreMenuButtonClick}>
@@ -1184,7 +1219,7 @@ function CampaignProcessResultsPage() {
     const handleMoreMenuButtonClick = (event) => {
       let currentTargetRect = event.currentTarget.getBoundingClientRect();
       setMoreMenuModalX(currentTargetRect.left);
-      setMoreMenuModalY(currentTargetRect.top);
+      setMoreMenuModalY(currentTargetRect.top - 100);
       setIsShowingMoreMenuModal(true);
       setMoreMenuModalDataKey(event.currentTarget.getAttribute("data-key"));
     };
@@ -1595,9 +1630,16 @@ function CampaignProcessResultsPage() {
     <div className="tw-h-screen tw-w-screen tw-absolute tw-flex tw-flex-col tw-bg-gray-100">
       <AdminNavBar activeIndex={-1} />
       <div className="main-container tw-px-10 tw-flex tw-flex-col">
-        <span className="tw-text-red-700 tw-font-bold tw-text-lg tw-italic tw-mt-5">
-          Campaign Process Results
-        </span>
+        <div className="tw-flex tw-items-center tw-mt-5">
+          <span className="tw-text-red-700 tw-font-bold tw-text-lg tw-italic">
+            Campaign Process Results
+          </span>
+          <div
+            className="tw-h-5 tw-text-black tw-ml-2 tw-cursor-pointer"
+            onClick={() => setIsShowingSupportModal(true)}>
+            <HelpIcon />
+          </div>
+        </div>
         <span className="tw-font-bold tw-text-2xl tw-mt-3">{campaignName}</span>
         <div
           id="interview-component-navigation"
@@ -1631,6 +1673,39 @@ function CampaignProcessResultsPage() {
           )}
         </div>
       </div>
+
+      {/* Support Section */}
+      <div
+        className={
+          isShowingSupportModal
+            ? "tw-h-screen tw-w-screen tw-absolute tw-fixed tw-flex tw-justify-center tw-items-center"
+            : "tw-hidden"
+        }>
+        <div
+          className="pop-up-modal-backdrop"
+          onClick={() => setIsShowingSupportModal(false)}></div>
+        <div className="tw-h-4/6 tw-w-1/2 tw-px-5 tw-pt-10 tw-pb-5 tw-bg-white tw-rounded-xl tw-shadow tw-z-10 tw-overflow-auto">
+          <div className="tw-w-full tw-flex tw-justify-between tw-items-center">
+            <span className="tw-font-bold tw-text-2xl">
+              Welcome to the Campaign Process Results Page!
+            </span>
+            <div
+              className="tw-h-8 tw-text-black tw-cursor-pointer"
+              onClick={() => setIsShowingSupportModal(false)}>
+              <CrossIcon />
+            </div>
+          </div>
+          <span className="tw-text-lg tw-text-justify">
+            {supportTextSections.map((support, index) => (
+              <div className="tw-w-full tw-h-fit tw-bg-gray-100 tw-rounded-lg tw-p-2 tw-flex tw-flex-col tw-mt-5">
+                <span className="tw-font-bold tw-text-xl">{support.section}</span>
+                <span className="tw-mt-3">{support.message}</span>
+              </div>
+            ))}
+          </span>
+        </div>
+      </div>
+      <CommandBar />
     </div>
   );
 }

@@ -4,13 +4,15 @@ class User {
     contactNumber: string;
     fullName: string;
     isActive: boolean;
+    isAdmin: boolean;
 
-    constructor(id: string, contactNumber: string, isActive: boolean, email: string = "", fullName: string = "") {
+    constructor(id: string, contactNumber: string, isActive: boolean, email: string = "", fullName: string = "", isAdmin: boolean = false) {
         this.id = id;
         this.contactNumber = contactNumber;
         this.email = email;
         this.fullName = fullName;
         this.isActive = isActive;
+        this.isAdmin = isAdmin;
     }
 
     getId(): string {
@@ -31,6 +33,10 @@ class User {
 
     getIsActive(): boolean {
         return this.isActive;
+    }
+
+    getIsAdmin(): boolean {
+        return this.isAdmin;
     }
 
     setId(id: string): void {
@@ -54,7 +60,7 @@ class User {
     }
 
     static fromJson(json: any): User {
-        return new User(json.id, json.contactNumber, json.isActive, json.email, json.fullname);
+        return new User(json.id, json.contactNumber, json.isActive, json.email, json.fullname, json.isAdmin);
     }
 }
 
