@@ -633,3 +633,8 @@ video {
   line-height: 1rem;
   padding-top: 0.5rem;
 }
+
+.react-player {
+  width: 620px;
+  height: 840px;
+}
