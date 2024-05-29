@@ -33,9 +33,6 @@ const BriefingVideo1 = () => {
                         height='100%'
                         controls              
                     />
-                    {/* <video width="620" height="840" controls>
-                        <source src="https://briefing-video.s3.amazonaws.com/HILTI1.mp4" type="video/mp4"/>
-                    </video> */}
                     <button className="tw-w-48 tw-h-12 tw-mx-auto tw-mt-10 tw-bg-red-500 tw-text-white tw-rounded-lg tw-text-lg" onClick={handleRedirect}>
                         Next
                     </button>

@@ -1,6 +1,7 @@
 import React from "react";
 import { UserNavBar } from "../../components";
 import { useNavigate } from "react-router-dom";
+import ReactPlayer from 'react-player'
 
 const BriefingVideo2 = () => {
     const navigate = useNavigate();
@@ -25,9 +26,13 @@ const BriefingVideo2 = () => {
                 </div>
 
                 <div className="tw-flex tw-flex-col tw-justify-center tw-items-center" style={{marginTop: "-50px"}}>
-                    <video width="620" height="840" controls>
-                        <source src={require("../../assets/HILTI2.mp4")} type="video/mp4"/>
-                    </video>
+                    <ReactPlayer
+                        className='react-player' 
+                        url={"https://briefing-video.s3.amazonaws.com/HILTI2.mp4"}
+                        width='100%'
+                        height='100%'
+                        controls              
+                    />
                     <button className="tw-w-48 tw-h-12 tw-mx-auto tw-mt-10 tw-bg-red-500 tw-text-white tw-rounded-lg tw-text-lg" onClick={handleRedirect}>
                         Next
                     </button>
