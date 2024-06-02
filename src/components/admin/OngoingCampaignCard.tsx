@@ -52,7 +52,7 @@ export default function OngoingCampaignCard() {
           <BriefcaseIcon />
         </div>
         {/* Title */}
-        <h4 className="tw-text-lg tw-font-bold grow">Ongoing Campaigns</h4>
+        <h1 className="tw-text-2xl tw-font-bold">Ongoing Campaigns</h1>
         {/* Button */}
         <button className="tw-text-red-500 tw-rounded-lg tw-px-2 tw-py-1 tw-ml-auto tw-font-bold" onClick={() => navigate("/campaign-list")}>
           View All

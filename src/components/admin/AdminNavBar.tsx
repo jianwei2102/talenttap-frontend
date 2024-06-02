@@ -91,7 +91,7 @@ const AdminNavBar = ({ activeIndex }: UserNavBarProps) => {
     <div className="tw-w-full tw-h-20 tw-relative tw-fixed tw-flex tw-items-center tw-bg-transparent">
       <div className="tw-h-full tw-w-1/6 tw-flex tw-justify-center tw-items-center">
         <img
-          className="tw-h-5/6 tw-w-5/6 tw-object-contain"
+          className="tw-h-4/6 tw-w-4/6 tw-object-contain"
           src={require("../../assets/hilti-logo.png")}
           alt="HILTI Logo"></img>
       </div>

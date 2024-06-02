@@ -60,7 +60,7 @@ let mockData: HiringRequest[] = [
 
 export default function HiringRequestTable() {
     return (
-        <div className="tw-w-full tw-bg-white tw-p-5 tw-rounded-2xl tw-mb-6">
+        <div className="tw-w-full tw-bg-white tw-px-8 tw-py-5 tw-rounded-2xl tw-mb-6">
             <h1 className="tw-text-2xl tw-font-bold tw-mb-7">New Hiring Requests</h1>
             <table className="table-tw-fixed tw-w-full">
               <thead>
