@@ -269,13 +269,13 @@ const Popup: React.FC<PopupProps> = ({ isOpen, onClose }) => {
         <div
           id="popupContainer"
           className="tw-fixed tw-top-0 tw-left-0 tw-w-full tw-h-full tw-flex tw-items-center tw-justify-center tw-bg-gray-500 tw-bg-opacity-50 tw-z-50">
-          <div className="tw-w-5/12 tw-bg-white tw-rounded tw-shadow-md">
+          <div className="tw-w-3/12 tw-bg-white tw-rounded tw-shadow-md">
             <div className="tw-flex tw-justify-evenly tw-items-center">
               <input
                 type="text"
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
-                placeholder="Search Your Website or ask Copilot"
+                placeholder="Search Your Website"
                 className="tw-w-10/12 tw-text-xs tw-pl-2 tw-py-2 tw-border tw-border-gray-300 tw-text-base tw-outline-none"
               />
               <svg
@@ -297,8 +297,11 @@ const Popup: React.FC<PopupProps> = ({ isOpen, onClose }) => {
             <div className="tw-flex tw-flex-col">
               {filteredItems.map((item, index) =>
                 item.type === "header" ? (
-                  <div key={index} className="tw-p-2 tw-font-bold tw-text-black tw-bg-[#e7e5e4]">
-                    {item.label}
+                  <div className="container">
+                    <div className="background"></div>
+                    <div key={index} className="tw-p-2 tw-font-bold tw-text-black move-right">
+                      {item.label}
+                    </div>
                   </div>
                 ) : item.type === "footer" ? (
                   <>
@@ -323,13 +326,15 @@ const Popup: React.FC<PopupProps> = ({ isOpen, onClose }) => {
                     onClick={item.action}
                     className="tw-p-2 tw-flex tw-items-center tw-font-bold tw-text-gray-500 hover:tw-bg-red-500 hover:tw-text-white"
                     tabIndex={0}
+                    style={{ position: "relative" }}
                     onFocus={(e) => e.currentTarget.classList.add("tw-bg-red-500", "tw-text-white")}
                     onBlur={(e) =>
                       e.currentTarget.classList.remove("tw-bg-red-500", "tw-text-white")
                     }>
-                    <span>{item.icon}</span>
-                    <span className="tw-ml-2">{item.label}</span>
+                    <span className="tw-ml-2">{item.icon}</span>
+                    <span className="tw-ml-3">{item.label}</span>
                   </button>
+
                 )
               )}
             </div>
@@ -393,7 +398,7 @@ const CommandBar: React.FC = () => {
         className={`tw-w-screen tw-h-screen tw-absolute tw-flex tw-items-center tw-justify-center ${
           isOpen ? "" : "tw-hidden"
         }`}
-        onClick={closePopup}>
+        >
         <div className={isOpen ? "" : "tw-hidden"}>
           <Popup isOpen={isOpen} onClose={closePopup} />
         </div>
