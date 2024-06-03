@@ -18,6 +18,7 @@ import GeneralInterview from "./pages/candidate/GeneralInterview.tsx";
 import GeneralQuestion from "./pages/candidate/GeneralQuestion.tsx";
 import CampaignListPage from "./pages/admin/CampaignListPage.tsx";
 import CreateCampaignPage from "./pages/admin/CreateCampaignPage.tsx";
+import CreateCampaignTemplatePage from "./pages/admin/CreateCampaignTemplatePage.tsx";
 import CandidateProfilePage from "./pages/admin/CandidateProfilePage.tsx";
 import CampaignProcessResultsPage from "./pages/admin/CampaignProcessResultsPage.tsx";
 import TypingAssessmentPage from "./pages/candidate/TypingAssessmentPage.tsx";
@@ -46,6 +47,7 @@ function App() {
                 <Route path="/admin" element={<AdminDashboardPage/>}/>
                 <Route path="/campaign-list" element={<CampaignListPage/>}/>
                 <Route path="/create-campaign" element={<CreateCampaignPage />}/>
+                <Route path="/create-campaign/1" element={<CreateCampaignTemplatePage />}/>
                 <Route path="/general-interview-result" element={<GeneralInterviewResultPage/>}/>
                 <Route path="/skill-assessment-result" element={<SkillAssessmentResultPage/>}/>
                 <Route path="/candidate-profile" element={<CandidateProfilePage />}/>

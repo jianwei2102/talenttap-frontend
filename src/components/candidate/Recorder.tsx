@@ -24,35 +24,51 @@ const Recorder = () => {
       if (results.every((result) => result.state === "granted")) {
         setPermissionGranted(true);
       } else {
-        navigator.mediaDevices.getUserMedia({ audio: true, video: true })
+        navigator.mediaDevices
+          .getUserMedia({ audio: true, video: true })
           .then((stream) => {
             stream.getTracks().forEach((track) => {
               console.log(track);
             });
-          })
+          });
       }
     });
   }, []);
 
   if (!permissionGranted) {
     return (
-      // TODO: Add reminder to hide content and only if permission is granted, show the content
-      <div>Please grant camera and microphone permissions to continue.</div>
+      <div className="tw-fixed tw-inset-0 bg-black tw-opacity-95 tw-flex tw-items-center tw-justify-center tw-z-50">
+        <div className="bg-white border-black border p-4 tw-w-96 tw-rounded-md">
+          <p className="mb-4">Please ensure that camera and microphone access are always granted during the general interview.</p>
+          <div className="tw-w-full tw-flex tw-justify-center">
+          <button
+            className="tw-bg-pink-500 hover:tw-bg-pink-700 tw-text-white tw-font-bold py-2 px-4 rounded"
+            onClick={() => window.location.reload()}
+          >
+            Retry
+          </button>
+          </div>
+        </div>
+      </div>
     );
   }
+  
 
   // Start recording count down directly when the camera is on
   let startDirectly = () => {
     const observer = new MutationObserver((mutationsList, observer) => {
       for (let mutation of mutationsList) {
         if (mutation.type === "childList") {
-          const recordButton = document.querySelector(
-            "[class^='record-button__ButtonBorder'] button"
-          );
-          if (recordButton) {
-            // console.log("recordButton", recordButton);
-            recordButton.click();
-          }
+          const intervalId = setInterval(() => {
+            const recordButton = document.querySelector(
+              "[class^='record-button__ButtonBorder'] button"
+            );
+            console.log("clicking record button");
+            if (recordButton) {
+              // console.log("recordButton", recordButton);
+              recordButton.click();
+            }
+          }, 100);
 
           const actionWrapper = document.querySelector(
             "[class^='render-actions__ActionsWrapper']"
@@ -101,7 +117,7 @@ const Recorder = () => {
         isOnInitially
         isFliped
         showReplayControls
-        countdownTime={3000}
+        countdownTime={20000}
         timeLimit={600000}
         onCameraOn={startDirectly}
         onStopRecording={hideRetryButton}
