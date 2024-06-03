@@ -324,8 +324,8 @@ function CreateCampaignPage() {
         ref={ref}
         className={
           activeSubComponentIndex === index
-            ? "tw-w-[90%] tw-flex tw-items-center tw-rounded-3xl tw-p-2 tw-mt-3 tw-bg-red-700 tw-text-white"
-            : "tw-w-[90%] tw-flex tw-items-center tw-rounded-3xl tw-p-2 tw-mt-3 tw-bg-white tw-border tw-border-black tw-text-black"
+            ? "tw-w-[90%] tw-flex tw-items-center tw-rounded-3xl tw-p-3 tw-mt-3 tw-bg-red-700 tw-text-white"
+            : "tw-w-[90%] tw-flex tw-items-center tw-rounded-3xl tw-p-3 tw-mt-3 tw-bg-white tw-border tw-border-black tw-text-black"
         }
         draggable
         onClick={handleInterviewComponentStepCardClick}>
@@ -379,7 +379,7 @@ function CreateCampaignPage() {
     return (
       <button
         ref={drag}
-        className="tw-w-full tw-flex tw-items-center tw-justify-between tw-rounded-3xl tw-p-2 tw-mt-3 tw-bg-white tw-border tw-border-black tw-text-black"
+        className="tw-w-full tw-flex tw-items-center tw-justify-between tw-rounded-3xl tw-p-3 tw-mt-3 tw-bg-white tw-border tw-border-black tw-text-black"
         draggable={true}>
         <div className="tw-flex tw-items-center">
           <svg
@@ -540,7 +540,7 @@ function CreateCampaignPage() {
     return (
       <div className="tw-h-auto tw-flex tw-flex-col">
         <span className="tw-font-bold tw-text-3xl">Campaign Details</span>
-        <div className="tw-bg-white tw-rounded-xl shadown tw-p-4 tw-mt-3">
+        <div className="tw-bg-white tw-rounded-xl tw-border tw-border-gray-400 shadow tw-p-10 tw-mt-5">
           <span className="tw-text-2xl">General Information</span>
           <div className="tw-h-0.5 tw-bg-gray-400 tw-mt-2 tw-mb-3"></div>
           <div className="tw-w-full tw-flex tw-flex-col">
@@ -574,7 +574,7 @@ function CreateCampaignPage() {
             {/* //TODO Add Image */}
           </div>
         </div>
-        <div className="tw-bg-white tw-rounded-xl shadow tw-p-4 tw-mt-3">
+        <div className="tw-bg-white tw-rounded-xl tw-border  tw-border-gray-400 shadow tw-p-10 tw-mt-5">
           <span className="tw-text-2xl">Settings</span>
           <div className="tw-h-0.5 tw-bg-gray-400 tw-mt-2 tw-mb-3 tw-flex tw-flex-col"></div>
           <div className="tw-flex tw-justify-between tw-items-center tw-py-2">
@@ -666,7 +666,7 @@ function CreateCampaignPage() {
             </div>
           </div>
         </div>
-        <div className="tw-bg-white tw-rounded-xl shadow tw-p-4 tw-mt-3">
+        <div className="tw-bg-white tw-rounded-xl tw-border tw-border-gray-400 shadow tw-p-10 tw-mt-5">
           <span className="tw-text-2xl">Person Involved</span>
           <div className="tw-h-0.5 tw-bg-gray-400 tw-mt-2 tw-mb-3 tw-flex tw-flex-col"></div>
         </div>
@@ -843,8 +843,8 @@ function CreateCampaignPage() {
             <Accordion.Header>
               <span className="tw-text-xl tw-font-bold">{"Question " + (index + 1)}</span>
             </Accordion.Header>
-            <Accordion.Body className="tw-flex tw-flex-col tw-p-3">
-              <div className="tw-flex tw-justify-between tw-items-end">
+            <Accordion.Body className="tw-flex tw-flex-col">
+              <div className="tw-flex tw-justify-between tw-items-end tw-p-3">
                 <div className="tw-w-5/6 tw-flex tw-flex-col">
                   <span className="tw-text-lg">Question</span>
                   <input
@@ -865,7 +865,7 @@ function CreateCampaignPage() {
                   </button>
                 </div>
               </div>
-              <div className="tw-w-full tw-flex tw-justify-between tw-mt-3">
+              <div className="tw-w-full tw-flex tw-justify-between tw-mt-3 tw-p-3">
                 <div className="tw-w-[45%] tw-h-fit tw-border tw-border-black tw-rounded-lg tw-py-0.5 tw-flex tw-flex-col">
                   <div className="tw-w-full tw-flex tw-p-2">
                     <span className="tw-w-1/2">Positive Keyword</span>
@@ -949,7 +949,7 @@ function CreateCampaignPage() {
                   </button>
                 </div>
               </div>
-              <div className="tw-w-full tw-h-fit tw-border tw-border-red-700 tw-border-2 tw-rounded-xl tw-flex tw-flex-col tw-py-2 tw-px-3 tw-mt-3">
+              <div className="tw-w-full tw-h-fit tw-border tw-border-red-700 tw-border-2 tw-rounded-xl tw-flex tw-flex-col tw-p-3 tw-mt-3">
                 <div className="tw-flex tw-items-center">
                   <div className="tw-h-full tw-text-red-700">
                     <RobotIcon />
@@ -958,7 +958,7 @@ function CreateCampaignPage() {
                     AI-Assisted Keyword Suggestion
                   </span>
                   <button
-                    className="tw-bg-red-700 tw-rounded-xl tw-text-white tw-py-1 tw-px-2 tw-ml-3"
+                    className="tw-bg-red-700 tw-rounded-xl tw-text-white tw-py-2 tw-px-3 tw-ml-3"
                     onClick={handleAiGenerateKeywordButtonClick}>
                     Generate Keyword
                   </button>
@@ -1207,8 +1207,8 @@ function CreateCampaignPage() {
               <Accordion.Header>
                 <span className="tw-text-xl tw-font-bold">{"Question " + (questionIndex + 1)}</span>
               </Accordion.Header>
-              <Accordion.Body className="tw-flex tw-flex-col tw-p-3">
-                <div className="tw-flex tw-justify-between tw-items-end">
+              <Accordion.Body className="tw-flex tw-flex-col">
+                <div className="tw-flex tw-justify-between tw-items-end tw-p-3">
                   <div className="tw-w-5/6 tw-flex tw-flex-col">
                     <span className="tw-text-lg">Question</span>
                     <input
@@ -1228,7 +1228,7 @@ function CreateCampaignPage() {
                     </button>
                   </div>
                 </div>
-                <div className="tw-w-full tw-flex tw-justify-between tw-mt-3">
+                <div className="tw-w-full tw-flex tw-justify-between tw-mt-3 tw-p-3">
                   <div className="tw-w-[45%] tw-h-fit tw-border tw-border-black tw-rounded-lg tw-py-0.5 tw-flex tw-flex-col">
                     <div className="tw-w-full tw-flex tw-p-2">
                       <span className="tw-w-1/2">Positive Keyword</span>
@@ -1327,7 +1327,7 @@ function CreateCampaignPage() {
               </span>
             </Accordion.Header>
             <Accordion.Body className="tw-flex tw-flex-col">
-              <div className="tw-w-full tw-flex tw-flex-col">
+              <div className="tw-w-full tw-flex tw-flex-col tw-p-3">
                 <div className="tw-flex tw-justify-between tw-items-center tw-py-2">
                   <span className="tw-w-1/2 tw-text-lg">Section Name</span>
                   <div className="tw-w-1/2 tw-flex tw-justify-end">
@@ -1444,7 +1444,7 @@ function CreateCampaignPage() {
     return (
       <div className="tw-flex tw-flex-col">
         <span className="tw-font-bold tw-text-3xl">Hiring Manager Interview</span>
-        <div className="tw-bg-white tw-rounded-xl tw-border tw-border-gray-400 tw-p-4 tw-mt-3">
+        <div className="tw-bg-white tw-rounded-xl tw-border tw-border-gray-400 shadow tw-p-10 tw-mt-3">
           <span className="tw-text-2xl">Settings</span>
           <div className="tw-h-0.5 tw-bg-gray-500 tw-mt-2 tw-mb-3"></div>
           <div className="tw-w-full tw-flex tw-justify-between">
@@ -1475,7 +1475,7 @@ function CreateCampaignPage() {
               onChange={handleDescriptionInputChange}></textarea>
           </div>
         </div>
-        <div className="tw-bg-white tw-rounded-xl tw-border tw-border-gray-400 tw-p-4 tw-mt-3">
+        <div className="tw-bg-white tw-rounded-xl tw-border tw-border-gray-400 shadow tw-p-10 tw-mt-3">
           <span className="tw-text-2xl">Person Involved</span>
           <div className="tw-h-0.5 tw-bg-gray-500 tw-mt-2 tw-mb-3"></div>
         </div>
@@ -1859,7 +1859,7 @@ function CreateCampaignPage() {
       <AdminNavBar activeIndex={-1} />
       <div className="main-container tw-py-10 tw-px-24">
         <div className="tw-flex tw-items-center">
-          <span className="tw-text-red-700 tw-font-bold tw-text-5xl">Create A New Campaign</span>
+          <span className="tw-text-red-700 tw-font-bold tw-text-5xl tw-mb-3">Create A New Campaign</span>
           <div
             className="tw-h-5 tw-text-black tw-ml-2 tw-cursor-pointer"
             onClick={() => setIsShowingSupportModal(true)}>
@@ -1869,7 +1869,7 @@ function CreateCampaignPage() {
         <div className="tw-h-[95%] tw-w-full tw-flex">
           <div
             id="create-campaign-navigation"
-            className="tw-h-full tw-w-1/4 tw-bg-white tw-rounded-lg tw-py-3 tw-px-4 tw-mt-3 shadow tw-overflow-auto">
+            className="tw-h-full tw-w-1/4 tw-bg-white tw-rounded-lg tw-py-4 tw-px-5 tw-mt-3 shadow tw-overflow-auto">
             <DndProvider backend={HTML5Backend}>
               <div className="tw-w-full">
                 <span className="tw-font-bold tw-text-lg">Contents List</span>
@@ -1877,8 +1877,8 @@ function CreateCampaignPage() {
                   <button
                     className={
                       activeComponentIndex === 0
-                        ? "tw-w-full tw-rounded-3xl tw-text-white tw-bg-red-700 tw-p-2 tw-flex tw-justify-start tw-items-center"
-                        : "tw-w-full tw-rounded-3xl tw-text-black tw-bg-white tw-border tw-border-black tw-p-2 tw-flex tw-justify-start tw-items-center"
+                        ? "tw-w-full tw-rounded-3xl tw-text-white tw-bg-red-700 tw-p-3 tw-flex tw-justify-start tw-items-center"
+                        : "tw-w-full tw-rounded-3xl tw-text-black tw-bg-white tw-border tw-border-black tw-p-3 tw-flex tw-justify-start tw-items-center"
                     }
                     onClick={handleCampaignDetailsButtonClick}>
                     <svg
@@ -1903,8 +1903,8 @@ function CreateCampaignPage() {
                   <button
                     className={
                       activeComponentIndex === 1
-                        ? "tw-w-full tw-rounded-3xl tw-text-white tw-bg-red-700 tw-p-2 tw-flex tw-justify-start tw-items-center tw-mt-3"
-                        : "tw-w-full tw-rounded-3xl tw-text-black tw-bg-white tw-border tw-border-black tw-p-2 tw-flex tw-justify-start tw-items-center tw-mt-3"
+                        ? "tw-w-full tw-rounded-3xl tw-text-white tw-bg-red-700 tw-p-3 tw-flex tw-justify-start tw-items-center tw-mt-3"
+                        : "tw-w-full tw-rounded-3xl tw-text-black tw-bg-white tw-border tw-border-black tw-p-3 tw-flex tw-justify-start tw-items-center tw-mt-3"
                     }
                     name="CustomizeInterviewButton"
                     onClick={handleCustomizeInterviewButtonClick}>
@@ -1961,12 +1961,12 @@ function CreateCampaignPage() {
               <span className="tw-font-bold tw-text-lg">Action Button</span>
               <div className="tw-flex tw-flex-col tw-items-center">
                 <button
-                  className="tw-w-1/2 tw-bg-red-700 tw-text-white tw-rounded-2xl tw-p-2 tw-mt-3"
+                  className="tw-w-4/6 tw-bg-red-700 tw-text-white tw-rounded-2xl tw-py-2 tw-px-3 tw-mt-3"
                   onClick={handleCreateCampaignButtonClick}>
                   Create Campaign
                 </button>
                 <button
-                  className="tw-w-1/2 tw-bg-white tw-text-red-700 tw-border-2 tw-border-red-700 tw-rounded-2xl tw-p-2 tw-mt-3 tw-mb-5"
+                  className="tw-w-4/6 tw-bg-white tw-text-red-700 tw-border-2 tw-border-red-700 tw-rounded-2xl tw-py-2 tw-px-3 tw-mt-3 tw-mb-5"
                   onClick={handleDiscardButtonClick}>
                   Discard
                 </button>
@@ -1975,7 +1975,7 @@ function CreateCampaignPage() {
           </div>
           <div
             id="campaign-details-container"
-            className="tw-h-auto tw-w-3/4 tw-ml-5 tw-mt-3 tw-overflow-auto">
+            className="tw-h-auto tw-w-3/4 tw-ml-5 tw-mt-3 tw-py-4 tw-px-5 tw-overflow-auto">
             {activeComponentIndex === 0 ? (
               <CampaignDetailsContainer />
             ) : campaignInterviewComponentList.length < 1 ? (
