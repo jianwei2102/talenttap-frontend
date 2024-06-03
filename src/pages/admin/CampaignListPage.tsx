@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Dropdown from "react-bootstrap/Dropdown";
 import AdminNavBar from "../../components/admin/AdminNavBar.tsx";
 import CommandBar from "../../components/CommandBar.tsx";
+import { CustomToggle } from "../../components";
 import {
   SquareAddIcon,
   PeopleTwoIcon,
@@ -48,6 +50,8 @@ const supportTextSections = [
 function CampaignListPage() {
   const navigate = useNavigate();
   const [isShowingSupportModal, setIsShowingSupportModal] = useState(false);
+  const [isShowingCreateCampaignModal, setIsShowingCreateCampaignModal] = useState(false);
+  const [isShowingTemplateSelectionModal, setIsShowingTemplateSelectionModal] = useState(false);
 
   const campaignList: Campaign[] = [
     {
@@ -127,8 +131,8 @@ function CampaignListPage() {
             </div>
           </div>
           <button
-            className="tw-h-3/4 tw-bg-red-700 tw-rounded-lg tw-flex tw-items-center tw-p-2"
-            onClick={createCampaignHandle}>
+            className="tw-h-4/5 tw-bg-red-700 tw-rounded-lg tw-flex tw-items-center tw-p-3"
+            onClick={() => setIsShowingCreateCampaignModal(true)}>
             <div className="tw-text-white tw-flex tw-items-center">
               <SquareAddIcon />
             </div>
@@ -236,6 +240,67 @@ function CampaignListPage() {
               </div>
             ))}
           </span>
+        </div>
+      </div>
+
+      {/* Create Campaign Template Section */}
+      <div
+        className={
+          isShowingCreateCampaignModal
+            ? "tw-h-screen tw-w-screen tw-absolute tw-fixed tw-flex tw-justify-center tw-items-center"
+            : "tw-hidden"
+        }>
+        <div
+          className="tw-h-full tw-w-full tw-bg-gray-700 tw-opacity-30 tw-absolute tw-top-0 tw-left-0 tw-z-20"
+          onClick={() => setIsShowingCreateCampaignModal(false)}></div>
+        <div className="tw-h-fit tw-w-[30%] tw-px-10 tw-pt-10 tw-pb-5 tw-bg-white tw-rounded-xl tw-shadow tw-z-30 tw-flex tw-flex-col tw-overflow-auto">
+          <span className="tw-w-full tw-font-bold tw-text-3xl tw-text-black tw-text-center tw-mb-10">
+            Create New Campaign
+          </span>
+          <div className="tw-flex tw-flex-col tw-justify-center tw-items-center tw-px-10">
+            <div className="tw-w-full tw-flex tw-flex-col tw-items-center">
+              <button
+                className="tw-w-full tw-border tw-border-red-700 tw-rounded tw-rounded-xl tw-bg-white tw-text-red-700 tw-text-center tw-py-2 tw-px-8 tw-mb-5"
+                onClick={() => navigate("/create-campaign")}>
+                Create Campaign
+              </button>
+            </div>
+            <div className="tw-w-full tw-flex tw-justify-center tw-mb-5">
+              <button
+                className="tw-w-full tw-rounded tw-rounded-xl tw-bg-red-700 tw-text-white tw-text-center tw-py-2 tw-px-8"
+                onClick={() => {setIsShowingCreateCampaignModal(false);setIsShowingTemplateSelectionModal(true);}}>
+                Create From Template
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Campaign Template Section */}
+      <div
+        className={
+          isShowingTemplateSelectionModal
+            ? "tw-h-screen tw-w-screen tw-absolute tw-fixed tw-flex tw-justify-center tw-items-center"
+            : "tw-hidden"
+        }>
+        <div
+          className="tw-h-full tw-w-full tw-bg-gray-700 tw-opacity-30 tw-absolute tw-top-0 tw-left-0 tw-z-20"
+          onClick={() => setIsShowingTemplateSelectionModal(false)}></div>
+        <div className="tw-h-[40%] tw-w-[30%] tw-px-10 tw-pt-10 tw-pb-5 tw-bg-white tw-rounded-xl tw-shadow tw-z-30 tw-flex tw-flex-col tw-overflow-auto">
+          <span className="tw-w-full tw-font-bold tw-text-3xl tw-text-black tw-text-center tw-mb-10">
+            Select Campaign Template
+          </span>
+          <div className="tw-w-full tw-flex tw-flex-col tw-px-5">
+            <div className="tw-flex tw-flex-col tw-cursor-pointer hover:tw-bg-gray-300" onClick={() => navigate("/create-campaign/1")}>
+              <div className="tw-h-[2px] tw-w-full tw-bg-gray-400" />
+              <span className="tw-py-3 tw-px-2">Sofware Engineer Campaign Template</span>
+              <div className="tw-h-[2px] tw-w-full tw-bg-gray-400" />
+            </div>
+            <div className="tw-flex tw-flex-col tw-cursor-pointer hover:tw-bg-gray-300" onClick={() => navigate("/create-campaign/1")}>
+              <span className="tw-py-3 tw-px-2">Account Manager Campaign Template</span>
+              <div className="tw-h-[2px] tw-w-full tw-bg-gray-400" />
+            </div>
+          </div>
         </div>
       </div>
 
