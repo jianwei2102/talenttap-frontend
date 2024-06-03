@@ -132,8 +132,8 @@ const AdminNavBar = ({ activeIndex }: UserNavBarProps) => {
             <div
               className={`${
                 notification.isRead ? "tw-bg-white" : "tw-bg-gray-100"
-              } tw-rounded-xl tw-p-2 tw-flex tw-mb-3 tw-relative`}>
-              <div className="tw-h-5 tw-text-black tw-mr-2">
+              } tw-rounded-xl tw-p-5 tw-flex tw-mb-5 tw-relative`}>
+              <div className="tw-h-5 tw-text-black tw-mr-5">
                 {notification.type === "Campaign Notification" ? (
                   <BriefcaseIcon />
                 ) : (

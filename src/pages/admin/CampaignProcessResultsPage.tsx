@@ -41,7 +41,7 @@ type CandidateAssessmentData = {
   rank: number;
   name: string;
   title: string;
-  status: "Passed" | "Approved" | "High Priority / KIV" | "Pending" | "Rejected";
+  status: "Passed" | "Approved" | "To Be Considered" | "Pending" | "Rejected";
   score: number;
 };
 
@@ -410,6 +410,20 @@ function CampaignProcessResultsPage() {
                         <></>
                       )}
                     </td>
+                  ) : cell.column.columnDef.header === "Status" ? (
+                    <td
+                      key={cell.id}
+                      className={`${
+                        cell.getValue() === "Passed"
+                          ? "tw-text-green-700"
+                          : cell.getValue() === "Approved"
+                          ? "tw-text-green-400"
+                          : cell.getValue() === "Pending"
+                          ? "tw-text-orange-400"
+                          : "tw-text-red-700"
+                      } tw-font-semibold`}>
+                      {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                    </td>
                   ) : (
                     <td key={cell.id} className="tw-h-full tw-px-2">
                       {flexRender(cell.column.columnDef.cell, cell.getContext())}
@@ -557,7 +571,7 @@ function CampaignProcessResultsPage() {
         rank: 4,
         name: "Yui Hakami",
         title: "Software Engineer",
-        status: "High Priority / KIV",
+        status: "To Be Considered",
         score: 75,
       },
       {
@@ -606,7 +620,7 @@ function CampaignProcessResultsPage() {
         rank: 11,
         name: "Yui Hakami",
         title: "Software Engineer",
-        status: "High Priority / KIV",
+        status: "To Be Considered",
         score: 75,
       },
       {
@@ -738,7 +752,7 @@ function CampaignProcessResultsPage() {
       const updatedData = [...data];
       if (
         updatedData[index].status === "Pending" ||
-        updatedData[index].status === "High Priority / KIV"
+        updatedData[index].status === "To Be Considered"
       ) {
         updatedData[index].status = "Approved";
         setData(updatedData);
@@ -750,7 +764,7 @@ function CampaignProcessResultsPage() {
       const updatedData = [...data];
       if (
         updatedData[index].status === "Pending" ||
-        updatedData[index].status === "High Priority / KIV"
+        updatedData[index].status === "To Be Considered"
       ) {
         updatedData[index].status = "Rejected";
         setData(updatedData);
@@ -761,7 +775,7 @@ function CampaignProcessResultsPage() {
       const index = data.findIndex((candidate) => candidate.name === moreMenuModalDataKey);
       const updatedData = [...data];
       if (updatedData[index].status === "Pending") {
-        updatedData[index].status = "High Priority / KIV";
+        updatedData[index].status = "To Be Considered";
         setData(updatedData);
       }
     };
@@ -802,7 +816,7 @@ function CampaignProcessResultsPage() {
                                   interview, yet to inform candidate
                                 </span>
                                 <span className="tw-font-normal tw-mb-2">
-                                  <span className="tw-font-bold">High Priority / KIV: </span>Keep
+                                  <span className="tw-font-bold">To Be Considered: </span>Keep
                                   candidate in view
                                 </span>
                                 <span className="tw-font-normal tw-mb-2">
@@ -863,6 +877,22 @@ function CampaignProcessResultsPage() {
                         )}
                         {flexRender(cell.column.columnDef.cell, cell.getContext())} / 100
                       </div>
+                    </td>
+                  ) : cell.column.columnDef.header === "Status" ? (
+                    <td
+                      key={cell.id}
+                      className={`${
+                        cell.getValue() === "Passed"
+                          ? "tw-text-green-700"
+                          : cell.getValue() === "Approved"
+                          ? "tw-text-green-400"
+                          : cell.getValue() === "To Be Considered"
+                          ? "tw-text-blue-700"
+                          : cell.getValue() === "Pending"
+                          ? "tw-text-orange-400"
+                          : "tw-text-red-700"
+                      } tw-font-semibold`}>
+                      {flexRender(cell.column.columnDef.cell, cell.getContext())}
                     </td>
                   ) : (
                     <td key={cell.id} className="tw-h-full tw-px-2">
@@ -980,7 +1010,7 @@ function CampaignProcessResultsPage() {
                   <path d="M8 13.5v-8a1.5 1.5 0 0 1 3 0v6.5m0 -6.5v-2a1.5 1.5 0 0 1 3 0v8.5m0 -6.5a1.5 1.5 0 0 1 3 0v6.5m0 -4.5a1.5 1.5 0 0 1 3 0v8.5a6 6 0 0 1 -6 6h-2a7 6 0 0 1 -5 -3l-2.7 -5.25a1.4 1.4 0 0 1 2.75 -2l.9 1.75" />
                 </svg>
               </div>
-              <span className="tw-ml-2">High Priority / KIV</span>
+              <span className="tw-ml-2">To Be Considered</span>
             </div>
             <div
               className="tw-w-full tw-flex tw-items-center tw-p-2 tw-cursor-pointer"
@@ -1347,6 +1377,22 @@ function CampaignProcessResultsPage() {
                         )}
                       </div>
                     </td>
+                  ) : cell.column.columnDef.header === "Status" ? (
+                    <td
+                      key={cell.id}
+                      className={`${
+                        cell.getValue() === "Passed"
+                          ? "tw-text-green-700"
+                          : cell.getValue() === "Approved"
+                          ? "tw-text-green-400"
+                          : cell.getValue() === "Pending"
+                          ? "tw-text-orange-400"
+                          : cell.getValue() === "Scheduled"
+                          ? "tw-text-blue-700"
+                          : "tw-text-red-700"
+                      } tw-font-semibold`}>
+                      {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                    </td>
                   ) : (
                     <td key={cell.id} className="tw-h-full tw-px-2">
                       {flexRender(cell.column.columnDef.cell, cell.getContext())}
@@ -1629,7 +1675,7 @@ function CampaignProcessResultsPage() {
   return (
     <div className="tw-h-screen tw-w-screen tw-absolute tw-flex tw-flex-col tw-bg-gray-100">
       <AdminNavBar activeIndex={-1} />
-      <div className="main-container tw-px-10 tw-flex tw-flex-col">
+      <div className="main-container tw-bg-white tw-px-10 tw-flex tw-flex-col">
         <div className="tw-flex tw-items-center tw-mt-5">
           <span className="tw-text-red-700 tw-font-bold tw-text-lg tw-italic">
             Campaign Process Results
@@ -1756,7 +1802,7 @@ function Filter({ column }: { column: Column<any, unknown> }) {
       <option value="">All</option>
       <option value="passed">Passed</option>
       <option value="approved">Approved</option>
-      <option value="high priority / kiv">High Priority / KIV</option>
+      <option value="to be considered">To Be Considered</option>
       <option value="pending">Pending</option>
       <option value="rejected">Rejected</option>
     </select>

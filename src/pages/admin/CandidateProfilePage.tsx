@@ -738,11 +738,11 @@ function CandidateProfilePage() {
 				<div
 					id="candidate-information"
 					className="tw-w-[20%] tw-flex-col tw-items-center tw-overflow-auto tw-bg-white">
-					<div className="tw-h-1/6 tw-w-full tw-p-3">
+					<div className="tw-h-fit tw-w-full tw-p-3 tw-flex tw-justify-center tw-items-center">
 						<img
 							alt="candidate image"
-							src={candidateInformation.imageSource}
-							className="tw-object-contain"></img>
+							src={require('../../assets/candidate_profile.jpg')}
+							className="tw-h-fit tw-w-full tw-object-cover"></img>
 					</div>
 					<div className="tw-w-full tw-p-3 tw-flex tw-flex-col">
 						<span className="tw-font-bold tw-text-lg">Name</span>
