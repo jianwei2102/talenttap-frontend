@@ -2,6 +2,7 @@ import React from "react";
 import {useNavigate} from "react-router-dom";
 import CampaignListTile from "../../components/admin/sub/CampaignListTile.tsx";
 import { BriefcaseIcon } from "../../assets/index.js";
+import { Icon } from "@mui/material";
 
 
 let mockData = [
@@ -49,10 +50,16 @@ export default function OngoingCampaignCard() {
       <div className="tw-flex tw-flex-row tw-items-center tw-justify-between tw-mb-5">
         {/* Icon */}
         <div className="tw-border-black tw-border tw-rounded-lg tw-p-1 tw-mr-5 tw-text-red-700">
-          <BriefcaseIcon />
+          <Icon
+            color="error" 
+            style={{ fontSize:35}}
+            sx={{ paddingBottom: 0, marginBottom: -1, fontSize: 100 }}
+          >
+            <BriefcaseIcon />
+          </Icon>
         </div>
         {/* Title */}
-        <h4 className="tw-text-lg tw-font-bold grow">Ongoing Campaigns</h4>
+        <h1 className="tw-text-2xl tw-font-bold">Ongoing Campaigns</h1>
         {/* Button */}
         <button className="tw-text-red-500 tw-rounded-lg tw-px-2 tw-py-1 tw-ml-auto tw-font-bold" onClick={() => navigate("/campaign-list")}>
           View All

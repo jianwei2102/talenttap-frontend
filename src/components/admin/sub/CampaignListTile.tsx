@@ -23,12 +23,11 @@ export default function CampaignListTile({id, title, newHire, startdate, endDate
           {/* ID */}
           <h5 className="tw-mb-2">Campaign ID #{id}</h5>
           {/* Campaign Name */}
-          <h3 className="tw-text-red-500 tw-font-extrabold tw-text-2xl tw-mb-2">
+          <h3 className="tw-text-red-500 tw-font-extrabold tw-text-xl tw-mb-3">
             {title}
           </h3>
 
-          <div className="tw-flex tw-flex-row tw-justify-between">
-            <div>
+            <div className="tw-pb-2">
               <Icon
                 color="error"
                 fontSize="large"
@@ -50,7 +49,6 @@ export default function CampaignListTile({id, title, newHire, startdate, endDate
               <span className="tw-text-black tw-ml-2">{startdate}-{endDate}</span>
             </div>
           </div>
-        </div>
 
         {/* List Tile Picture */}
         <div style={{overflow: "tw-hidden", width: 100, height: 100}} className="tw-rounded-xl">
@@ -59,7 +57,7 @@ export default function CampaignListTile({id, title, newHire, startdate, endDate
             alt="login background"
             // width={100}
             // height={100}
-            style={{ objectFit: "cover"}}
+            style={{ objectFit: "contain"}}
           />
         </div>
       </div>

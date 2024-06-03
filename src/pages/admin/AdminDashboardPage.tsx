@@ -91,7 +91,7 @@ const AdminDashboardPage: React.FC = () => {
             </div>
           </div>
           <button
-            className="tw-h-3/4 tw-bg-red-700 tw-rounded-lg tw-flex tw-items-center tw-p-2"
+            className="tw-h-4/5 tw-bg-red-700 tw-rounded-lg tw-flex tw-items-center tw-p-3"
             onClick={() => {
               navigate("/create-campaign");
             }}>
@@ -103,7 +103,7 @@ const AdminDashboardPage: React.FC = () => {
         </div>
 
         {/* Statistic Card Section */}
-        <div className="tw-grid tw-grid-cols-4 tw-gap-10 tw-grid-flow-row tw-mb-6 tw-w-full tw-mt-10">
+        <div className="tw-grid tw-grid-cols-4 tw-gap-10 tw-grid-flow-row tw-mb-10 tw-w-full tw-mt-10">
           {statisticCardDate.map(function (card) {
             return (
               <StatisticCard
@@ -118,7 +118,7 @@ const AdminDashboardPage: React.FC = () => {
         </div>
         {/* Recruitment Drives & Ongoing campaign sections */}
         <div
-          className="tw-flex tw-flex-row tw-justify-between tw-w-full tw-mb-6"
+          className="tw-flex tw-flex-row tw-justify-between tw-w-full tw-mb-10"
           style={{ maxHeight: "600px" }}>
           {/* Recruitment Drives */}
           <div className="tw-w-[70%] me-6">
@@ -131,7 +131,7 @@ const AdminDashboardPage: React.FC = () => {
 
         {/* New Hiring Request Section */}
         <div className="tw-w-full">
-          <div className="tw-ml-auto tw-w-[60%]">
+          <div className="tw-ml-auto">
             <HiringRequestTable />
           </div>
         </div>

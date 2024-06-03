@@ -638,3 +638,21 @@ video {
   width: 620px;
   height: 840px;
 }
+
+.container {
+  position: relative;
+}
+
+.move-right {
+  position: relative;
+  left: 10px; 
+}
+
+.background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #e7e5e4;
+}

@@ -46,7 +46,7 @@ export default function StatisticCard({
             <div className="tw-border-black tw-border tw-rounded-lg tw-p-1">
               <Icon
                 color="error"
-                // fontSize="large"
+                style={{ fontSize:35}}
                 sx={{ paddingBottom: 0, marginBottom: -1, fontSize: 100 }}
               >
                 {icon}
