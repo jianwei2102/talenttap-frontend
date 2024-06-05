@@ -62,8 +62,8 @@ function CampaignListPage() {
       campaignStepsList: [
         "CV Filtering",
         "General Interview",
-        "Technical Assessment",
-        "Technical Assessment",
+        "Skill Assessment",
+        "Skill Assessment",
         "Hiring Manager Interview",
       ],
     },
@@ -75,7 +75,7 @@ function CampaignListPage() {
       campaignStepsList: [
         "CV Filtering",
         "General Interview",
-        "Technical Assessment",
+        "Skill Assessment",
         "Hiring Manager Interview",
         "Hiring Manager Interview",
       ],
@@ -87,7 +87,7 @@ function CampaignListPage() {
       targetRecruitmentHeadcount: 15,
       campaignStepsList: [
         "CV Filtering",
-        "Technical Assessment",
+        "Skill Assessment",
         "General Interview",
         "Hiring Manager Interview",
       ],

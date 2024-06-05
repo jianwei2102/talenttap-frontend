@@ -169,7 +169,7 @@ function CandidateProfilePage() {
 	];
 	const interviewComponentList = [
 		{name: "General Interview", type: "General Interview", isCompleted: true},
-		{name: "Technical Assessment Interview", type: "Technical Assessment", isCompleted: true},
+		{name: "Skill Assessment Interview", type: "Technical Assessment", isCompleted: true},
 		{name: "Hiring Manager Interview", type: "Hiring Manager Interview", isCompleted: false},
 		{name: "CIO Interview", type: "Hiring Manager Interview", isCompleted: false},
 	];
