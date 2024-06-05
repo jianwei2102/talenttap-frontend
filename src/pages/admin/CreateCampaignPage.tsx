@@ -114,7 +114,7 @@ const supportTextSections = [
       "A general interview component allows you to interview potential candidates, without needing you to be present! You will need to configure the questions that you want to ask candidates, as well as the keywords that you want the candidates to say during the interview. Each question will require a list of positive and negative keywords, each with its own configurable weight. Positve keywords will increase the score of the candidate, whilst negative keywords will decrease it. The weight of the keyword refers to its importance in calculating the score, the greater the weight of the keyword, the more it affects the candidate's calculated score. Don't worry, the score is only a guideline. At the end of the day, it is YOU who will decide if the candidate proceeds to the next round.",
   },
   {
-    section: "What is a Technical Assessment Component?",
+    section: "What is a Skill Assessment Component?",
     message:
       "A technical assessment component allows you to quiz potential candidates, without needing you to be present! You will need to configure the questions that you want to ask candidates, as well as the keywords that you want the candidates to say during the interview. Each question will require a list of positive and negative keywords, each with its own configurable weight. Positve keywords will increase the score of the candidate, whilst negative keywords will decrease it. The weight of the keyword refers to its importance in calculating the score, the greater the weight of the keyword, the more it affects the candidate's calculated score. Don't worry, the score is only a guideline. At the end of the day, it is YOU who will decide if the candidate proceeds to the next round.",
   },
@@ -204,7 +204,7 @@ function CreateCampaignPage() {
         newInterview = {
           stepNumber: campaignInterviewComponentList.length,
           interviewInfo: technicalAssessment,
-          name: "Technical Assessment",
+          name: "Skill Assessment",
           type: "Technical Assessment",
         };
         break;
@@ -407,7 +407,7 @@ function CreateCampaignPage() {
               <HiringManagerInterviewIcon />
             )}
           </div>
-          <span className="tw-ml-1.5">{interviewType}</span>
+          <span className="tw-ml-1.5">{interviewType === "Technical Assessment" ? "Skill Assessment" : interviewType}</span>
         </div>
         <div className="tw-h-full tw-w-auto tw-flex tw-justify-end tw-items-center tw-text-black">
           <InformationIcon />
@@ -1382,7 +1382,7 @@ function CreateCampaignPage() {
     return (
       <div className="tw-flex tw-flex-col">
         <div className="tw-flex tw-justify-between tw-items-center tw-mb-2">
-          <span className="tw-text-2xl tw-font-bold">Technical Assessment</span>
+          <span className="tw-text-2xl tw-font-bold">Skill Assessment</span>
         </div>
         <Accordion defaultActiveKey={["0"]} alwaysOpen>
           {technicalAssessmentSectionList.map((section, index) => (

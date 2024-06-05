@@ -103,8 +103,8 @@ function CampaignProcessResultsPage() {
   const interviewComponentList = [
     { name: "CV Round", type: "CV Filtering" },
     { name: "General Interview 1", type: "General Interview" },
-    { name: "Technical Assessment 1", type: "Technical Assessment" },
-    { name: "Technical Assessment 2", type: "Technical Assessment" },
+    { name: "Skill Assessment 1", type: "Technical Assessment" },
+    { name: "Skill Assessment 2", type: "Technical Assessment" },
     { name: "Hiring Manager Interview 1", type: "Hiring Manager Interview" },
   ];
   const [activeComponentIndex, setActiveComponentIndex] = useState(0);
